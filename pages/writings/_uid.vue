@@ -12,11 +12,13 @@
         :use-fancy-titles="true"
       />
 
+      <!-- eslint-disable vue/no-v-html -->
       <div
         ref="body"
         class="post-content"
         v-html="$prismic.asHtml(document.data.content)"
       ></div>
+      <!--eslint-enable-->
     </main>
   </div>
 </template>

@@ -30,12 +30,13 @@
         }}</span>
       </div>
 
+      <!-- eslint-disable vue/no-v-html -->
       <div
         ref="body"
         class="post-content"
         v-html="$prismic.asHtml(document.data.content)"
       ></div>
-
+      <!--eslint-enable-->
       <related-videos :video="document" />
     </main>
   </div>

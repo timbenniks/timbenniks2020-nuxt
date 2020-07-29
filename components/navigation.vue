@@ -28,7 +28,7 @@
     <ul id="menu" class="dropdown-menu">
       <li>
         <nuxt-link
-          :class="$route.name === 'writings-slug' ? 'active' : ''"
+          :class="$route.name === 'writings-uid' ? 'active' : ''"
           to="/writings/"
         >
           Writings
@@ -36,7 +36,7 @@
       </li>
       <li>
         <nuxt-link
-          :class="$route.name === 'videos-slug' ? 'active' : ''"
+          :class="$route.name === 'videos-uid' ? 'active' : ''"
           to="/videos/"
         >
           Videos
