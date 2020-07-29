@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import mapMetaInfo from '../assets/prismic/mapMetaInfo'
+import mapMetaInfo from '@/assets/prismic/mapMetaInfo'
 
 export default {
   async asyncData({ $prismic, error }) {
@@ -43,7 +43,7 @@ export default {
 
       const talks = await $prismic.api.query(
         $prismic.predicates.at('document.type', 'talk'),
-        { orderings: '[my.talk.publication_date desc]' }
+        { orderings: '[my.talk.publication_date desc]', pageSize: 100 }
       )
 
       const oldTalks = []

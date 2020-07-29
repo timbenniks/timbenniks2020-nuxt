@@ -46,8 +46,8 @@
 </template>
 
 <script>
-import LinkMixin from '../assets/mixins/linkMixin'
-import mapMetaInfo from '../assets/prismic/mapMetaInfo'
+import LinkMixin from '@/assets/mixins/linkMixin'
+import mapMetaInfo from '@/assets/prismic/mapMetaInfo'
 
 export default {
   mixins: [LinkMixin],

@@ -89,3 +89,14 @@ iframe {
   // prettier-ignore
   @include responsive('display', (xs: block, l: none));
 }
+
+/* purgecss start ignore */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.2s ease;
+}
+.page-enter,
+.page-leave-active {
+  opacity: 0;
+}
+/* purgecss end ignore */

@@ -75,11 +75,11 @@ export default function (fields, pageType, route) {
   if (pageType === 'home') {
     metaData.script = [
       {
-        innerHTML: JSON.stringify({
+        json: {
           '@context': 'http://schema.org',
           '@type': 'Website',
           url: 'https://timbenniks.nl',
-        }),
+        },
         type: 'application/ld+json',
       },
     ]
@@ -99,7 +99,7 @@ export default function (fields, pageType, route) {
 
     metaData.script = [
       {
-        innerHTML: JSON.stringify({
+        json: {
           '@context': 'http://schema.org',
           '@type': 'VideoObject',
           name: getPropType(fields, 'general_card', 'title'),
@@ -108,7 +108,7 @@ export default function (fields, pageType, route) {
           embedUrl: fields.video_embed.embed_url.replace('watch?v=', 'embed/'),
           contentUrl: `https://timbenniks.nl/videos/${fields.id}`,
           uploadDate: `${fields.last_publication_date}T00:00:00`,
-        }),
+        },
         type: 'application/ld+json',
       },
     ]
@@ -128,7 +128,7 @@ export default function (fields, pageType, route) {
 
     metaData.script = [
       {
-        innerHTML: JSON.stringify({
+        json: {
           '@context': 'http://schema.org',
           '@type': 'BlogPosting',
           headline: getPropType(fields, 'general_card', 'title'),
@@ -154,7 +154,7 @@ export default function (fields, pageType, route) {
             '@type': 'WebPage',
             '@id': `https://google.com/article`,
           },
-        }),
+        },
         type: 'application/ld+json',
       },
     ]

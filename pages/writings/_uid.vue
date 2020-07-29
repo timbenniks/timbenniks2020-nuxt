@@ -11,13 +11,12 @@
         subtitletag="h2"
         :use-fancy-titles="true"
       />
-      <!-- eslint-disable vue/no-v-html -->
+
       <div
         ref="body"
         class="post-content"
         v-html="$prismic.asHtml(document.data.content)"
       ></div>
-      <!--eslint-enable-->
     </main>
   </div>
 </template>
@@ -31,9 +30,9 @@ import mapMetaInfo from '@/assets/prismic/mapMetaInfo'
 
 export default {
   mixins: [LinkMixin, IframeMixin, ImageMixin, SyntaxHighlighterMixin],
-  async asyncData({ $prismic, error }) {
+  async asyncData({ $prismic, params, error }) {
     try {
-      const document = await $prismic.api.getSingle('about')
+      const document = await $prismic.api.getByUID('writing', params.uid)
       return {
         document,
       }
@@ -67,19 +66,19 @@ export default {
 }
 
 .post-content {
-  margin: 3rem auto;
   max-width: rem(800px);
+  margin: 3rem auto;
 
   p,
   li {
+    line-height: 1.8;
     font-size: rem(18px);
     letter-spacing: 0.04em;
-    line-height: 1.8;
   }
 
   blockquote {
-    background: $blue-main;
     border-left: 3px solid $blue-light;
+    background: $blue-main;
     padding: rem(0 0 0 10px);
 
     p {
@@ -89,19 +88,19 @@ export default {
   }
 
   figure {
-    background: $blue-main;
-    border-bottom: 3px solid $blue-light;
-    display: block;
     margin: rem(0 0 32px);
+    display: block;
+    background: $blue-main;
     position: relative;
+    border-bottom: 3px solid $blue-light;
 
     figcaption {
-      background: rgba($blue-main, 0.8);
+      position: absolute;
       bottom: 0;
+      background: rgba($blue-main, 0.8);
+      padding: rem(3px 7px);
       font-size: inherit;
       font-size: rem(16px);
-      padding: rem(3px 7px);
-      position: absolute;
     }
   }
 }

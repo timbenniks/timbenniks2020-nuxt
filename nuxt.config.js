@@ -14,17 +14,25 @@ export default {
    ** See https://nuxtjs.org/api/configuration-head
    */
   head: {
-    title: process.env.npm_package_title || '',
+    title: 'Tim Benniks',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
-        hid: 'description',
-        name: 'description',
-        content: process.env.npm_package_description || '',
+        name: 'google-site-verification',
+        content: 'El5Wtr19CHQY1u_sQOjbuusrXqYCt6I6n3OJSyZEPAg',
       },
+      { property: 'og:site_name', content: 'Tim Benniks' },
+      { property: 'twitter:card', content: 'summary_large_image' },
+      { property: 'twitter:handle', content: 'timbenniks' },
+      { property: 'twitter:creator', content: 'timbenniks' },
+      { name: 'author', content: 'Tim Benniks' },
+      { name: 'robots', content: 'index, follow' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'preconnect', href: 'https://www.google-analytics.com' },
+      { rel: 'preconnect', href: 'https://images.prismic.io' },
+    ],
   },
   /*
    ** Global CSS
@@ -34,7 +42,7 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: [],
+  plugins: [{ src: '~plugins/ga.js', ssr: false }],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -44,32 +52,32 @@ export default {
    ** Nuxt.js dev-modules
    */
   buildModules: [
-    // Doc: https://github.com/nuxt-community/eslint-module
+    '@nuxtjs/pwa',
     '@nuxtjs/eslint-module',
-    // Doc: https://github.com/nuxt-community/stylelint-module
-    '@nuxtjs/stylelint-module',
     '@nuxtjs/style-resources',
+    [
+      'nuxt-purgecss',
+      {
+        mode: 'postcss',
+        whitelist: [
+          'page-enter-active',
+          'page-leave-active',
+          'page-enter',
+          'page-leave-active',
+        ],
+      },
+    ],
   ],
   /*
    ** Nuxt.js modules
    */
-  modules: [
-    '@nuxtjs/pwa',
-    // Doc: https://github.com/nuxt/content
-    '@nuxt/content',
-    '@nuxtjs/prismic',
-  ],
+  modules: ['@nuxtjs/prismic', '@nuxtjs/sitemap'],
   prismic: {
     endpoint: 'https://timbenniks.prismic.io/api/v2',
     linkResolver: '@/plugins/linkresolver',
     htmlSerializer: '@/plugins/htmlserializer',
     components: true,
   },
-  /*
-   ** Content module configuration
-   ** See https://content.nuxtjs.org/configuration
-   */
-  content: {},
   /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
@@ -82,5 +90,16 @@ export default {
       'assets/styles/_variables.scss',
       'assets/styles/_mixins.scss',
     ],
+  },
+  loading: {
+    color: '#d62b31',
+  },
+  sitemap: {
+    path: '/sitemap.xml',
+    hostname: 'https://timbenniks.nl',
+    cacheTime: 1000 * 60 * 15,
+    gzip: true,
+    generate: true,
+    exclude: ['/startpage'],
   },
 }

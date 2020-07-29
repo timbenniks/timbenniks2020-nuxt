@@ -45,8 +45,8 @@
 </template>
 
 <script>
-import mapMetaInfo from '../assets/prismic/mapMetaInfo'
-import { asDay, asMonth, asYear } from '../assets/prismic/helpers'
+import mapMetaInfo from '@/assets/prismic/mapMetaInfo'
+import { asDay, asMonth, asYear } from '@/assets/prismic/helpers'
 
 export default {
   async asyncData({ $prismic, error }) {
@@ -55,7 +55,7 @@ export default {
 
       const writings = await $prismic.api.query(
         $prismic.predicates.at('document.type', 'writing'),
-        { orderings: '[my.writing.publication_date desc]' }
+        { orderings: '[my.writing.publication_date desc]', pageSize: 100 }
       )
 
       return {

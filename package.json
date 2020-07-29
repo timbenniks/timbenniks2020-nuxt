@@ -15,8 +15,7 @@
     "lint": "yarn lint:js && yarn lint:style"
   },
   "lint-staged": {
-    "*.{js,vue}": "eslint",
-    "*.{css,vue}": "stylelint"
+    "*.{js,vue}": "eslint"
   },
   "husky": {
     "hooks": {
@@ -26,10 +25,10 @@
   "dependencies": {
     "@nuxt/content": "^1.3.2",
     "@nuxtjs/pwa": "^3.0.0-beta.20",
+    "@nuxtjs/sitemap": "^2.4.0",
     "highlight.js": "^10.1.2",
     "nuxt": "^2.13.0",
-    "sass-rem": "^2.0.1",
-    "stylelint-config-sass-guidelines": "^7.0.0"
+    "sass-rem": "^2.0.1"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.0.0",
@@ -45,11 +44,13 @@
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
     "node-sass": "^4.14.1",
+    "nuxt-purgecss": "^1.0.0",
     "prettier": "^2.0.5",
     "prismic-dom": "^2.2.3",
     "sass-loader": "^9.0.2",
     "stylelint": "^13.6.1",
     "stylelint-config-prettier": "^8.0.1",
+    "stylelint-config-sass-guidelines": "^7.0.0",
     "stylelint-config-standard": "^20.0.0"
   }
 }
