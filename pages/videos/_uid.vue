@@ -35,6 +35,8 @@
         class="post-content"
         v-html="$prismic.asHtml(document.data.content)"
       ></div>
+
+      <related-videos :video="document" />
     </main>
   </div>
 </template>
@@ -46,8 +48,6 @@ import ImageMixin from '@/assets/mixins/imageMixin'
 import mapMetaInfo from '@/assets/prismic/mapMetaInfo'
 
 export default {
-  //      <!-- <related-videos :video="document" /> -->
-
   mixins: [LinkMixin, IframeMixin, ImageMixin],
   async asyncData({ $prismic, params, error }) {
     try {

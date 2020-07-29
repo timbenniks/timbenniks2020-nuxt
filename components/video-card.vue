@@ -1,6 +1,6 @@
 <template>
   <article :key="video.slug" class="post video">
-    <g-link :to="`/videos/${video.slug}/`">
+    <nuxt-link :to="`/videos/${video.slug}/`">
       <lazy-image
         ratio="16/9"
         :alt="video.title"
@@ -8,13 +8,13 @@
         :widths="[300, 400, 500, 600, 680]"
         sizes="(max-width: 400px) 100vw, (min-width: 700px) 210px"
       />
-    </g-link>
+    </nuxt-link>
 
     <div class="post-content-wrap">
       <p class="post-title">
-        <g-link :to="`/videos/${video.slug}/`">
+        <nuxt-link :to="`/videos/${video.slug}/`">
           {{ video.title }}
-        </g-link>
+        </nuxt-link>
       </p>
       <p class="post-tags">
         <span v-for="(tag, index) in video.tags" :key="tag">
@@ -24,15 +24,16 @@
       </p>
 
       <p class="post-date fancy-title yellow">
-        {{ $prismic.asDay(video.publication_date) }}
-        {{ $prismic.asMonth(video.publication_date) }}
-        {{ $prismic.asYear(video.publication_date) }}
+        {{ asDay(video.publication_date) }}
+        {{ asMonth(video.publication_date) }}
+        {{ asYear(video.publication_date) }}
       </p>
     </div>
   </article>
 </template>
 
 <script>
+import { asDay, asMonth, asYear } from '../assets/prismic/helpers'
 import LazyImage from './lazy-image.vue'
 
 export default {
@@ -42,6 +43,11 @@ export default {
   },
   props: {
     video: { type: Object, required: true },
+  },
+  methods: {
+    asDay,
+    asMonth,
+    asYear,
   },
 }
 </script>

@@ -82,8 +82,9 @@ export default {
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
-  build: {},
-
+  build: {
+    transpile: ['vue-instantsearch', 'instantsearch.js/es'],
+  },
   styleResources: {
     scss: [
       'assets/styles/_packages.scss',
@@ -99,7 +100,10 @@ export default {
     hostname: 'https://timbenniks.nl',
     cacheTime: 1000 * 60 * 15,
     gzip: true,
-    generate: true,
-    exclude: ['/startpage'],
+    exclude: ['/startpage', '/preview'],
+  },
+  publicRuntimeConfig: {
+    algolia_app_id: process.env.ALGOLIA_APP_ID,
+    algolia_api_key: process.env.ALGOLIA_ADMIN_KEY,
   },
 }

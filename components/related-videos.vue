@@ -8,10 +8,7 @@
       :offset="[0, 0]"
       uppercase="uppercase"
     />
-    <ais-instant-search
-      :search-client="searchClient"
-      :index-name="$algolia.index"
-    >
+    <ais-instant-search :search-client="searchClient" index-name="VIDEOS">
       <ais-configure :hits-per-page.camel="3">
         <ais-experimental-configure-related-items
           :hit="hit"
@@ -41,14 +38,10 @@ import {
   AisHits,
   AisConfigure,
 } from 'vue-instantsearch'
-import VideoCard from './video-card.vue'
-import FancyTitle from './fancy-title.vue'
 
 export default {
   name: 'RelatedVideos',
   components: {
-    VideoCard,
-    FancyTitle,
     AisInstantSearch,
     AisExperimentalConfigureRelatedItems,
     AisHits,
@@ -63,7 +56,10 @@ export default {
       matchingPatterns: {
         tags: { score: 3 },
       },
-      searchClient: algoliasearch(this.$algolia.appId, this.$algolia.apiKey),
+      searchClient: algoliasearch(
+        this.$config.algolia_app_id,
+        this.$config.algolia_api_key
+      ),
     }
   },
   created() {
