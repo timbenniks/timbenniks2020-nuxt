@@ -1,0 +1,104 @@
+body {
+  font-weight: 400;
+  font-size: rem(16px);
+  font-display: optional;
+  color: $white;
+  line-height: 1.2;
+  font-family: Lato, sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: Lato, sans-serif;
+}
+
+h1 {
+  font-weight: 900;
+  line-height: 1;
+
+  // prettier-ignore
+  @include responsive('font-size', (xs: rem(36px), m: rem(48px)));
+}
+
+h2 {
+  margin: rem(0 0 20px 0);
+  font-weight: 400;
+
+  // prettier-ignore
+  @include responsive('font-size', (xs: rem(24px), m: rem(32px)));
+}
+
+/* purgecss start ignore */
+.post-content {
+  h3 {
+    margin: rem(0 0 20px 0);
+    font-weight: 900;
+    display: inline-block;
+    padding: rem(0 5px);
+
+    // prettier-ignore
+    @include responsive('font-size', (xs: rem(20px), m: rem(24px)));
+  }
+
+  h4 {
+    // prettier-ignore
+    @include responsive('font-size', (xs: rem(18px), m: rem(22px)));
+    margin: rem(0 0 20px 0);
+    font-weight: 900;
+  }
+
+  h5 {
+    // prettier-ignore
+    @include responsive('font-size', (xs: rem(16px), m: rem(20px)));
+    margin: rem(0 0 20px 0);
+    font-weight: 900;
+  }
+}
+/* purgecss end ignore */
+
+p {
+  margin: rem(0 0 20px 0);
+  font-size: rem(16px);
+  line-height: 1.5;
+}
+
+a {
+  color: $blue-light;
+  text-decoration: underline;
+
+  @include hover-supported() {
+    color: $white;
+  }
+
+  &:focus {
+    outline: 1px solid;
+  }
+}
+
+code {
+  font-size: rem(16px);
+}
+
+pre code {
+  font-size: rem(16px);
+}
+
+p code {
+  font-size: rem(18px);
+  background: $blue-main;
+  padding: rem(4px);
+}
+
+ul,
+ol {
+  margin: rem(0 0 20px 20px);
+  padding: 0;
+
+  ul,
+  ol {
+    margin: rem(0 0 0 20px);
+  }
+}

@@ -1,0 +1,240 @@
+/* purgecss start ignore */
+.hljs,
+pre {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  display: block;
+  overflow-x: auto;
+  background: #2e3440;
+  color: #fff;
+}
+
+.hljs,
+.hljs-subst {
+  color: #444;
+}
+
+.hljs-comment {
+  color: #4c566a;
+}
+
+.hljs-keyword,
+.hljs-attribute,
+.hljs-selector-tag,
+.hljs-meta-keyword,
+.hljs-doctag,
+.hljs-name {
+  font-weight: bold;
+}
+
+.hljs-type,
+.hljs-string,
+.hljs-number,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-quote,
+.hljs-template-tag,
+.hljs-deletion {
+  color: #880000;
+}
+
+.hljs-title,
+.hljs-section {
+  color: #880000;
+  font-weight: bold;
+}
+
+.hljs-regexp,
+.hljs-symbol,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #bc6060;
+}
+
+.hljs-literal {
+  color: #78a960;
+}
+
+.hljs-built_in,
+.hljs-bullet,
+.hljs-code,
+.hljs-addition {
+  color: #397300;
+}
+
+.hljs-meta {
+  color: #1f7199;
+}
+
+.hljs-meta-string {
+  color: #a3be8c;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs,
+.hljs-subst {
+  color: #d8dee9;
+}
+
+.hljs-selector-tag {
+  color: #81a1c1;
+}
+
+.hljs-selector-id {
+  color: #8fbcbb;
+  font-weight: bold;
+}
+
+.hljs-selector-class {
+  color: #8fbcbb;
+}
+
+.hljs-selector-attr {
+  color: #8fbcbb;
+}
+
+.hljs-selector-pseudo {
+  color: #88c0d0;
+}
+
+.hljs-addition {
+  background-color: rgba(163, 190, 140, 0.5);
+}
+
+.hljs-deletion {
+  background-color: rgba(191, 97, 106, 0.5);
+}
+
+.hljs-built_in,
+.hljs-type {
+  color: #8fbcbb;
+}
+
+.hljs-class {
+  color: #8fbcbb;
+}
+
+.hljs-function {
+  color: #88c0d0;
+  & > .hljs-title {
+    color: #88c0d0;
+  }
+}
+
+.hljs-keyword,
+.hljs-literal,
+.hljs-symbol {
+  color: #81a1c1;
+}
+
+.hljs-number {
+  color: #b48ead;
+}
+
+.hljs-regexp {
+  color: #ebcb8b;
+}
+
+.hljs-string {
+  color: #a3be8c;
+}
+
+.hljs-title {
+  color: #8fbcbb;
+}
+
+.hljs-params {
+  color: #d8dee9;
+}
+
+.hljs-bullet {
+  color: #81a1c1;
+}
+
+.hljs-code {
+  color: #8fbcbb;
+}
+
+.hljs-formula {
+  color: #8fbcbb;
+}
+
+.hljs-link {
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.hljs-quote {
+  color: #4c566a;
+}
+
+.hljs-doctag {
+  color: #8fbcbb;
+}
+
+.hljs-meta,
+.hljs-meta-keyword {
+  color: #5e81ac;
+}
+
+.hljs-attr {
+  color: #8fbcbb;
+}
+
+.hljs-attribute {
+  color: #d8dee9;
+}
+
+.hljs-builtin-name {
+  color: #81a1c1;
+}
+
+.hljs-name {
+  color: #81a1c1;
+}
+
+.hljs-section {
+  color: #88c0d0;
+}
+
+.hljs-tag {
+  color: #81a1c1;
+}
+
+.hljs-variable {
+  color: #d8dee9;
+}
+
+.hljs-template-variable {
+  color: #d8dee9;
+}
+
+.hljs-template-tag {
+  color: #5e81ac;
+}
+.css {
+  .hljs-built_in {
+    color: #88c0d0;
+  }
+  .hljs-keyword {
+    color: #d08770;
+  }
+}
+.scss {
+  .hljs-keyword {
+    color: #81a1c1;
+  }
+}
+/* purgecss end ignore */

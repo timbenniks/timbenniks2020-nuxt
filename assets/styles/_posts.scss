@@ -1,0 +1,95 @@
+.post {
+  background: darken($blue-main, 15);
+  padding: rem(16px);
+  border-style: solid;
+  border-width: 0 0 3px;
+  border-bottom-color: $blue-main;
+  margin: rem(0 0 40px 0);
+  overflow: hidden;
+  color: $white;
+  display: flex;
+  @include responsive('flex-direction', (xs: column, m: row));
+  
+  p {
+    margin: 0;
+  }
+
+  figure {
+    @include responsive('width', (xs: 100%, m: rem(200px)));
+    @include responsive('height', (xs: auto, m: rem(112px)));
+    @include responsive('margin', (xs: rem(0 16px 16px 0), m: rem(0 16px 0 0)));
+    
+    background: $blue-main;
+    border-bottom: 2px solid $blue-main;
+    flex: 2;
+
+    img {
+      object-fit: cover;
+    }
+  }
+
+  .post-title {
+    // prettier-ignore
+    @include responsive('font-size', (xs: rem(20px), m: rem(23px)));
+
+    font-weight: 900;
+    margin: rem(0 0 6px 0);
+    line-height: 1;
+
+    a {
+      transition: all 0.3s ease;
+      color: $white;
+      text-decoration: none;
+      
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        height: 2px;
+        width: calc(100%);
+        left: rem(-1.5px);
+        bottom: -2px;
+        background: $white;
+        opacity: 0;
+        transition: all 200ms ease;
+      }
+
+
+      @include hover-supported() {
+        &:after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .post-location {
+    color: $white;
+  }
+
+  .post-subject {
+    color: $blue-light;
+    line-height: 1.2;
+  }
+
+  .post-content-wrapper {
+    flex: 5;
+  }
+
+  .post-date {
+    color: $white;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 900;
+    margin: rem(0 16px 0 0);
+
+    span {
+      display: block;
+      line-height: 1;
+
+      &.post-date-day {
+        font-size: rem(35px);
+      }
+    }
+  }
+}

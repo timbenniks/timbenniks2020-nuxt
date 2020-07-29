@@ -1,0 +1,58 @@
+.stats {
+  background: $blue-main;
+  padding: 1rem;
+  margin: 0 0 0 1rem;
+  width: rem(350px);
+
+  &.twitter {
+    width: 600px;
+  }
+
+  .quick-links {
+    margin: rem(10px 0 0);
+    font-size: rem(14px);
+  }
+
+  .stats-wrap {
+    display: flex;
+    margin: rem(20px 0);
+
+    .stat {
+      flex: 1;
+      max-width: rem(120px);
+
+      h6 {
+        font-weight: 400;
+      }
+
+      p {
+        margin: 0;
+        font-size: rem(30px);
+        line-height: 1;
+        font-weight: 700;
+      }
+
+      .trend {
+        font-size: rem(11px);
+        font-weight: 400;
+        margin: rem(5px 0 0 0);
+      }
+
+      .trend:before {
+        display: inline-block;
+        position: relative;
+        text-align: center;
+        top: rem(-1px);
+        text-align: center;
+      }
+
+      .trend-negative:before {
+        content: '\2193';
+      }
+
+      .trend-positive:before {
+        content: '\2191';
+      }
+    }
+  }
+}

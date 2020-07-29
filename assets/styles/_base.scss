@@ -1,0 +1,91 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  background: $blue-bg;
+}
+
+pre {
+  margin: rem(0 0 20px 0);
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+}
+
+
+// Page things
+main {
+  // prettier-ignore
+  @include responsive('padding', (xs: rem(40px 20px), l: rem(60px)));
+}
+
+/* purgecss start ignore */
+.writings,
+.speaking {
+  .heading,
+  .posts,
+  .post-title-sep  {
+    margin: 0 auto 2rem !important;
+    max-width: rem(800px);
+  }
+}
+
+.goToContent {
+  cursor: pointer;
+  position: absolute;
+  top: -1000rem;
+  height: 0;
+  padding: rem(5px 10px);
+  overflow: hidden;
+  color: $white;
+  text-transform: uppercase;
+  background: $blue-main;
+  text-decoration: none;
+
+  &:hover {
+    background: $white;
+    color: $blue-main;
+  }
+
+  &:active,
+  &:focus {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    top: 1.25rem;
+    height: auto;
+  }
+}
+
+/* purgecss end ignore */
+
+iframe {
+  width: 100%;
+}
+
+.strava-embed {
+  margin: rem(0 0 16px);
+  border: none;
+  background: none;
+  width: rem(590px);
+  height: rem(405px);
+
+  // prettier-ignore
+  @include responsive('display', (xs: none !important, l: block !important ));
+}
+
+.for-small-screens {
+  border: 1px solid $blue-light;
+  padding: rem(4px 6px);
+  margin: 0 0 1rem 0;
+  font-size: rem(14px);
+  background: $blue-main;
+
+  // prettier-ignore
+  @include responsive('display', (xs: block, l: none));
+}

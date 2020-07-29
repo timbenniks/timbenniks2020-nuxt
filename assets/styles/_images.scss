@@ -1,0 +1,72 @@
+/* purgecss start ignore */
+img {
+  height: auto;
+  width: 100%;
+  display: block;
+}
+
+[style*='--aspect-ratio'] > :first-child {
+  width: 100%;
+}
+
+[style*='--aspect-ratio'] > img {
+  height: auto;
+}
+
+@supports (--custom: property) {
+  [style*='--aspect-ratio'] {
+    position: relative;
+  }
+
+  [style*='--aspect-ratio']::before {
+    content: '';
+    display: block;
+
+    --aspect: (var(--aspect-ratio));
+    padding-bottom: calc(100% / (var(--aspect)));
+  }
+
+  [style*='--aspect-ratio'] > :first-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+  }
+}
+
+img.lazy {
+  opacity: 0;
+  transform: translateY(7px);
+  will-change: opacity, transform;
+  transition: all 0.7s ease;
+}
+
+img.lazy-done {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+img.opacity-only.lazy {
+  opacity: 0;
+  transform: translateY(0px);
+  will-change: opacity;
+  transition: all 0.7s ease;
+}
+
+img.opacity-only.lazy-done {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+img.no-animation.lazy {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: none;
+}
+
+img.no-animation.lazy-done {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+/* purgecss end ignore */

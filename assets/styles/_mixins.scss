@@ -1,0 +1,33 @@
+$grid-breakpoints: (
+  xs: 0,
+  s: $s-breakpoint,
+  sm: $sm-breakpoint,
+  m: $m-breakpoint,
+  l: $l-breakpoint
+);
+
+// Mixin for calculate all media query for a property
+// Usage: @include responsive('font-size', (xs: 14px, l: 20px))
+// Available breakpoints: see properties of grid-breakpoints
+@mixin responsive($property, $map) {
+  @each $breakpoint, $value in $map {
+    @if $breakpoint == null {
+      #{$property}: $value;
+    } @else {
+      @if map-has-key($grid-breakpoints, $breakpoint) {
+        $breakpoint: map-get($grid-breakpoints, $breakpoint);
+      }
+      @media screen and (min-width: $breakpoint) {
+        #{$property}: $value;
+      }
+    }
+  }
+}
+
+@mixin hover-supported {
+  @media not all and (hover: none) {
+    &:hover {
+      @content;
+    }
+  }
+}
