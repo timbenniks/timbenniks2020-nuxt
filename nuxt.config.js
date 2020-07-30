@@ -55,20 +55,20 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/eslint-module',
     '@nuxtjs/style-resources',
-    [
-      'nuxt-purgecss',
-      {
-        mode: 'postcss',
-        whitelist: [
-          'page-enter-active',
-          'page-leave-active',
-          'page-enter',
-          'page-leave-active',
-          'lazy',
-          'lazy-done',
-        ],
-      },
-    ],
+    // [
+    //   'nuxt-purgecss',
+    //   {
+    //     mode: 'postcss',
+    //     whitelist: [
+    //       'page-enter-active',
+    //       'page-leave-active',
+    //       'page-enter',
+    //       'page-leave-active',
+    //       'lazy',
+    //       'lazy-done',
+    //     ],
+    //   },
+    // ],
   ],
   /*
    ** Nuxt.js modules
