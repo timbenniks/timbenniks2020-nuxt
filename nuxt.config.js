@@ -64,6 +64,8 @@ export default {
           'page-leave-active',
           'page-enter',
           'page-leave-active',
+          'lazy',
+          'lazy-done',
         ],
       },
     ],
