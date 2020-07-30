@@ -111,4 +111,10 @@ export default {
   router: {
     linkExactActiveClass: 'active',
   },
+  pwa: {
+    manifest: {
+      name: 'timbenniks.nl',
+      short_name: 'timbenniks',
+    },
+  },
 }
