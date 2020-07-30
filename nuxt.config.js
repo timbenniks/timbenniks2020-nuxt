@@ -117,4 +117,7 @@ export default {
       short_name: 'timbenniks',
     },
   },
+  icon: {
+    purpose: ['maskable', 'any'],
+  },
 }
