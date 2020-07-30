@@ -1,7 +1,7 @@
 {
   "name": "timbenniks2021",
   "title": "Tim Benniks",
-  "url": "https://timbenniks2020-nuxt.vercel.app/",
+  "url": "https://timbenniks2020-nuxt.vercel.app",
   "version": "1.0.0",
   "private": true,
   "scripts": {
