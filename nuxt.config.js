@@ -1,20 +1,8 @@
 import Prismic from 'prismic-javascript'
 
 export default {
-  /*
-   ** Nuxt rendering mode
-   ** See https://nuxtjs.org/api/configuration-mode
-   */
   mode: 'universal',
-  /*
-   ** Nuxt target
-   ** See https://nuxtjs.org/api/configuration-target
-   */
   target: 'static',
-  /*
-   ** Headers of the page
-   ** See https://nuxtjs.org/api/configuration-head
-   */
   head: {
     title: 'Tim Benniks',
     meta: [
@@ -36,25 +24,9 @@ export default {
       { rel: 'preconnect', href: 'https://images.prismic.io' },
     ],
   },
-  /*
-   ** Global CSS
-   */
   css: ['assets/styles/index.scss'],
-  /*
-   ** Plugins to load before mounting the App
-   ** https://nuxtjs.org/guide/plugins
-   */
-  plugins: [],
-  /*
-   ** Auto import components
-   ** See https://nuxtjs.org/api/configuration-components
-   */
   components: true,
-  /*
-   ** Nuxt.js dev-modules
-   */
   buildModules: [
-    '@nuxtjs/pwa',
     '@nuxtjs/eslint-module',
     '@nuxtjs/style-resources',
     [
@@ -63,24 +35,15 @@ export default {
         id: 'UA-6797812-3',
       },
     ],
-    // [
-    //   'nuxt-purgecss',
-    //   {
-    //     mode: 'postcss',
-    //     whitelist: [
-    //       'page-enter-active',
-    //       'page-leave-active',
-    //       'page-enter',
-    //       'page-leave-active',
-    //       'lazy',
-    //       'lazy-done',
-    //     ],
-    //   },
-    // ],
+    [
+      '@nuxtjs/pwa',
+      {
+        workbox: {
+          clientsClaim: false,
+        },
+      },
+    ],
   ],
-  /*
-   ** Nuxt.js modules
-   */
   modules: ['@nuxtjs/prismic', '@nuxtjs/sitemap'],
   prismic: {
     endpoint: 'https://timbenniks.prismic.io/api/v2',
@@ -89,10 +52,6 @@ export default {
     components: true,
     preview: false,
   },
-  /*
-   ** Build configuration
-   ** See https://nuxtjs.org/api/configuration-build/
-   */
   build: {
     transpile: ['vue-instantsearch', 'instantsearch.js/es'],
   },
@@ -111,7 +70,7 @@ export default {
     hostname: 'https://timbenniks2020-nuxt.vercel.app',
     cacheTime: 1000 * 60 * 15,
     gzip: true,
-    exclude: ['/startpage', '/preview'],
+    exclude: ['/startpage'],
   },
   publicRuntimeConfig: {
     algolia_app_id: process.env.ALGOLIA_APP_ID,
