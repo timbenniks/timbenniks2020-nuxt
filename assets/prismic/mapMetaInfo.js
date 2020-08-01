@@ -30,6 +30,7 @@ export default function (fields, pageType, route) {
       },
       {
         name: 'description',
+        hid: 'description',
         content: getPropType(fields, 'general_card', 'description'),
       },
       {
