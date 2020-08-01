@@ -1,3 +1,5 @@
+import Prismic from 'prismic-javascript'
+
 export default {
   /*
    ** Nuxt rendering mode
@@ -42,7 +44,7 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: [{ src: '~plugins/ga.js', ssr: false }],
+  plugins: [],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -55,6 +57,12 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/eslint-module',
     '@nuxtjs/style-resources',
+    [
+      '@nuxtjs/google-analytics',
+      {
+        id: 'UA-6797812-3',
+      },
+    ],
     // [
     //   'nuxt-purgecss',
     //   {
@@ -79,6 +87,7 @@ export default {
     linkResolver: '@/plugins/linkresolver',
     htmlSerializer: '@/plugins/htmlserializer',
     components: true,
+    preview: false,
   },
   /*
    ** Build configuration
@@ -119,5 +128,23 @@ export default {
   },
   icon: {
     purpose: ['maskable', 'any'],
+  },
+  generate: {
+    routes() {
+      return Prismic.getApi('https://timbenniks.prismic.io/api/v2').then(
+        (api) => {
+          return api
+            .query(Prismic.Predicates.at('document.type', 'video'), {
+              orderings: '[my.video.publication_date desc]',
+              pageSize: 100,
+            })
+            .then((videos) => {
+              return videos.results.map((video) => {
+                return `/videos/${video.uid}`
+              })
+            })
+        }
+      )
+    },
   },
 }
