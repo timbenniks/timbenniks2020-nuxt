@@ -11,7 +11,11 @@
       />
 
       <client-only>
-        <ais-instant-search :search-client="searchClient" index-name="VIDEOS">
+        <ais-instant-search
+          :routing="routing"
+          :search-client="searchClient"
+          index-name="VIDEOS"
+        >
           <ais-refinement-list
             attribute="tags"
             operator="or"

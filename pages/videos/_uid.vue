@@ -25,9 +25,18 @@
         :use-fancy-titles="true"
       />
       <div class="filters no-count">
-        <span v-for="tag in document.tags" :key="tag" class="filter">{{
+        <nuxt-link
+          v-for="tag in document.tags"
+          :key="tag"
+          :to="`/videos/?refinementList[tags][0]=${tag}`"
+          class="filter"
+        >
+          {{ tag }}
+        </nuxt-link>
+
+        <!-- <span v-for="tag in document.tags" :key="tag" class="filter">{{
           tag
-        }}</span>
+        }}</span> -->
       </div>
 
       <!-- eslint-disable vue/no-v-html -->

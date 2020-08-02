@@ -55,11 +55,6 @@
 
   &.no-count .filter {
     padding: rem(4px 6px);
-    cursor: default;
-
-    &:hover:before {
-      background: $red;
-    }
   }
 
   .filter {
