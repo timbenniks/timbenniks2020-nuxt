@@ -11,7 +11,7 @@
     <div class="stats-wrap">
       <div class="stat">
         <h6>TWEETS</h6>
-        <p v-if="twitterStats.tweets">
+        <!-- <p v-if="twitterStats.tweets">
           {{ twitterStats.tweets.amount }}
         </p>
         <p class="trend" :class="`trend-${twitterStats.tweets.direction}`">
@@ -55,7 +55,7 @@
         </p>
         <p class="trend" :class="`trend-${twitterStats.followers.direction}`">
           {{ twitterStats.followers.trend }}
-        </p>
+        </p> -->
       </div>
     </div>
     <p class="quick-links">
@@ -67,7 +67,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 import FancyTitle from './fancy-title.vue'
 
 export default {
@@ -75,8 +75,9 @@ export default {
   components: {
     FancyTitle,
   },
-  computed: mapGetters(['twitterStats']),
+  // computed: mapGetters(['twitterStats']),
   mounted() {
+    console.log(this.$store)
     this.getTwitterStats()
   },
   methods: {

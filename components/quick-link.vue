@@ -1,7 +1,7 @@
 <template>
   <li class="quicklink">
     <a :href="url">
-      <g-image :src="imgUrl" width="18" :immediate="true" quality="100" />
+      <img :src="require(`../assets/images/${image}`)" />
       {{ label }}
     </a>
   </li>
@@ -19,9 +19,6 @@ export default {
     return {
       imgUrl: '',
     }
-  },
-  created() {
-    this.imgUrl = require(`~/assets/images/${this.image}`)
   },
 }
 </script>
