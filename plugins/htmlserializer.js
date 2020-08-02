@@ -11,7 +11,7 @@ function getSrcSet(baseUrl, sizes) {
   return srcset.slice(0, -1)
 }
 
-const nativeLazySupported = false
+const nativeLazySupported = true
 
 const Elements = prismicDOM.RichText.Elements
 

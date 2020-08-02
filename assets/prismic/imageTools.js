@@ -27,7 +27,7 @@ export function loadImages() {
   })
 }
 
-export const nativeLazySupported = false // 'loading' in HTMLImageElement.prototype
+export const nativeLazySupported = true // 'loading' in HTMLImageElement.prototype
 
 export function getSrcSet(baseUrl, sizes) {
   let srcset = ''
