@@ -31,7 +31,6 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
 import FancyTitle from './fancy-title.vue'
 
 export default {
@@ -39,12 +38,13 @@ export default {
   components: {
     FancyTitle,
   },
-  computed: mapGetters(['youTubeStats']),
-  mounted() {
-    this.getYouTubeStats()
+  computed: {
+    youTubeStats() {
+      return this.$store.getters['store/youTubeStats']
+    },
   },
-  methods: {
-    ...mapActions(['getYouTubeStats']),
+  mounted() {
+    this.$store.dispatch('store/getYouTubeStats')
   },
 }
 </script>

@@ -32,7 +32,7 @@
       </div>
 
       <div class="stats-wrapper">
-        <!-- <yt-stats /> -->
+        <yt-stats />
         <tw-stats />
       </div>
 

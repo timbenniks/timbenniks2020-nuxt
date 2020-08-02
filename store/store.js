@@ -40,7 +40,6 @@ export const mutations = {
 
   setTwitterStats(state, stats) {
     state.twitterStats = {
-      ...stats.userData,
       ...stats.summary,
     }
   },
