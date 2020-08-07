@@ -55,11 +55,9 @@ export default {
       nativeLazySupported,
     }
   },
-
   mounted() {
     loadImages()
   },
-
   methods: {
     parseRatioForWH(ratio, which) {
       return Number(ratio.split('/')[which === 'width' ? 0 : 1]) * 10
