@@ -1,11 +1,26 @@
 const prismicDOM = require('prismic-dom')
+const CloudinarySDK = require('cloudinary-core')
 const linkResolver = require('./linkresolver')
 
-function getSrcSet(baseUrl, sizes) {
+const cloudinary = new CloudinarySDK.Cloudinary({
+  cloud_name: 'dwfcofnrd',
+  secure: true,
+})
+
+function getSrcSet(baseUrl, widths) {
+  const cleanUrl = baseUrl.replace('?auto=compress,format', '')
   let srcset = ''
 
-  sizes.forEach((size) => {
-    srcset += `${baseUrl}&w=${size} ${size}w, `
+  widths.forEach((width) => {
+    const url = cloudinary.url(cleanUrl, {
+      crop: 'scale',
+      width,
+      quality: 'auto',
+      fetchFormat: 'auto',
+      type: 'fetch',
+    })
+
+    srcset += `${url} ${width}w, `
   })
 
   return srcset.slice(0, -1)

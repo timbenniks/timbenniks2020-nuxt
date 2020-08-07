@@ -29,11 +29,18 @@ export function loadImages() {
 
 export const nativeLazySupported = true // 'loading' in HTMLImageElement.prototype
 
-export function getSrcSet(baseUrl, sizes) {
+export function getSrcSet(baseUrl, widths, cloudinary) {
+  const cleanUrl = baseUrl.replace('?auto=compress,format', '')
   let srcset = ''
 
-  sizes.forEach((size) => {
-    srcset += `${baseUrl}&w=${size} ${size}w, `
+  widths.forEach((width) => {
+    const url = cloudinary().fetchRemote(cleanUrl, {
+      crop: 'scale',
+      width,
+      quality: 'auto',
+      fetchFormat: 'auto',
+    })
+    srcset += `${url} ${width}w, `
   })
 
   return srcset.slice(0, -1)

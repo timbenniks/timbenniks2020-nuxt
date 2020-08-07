@@ -55,6 +55,7 @@ export default {
       nativeLazySupported,
     }
   },
+
   mounted() {
     loadImages()
   },
@@ -64,7 +65,7 @@ export default {
       return Number(ratio.split('/')[which === 'width' ? 0 : 1]) * 10
     },
     generateSrcSet() {
-      return getSrcSet(this.url, this.widths)
+      return getSrcSet(this.url, this.widths, this.$cloudinary)
     },
   },
 }

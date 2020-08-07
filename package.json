@@ -23,6 +23,7 @@
     }
   },
   "dependencies": {
+    "@nuxtjs/cloudinary": "^0.0.8",
     "@nuxtjs/pwa": "^3.0.0-beta.20",
     "@nuxtjs/sitemap": "^2.4.0",
     "algoliasearch": "^4.3.1",

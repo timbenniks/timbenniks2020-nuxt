@@ -43,7 +43,7 @@ export default {
       },
     ],
   ],
-  modules: ['@nuxtjs/prismic', '@nuxtjs/sitemap'],
+  modules: ['@nuxtjs/prismic', '@nuxtjs/sitemap', '@nuxtjs/cloudinary'],
   prismic: {
     endpoint: 'https://timbenniks.prismic.io/api/v2',
     linkResolver: '@/plugins/linkresolver',
@@ -104,5 +104,10 @@ export default {
         }
       )
     },
+  },
+  cloudinary: {
+    cloudName: 'dwfcofnrd',
+    useComponent: false,
+    secure: true,
   },
 }
