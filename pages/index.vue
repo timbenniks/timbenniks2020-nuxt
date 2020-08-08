@@ -81,34 +81,64 @@ export default {
         fetchFormat: 'auto',
       }
 
-      return {
-        '0': this.$cloudinary().fetchRemote(baseUrl, {
-          ...baseOptions,
+      return [
+        {
+          width: 0,
+          url: this.$cloudinary().fetchRemote(baseUrl, {
+            ...baseOptions,
+            width: 375,
+          }),
+          ratio: '16/9',
+        },
+        {
           width: 375,
-        }),
-        '375': this.$cloudinary().fetchRemote(baseUrl, {
-          ...baseOptions,
-          width: 375,
-        }),
-        '500': this.$cloudinary().fetchRemote(baseUrl, {
-          ...baseOptions,
+          url: this.$cloudinary().fetchRemote(baseUrl, {
+            ...baseOptions,
+            width: 500,
+          }),
+          ratio: '16/9',
+        },
+        {
           width: 500,
-        }),
-        '768': this.$cloudinary().fetchRemote(baseUrl, {
-          ...baseOptions,
+          url: this.$cloudinary().fetchRemote(baseUrl, {
+            ...baseOptions,
+            width: 768,
+          }),
+          ratio: '16/9',
+        },
+        {
           width: 768,
-        }),
-        '1440': this.$cloudinary().fetchRemote(baseUrl, {
-          ...baseOptions,
+          url: this.$cloudinary().fetchRemote(baseUrl, {
+            ...baseOptions,
+            width: 1280,
+          }),
+          ratio: '16/9',
+        },
+        {
+          width: 1024,
+          url: this.$cloudinary().fetchRemote(baseUrl, {
+            ...baseOptions,
+            width: 1280,
+          }),
+          ratio: '18/9',
+        },
+        {
+          width: 1280,
+          url: this.$cloudinary().fetchRemote(baseUrl, {
+            ...baseOptions,
+            width: 1440,
+          }),
+          ratio: '20/9',
+        },
+        {
           width: 1440,
-          height: 700,
-        }),
-        '1600': this.$cloudinary().fetchRemote(baseUrl, {
-          ...baseOptions,
-          width: 1600,
-          height: 700,
-        }),
-      }
+          url: this.$cloudinary().fetchRemote(baseUrl, {
+            ...baseOptions,
+            width: 1600,
+          }),
+          ratio: '21/9',
+        },
+      ]
     },
   },
   head() {
@@ -121,7 +151,7 @@ export default {
 .home {
   main {
     padding: 0;
-    max-width: rem(1600px);
+    max-width: rem(1440px);
     width: 100%;
     margin: 0 auto;
   }
@@ -154,15 +184,15 @@ export default {
     background-repeat: no-repeat;
     background-size: cover;
 
-    @include responsive(
-      'height',
-      (
-        xs: rem(211px),
-        sm: rem(211px),
-        m: rem(281px),
-        l: rem(600px),
-      )
-    );
+    // @include responsive(
+    //   'height',
+    //   (
+    //     xs: auto,
+    //     sm: auto,
+    //     m: rem(400px),
+    //     l: rem(600px),
+    //   )
+    // );
   }
 }
 
