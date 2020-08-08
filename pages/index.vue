@@ -4,15 +4,9 @@
 
     <main id="main-content">
       <div class="hero-banner">
-        <lazy-image
-          ratio="16/9"
+        <responsive-background
           :alt="document.heroimage.alt"
-          :url="document.heroimage.url"
-          extra-class="opacity-only"
-          :caption="false"
-          :widths="[375, 500, 768, 1024, 1440, 1600]"
-          sizes="100vw"
-          loading-type="eager"
+          :backgrounds="backgrounds"
         />
 
         <div class="hero-banner-content">
@@ -44,14 +38,15 @@
             :uppercase="true"
           />
         </div>
-      </div>
-      <div class="homepage-content">
-        <!-- eslint-disable vue/no-v-html -->
-        <div
-          class="homepage-description"
-          v-html="$prismic.asHtml(document.description)"
-        ></div>
-        <!--eslint-enable-->
+
+        <div class="homepage-content">
+          <!-- eslint-disable vue/no-v-html -->
+          <div
+            class="homepage-description"
+            v-html="$prismic.asHtml(document.description)"
+          ></div>
+          <!--eslint-enable-->
+        </div>
       </div>
     </main>
   </div>
@@ -72,6 +67,49 @@ export default {
     } catch (e) {
       error({ statusCode: 404, message: 'Page not found' })
     }
+  },
+  computed: {
+    backgrounds() {
+      const baseUrl = this.document.heroimage.url.replace(
+        '?auto=compress,format',
+        ''
+      )
+
+      const baseOptions = {
+        crop: 'scale',
+        quality: 'auto',
+        fetchFormat: 'auto',
+      }
+
+      return {
+        '0': this.$cloudinary().fetchRemote(baseUrl, {
+          ...baseOptions,
+          width: 375,
+        }),
+        '375': this.$cloudinary().fetchRemote(baseUrl, {
+          ...baseOptions,
+          width: 375,
+        }),
+        '500': this.$cloudinary().fetchRemote(baseUrl, {
+          ...baseOptions,
+          width: 500,
+        }),
+        '768': this.$cloudinary().fetchRemote(baseUrl, {
+          ...baseOptions,
+          width: 768,
+        }),
+        '1440': this.$cloudinary().fetchRemote(baseUrl, {
+          ...baseOptions,
+          width: 1440,
+          height: 700,
+        }),
+        '1600': this.$cloudinary().fetchRemote(baseUrl, {
+          ...baseOptions,
+          width: 1600,
+          height: 700,
+        }),
+      }
+    },
   },
   head() {
     return mapMetaInfo(this.document, 'home', this.$router.currentRoute)
@@ -110,6 +148,22 @@ export default {
 .hero-banner {
   position: relative;
   border-bottom: rem(2px solid $blue-main);
+  width: 100%;
+
+  .responsive-background {
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include responsive(
+      'height',
+      (
+        xs: rem(211px),
+        sm: rem(211px),
+        m: rem(281px),
+        l: rem(600px),
+      )
+    );
+  }
 }
 
 .hero-banner-content {
