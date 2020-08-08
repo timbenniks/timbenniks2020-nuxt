@@ -48,6 +48,10 @@
           class="homepage-description"
           v-html="$prismic.asHtml(document.description)"
         ></div>
+
+        <pre>
+        {{ homestuff }}
+        </pre>
         <!--eslint-enable-->
       </div>
     </main>
@@ -63,8 +67,48 @@ export default {
   async asyncData({ $prismic, error }) {
     try {
       const document = (await $prismic.api.getSingle('home')).data
+
+      const graphQuery = `
+      {
+        home {
+          body {
+            ...on general_card {
+              non-repeat {
+                ...non-repeatFields
+              }
+            }
+            ...on twitter_card {
+              non-repeat {
+                ...non-repeatFields
+              }
+            }
+          }
+          body1 {
+            ...on hero_banner {
+              non-repeat {
+                ...non-repeatFields
+              }
+            }
+            ...on top_videos {
+              non-repeat {
+                ...non-repeatFields
+              }
+              repeat {
+                ...repeatFields
+              }
+            }
+          }
+        }
+      }`
+
+      const homestuff = await $prismic.api.query(
+        $prismic.predicates.at('document.type', 'home'),
+        { graphQuery }
+      )
+
       return {
         document,
+        homestuff,
       }
     } catch (e) {
       error({ statusCode: 404, message: 'Page not found' })

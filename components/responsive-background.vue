@@ -23,6 +23,7 @@ export default {
       animationClass: '',
     }
   },
+
   mounted() {
     this.backgroundImage = `url('${this.getBackground().url}')`
     this.ratio = this.getBackground().ratio
@@ -49,10 +50,12 @@ export default {
 <style lang="scss">
 .responsive-background {
   transform: scale(1.02);
-  transition: transform 2s ease-out;
+  transition: opacity 1s ease, transform 2s ease;
+  opacity: 0;
 }
 
 .scale-out {
   transform: scale(1);
+  opacity: 1;
 }
 </style>
