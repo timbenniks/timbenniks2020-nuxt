@@ -37,12 +37,12 @@
 
   &.large {
     // prettier-ignore
-    @include responsive('font-size', (xs: rem(22px), sm: rem(30px), m: rem(45px)));
+    @include responsive('font-size', (xs: rem(16px), sm: rem(30px), m: rem(45px)));
   }
 
   &.small {
     // prettier-ignore
-    @include responsive('font-size', (xs: rem(18px), sm: rem(22px), m: rem(30px)));
+    @include responsive('font-size', (xs: rem(16px), sm: rem(22px), m: rem(30px)));
   }
 
   &::before {

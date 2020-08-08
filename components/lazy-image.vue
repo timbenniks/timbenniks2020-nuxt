@@ -6,7 +6,7 @@
       :alt="alt"
       :title="alt"
       :sizes="sizes"
-      loading="lazy"
+      :loading="loadingType"
       :width="parseRatioForWH(ratio, 'width')"
       :height="parseRatioForWH(ratio, 'height')"
     />
@@ -43,6 +43,7 @@ export default {
     widths: { type: Array, required: true },
     caption: { type: Boolean, required: false, default: false },
     extraClass: { type: String, required: false, default: '' },
+    loadingType: { type: String, required: false, default: 'lazy' },
     preload: {
       type: String,
       required: false,

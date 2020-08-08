@@ -74,6 +74,7 @@ export default {
   publicRuntimeConfig: {
     algolia_app_id: process.env.ALGOLIA_APP_ID,
     algolia_api_key: process.env.ALGOLIA_ADMIN_KEY,
+    base_url: process.env.BASE_URL,
   },
   router: {
     linkExactActiveClass: 'active',
