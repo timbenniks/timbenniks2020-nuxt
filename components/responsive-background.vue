@@ -3,8 +3,9 @@
     role="img"
     :aria-label="alt"
     class="responsive-background"
+    :class="animationClass"
     :style="{ backgroundImage: backgroundImage, '--aspect-ratio': ratio }"
-  ></div>
+  />
 </template>
 
 <script>
@@ -18,12 +19,14 @@ export default {
     return {
       backgroundImage:
         'url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)',
-      ratio: '1/1',
+      ratio: '16/9',
+      animationClass: '',
     }
   },
   mounted() {
     this.backgroundImage = `url('${this.getBackground().url}')`
     this.ratio = this.getBackground().ratio
+    this.animationClass = 'scale-out'
 
     window.addEventListener('resize', () => {
       this.backgroundImage = `url('${this.getBackground().url}')`
@@ -42,3 +45,14 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.responsive-background {
+  transform: scale(1.02);
+  transition: transform 2s ease-out;
+}
+
+.scale-out {
+  transform: scale(1);
+}
+</style>

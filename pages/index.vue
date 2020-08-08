@@ -4,49 +4,51 @@
 
     <main id="main-content">
       <div class="hero-banner">
-        <responsive-background
-          :alt="document.heroimage.alt"
-          :backgrounds="backgrounds"
-        />
-
-        <div class="hero-banner-content">
-          <lazy-image
-            ratio="1/1"
-            :alt="$prismic.asText(document.main_title)"
-            :url="document.image.url"
-            extra-class="opacity-only"
-            :caption="false"
-            :widths="[200]"
-            sizes="200px"
+        <div class="hero-banner-inner">
+          <responsive-background
+            :alt="document.heroimage.alt"
+            :backgrounds="backgrounds"
           />
 
-          <fancy-title
-            :field="$prismic.asText(document.main_title)"
-            tag="h1"
-            color="red"
-            type="large"
-            :offset="[0, 0.5]"
-            :uppercase="true"
-          />
+          <div class="hero-banner-content">
+            <lazy-image
+              ratio="1/1"
+              :alt="$prismic.asText(document.main_title)"
+              :url="document.image.url"
+              extra-class="opacity-only"
+              :caption="false"
+              :widths="[200]"
+              sizes="200px"
+            />
 
-          <fancy-title
-            :field="$prismic.asText(document.sub_title)"
-            tag="h2"
-            color="blue-main"
-            type="small"
-            :offset="[-0.18, 0]"
-            :uppercase="true"
-          />
+            <fancy-title
+              :field="$prismic.asText(document.main_title)"
+              tag="h1"
+              color="red"
+              type="large"
+              :offset="[0, 0.5]"
+              :uppercase="true"
+            />
+
+            <fancy-title
+              :field="$prismic.asText(document.sub_title)"
+              tag="h2"
+              color="blue-main"
+              type="small"
+              :offset="[-0.18, 0]"
+              :uppercase="true"
+            />
+          </div>
         </div>
+      </div>
 
-        <div class="homepage-content">
-          <!-- eslint-disable vue/no-v-html -->
-          <div
-            class="homepage-description"
-            v-html="$prismic.asHtml(document.description)"
-          ></div>
-          <!--eslint-enable-->
-        </div>
+      <div class="homepage-content">
+        <!-- eslint-disable vue/no-v-html -->
+        <div
+          class="homepage-description"
+          v-html="$prismic.asHtml(document.description)"
+        ></div>
+        <!--eslint-enable-->
       </div>
     </main>
   </div>
@@ -154,25 +156,8 @@ export default {
     max-width: rem(1440px);
     width: 100%;
     margin: 0 auto;
+    overflow: hidden;
   }
-}
-
-.homepage-description {
-  // prettier-ignore
-  @include responsive('margin', (xs: rem(0), m: 0));
-  // prettier-ignore
-  @include responsive('padding', (xs: rem(0 0 0 1rem)));
-  // prettier-ignore
-  @include responsive('width', (xs: 90%));
-
-  p {
-    // prettier-ignore
-    @include responsive('text-align', (xs: left, m: left));
-    // prettier-ignore
-    @include responsive('font-size', (xs: rem(20px), m: rem(24px)));
-  }
-
-  display: none;
 }
 
 .hero-banner {
@@ -180,54 +165,61 @@ export default {
   border-bottom: rem(2px solid $blue-main);
   width: 100%;
 
+  &:before {
+    display: block;
+    content: '';
+    width: 100%;
+
+    // prettier-ignore
+    @include responsive('padding-top', (xs: (9 / 16) * 100%, l: (9 / 18) * 100%, xl: (9 / 20) * 100%, xxl: (9 / 21) * 100%));
+  }
+
+  > .hero-banner-inner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
   .responsive-background {
     background-repeat: no-repeat;
     background-size: cover;
-
-    // @include responsive(
-    //   'height',
-    //   (
-    //     xs: auto,
-    //     sm: auto,
-    //     m: rem(400px),
-    //     l: rem(600px),
-    //   )
-    // );
-  }
-}
-
-.hero-banner-content {
-  // prettier-ignore
-  @include responsive('width', (xs: 90%, sm: 80%));
-  // prettier-ignore
-  @include responsive('margin', (xs: rem(45px auto 0), m: rem(0)));
-  // prettier-ignore
-  @include responsive('bottom', (xs: -44px, m: -55px));
-  // prettier-ignore
-  @include responsive('left', (xs: 2%));
-
-  position: absolute;
-  max-width: rem(800px);
-
-  h1 {
-    z-index: 2;
   }
 
-  h2 {
-    z-index: 1;
-  }
-
-  figure {
+  .hero-banner-content {
     // prettier-ignore
-    @include responsive('width', (xs: rem(100px), m: rem(140px)));
+    @include responsive('width', (xs: 90%, sm: 80%));
+    // prettier-ignore
+    @include responsive('margin', (xs: rem(45px auto 0), m: rem(0)));
+    // prettier-ignore
+    @include responsive('bottom', (xs: -44px, m: -55px));
+    // prettier-ignore
+    @include responsive('left', (xs: 2%));
 
-    left: rem(20px);
-    position: relative;
-    top: rem(20px);
+    position: absolute;
+    max-width: rem(800px);
 
-    img {
-      border: 5px solid $white;
-      border-radius: 100%;
+    h1 {
+      z-index: 2;
+    }
+
+    h2 {
+      z-index: 1;
+    }
+
+    figure {
+      // prettier-ignore
+      @include responsive('width', (xs: rem(100px), m: rem(140px)));
+
+      left: rem(20px);
+      position: relative;
+      top: rem(20px);
+
+      img {
+        border: 5px solid $white;
+        border-radius: 100%;
+      }
     }
   }
 }

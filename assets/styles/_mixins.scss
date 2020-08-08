@@ -3,7 +3,9 @@ $grid-breakpoints: (
   s: $s-breakpoint,
   sm: $sm-breakpoint,
   m: $m-breakpoint,
-  l: $l-breakpoint
+  l: $l-breakpoint,
+  xl: $xl-breakpoint,
+  xxl: $xxl-breakpoint,
 );
 
 // Mixin for calculate all media query for a property
