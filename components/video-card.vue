@@ -22,7 +22,6 @@
           <template v-if="index + 1 < video.tags.length">, </template>
         </span>
       </p>
-
       <p class="post-date fancy-title yellow">
         {{ asDay(video.publication_date) }}
         {{ asMonth(video.publication_date) }}

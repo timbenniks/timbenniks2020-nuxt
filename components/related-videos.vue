@@ -1,5 +1,5 @@
 <template>
-  <div class="related-videos">
+  <div class="videos-list">
     <fancy-title
       tag="h3"
       field="Related Videos"
@@ -70,23 +70,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped>
-.related-videos {
-  margin: 0 auto;
-  max-width: rem(800px);
-
-  .fancy-title {
-    margin: rem(0 0 30px 0);
-  }
-
-  .videos {
-    // prettier-ignore
-    @include responsive('grid-template-columns', (xs: 100%, sm: repeat(2, 47.5%), m: repeat(3, 32%)));
-
-    display: grid;
-    grid-gap: 1rem;
-    min-width: 0;
-  }
-}
-</style>
