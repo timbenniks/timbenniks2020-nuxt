@@ -101,7 +101,7 @@
         <quick-link url="https://gmail.com" label="Gmail" image="gmail.png" />
 
         <quick-link
-          url="https://timbenniks.nl"
+          url="https://timbenniks.dev"
           label="Tim Benniks"
           image="timbenniks.png"
         />

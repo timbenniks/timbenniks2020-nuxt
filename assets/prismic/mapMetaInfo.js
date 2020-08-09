@@ -9,7 +9,7 @@ function getPropType(fields, type, prop) {
 }
 
 export default function (fields, pageType, route) {
-  const url = `https://timbenniks2020-nuxt.vercel.app/${route.path}`
+  const url = `https://timbenniks.dev/${route.path}`
 
   const metaData = {
     title: getPropType(fields, 'general_card', 'title'),
@@ -79,7 +79,7 @@ export default function (fields, pageType, route) {
         json: {
           '@context': 'http://schema.org',
           '@type': 'Website',
-          url: 'https://timbenniks2020-nuxt.vercel.app',
+          url: 'https://timbenniks.dev',
         },
         type: 'application/ld+json',
       },
@@ -107,7 +107,7 @@ export default function (fields, pageType, route) {
           description: getPropType(fields, 'general_card', 'description'),
           thumbnailUrl: [getPropType(fields, 'general_card', 'image')],
           embedUrl: fields.video_embed.embed_url.replace('watch?v=', 'embed/'),
-          contentUrl: `https://timbenniks2020-nuxt.vercel.app/videos/${fields.id}`,
+          contentUrl: `https://timbenniks.dev/videos/${fields.id}`,
           uploadDate: `${fields.last_publication_date}T00:00:00`,
         },
         type: 'application/ld+json',
@@ -134,7 +134,7 @@ export default function (fields, pageType, route) {
           '@type': 'BlogPosting',
           headline: getPropType(fields, 'general_card', 'title'),
           image: getPropType(fields, 'general_card', 'image'),
-          url: `https://timbenniks2020-nuxt.vercel.app/writings/${fields.id}`,
+          url: `https://timbenniks.dev/writings/${fields.id}`,
           datePublished: `${fields.publication_date}T00:00:00`,
           dateCreated: `${fields.publication_date}T00:00:00`,
           dateModified: fields.last_publication_date,

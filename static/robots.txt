@@ -1,3 +1,3 @@
 User-agent: *
 Disallow: /startpage
-Sitemap: https://timbenniks2020-nuxt.vercel.app/sitemap.xml
+Sitemap: https://timbenniks.dev/sitemap.xml
