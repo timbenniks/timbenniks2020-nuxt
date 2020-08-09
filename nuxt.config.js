@@ -66,7 +66,7 @@ export default {
   },
   sitemap: {
     path: '/sitemap.xml',
-    hostname: 'https://timbenniks2020-nuxt.vercel.app',
+    hostname: 'https://timbenniks.dev',
     cacheTime: 1000 * 60 * 15,
     gzip: true,
     exclude: ['/startpage'],
