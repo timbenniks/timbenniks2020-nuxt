@@ -15,7 +15,7 @@
           :alt="$prismic.asText(data.data.title)"
           :url="data.data.image.url"
           :caption="false"
-          :widths="[300, 400, 500, 600, 680]"
+          :widths="[300, 400, 500, 600, 680, 768, 1024]"
           sizes="(max-width: 400px) 100vw, (min-width: 700px) 210px"
         />
       </nuxt-link>
