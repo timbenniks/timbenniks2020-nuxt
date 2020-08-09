@@ -6,6 +6,13 @@
       <home-hero-banner :data="heroBannerData" />
 
       <div class="homepage-content">
+        <!-- eslint-disable vue/no-v-html -->
+        <div
+          class="homepage-introduction"
+          v-html="$prismic.asHtml(document.data.description)"
+        />
+        <!--eslint-enable-->
+
         <home-top-videos :data="topVideosData" />
       </div>
     </main>
@@ -23,6 +30,7 @@ export default {
       const graphQuery = `
       {
         home {
+          ...homeFields
           body {
             ...on general_card {
               non-repeat {
@@ -92,6 +100,24 @@ export default {
     width: 100%;
     margin: 0 auto;
     overflow: hidden;
+  }
+
+  .homepage-content {
+    max-width: 800px;
+    padding: rem(0 16px);
+
+    // prettier-ignore
+    @include responsive('margin', ( xs: rem(50px auto), m: rem(80px auto) ));
+
+    .homepage-introduction {
+      margin: 0 0 3rem 0;
+
+      p {
+        margin: 0;
+        // prettier-ignore
+        @include responsive('font-size', ( xs: rem(18px), m: rem(24px) ));
+      }
+    }
   }
 }
 </style>

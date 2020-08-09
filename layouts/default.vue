@@ -3,7 +3,7 @@
     <a href="#main-content" aria-hidden="false" class="goToContent"
       >Skip to content</a
     >
-    <div class="bg-triangle" />
+    <!-- <div class="bg-triangle" /> -->
     <Nuxt />
   </div>
 </template>

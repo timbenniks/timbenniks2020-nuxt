@@ -3,6 +3,23 @@
     <navigation />
     <main id="main-content">
       <div class="video-header">
+        <p>
+          If you like what you see, please
+          <a
+            href="https://www.youtube.com/timbenniks?sub_confirmation=1"
+            target="_blank"
+            rel="noopener"
+            >subscribe</a
+          >
+          to my YouTube channel at
+          <a
+            href="https://www.youtube.com/timbenniks"
+            target="_blank"
+            rel="noopener"
+            >youtube.com/timbenniks</a
+          >!
+        </p>
+
         <figure class="youtube" style="--aspect-ratio: 16/9;">
           <iframe
             width="16"
@@ -13,7 +30,7 @@
               document.data.video_embed.embed_url.replace(
                 'watch?v=',
                 'embed/'
-              ) + '?autoplay=1'
+              ) + '?autoplay=1&rel=0'
             "
           ></iframe>
         </figure>

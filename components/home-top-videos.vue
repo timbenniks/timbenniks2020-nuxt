@@ -8,6 +8,13 @@
       :offset="[0, 0]"
       uppercase="uppercase"
     />
+    <!-- eslint-disable vue/no-v-html -->
+    <div
+      class="top-videos-intro"
+      v-html="$prismic.asHtml(data.primary.intro_text)"
+    />
+    <!--eslint-enable-->
+
     <div class="videos">
       <video-card v-for="video in videos" :key="video.slug" :video="video" />
     </div>
@@ -39,9 +46,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped>
-.top-videos {
-  margin: rem(100px auto 0);
-}
-</style>
