@@ -3,7 +3,6 @@ import Prismic from 'prismic-javascript'
 export default {
   mode: 'universal',
   target: 'static',
-  modern: 'client',
   head: {
     meta: [
       { charset: 'utf-8' },
