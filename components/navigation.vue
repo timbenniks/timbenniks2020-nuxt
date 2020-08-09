@@ -149,7 +149,7 @@ export default {
   @include responsive('position', (xs: fixed));
 
   // prettier-ignore
-  @include responsive('top', (xs: rem(65px), m: 0));
+  @include responsive('top', (xs: rem(64px), m: 0));
 
   // prettier-ignore
   @include responsive('left', (xs: 0, m: auto));
