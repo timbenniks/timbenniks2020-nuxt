@@ -39,7 +39,13 @@
             />
           </div>
 
-          <video playsinline src="goat.mp4" width="400" autoplay loop />
+          <video
+            playsinline
+            src="https://res.cloudinary.com/dwfcofnrd/video/upload/q_auto,f_auto,vc_auto/goat_eejwdg.mp4"
+            width="400"
+            autoplay
+            loop
+          />
         </div>
       </main>
     </div>
@@ -57,7 +63,7 @@ export default {
     LazyImage,
     FancyTitle,
   },
-  metaInfo: {
+  head: {
     title: "Oh oh. We don't seem to have this page",
     description: '404 Error page not found',
   },
