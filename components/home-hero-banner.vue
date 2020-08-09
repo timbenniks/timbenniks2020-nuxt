@@ -116,7 +116,7 @@ export default {
             ...baseOptions,
             width: 1600,
           }),
-          ratio: '21/9',
+          ratio: '23/9',
         },
       ]
     },
@@ -136,7 +136,7 @@ export default {
     width: 100%;
 
     // prettier-ignore
-    @include responsive('padding-top', (xs: (9 / 16) * 100%, l: (9 / 18) * 100%, xl: (9 / 20) * 100%, xxl: (9 / 21) * 100%));
+    @include responsive('padding-top', (xs: (9 / 16) * 100%, l: (9 / 18) * 100%, xl: (9 / 20) * 100%, xxl: (9 / 23) * 100%));
   }
 
   > .hero-banner-inner {

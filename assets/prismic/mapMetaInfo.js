@@ -9,7 +9,7 @@ function getPropType(fields, type, prop) {
 }
 
 export default function (fields, pageType, route) {
-  const url = `https://timbenniks.dev/${route.path}`
+  const url = `https://timbenniks.dev${route.path}`
 
   const metaData = {
     title: getPropType(fields, 'general_card', 'title'),
