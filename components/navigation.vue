@@ -80,7 +80,7 @@ export default {
   position: sticky;
   top: 0;
   width: 100%;
-  z-index: 2;
+  z-index: 3;
 
   ul {
     margin: 0;

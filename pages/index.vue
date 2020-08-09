@@ -14,6 +14,7 @@
         <!--eslint-enable-->
 
         <home-top-videos :data="topVideosData" />
+        <home-latest-writing :data="latestWriting.results[0]" />
       </div>
     </main>
   </div>
@@ -76,10 +77,16 @@ export default {
         (slice) => slice.slice_type === 'top_videos'
       )
 
+      const latestWriting = await $prismic.api.query(
+        $prismic.predicates.at('document.type', 'writing'),
+        { pageSize: 1, orderings: '[my.writing.publication_date desc]' }
+      )
+
       return {
         document,
         heroBannerData,
         topVideosData,
+        latestWriting,
       }
     } catch (e) {
       error({ statusCode: 500, message: 'Something went wrong...' })
