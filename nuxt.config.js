@@ -9,7 +9,7 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
         name: 'google-site-verification',
-        content: 'El5Wtr19CHQY1u_sQOjbuusrXqYCt6I6n3OJSyZEPAg',
+        content: 'hif_cn9hF2RVSnTq5HwjSkKrXqJT9Q6BR_FaBBmr-20',
       },
       { property: 'og:site_name', content: 'Tim Benniks' },
       { property: 'twitter:card', content: 'summary_large_image' },
