@@ -39,13 +39,16 @@
             />
           </div>
 
-          <video
-            playsinline
-            src="https://res.cloudinary.com/dwfcofnrd/video/upload/q_auto,f_auto,vc_auto/goat_eejwdg.mp4"
-            width="400"
-            autoplay
-            loop
-          />
+          <figure style="--aspect-ratio: 16/9; width: 780px;">
+            <iframe
+              width="16"
+              height="9"
+              allow="autoplay"
+              allowfullscreen
+              frameborder="0"
+              src="https://www.youtube.com/embed/8DZrK-2Z17A"
+            ></iframe>
+          </figure>
         </div>
       </main>
     </div>

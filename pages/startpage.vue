@@ -53,6 +53,7 @@
           label="Netlify"
           image="netlify.png"
         />
+
         <quick-link
           url="https://github.com"
           label="Github"
