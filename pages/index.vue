@@ -114,7 +114,7 @@ export default {
     padding: rem(0 16px);
 
     // prettier-ignore
-    @include responsive('margin', ( xs: rem(50px auto), m: rem(80px auto) ));
+    @include responsive('margin', ( xs: rem(30px auto) ));
 
     .homepage-introduction {
       margin: 0 0 3rem 0;

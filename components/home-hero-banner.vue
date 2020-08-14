@@ -1,9 +1,15 @@
 <template>
   <div class="hero-banner">
     <div class="hero-banner-inner">
-      <responsive-background
+      <lazy-image
+        ratio="16/9"
         :alt="data.banner_image.alt"
-        :backgrounds="backgrounds"
+        :url="data.banner_image.url"
+        extra-class="opacity-only"
+        :caption="false"
+        :widths="widths"
+        sizes="100vw"
+        loading-type="eager"
       />
 
       <div class="hero-banner-content">
@@ -48,77 +54,45 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      ratio: '16/9',
+    }
+  },
   computed: {
-    backgrounds() {
-      const baseUrl = this.data.banner_image.url.replace(
-        '?auto=compress,format',
-        ''
-      )
-
-      const baseOptions = {
-        crop: 'scale',
-        quality: 'auto',
-        fetchFormat: 'auto',
-      }
-
+    backgrounStats() {
       return [
-        {
-          width: 0,
-          url: this.$cloudinary().fetchRemote(baseUrl, {
-            ...baseOptions,
-            width: 375,
-          }),
-          ratio: '16/9',
-        },
-        {
-          width: 375,
-          url: this.$cloudinary().fetchRemote(baseUrl, {
-            ...baseOptions,
-            width: 500,
-          }),
-          ratio: '16/9',
-        },
-        {
-          width: 500,
-          url: this.$cloudinary().fetchRemote(baseUrl, {
-            ...baseOptions,
-            width: 768,
-          }),
-          ratio: '16/9',
-        },
-        {
-          width: 768,
-          url: this.$cloudinary().fetchRemote(baseUrl, {
-            ...baseOptions,
-            width: 1280,
-          }),
-          ratio: '16/9',
-        },
-        {
-          width: 1024,
-          url: this.$cloudinary().fetchRemote(baseUrl, {
-            ...baseOptions,
-            width: 1280,
-          }),
-          ratio: '18/9',
-        },
-        {
-          width: 1280,
-          url: this.$cloudinary().fetchRemote(baseUrl, {
-            ...baseOptions,
-            width: 1440,
-          }),
-          ratio: '20/9',
-        },
-        {
-          width: 1440,
-          url: this.$cloudinary().fetchRemote(baseUrl, {
-            ...baseOptions,
-            width: 1600,
-          }),
-          ratio: '23/9',
-        },
+        { width: 375, ratio: '16/9' },
+        { width: 500, ratio: '16/9' },
+        { width: 768, ratio: '16/9' },
+        { width: 1024, ratio: '18/9' },
+        { width: 1280, ratio: '20/9' },
+        { width: 1440, ratio: '23/9' },
+        { width: 1600, ratio: '23/9' },
       ]
+    },
+
+    widths() {
+      return this.backgrounStats.map((stat) => {
+        return stat.width
+      })
+    },
+  },
+  mounted() {
+    this.ratio = this.getBackgroundData().ratio
+
+    window.addEventListener('resize', () => {
+      this.ratio = this.getBackgroundData().ratio
+    })
+  },
+  methods: {
+    getBackgroundData() {
+      const windowWidth = document.documentElement.clientWidth
+
+      return this.backgrounStats
+        .filter((bg) => windowWidth >= bg.width)
+        .slice(-1)
+        .pop()
     },
   },
 }
@@ -129,6 +103,7 @@ export default {
   position: relative;
   border-bottom: rem(2px solid $blue-main);
   width: 100%;
+  overflow: hidden;
 
   &:before {
     display: block;
@@ -136,7 +111,7 @@ export default {
     width: 100%;
 
     // prettier-ignore
-    @include responsive('padding-top', (xs: (9 / 16) * 100%, l: (9 / 18) * 100%, xl: (9 / 20) * 100%, xxl: (9 / 23) * 100%));
+    @include responsive('padding-top', (xs: (9 / 16) * 100%, l: (9 / 18) * 100%, xl: (9 / 20) * 100%, xxl: (9 / 22) * 100%));
   }
 
   > .hero-banner-inner {
@@ -147,18 +122,13 @@ export default {
     left: 0;
   }
 
-  .responsive-background {
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
   .hero-banner-content {
     // prettier-ignore
     @include responsive('width', (xs: 90%, sm: 80%));
     // prettier-ignore
     @include responsive('margin', (xs: rem(45px auto 0), m: rem(0)));
     // prettier-ignore
-    @include responsive('bottom', (xs: -44px, m: -55px));
+    @include responsive('bottom', (xs: -16px, m: -16px));
     // prettier-ignore
     @include responsive('left', (xs: 2%));
 
