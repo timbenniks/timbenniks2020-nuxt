@@ -39,7 +39,7 @@
             />
           </div>
 
-          <figure style="--aspect-ratio: 16/9; width: 780px;">
+          <figure style="--aspect-ratio: 16/9; width: 90%;">
             <iframe
               width="16"
               height="9"
