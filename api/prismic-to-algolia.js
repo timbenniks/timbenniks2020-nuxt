@@ -34,7 +34,7 @@ module.exports = async (req, res) => {
     }
   })
 
-  const algoliaIndex = algoliaClient.initIndex('TEST')
+  const algoliaIndex = algoliaClient.initIndex('VIDEOS')
   const algoliaObjectIds = await algoliaIndex
     .saveObjects(algoliaReadyResults)
     .catch((err) => res.json(err))
