@@ -24,7 +24,7 @@ module.exports = async (req, res) => {
 
   const algoliaReadyResults = results.map((video) => {
     return {
-      title: video.data.title.text,
+      title: video.data.title[0].text,
       image: video.data.image.url,
       tags: video.tags,
       slug: video.uid,
