@@ -66,12 +66,6 @@
         />
 
         <quick-link
-          url="https://trello.com/timbenniks/boards"
-          label="Trello"
-          image="trello.png"
-        />
-
-        <quick-link
           url="https://instagram.com"
           label="Instagram"
           image="instagram.png"
@@ -103,7 +97,7 @@
 
         <quick-link
           url="https://timbenniks.dev"
-          label="Tim Benniks"
+          label="timbenniks.dev"
           image="timbenniks.png"
         />
 
@@ -112,21 +106,11 @@
           label="OpenAir"
           image="openair.png"
         />
-        <quick-link
-          url="https://valtech.workplace.com/"
-          label="Workplace"
-          image="workplace.png"
-        />
+
         <quick-link
           url="https://timbenniks.prismic.io/documents/working/"
           label="Prismic"
           image="prismic.png"
-        />
-
-        <quick-link
-          url="https://calendly.com/event_types/user/me"
-          label="Calendly"
-          image="calendly.png"
         />
       </ul>
     </main>

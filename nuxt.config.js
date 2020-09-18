@@ -32,6 +32,7 @@ export default {
       '@nuxtjs/google-analytics',
       {
         id: 'UA-6797812-3',
+        ignoreRoutes: ['/startpage'],
       },
     ],
     [
