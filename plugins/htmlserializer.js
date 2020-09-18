@@ -23,7 +23,7 @@ function getSrcSet(baseUrl, widths) {
     srcset += `${url} ${width}w, `
   })
 
-  return srcset.slice(0, -1)
+  return srcset.slice(0, -2)
 }
 
 const nativeLazySupported = true
@@ -60,7 +60,7 @@ module.exports = function (type, element, content, children) {
           }="(max-width: 700px) 90vw, (min-width: 880px) 800px"
           alt="${element.alt}"
           title="${element.alt}"
-          ${nativeLazySupported ? 'loading="lazy"' : ''}"
+          ${nativeLazySupported ? 'loading="lazy"' : ''}
           src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
           class="${!nativeLazySupported ? 'lazy' : ''}"
           width="${element.dimensions.width}"

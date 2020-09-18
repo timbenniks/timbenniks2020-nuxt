@@ -1,7 +1,6 @@
 import Prismic from 'prismic-javascript'
 
 export default {
-  mode: 'universal',
   target: 'static',
   head: {
     meta: [

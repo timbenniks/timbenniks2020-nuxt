@@ -43,5 +43,5 @@ export function getSrcSet(baseUrl, widths, cloudinary) {
     srcset += `${url} ${width}w, `
   })
 
-  return srcset.slice(0, -1)
+  return srcset.slice(0, -2)
 }
