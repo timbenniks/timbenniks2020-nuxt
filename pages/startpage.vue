@@ -55,6 +55,12 @@
         />
 
         <quick-link
+          url="https://vercel.com/timbenniks/"
+          label="Vercel"
+          image="vercel.png"
+        />
+
+        <quick-link
           url="https://github.com"
           label="Github"
           image="github.png"
@@ -74,6 +80,11 @@
           url="https://facebook.com"
           label="Facebook"
           image="facebook.png"
+        />
+        <quick-link
+          url="https://messenger.com"
+          label="Messenger"
+          image="messenger.png"
         />
         <quick-link
           url="https://reddit.com"
