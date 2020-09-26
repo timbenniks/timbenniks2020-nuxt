@@ -20,17 +20,6 @@
         :uppercase="true"
       />
 
-      <div class="search">
-        <form method="GET" action="https://www.google.com/search">
-          <input
-            autofocus
-            type="search"
-            name="q"
-            placeholder="Search Google..."
-          />
-        </form>
-      </div>
-
       <div class="stats-wrapper">
         <yt-stats />
         <tw-stats />
