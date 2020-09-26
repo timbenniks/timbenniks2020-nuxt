@@ -50,11 +50,15 @@
 }
 
 .filters {
-  max-width: rem(800px);
+  max-width: rem(1100px);
   margin: 0 auto 0.7rem;
 
   &.no-count .filter {
     padding: rem(4px 6px);
+  }
+
+  &.no-count {
+    max-width: rem(800px);
   }
 
   .filter {

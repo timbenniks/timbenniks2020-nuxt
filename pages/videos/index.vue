@@ -34,9 +34,12 @@
               </button>
             </div>
           </ais-refinement-list>
-          <ais-stats :class-names="{ 'ais-Stats': 'posts' }" />
+          <ais-stats :class-names="{ 'ais-Stats': 'videos-list' }" />
           <ais-infinite-hits>
-            <div slot-scope="{ items, isLastPage, refineNext }" class="posts">
+            <div
+              slot-scope="{ items, isLastPage, refineNext }"
+              class="videos-list"
+            >
               <div class="videos">
                 <video-card
                   v-for="item in items"

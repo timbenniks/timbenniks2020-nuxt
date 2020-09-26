@@ -110,14 +110,14 @@ export default {
   }
 
   .homepage-content {
-    max-width: 800px;
+    max-width: rem(1100px);
     padding: rem(0 16px);
-
-    // prettier-ignore
-    @include responsive('margin', ( xs: rem(30px auto) ));
+    margin: rem(30px auto);
 
     .homepage-introduction {
-      margin: 0 0 3rem 0;
+      margin: 0 auto 5rem;
+      max-width: rem(800px);
+      text-align: center;
 
       p {
         margin: 0;

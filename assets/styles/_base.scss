@@ -16,7 +16,6 @@ pre {
   padding: 0.5em;
 }
 
-
 // Page things
 main {
   // prettier-ignore
@@ -28,9 +27,9 @@ main {
 .speaking {
   .heading,
   .posts,
-  .post-title-sep  {
+  .post-title-sep {
     margin: 0 auto 2rem !important;
-    max-width: rem(800px);
+    max-width: rem(1100px);
   }
 }
 
