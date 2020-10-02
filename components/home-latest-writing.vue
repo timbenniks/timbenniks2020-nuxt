@@ -8,31 +8,31 @@
       :offset="[0, 0]"
       uppercase="uppercase"
     />
-    <article :key="data.uid" class="post">
-      <nuxt-link :to="`/writings/${data.uid}/`">
+    <article v-for="post in data" :key="post.uid" class="post">
+      <nuxt-link :to="`/writings/${post.uid}/`">
         <lazy-image
           ratio="16/9"
-          :alt="$prismic.asText(data.data.title)"
-          :url="data.data.image.url"
+          :alt="$prismic.asText(post.data.title)"
+          :url="post.data.image.url"
           :caption="false"
-          :widths="[300, 400, 500, 600, 680, 768, 1024]"
+          :widths="[300, 400, 500, 600, 680]"
           sizes="(max-width: 400px) 100vw, (min-width: 700px) 210px"
         />
       </nuxt-link>
 
       <div class="post-content-wrapper">
         <p class="post-title fancy-title red">
-          <nuxt-link :to="`/writings/${data.uid}/`">
-            {{ $prismic.asText(data.data.title) }}
+          <nuxt-link :to="`/writings/${post.uid}/`">
+            {{ $prismic.asText(post.data.title) }}
           </nuxt-link>
         </p>
         <p class="post-description">
           <span class="post-date">
-            {{ asDay(data.data.publication_date) }}
-            {{ asMonth(data.data.publication_date) }}
-            {{ asYear(data.data.publication_date) }}
+            {{ asDay(post.data.publication_date) }}
+            {{ asMonth(post.data.publication_date) }}
+            {{ asYear(post.data.publication_date) }}
           </span>
-          &mdash; {{ $prismic.asText(data.data.sub_title) }}
+          &mdash; {{ $prismic.asText(post.data.sub_title) }}
         </p>
       </div>
     </article>
@@ -46,7 +46,7 @@ export default {
   name: 'HomeLatestWriting',
   props: {
     data: {
-      type: Object,
+      type: Array,
       required: true,
     },
   },
