@@ -22,7 +22,7 @@
           <template v-if="index + 1 < video.tags.length">, </template>
         </span>
       </p>
-      <p class="post-date fancy-title yellow">
+      <p class="post-date">
         {{ asDay(video.publication_date) }}
         {{ asMonth(video.publication_date) }}
         {{ asYear(video.publication_date) }}
@@ -77,6 +77,10 @@ export default {
     font-size: rem(13px);
     margin: 0;
     text-align: left;
+    background: $yellow;
+    display: inline-block;
+    color: #000;
+    padding: rem(2px 4px);
   }
 
   .post-title {
