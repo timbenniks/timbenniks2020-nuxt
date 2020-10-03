@@ -34,14 +34,7 @@ export default {
         ignoreRoutes: ['/startpage'],
       },
     ],
-    [
-      '@nuxtjs/pwa',
-      {
-        workbox: {
-          clientsClaim: false,
-        },
-      },
-    ],
+    ['@nuxtjs/pwa'],
   ],
   modules: ['@nuxtjs/prismic', '@nuxtjs/sitemap', '@nuxtjs/cloudinary'],
   prismic: {
@@ -81,12 +74,9 @@ export default {
   },
   pwa: {
     manifest: {
-      name: 'timbenniks.nl',
+      name: 'timbenniks.dev',
       short_name: 'timbenniks',
     },
-  },
-  icon: {
-    purpose: ['maskable', 'any'],
   },
   generate: {
     routes() {
