@@ -21,38 +21,47 @@ export default function (fields, pageType, route) {
     meta: [
       {
         property: 'og:title',
+        hid: 'og:title',
         content: getPropType(fields, 'general_card', 'title'),
       },
       {
         property: 'twitter:title',
+        hid: 'twitter:title',
         content: getPropType(fields, 'twitter_card', 'title'),
       },
       {
         name: 'description',
+        hid: 'og:description',
         content: getPropType(fields, 'general_card', 'description'),
       },
       {
         property: 'og:description',
+        hid: 'og:description',
         content: getPropType(fields, 'general_card', 'description'),
       },
       {
         property: 'twitter:description',
+        hid: 'og:description',
         content: getPropType(fields, 'twitter_card', 'description'),
       },
       {
         property: 'og:image',
+        hid: 'og:image',
         content: getPropType(fields, 'general_card', 'image'),
       },
       {
         property: 'twitter:image',
+        hid: 'twitter:image',
         content: getPropType(fields, 'twitter_card', 'image'),
       },
       {
         property: 'og:url',
+        hid: 'og:url',
         content: url,
       },
       {
         property: 'twitter:url',
+        hid: 'twitter:url',
         content: url,
       },
     ],
@@ -67,6 +76,7 @@ export default function (fields, pageType, route) {
   ) {
     metaData.meta.push({
       property: 'og:type',
+      hid: 'og:type',
       content: 'website',
     })
   }
@@ -87,6 +97,7 @@ export default function (fields, pageType, route) {
   if (pageType === 'video') {
     metaData.meta.push({
       property: 'og:video',
+      hid: 'og:video',
       content: fields.video_embed.embed_url,
     })
 
@@ -116,6 +127,7 @@ export default function (fields, pageType, route) {
   if (pageType === 'writing') {
     metaData.meta.push({
       property: 'og:type',
+      hid: 'og:type',
       content: 'article',
     })
 
