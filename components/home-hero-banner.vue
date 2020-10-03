@@ -1,16 +1,11 @@
 <template>
   <div class="hero-banner">
     <div class="hero-banner-inner">
-      <lazy-image
+      <lazy-hero-picture
         v-if="data.banner_image.url && ratio"
         :ratio="ratio"
         :alt="data.banner_image.alt"
         :url="data.banner_image.url"
-        extra-class="opacity-only"
-        :caption="false"
-        :widths="widths"
-        sizes="100vw"
-        loading-type="eager"
       />
 
       <div class="hero-banner-content">
@@ -64,12 +59,7 @@ export default {
     backgrounStats() {
       return [
         { width: 375, ratio: '16/9' },
-        { width: 500, ratio: '16/9' },
-        { width: 768, ratio: '16/9' },
         { width: 1024, ratio: '22/9' },
-        { width: 1280, ratio: '22/9' },
-        { width: 1440, ratio: '22/9' },
-        { width: 1600, ratio: '22/9' },
       ]
     },
 
@@ -102,7 +92,7 @@ export default {
 <style lang="scss">
 .hero-banner {
   position: relative;
-  //border-bottom: rem(2px solid $blue-main);
+  border-bottom: rem(2px solid $blue-main);
   width: 100%;
   overflow: hidden;
 
@@ -112,7 +102,7 @@ export default {
     width: 100%;
 
     // prettier-ignore
-    @include responsive('padding-top', (xs: (9 / 16) * 100%, l: (9/22)*100%));
+    @include responsive('padding-top', (xs: (9 / 16) * 100%, l: (9 / 22) * 100%));
   }
 
   > .hero-banner-inner {
