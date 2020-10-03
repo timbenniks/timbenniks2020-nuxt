@@ -34,7 +34,14 @@ export default {
         ignoreRoutes: ['/startpage'],
       },
     ],
-    ['@nuxtjs/pwa'],
+    [
+      '@nuxtjs/pwa',
+      {
+        workbox: {
+          clientsClaim: false,
+        },
+      },
+    ],
   ],
   modules: ['@nuxtjs/prismic', '@nuxtjs/sitemap', '@nuxtjs/cloudinary'],
   prismic: {
