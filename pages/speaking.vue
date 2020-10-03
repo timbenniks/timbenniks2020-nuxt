@@ -80,8 +80,8 @@ export default {
       error({ statusCode: 404, message: 'Page not found' })
     }
   },
-  metaInfo() {
-    return mapMetaInfo(this.talks.data, 'speaking', this.$router.currentRoute)
+  head() {
+    return mapMetaInfo(this.document, 'speaking', this.$router.currentRoute)
   },
 }
 </script>
