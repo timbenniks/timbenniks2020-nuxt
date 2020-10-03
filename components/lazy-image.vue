@@ -64,7 +64,7 @@ export default {
       return Number(ratio.split('/')[which === 'width' ? 0 : 1]) * 10
     },
     generateSrcSet() {
-      return getSrcSet(this.url, this.widths, this.$cloudinary)
+      return getSrcSet(this.url, this.widths, this.$cloudinary, this.ratio)
     },
   },
 }
