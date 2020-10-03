@@ -63,7 +63,10 @@
         v-html="$prismic.asHtml(document.data.content)"
       ></div>
       <!--eslint-enable-->
-      <related-videos :video="document" />
+      <related-videos
+        :related-videos="relatedVideos"
+        :current-video="document.uid"
+      />
     </main>
   </div>
 </template>
@@ -79,8 +82,15 @@ export default {
   async asyncData({ $prismic, params, error }) {
     try {
       const document = await $prismic.api.getByUID('video', params.uid)
+
+      const relatedVideos = await $prismic.api.query(
+        $prismic.predicates.any('document.tags', document.tags),
+        { orderings: '[my.video.publication_date desc]', pageSize: 4 }
+      )
+
       return {
         document,
+        relatedVideos,
       }
     } catch (e) {
       error({ statusCode: 404, message: 'Page not found' })
