@@ -13,6 +13,13 @@
         />
         <!--eslint-enable-->
 
+        <sponsor>
+          <p>
+            Why sponsor me? Click
+            <nuxt-link to="/sponsor-me/">here</nuxt-link> to read more.
+          </p>
+        </sponsor>
+
         <home-top-videos :data="topVideosData" />
         <home-latest-writing :data="latestWritings" />
       </div>
@@ -115,7 +122,7 @@ export default {
     margin: rem(30px auto);
 
     .homepage-introduction {
-      margin: 3rem auto 5rem;
+      margin: 3rem auto;
       max-width: rem(800px);
       text-align: center;
 

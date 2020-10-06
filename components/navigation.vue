@@ -27,11 +27,8 @@
     </button>
     <ul id="menu" class="dropdown-menu">
       <li>
-        <nuxt-link
-          :class="$route.name === 'writings-uid' ? 'active' : ''"
-          to="/writings/"
-        >
-          Writings
+        <nuxt-link to="/sponsor-me/" class="highlighted">
+          Sponsor Me
         </nuxt-link>
       </li>
       <li>
@@ -42,6 +39,15 @@
           Videos
         </nuxt-link>
       </li>
+      <li>
+        <nuxt-link
+          :class="$route.name === 'writings-uid' ? 'active' : ''"
+          to="/writings/"
+        >
+          Writings
+        </nuxt-link>
+      </li>
+
       <li>
         <nuxt-link to="/speaking/">
           Speaking
@@ -190,6 +196,10 @@ export default {
     text-transform: uppercase;
     z-index: 1;
 
+    &.highlighted {
+      color: #000;
+    }
+
     @include hover-supported() {
       &::after {
         top: 0;
@@ -230,6 +240,15 @@ export default {
       transform: skew(-4deg);
       transition: top 200ms ease;
       z-index: -1;
+    }
+
+    &.highlighted {
+      &::before {
+        background: $yellow;
+      }
+      &::after {
+        background: $grey-light;
+      }
     }
 
     &:focus {
