@@ -15,8 +15,8 @@
           :url="data.logo.url"
           extra-class="opacity-only"
           :caption="false"
-          :widths="[200]"
-          sizes="200px"
+          :widths="[271]"
+          sizes="271px"
         />
 
         <fancy-title
