@@ -15,12 +15,8 @@
 
         <sponsor>
           <p>
-            Why sponsor me? Click
-            <nuxt-link
-              to="/sponsor-me/"
-              title="Why sponsor me? This page explains it."
-              >here</nuxt-link
-            >
+            Why sponsor me? Visit the
+            <nuxt-link to="/sponsor-me/">sponsor me page</nuxt-link>
             to read more.
           </p>
         </sponsor>
