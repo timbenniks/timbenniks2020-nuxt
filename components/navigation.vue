@@ -198,6 +198,7 @@ export default {
 
     &.highlighted {
       color: #000;
+      background: $yellow;
     }
 
     @include hover-supported() {
