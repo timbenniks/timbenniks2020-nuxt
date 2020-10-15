@@ -112,6 +112,24 @@
           label="Prismic"
           image="prismic.png"
         />
+
+        <quick-link
+          url="https://buymeacoffee.com/timbenniks"
+          label="Buy Me A Coffee"
+          image="buymeacoffee.jpg"
+        />
+
+        <quick-link
+          url="https://www.paypal.com/myaccount/summary"
+          label="PayPal"
+          image="paypal.png"
+        />
+
+        <quick-link
+          url="https://primevideo.com"
+          label="Prime Video"
+          image="primevideo.jpg"
+        />
       </ul>
     </main>
   </div>
@@ -124,6 +142,8 @@ export default {
     description: "Tim's Startpage",
   },
 }
+
+// 67@s@MrA^P?EG3Q&K#aAYjaM
 </script>
 
 <style lang="scss">
