@@ -12,7 +12,7 @@
       </div>
 
       <div class="sponsors">
-        <h6>Proudly sponsored by</h6>
+        <p>Proudly sponsored by</p>
         <ul>
           <li>
             <a
@@ -170,7 +170,7 @@ footer {
 
         a {
           display: block;
-          margin: 0.3rem 0;
+          margin: 0 0 1rem;
 
           &.active {
             color: $white;
@@ -190,11 +190,11 @@ footer {
 
       li {
         display: inline-block;
-        margin: rem(5px);
+        margin: rem(5px 10px 5px 0);
       }
     }
 
-    h6 {
+    p {
       font-weight: 400;
       margin: 0 0 1rem 0;
       font-size: 0.8rem;
