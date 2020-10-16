@@ -2,6 +2,7 @@ import Prismic from 'prismic-javascript'
 
 export default {
   target: 'static',
+  modern: process.env.NODE_ENV === 'development' ? false : 'client',
   head: {
     titleTemplate: '%s - Tim Benniks',
 
@@ -45,7 +46,7 @@ export default {
       },
     ],
   ],
-  modules: ['@nuxtjs/prismic', '@nuxtjs/sitemap', '@nuxtjs/cloudinary'],
+  modules: ['@nuxtjs/prismic', '@nuxtjs/sitemap'],
   prismic: {
     endpoint: 'https://timbenniks.prismic.io/api/v2',
     linkResolver: '@/plugins/linkresolver',
@@ -104,10 +105,5 @@ export default {
         }
       )
     },
-  },
-  cloudinary: {
-    cloudName: 'dwfcofnrd',
-    useComponent: false,
-    secure: true,
   },
 }

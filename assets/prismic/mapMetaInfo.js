@@ -31,7 +31,7 @@ export default function (fields, pageType, route) {
       },
       {
         name: 'description',
-        hid: 'og:description',
+        hid: 'description',
         content: getPropType(fields, 'general_card', 'description'),
       },
       {
@@ -41,7 +41,7 @@ export default function (fields, pageType, route) {
       },
       {
         property: 'twitter:description',
-        hid: 'og:description',
+        hid: 'twitter:description',
         content: getPropType(fields, 'twitter_card', 'description'),
       },
       {

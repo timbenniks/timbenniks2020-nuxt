@@ -29,7 +29,11 @@ export function loadImages() {
 
 export const nativeLazySupported = true // 'loading' in HTMLImageElement.prototype
 
-export function getSrcSet(baseUrl, widths, cloudinary, ratio) {
+export function concatCloudinaryUrl(url, opts) {
+  return `https://res.cloudinary.com/dwfcofnrd/image/fetch/ar_${opts.ratio},c_${opts.crop},f_auto,q_auto,w_${opts.width}/${url}`
+}
+
+export function getSrcSet(baseUrl, widths, ratio) {
   const cleanUrl = baseUrl.replace('?auto=compress,format', '')
   let srcset = ''
 
@@ -37,16 +41,14 @@ export function getSrcSet(baseUrl, widths, cloudinary, ratio) {
     const opts = {
       crop: 'scale',
       width,
-      quality: 'auto',
-      fetchFormat: 'auto',
     }
 
     if (ratio) {
-      opts.aspectRatio = ratio.replace('/', ':')
+      opts.ratio = ratio.replace('/', ':')
       opts.crop = 'fill'
     }
 
-    const url = cloudinary().fetchRemote(cleanUrl, opts)
+    const url = concatCloudinaryUrl(cleanUrl, opts)
     srcset += `${url} ${width}w, `
   })
 

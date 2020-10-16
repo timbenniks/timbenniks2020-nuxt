@@ -23,8 +23,6 @@
 
         <home-top-videos :data="topVideosData" />
         <home-latest-writing :data="latestWritings" />
-
-        <built-on />
       </div>
     </main>
   </div>

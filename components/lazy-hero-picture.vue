@@ -37,18 +37,19 @@ export default {
   },
 
   methods: {
+    concatCloudinaryUrl(url, opts) {
+      return `https://res.cloudinary.com/dwfcofnrd/image/fetch/ar_${opts.ratio},c_${opts.crop},f_auto,q_auto,w_${opts.width}/${url}`
+    },
     generateSrcSet(widths, url, ratio) {
       const cleanUrl = url.replace('?auto=compress,format', '')
 
       let srcset = ''
 
       widths.forEach((width) => {
-        const url = this.$cloudinary().fetchRemote(cleanUrl, {
+        const url = this.concatCloudinaryUrl(cleanUrl, {
           crop: 'fill',
           width,
-          quality: 'auto',
-          fetchFormat: 'auto',
-          aspectRatio: ratio.replace('/', ':'),
+          ratio: ratio.replace('/', ':'),
         })
         srcset += `${url} ${width}w, `
       })

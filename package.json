@@ -23,7 +23,6 @@
     }
   },
   "dependencies": {
-    "@nuxtjs/cloudinary": "^0.0.8",
     "@nuxtjs/pwa": "^3.0.2",
     "@nuxtjs/sitemap": "^2.4.0",
     "algoliasearch": "^4.4.0",
@@ -47,6 +46,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
+    "node-fetch": "^2.6.1",
     "node-sass": "^4.14.1",
     "prettier": "^2.0.5",
     "prismic-dom": "^2.2.3",
@@ -54,7 +54,6 @@
     "stylelint": "^13.6.1",
     "stylelint-config-prettier": "^8.0.1",
     "stylelint-config-sass-guidelines": "^7.0.0",
-    "stylelint-config-standard": "^20.0.0",
-    "node-fetch": "^2.6.1"
+    "stylelint-config-standard": "^20.0.0"
   }
 }

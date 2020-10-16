@@ -5,6 +5,7 @@
     >
     <!-- <div class="bg-triangle" /> -->
     <Nuxt />
+    <global-footer />
   </div>
 </template>
 
