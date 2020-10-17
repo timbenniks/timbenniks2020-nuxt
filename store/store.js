@@ -57,7 +57,7 @@ export const getters = {
 
 export const actions = {
   getYouTubeStats({ commit }) {
-    fetch('https://tims-startpage.azurewebsites.net/api/yt-stats', {
+    fetch(`${this.$config.base_url}api/youtube-stats`, {
       cache: 'no-cache',
     })
       .then((response) => response.json())
@@ -66,11 +66,13 @@ export const actions = {
   },
 
   getTwitterStats({ commit }) {
-    fetch('https://tims-startpage.azurewebsites.net/api/tw-stats', {
+    fetch(`${this.$config.base_url}api/twitter-stats`, {
       cache: 'no-cache',
     })
       .then((response) => response.json())
-      .then((stats) => commit('setTwitterStats', stats))
+      .then((stats) => {
+        commit('setTwitterStats', stats)
+      })
       .catch(console.error)
   },
 }

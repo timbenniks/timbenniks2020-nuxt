@@ -60,8 +60,8 @@
     </div>
     <p class="quick-links">
       Go to:
-      <a href="https://twitter.com/timbenniks/" target="blank">Profile</a>,
-      <a href="https://analytics.twitter.com" target="blank">Analytics</a>.
+      <a href="https://twitter.com/timbenniks/" target="_blank">Profile</a>,
+      <a href="https://analytics.twitter.com" target="_blank">Analytics</a>.
     </p>
   </div>
 </template>

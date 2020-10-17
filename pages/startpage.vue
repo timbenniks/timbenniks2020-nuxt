@@ -142,8 +142,6 @@ export default {
     description: "Tim's Startpage",
   },
 }
-
-// 67@s@MrA^P?EG3Q&K#aAYjaM
 </script>
 
 <style lang="scss">
