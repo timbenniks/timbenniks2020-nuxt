@@ -5,6 +5,7 @@
     >
     <!-- <div class="bg-triangle" /> -->
     <Nuxt />
+
     <global-footer v-if="$route.name !== 'startpage'" />
   </div>
 </template>
