@@ -59,9 +59,7 @@
 </template>
 
 <script>
-import algoliasearch from 'algoliasearch'
-import { history } from 'instantsearch.js/es/lib/routers'
-import { singleIndex as singleIndexMapping } from 'instantsearch.js/es/lib/stateMappings'
+import algoliasearch from 'algoliasearch/lite'
 import {
   AisInstantSearch,
   AisRefinementList,
@@ -95,12 +93,6 @@ export default {
         this.$config.algolia_app_id,
         this.$config.algolia_api_key
       ),
-      routing: {
-        router: history({
-          writeDelay: 10,
-        }),
-        stateMapping: singleIndexMapping('VIDEOS'),
-      },
     }
   },
 
