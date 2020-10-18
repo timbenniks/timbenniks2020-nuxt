@@ -22,6 +22,7 @@
 
       <div class="stats-wrapper">
         <yt-stats />
+        <sponsor-stats />
         <tw-stats />
       </div>
 
@@ -146,7 +147,7 @@ export default {
 
 <style lang="scss">
 .startpage {
-  max-width: rem(1000px);
+  max-width: rem(1440px);
   margin: 0;
 
   main {

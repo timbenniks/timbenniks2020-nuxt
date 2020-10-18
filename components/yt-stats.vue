@@ -23,9 +23,10 @@
       </div>
     </div>
     <p class="quick-links">
-      Go to: <a href="https://studio.youtube.com/" target="blank">Studio</a>,
-      <a href="https://youtube.com/timbenniks" target="blank">Channel</a>,
-      <a href="https://trello.com/b/YsxqLr2C/youtube" target="blank">Trello</a>.
+      Go to: <a href="https://studio.youtube.com/" target="_blank">Studio</a>,
+      <a href="https://youtube.com/timbenniks" target="_blank">Channel</a>,
+      <a href="https://trello.com/b/YsxqLr2C/youtube" target="_blank">Trello</a
+      >, <a href="https://notion.so" target="_blank">Notion</a>.
     </p>
   </div>
 </template>
