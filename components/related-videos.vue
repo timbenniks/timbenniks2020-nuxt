@@ -50,7 +50,7 @@ import { asDay, asMonth, asYear } from '../assets/prismic/helpers'
 export default {
   name: 'RelatedVideos',
   props: {
-    relatedVideos: { type: Array, required: true },
+    relatedVideos: { type: Object, required: true },
     currentVideo: { type: Object, required: true },
   },
   computed: {

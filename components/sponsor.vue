@@ -4,6 +4,7 @@
       href="https://www.buymeacoffee.com/timbenniks"
       target="_blank"
       rel="noopener"
+      @click="$ga.event('sponsor', 'click', 'component', 'bmac image')"
     >
       <figure style="--aspect-ratio: 217/60;">
         <img

@@ -27,7 +27,10 @@
                 :key="item.value"
                 :class="{ selected: item.isRefined }"
                 class="filter"
-                @click.prevent="refine(item.value)"
+                @click.prevent="
+                  refine(item.value)
+                  $ga.event('video-facet', 'click', item.value)
+                "
               >
                 {{ item.label }}
                 <span>{{ item.count.toLocaleString() }}</span>

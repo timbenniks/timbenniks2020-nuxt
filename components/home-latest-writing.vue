@@ -8,7 +8,12 @@
       :offset="[0, 0]"
       uppercase="uppercase"
     />
-    <article v-for="post in data" :key="post.uid" class="post">
+    <article
+      v-for="post in data"
+      :key="post.uid"
+      class="post"
+      @click="$ga.event('home-latest-writing', 'click', post.uid)"
+    >
       <nuxt-link :to="`/writings/${post.uid}/`">
         <lazy-image
           ratio="16/9"

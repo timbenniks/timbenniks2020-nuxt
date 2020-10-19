@@ -29,12 +29,12 @@
       </span>
     </button>
     <ul id="menu" class="dropdown-menu">
-      <li>
+      <li @click="$ga.event('navigation', 'click', 'sponosor me')">
         <nuxt-link to="/sponsor-me/" class="highlighted">
           Sponsor Me
         </nuxt-link>
       </li>
-      <li>
+      <li @click="$ga.event('navigation', 'click', 'videos')">
         <nuxt-link
           :class="$route.name === 'videos-uid' ? 'active' : ''"
           to="/videos/"
@@ -42,7 +42,7 @@
           Videos
         </nuxt-link>
       </li>
-      <li>
+      <li @click="$ga.event('navigation', 'click', 'writings')">
         <nuxt-link
           :class="$route.name === 'writings-uid' ? 'active' : ''"
           to="/writings/"
@@ -51,12 +51,12 @@
         </nuxt-link>
       </li>
 
-      <li>
+      <li @click="$ga.event('navigation', 'click', 'speaking')">
         <nuxt-link to="/speaking/">
           Speaking
         </nuxt-link>
       </li>
-      <li>
+      <li @click="$ga.event('navigation', 'click', 'about')">
         <nuxt-link to="/about/">
           About
         </nuxt-link>
@@ -75,6 +75,7 @@ export default {
   methods: {
     showMenu() {
       this.burgerActive = !this.burgerActive
+      this.$ga.event('navigation', 'click', 'burger')
     },
   },
 }

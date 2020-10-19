@@ -14,9 +14,9 @@
         <!--eslint-enable-->
 
         <sponsor>
-          <p>
+          <p @click="$ga.event('sponsor', 'click', 'homepage', 'label')">
             Why sponsor me? Visit the
-            <nuxt-link to="/sponsor-me/">sponsor me page</nuxt-link>
+            <nuxt-link to="/sponsor-me/"> sponsor me page</nuxt-link>
             to read more.
           </p>
         </sponsor>

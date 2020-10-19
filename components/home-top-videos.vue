@@ -16,7 +16,12 @@
     <!--eslint-enable-->
 
     <div class="videos">
-      <video-card v-for="video in videos" :key="video.slug" :video="video" />
+      <video-card
+        v-for="video in videos"
+        :key="video.slug"
+        :video="video"
+        @click="$ga.event('home-top-vidoes', 'click', video.slug)"
+      />
     </div>
 
     <p class="top-videos-load-more">

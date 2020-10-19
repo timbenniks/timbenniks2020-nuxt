@@ -9,6 +9,7 @@
         itemprop="itemListElement"
         itemscope
         itemtype="https://schema.org/ListItem"
+        @click="$ga.event('breadcrumb', 'click', 'home')"
       >
         <nuxt-link to="/" itemtype="https://schema.org/Thing" itemprop="item">
           <span itemprop="name">Home</span>
@@ -21,6 +22,7 @@
         itemprop="itemListElement"
         itemscope
         itemtype="https://schema.org/ListItem"
+        @click="$ga.event('breadcrumb', 'click', crumb.text)"
       >
         <nuxt-link
           :to="crumb.to"

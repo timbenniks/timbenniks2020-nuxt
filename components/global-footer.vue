@@ -3,11 +3,21 @@
     <div class="footer-inner">
       <div class="footer-links">
         <ul>
-          <li><nuxt-link to="/sponsor-me">Sponsor Me</nuxt-link></li>
-          <li><nuxt-link to="/videos">Videos</nuxt-link></li>
-          <li><nuxt-link to="/writings">Writings</nuxt-link></li>
-          <li><nuxt-link to="/speaking">Speaking</nuxt-link></li>
-          <li><nuxt-link to="/about">About</nuxt-link></li>
+          <li @click="$ga.event('footer_navigation', 'click', 'sponosor me')">
+            <nuxt-link to="/sponsor-me">Sponsor Me</nuxt-link>
+          </li>
+          <li @click="$ga.event('footer_navigation', 'click', 'videos')">
+            <nuxt-link to="/videos">Videos</nuxt-link>
+          </li>
+          <li @click="$ga.event('footer_navigation', 'click', 'writings')">
+            <nuxt-link to="/writings">Writings</nuxt-link>
+          </li>
+          <li @click="$ga.event('footer_navigation', 'click', 'speaking')">
+            <nuxt-link to="/speaking">Speaking</nuxt-link>
+          </li>
+          <li @click="$ga.event('footer_navigation', 'click', 'about')">
+            <nuxt-link to="/about">About</nuxt-link>
+          </li>
         </ul>
       </div>
 
@@ -20,6 +30,7 @@
               target="_blank"
               href="https://twitter.com/carwack"
               title="@carwack on Twitter"
+              @click="$ga.event('sponsors', 'click', 'carwack')"
             >
               <figure style="--aspect-ratio: 1/1;">
                 <img
@@ -38,6 +49,7 @@
               target="_blank"
               href="https://twitter.com/MayaShavin"
               title="@MayaShavin on Twitter"
+              @click="$ga.event('sponsors', 'click', 'maya-shavin')"
             >
               <figure style="--aspect-ratio: 1/1;">
                 <img
@@ -56,6 +68,7 @@
               target="_blank"
               title="@passionpeopleNL on Twitter"
               href="https://twitter.com/passionpeopleNL"
+              @click="$ga.event('sponsors', 'click', 'passionpeopleNL')"
             >
               <figure style="--aspect-ratio: 1/1;">
                 <img
@@ -74,6 +87,7 @@
               target="_blank"
               title="@VueStorefront on Twitter"
               href="https://twitter.com/VueStorefront"
+              @click="$ga.event('sponsors', 'click', 'VueStorefront')"
             >
               <figure style="--aspect-ratio: 1/1;">
                 <img
