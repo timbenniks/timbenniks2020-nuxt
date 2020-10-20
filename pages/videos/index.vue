@@ -10,93 +10,86 @@
         :uppercase="true"
       />
 
-      <client-only>
-        <ais-instant-search
-          :routing="routing"
-          :search-client="searchClient"
-          index-name="VIDEOS"
+      <div class="filters">
+        <button
+          v-for="facet in facets"
+          :key="facet.label"
+          class="filter"
+          :class="{ selected: facet.active, disabled: facet.amount === 0 }"
+          @click.prevent="
+            refine(facet)
+            $ga.event('video-facet', 'click', facet.label)
+          "
         >
-          <ais-refinement-list
-            attribute="tags"
-            operator="or"
-            :sort-by="['name:asc']"
-          >
-            <div slot-scope="{ items, refine }" class="filters">
-              <button
-                v-for="item in items"
-                :key="item.value"
-                :class="{ selected: item.isRefined }"
-                class="filter"
-                @click.prevent="
-                  refine(item.value)
-                  $ga.event('video-facet', 'click', item.value)
-                "
-              >
-                {{ item.label }}
-                <span>{{ item.count.toLocaleString() }}</span>
-              </button>
-            </div>
-          </ais-refinement-list>
-          <ais-stats :class-names="{ 'ais-Stats': 'videos-list' }" />
-          <ais-infinite-hits>
-            <div
-              slot-scope="{ items, isLastPage, refineNext }"
-              class="videos-list"
-            >
-              <div class="videos">
-                <video-card
-                  v-for="item in items"
-                  :key="item.slug"
-                  :video="item"
-                />
-              </div>
-              <button v-if="!isLastPage" class="load-more" @click="refineNext">
-                Load More Results
-              </button>
-            </div>
-          </ais-infinite-hits>
-        </ais-instant-search>
-      </client-only>
+          {{ facet.label }}
+          <span>{{ facet.amount }}</span>
+        </button>
+      </div>
+
+      <div class="videos-list">
+        <div class="videos">
+          <video-card v-for="hit in hits" :key="hit.slug" :video="hit" />
+        </div>
+      </div>
     </main>
   </div>
 </template>
 
 <script>
-import algoliasearch from 'algoliasearch/lite'
-import {
-  AisInstantSearch,
-  AisRefinementList,
-  AisInfiniteHits,
-  AisStats,
-} from 'vue-instantsearch'
 import mapMetaInfo from '@/assets/prismic/mapMetaInfo'
+import { mapGetters } from 'vuex'
 
 export default {
-  components: {
-    AisInstantSearch,
-    AisRefinementList,
-    AisInfiniteHits,
-    AisStats,
-  },
-
   async asyncData({ $prismic, error }) {
     try {
+      const vids = await $prismic.api.query(
+        $prismic.predicates.at('document.type', 'video'),
+        { orderings: '[my.video.publication_date desc]', pageSize: 100 }
+      )
+
+      const tagsHolder = []
+      vids.results.forEach((result) => {
+        result.tags.forEach((tag) => {
+          tagsHolder.push(tag)
+        })
+      })
+
+      const tags = [...new Set(tagsHolder)]
       const document = await $prismic.api.getSingle('youtube')
+
       return {
         document,
+        tags,
       }
     } catch (e) {
       error({ statusCode: 404, message: 'Page not found' })
     }
   },
 
-  data() {
-    return {
-      searchClient: algoliasearch(
-        this.$config.algolia_app_id,
-        this.$config.algolia_api_key
-      ),
-    }
+  computed: {
+    ...mapGetters({
+      hits: 'store/searchResults',
+      facets: 'store/facets',
+    }),
+  },
+
+  created() {
+    this.$store.dispatch('store/getPrismicTags', this.tags)
+    this.$store.dispatch('store/searchAlgolia')
+  },
+
+  methods: {
+    refine(facet) {
+      let query = facet.label
+
+      this.facets
+        .filter((facet) => facet.active)
+        .forEach((facet) => {
+          query += `, ${facet.label}`
+        })
+
+      this.$store.dispatch('store/searchAlgolia', query)
+    },
   },
 
   head() {

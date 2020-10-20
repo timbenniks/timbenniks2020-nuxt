@@ -39,6 +39,12 @@ export const state = () => ({
     supporterCount: 0,
     supporterEarnings: 0,
   },
+  searchResults: {
+    query: '',
+    prismicTags: [],
+    facets: [],
+    hits: [],
+  },
 })
 
 export const mutations = {
@@ -74,6 +80,16 @@ export const mutations = {
       supporterCount: stats.supporters.length,
     }
   },
+
+  setSearchResults(state, results) {
+    state.searchResults.facets = results.facets.tags
+    state.searchResults.hits = results.hits
+    state.searchResults.query = results.query
+  },
+
+  setPrismicTags(state, payload) {
+    state.searchResults.prismicTags = payload.sort()
+  },
 }
 
 export const getters = {
@@ -87,6 +103,37 @@ export const getters = {
 
   sponsorStats(state) {
     return state.sponsorStats
+  },
+
+  searchResults(state) {
+    return state.searchResults.hits
+  },
+
+  facets(state) {
+    const facets = []
+
+    const findTagAmount = (tag) => {
+      if (tag in state.searchResults.facets) {
+        return state.searchResults.facets[tag]
+      } else {
+        return 0
+      }
+    }
+
+    const facetInQuery = (facet) => {
+      return state.searchResults.query.includes(facet)
+    }
+
+    state.searchResults.prismicTags.forEach((tag) => {
+      facets.push({
+        label: tag,
+        active: facetInQuery(tag),
+        amount: findTagAmount(tag),
+        disabled: findTagAmount(tag) === 0,
+      })
+    })
+
+    return facets
   },
 }
 
@@ -120,5 +167,18 @@ export const actions = {
         commit('setSponsorStats', stats)
       })
       .catch(console.error)
+  },
+
+  searchAlgolia({ commit }, payload = '') {
+    fetch(`${this.$config.base_url}api/algolia-search?facets=${payload}`)
+      .then((response) => response.json())
+      .then((results) => {
+        commit('setSearchResults', results)
+      })
+      .catch(console.error)
+  },
+
+  getPrismicTags({ commit }, payload) {
+    commit('setPrismicTags', payload)
   },
 }

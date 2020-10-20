@@ -111,6 +111,11 @@
       transform: skew(-4deg);
     }
 
+    &.disabled {
+      pointer-events: none;
+      opacity: 0.4;
+    }
+
     &:hover,
     &.selected {
       &:before {
