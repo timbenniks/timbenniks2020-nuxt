@@ -22,10 +22,12 @@ const getData = async (which, page = 1) => {
   const result = response.data
 
   if (response.last_page > page) {
-    const newPage = await queryPage(which, page + 1)
-    newPage.data.forEach((item) => {
-      result.push(item)
-    })
+    for (let i = page; i < response.last_page; i++) {
+      const newPage = await queryPage(which, i + 1)
+      newPage.data.forEach((item) => {
+        result.push(item)
+      })
+    }
 
     return result
   } else {
