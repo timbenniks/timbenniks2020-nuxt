@@ -51,7 +51,7 @@ export default {
   name: 'RelatedVideos',
   props: {
     relatedVideos: { type: Object, required: true },
-    currentVideo: { type: Object, required: true },
+    currentVideo: { type: String, required: true },
   },
   computed: {
     videos() {

@@ -5,8 +5,8 @@
         ratio="16/9"
         :alt="video.title"
         :url="video.image"
-        :widths="[300, 400, 500, 600, 680]"
-        sizes="(max-width: 400px) 100vw, (min-width: 700px) 210px"
+        :widths="[350, 450, 550, 600, 680, 750, 800]"
+        sizes="(max-width: 400px) 100vw, (min-width: 700px) 320px"
       />
     </nuxt-link>
 

@@ -17,7 +17,7 @@
           class="filter"
           :class="{ selected: facet.active, disabled: facet.amount === 0 }"
           @click.prevent="
-            refine(facet)
+            refine(facet, facet.active)
             $ga.event('video-facet', 'click', facet.label)
           "
         >
@@ -75,19 +75,39 @@ export default {
 
   created() {
     this.$store.dispatch('store/getPrismicTags', this.tags)
-    this.$store.dispatch('store/searchAlgolia')
+  },
+
+  mounted() {
+    const urlParams = new URLSearchParams(window.location.search)
+    if (urlParams.get('facets')) {
+      this.$store.dispatch('store/searchAlgolia', urlParams.get('facets'))
+    } else {
+      this.$store.dispatch('store/searchAlgolia')
+    }
   },
 
   methods: {
-    refine(facet) {
-      let query = facet.label
+    refine(clickedFacet, active) {
+      let query = ''
+
+      if (!active) {
+        query = clickedFacet.label
+      }
 
       this.facets
         .filter((facet) => facet.active)
         .forEach((facet) => {
-          query += `, ${facet.label}`
+          if (facet.label !== clickedFacet.label) {
+            query += `, ${facet.label}`
+          }
         })
 
+      if (query.startsWith(', ')) {
+        query = query.substring(2)
+      }
+
+      query = query.trim()
+      window.history.pushState({}, 'Videos - Tim Benniks', `?facets=${query}`)
       this.$store.dispatch('store/searchAlgolia', query)
     },
   },
