@@ -6,7 +6,7 @@
       <heading
         :breadcrumb="true"
         titletag="h1"
-        :title="$prismic.asText(document.title)"
+        :title="document.title"
         :uppercase="true"
       />
 
@@ -45,25 +45,17 @@
 </template>
 
 <script>
-import mapMetaInfo from '@/assets/prismic/mapMetaInfo'
+import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
 import { asDay, asMonth, asYear } from '@/assets/prismic/helpers'
 
 export default {
-  async asyncData({ $prismic, error }) {
-    try {
-      const document = (await $prismic.api.getSingle('writings')).data
-
-      const writings = await $prismic.api.query(
-        $prismic.predicates.at('document.type', 'writing'),
-        { orderings: '[my.writing.publication_date desc]', pageSize: 100 }
-      )
-
-      return {
-        document,
-        writings: writings.results,
-      }
-    } catch (e) {
-      error({ statusCode: 404, message: 'Page not found' })
+  async asyncData(context) {
+    const { handler } = await import('@/datalayer/pages/writings')
+    const { document, writings, metaInfo } = await handler(context)
+    return {
+      document,
+      writings,
+      metaInfo,
     }
   },
   methods: {
@@ -72,7 +64,11 @@ export default {
     asYear,
   },
   head() {
-    return mapMetaInfo(this.document, 'writings', this.$router.currentRoute)
+    return mapMetaInfo(
+      this.metaInfo.fields,
+      this.metaInfo.pageType,
+      this.$router.currentRoute.path
+    )
   },
 }
 </script>
