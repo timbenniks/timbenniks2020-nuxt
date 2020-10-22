@@ -26,17 +26,12 @@
             height="9"
             allowfullscreen
             frameborder="0"
-            :data-src="
-              document.data.video_embed.embed_url.replace(
-                'watch?v=',
-                'embed/'
-              ) + '?autoplay=1&rel=0'
-            "
+            :data-src="document.embed"
           ></iframe>
         </figure>
       </div>
       <heading
-        :title="$prismic.asText(document.data.title)"
+        :title="document.title"
         :breadcrumb="true"
         titletag="h1"
         :use-fancy-titles="true"
@@ -48,11 +43,7 @@
       </div>
 
       <!-- eslint-disable vue/no-v-html -->
-      <div
-        ref="body"
-        class="post-content"
-        v-html="$prismic.asHtml(document.data.content)"
-      ></div>
+      <div ref="body" class="post-content" v-html="document.content"></div>
       <!--eslint-enable-->
       <related-videos
         :related-videos="relatedVideos"
@@ -66,36 +57,25 @@
 import LinkMixin from '@/assets/mixins/linkMixin'
 import IframeMixin from '@/assets/mixins/iframeMixin'
 import ImageMixin from '@/assets/mixins/imageMixin'
-import mapMetaInfo from '@/assets/prismic/mapMetaInfo'
+import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
 
 export default {
   mixins: [LinkMixin, IframeMixin, ImageMixin],
-  async asyncData({ $prismic, params, error }) {
-    try {
-      const document = await $prismic.api.getByUID('video', params.uid)
-
-      const relatedVideos = await $prismic.api.query(
-        $prismic.predicates.any('document.tags', document.tags),
-        { orderings: '[my.video.publication_date desc]', pageSize: 4 }
-      )
-
-      return {
-        document,
-        relatedVideos,
-      }
-    } catch (e) {
-      error({ statusCode: 404, message: 'Page not found' })
+  async asyncData(context) {
+    const { handler } = await import('@/datalayer/pages/videos/_uid')
+    const { document, relatedVideos, metaInfo } = await handler(context)
+    return {
+      document,
+      relatedVideos,
+      metaInfo,
     }
   },
+
   head() {
     return mapMetaInfo(
-      {
-        id: this.document.uid,
-        last_publication_date: this.document.last_publication_date,
-        ...this.document.data,
-      },
-      'video',
-      this.$router.currentRoute
+      this.metaInfo.fields,
+      this.metaInfo.pageType,
+      this.$router.currentRoute.path
     )
   },
 }

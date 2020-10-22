@@ -15,10 +15,10 @@
           <nuxt-link :to="`/writings/${post.uid}/`">
             <lazy-image
               ratio="16/9"
-              :alt="$prismic.asText(post.data.title)"
-              :url="post.data.image.url"
+              :alt="post.title"
+              :url="post.image"
               :caption="false"
-              :widths="[300, 400, 500, 600, 680]"
+              :widths="[300, 400, 500, 600, 680, 800]"
               sizes="(max-width: 400px) 100vw, (min-width: 700px) 210px"
             />
           </nuxt-link>
@@ -26,16 +26,16 @@
           <div class="post-content-wrapper">
             <p class="post-title fancy-title red">
               <nuxt-link :to="`/writings/${post.uid}/`">
-                {{ $prismic.asText(post.data.title) }}
+                {{ post.title }}
               </nuxt-link>
             </p>
             <p class="post-description">
               <span class="post-date">
-                {{ asDay(post.data.publication_date) }}
-                {{ asMonth(post.data.publication_date) }}
-                {{ asYear(post.data.publication_date) }}
+                {{ post.day }}
+                {{ post.month }}
+                {{ post.year }}
               </span>
-              &mdash; {{ $prismic.asText(post.data.sub_title) }}
+              &mdash; {{ post.sub_title }}
             </p>
           </div>
         </article>
@@ -46,7 +46,6 @@
 
 <script>
 import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
-import { asDay, asMonth, asYear } from '@/assets/prismic/helpers'
 
 export default {
   async asyncData(context) {
@@ -57,11 +56,6 @@ export default {
       writings,
       metaInfo,
     }
-  },
-  methods: {
-    asDay,
-    asMonth,
-    asYear,
   },
   head() {
     return mapMetaInfo(

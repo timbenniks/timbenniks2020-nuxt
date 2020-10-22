@@ -1,5 +1,7 @@
 import dom from 'prismic-dom'
 import getPrismicApi from '@/datalayer/helpers/getPrismicApi'
+import linkResolver from '@/datalayer/helpers/linkresolver'
+import htmlSerializer from '@/datalayer/helpers/htmlserializer'
 
 export const handler = async (context) => {
   const api = await getPrismicApi()
@@ -8,7 +10,11 @@ export const handler = async (context) => {
   const document = {
     title: dom.RichText.asText(result.data.title),
     sub_title: dom.RichText.asText(result.data.sub_title),
-    content: dom.RichText.asHtml(result.data.content),
+    content: dom.RichText.asHtml(
+      result.data.content,
+      linkResolver,
+      htmlSerializer
+    ),
     ...result,
   }
 
