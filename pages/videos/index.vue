@@ -94,15 +94,17 @@ export default {
         query = clickedFacet.label
       }
 
+      console.log(query)
+
       this.facets
         .filter((facet) => facet.active)
         .forEach((facet) => {
           if (facet.label !== clickedFacet.label) {
-            query += `, ${facet.label}`
+            query += `,${facet.label}`
           }
         })
 
-      if (query.startsWith(', ')) {
+      if (query.startsWith(',')) {
         query = query.substring(2)
       }
 

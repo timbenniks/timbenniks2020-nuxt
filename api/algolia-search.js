@@ -7,14 +7,27 @@ const client = algoliasearch(
 
 const index = client.initIndex('VIDEOS')
 
+// const search = async (facets) => {
+//   return await index.search(facets, {
+//     hitsPerPage: 100,
+//     facets: ['tags'],
+//   })
+// }
+
 const search = async (facets) => {
-  return await index.search(facets, {
+  return await index.search('', {
     hitsPerPage: 100,
     facets: ['tags'],
+    facetFilters: facets,
   })
 }
 
 module.exports = async (req, res) => {
-  const hits = await search(req.query.facets ? req.query.facets : '')
+  const facets = req.query.facets.split(',').map((facet) => {
+    return `tags:${facet}`
+  })
+
+  console.log(facets)
+  const hits = await search(facets || '')
   res.json(hits)
 }
