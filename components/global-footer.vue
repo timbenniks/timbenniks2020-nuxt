@@ -100,6 +100,25 @@
               </figure>
             </a>
           </li>
+          <li>
+            <a
+              rel="noopener"
+              target="_blank"
+              title="@Cloudinary on Twitter"
+              href="https://twitter.com/cloudinary"
+              @click="$ga.event('sponsors', 'click', 'Cloudinary')"
+            >
+              <figure style="--aspect-ratio: 1/1;">
+                <img
+                  loading="lazy"
+                  :src="require('../assets/images/sponsors/cloudinary.jpg')"
+                  alt="@VueStorefront on Twitter"
+                  width="100"
+                  height="100"
+                />
+              </figure>
+            </a>
+          </li>
         </ul>
       </div>
 
@@ -220,6 +239,7 @@ footer {
 
       img {
         border-radius: 100%;
+        border: 2px solid $white;
       }
     }
   }
