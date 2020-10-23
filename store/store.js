@@ -84,7 +84,10 @@ export const mutations = {
   setSearchResults(state, results) {
     state.searchResults.facets = results.facets.tags
     state.searchResults.hits = results.hits
-    state.searchResults.query = results.query
+  },
+
+  setSearchQuery(state, payload) {
+    state.searchResults.query = payload
   },
 
   setPrismicTags(state, payload) {
@@ -144,7 +147,6 @@ export const actions = {
     })
       .then((response) => response.json())
       .then((stats) => commit('setYouTubeStats', stats))
-      .catch(console.error)
   },
 
   getTwitterStats({ commit }) {
@@ -155,7 +157,6 @@ export const actions = {
       .then((stats) => {
         commit('setTwitterStats', stats)
       })
-      .catch(console.error)
   },
 
   getSponsorStats({ commit }) {
@@ -166,16 +167,15 @@ export const actions = {
       .then((stats) => {
         commit('setSponsorStats', stats)
       })
-      .catch(console.error)
   },
 
   searchAlgolia({ commit }, payload = '') {
     fetch(`${this.$config.base_url}api/algolia-search?facets=${payload}`)
       .then((response) => response.json())
       .then((results) => {
+        commit('setSearchQuery', payload)
         commit('setSearchResults', results)
       })
-      .catch(console.error)
   },
 
   getPrismicTags({ commit }, payload) {

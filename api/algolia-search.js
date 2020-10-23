@@ -7,13 +7,6 @@ const client = algoliasearch(
 
 const index = client.initIndex('VIDEOS')
 
-// const search = async (facets) => {
-//   return await index.search(facets, {
-//     hitsPerPage: 100,
-//     facets: ['tags'],
-//   })
-// }
-
 const search = async (facets) => {
   return await index.search('', {
     hitsPerPage: 100,
@@ -27,7 +20,7 @@ module.exports = async (req, res) => {
     return `tags:${facet}`
   })
 
-  console.log(facets)
   const hits = await search(facets || '')
+  res.setHeader('Cache-Control', 's-maxage=1, stale-while-revalidate')
   res.json(hits)
 }

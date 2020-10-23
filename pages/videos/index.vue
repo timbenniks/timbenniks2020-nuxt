@@ -94,8 +94,6 @@ export default {
         query = clickedFacet.label
       }
 
-      console.log(query)
-
       this.facets
         .filter((facet) => facet.active)
         .forEach((facet) => {
@@ -105,7 +103,7 @@ export default {
         })
 
       if (query.startsWith(',')) {
-        query = query.substring(2)
+        query = query.substring(1)
       }
 
       query = query.trim()
