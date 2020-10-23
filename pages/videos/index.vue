@@ -154,7 +154,7 @@ export default {
 <style lang="scss" scoped>
 .status {
   max-width: 1100px;
-  margin: 0 auto;
+  margin: 0 auto 1.25rem;
 
   .filter {
     margin: 0;
