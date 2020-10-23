@@ -48,33 +48,17 @@
 </template>
 
 <script>
-import mapMetaInfo from '@/assets/prismic/mapMetaInfo'
+import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
 import { mapGetters } from 'vuex'
 
 export default {
-  async asyncData({ $prismic, error }) {
-    try {
-      const vids = await $prismic.api.query(
-        $prismic.predicates.at('document.type', 'video'),
-        { orderings: '[my.video.publication_date desc]', pageSize: 100 }
-      )
-
-      const tagsHolder = []
-      vids.results.forEach((result) => {
-        result.tags.forEach((tag) => {
-          tagsHolder.push(tag)
-        })
-      })
-
-      const tags = [...new Set(tagsHolder)]
-      const document = await $prismic.api.getSingle('youtube')
-
-      return {
-        document,
-        tags,
-      }
-    } catch (e) {
-      error({ statusCode: 404, message: 'Page not found' })
+  async asyncData(context) {
+    const { handler } = await import('@/datalayer/pages/videos')
+    const { document, tags, metaInfo } = await handler(context)
+    return {
+      document,
+      tags,
+      metaInfo,
     }
   },
 
@@ -94,10 +78,11 @@ export default {
 
   mounted() {
     const urlParams = new URLSearchParams(window.location.search)
-    if (urlParams.get('facets')) {
+    const facets = urlParams.get('facets')
+    if (facets) {
       this.$store.dispatch(
         'store/searchAlgolia',
-        this.cleanUrlParams(urlParams.get('facets'), true)
+        this.cleanUrlParams(facets, true)
       )
     } else {
       this.$store.dispatch('store/searchAlgolia')
@@ -105,10 +90,6 @@ export default {
   },
 
   methods: {
-    cleanUrlParams(query, reverse = false) {
-      return reverse ? query.replace(/-/g, ' ') : query.replace(/ /g, '-')
-    },
-
     refine(clickedFacet, active) {
       let query = ''
 
@@ -128,25 +109,32 @@ export default {
         query = query.substring(1)
       }
 
-      query = query.trim()
-      window.history.pushState(
-        {},
-        'Videos - Tim Benniks',
-        `?facets=${this.cleanUrlParams(query)}`
-      )
+      this.pushUrl(`?facets=${this.cleanUrlParams(query)}`)
       this.$store.dispatch('store/searchAlgolia', query)
       this.$ga.event('video-facet', 'click', clickedFacet.label)
     },
 
+    cleanUrlParams(query, reverse = false) {
+      return reverse ? query.replace(/-/g, ' ') : query.replace(/ /g, '-')
+    },
+
     clearFilters() {
-      window.history.pushState({}, 'Videos - Tim Benniks', '/videos/')
+      this.pushUrl('/videos/')
       this.$store.dispatch('store/searchAlgolia')
       this.$ga.event('video-facet', 'clear-filters')
+    },
+
+    pushUrl(params) {
+      window.history.pushState({}, 'Videos - Tim Benniks', `${params}`)
     },
   },
 
   head() {
-    return mapMetaInfo(this.document.data, 'videos', this.$router.currentRoute)
+    return mapMetaInfo(
+      this.metaInfo.fields,
+      this.metaInfo.pageType,
+      this.$router.currentRoute.path
+    )
   },
 }
 </script>
