@@ -80,13 +80,20 @@ export default {
   mounted() {
     const urlParams = new URLSearchParams(window.location.search)
     if (urlParams.get('facets')) {
-      this.$store.dispatch('store/searchAlgolia', urlParams.get('facets'))
+      this.$store.dispatch(
+        'store/searchAlgolia',
+        this.cleanUrlParams(urlParams.get('facets'), true)
+      )
     } else {
       this.$store.dispatch('store/searchAlgolia')
     }
   },
 
   methods: {
+    cleanUrlParams(query, reverse = false) {
+      return reverse ? query.replace(/-/g, ' ') : query.replace(/ /g, '-')
+    },
+
     refine(clickedFacet, active) {
       let query = ''
 
@@ -107,7 +114,11 @@ export default {
       }
 
       query = query.trim()
-      window.history.pushState({}, 'Videos - Tim Benniks', `?facets=${query}`)
+      window.history.pushState(
+        {},
+        'Videos - Tim Benniks',
+        `?facets=${this.cleanUrlParams(query)}`
+      )
       this.$store.dispatch('store/searchAlgolia', query)
     },
   },
