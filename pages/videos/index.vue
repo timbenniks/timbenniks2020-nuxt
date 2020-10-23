@@ -29,7 +29,7 @@
         </template>
         <template v-else>
           <span v-if="results !== 0">
-            {{ results }} Results
+            {{ results }} Result<template v-if="results !== 1">s</template>
             <button v-if="query" class="filter" @click="clearFilters">
               clear filters
               <span>x</span>
