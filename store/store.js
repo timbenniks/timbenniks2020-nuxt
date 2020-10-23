@@ -44,6 +44,8 @@ export const state = () => ({
     prismicTags: [],
     facets: [],
     hits: [],
+    loading: false,
+    results: 0,
   },
 })
 
@@ -84,6 +86,7 @@ export const mutations = {
   setSearchResults(state, results) {
     state.searchResults.facets = results.facets.tags
     state.searchResults.hits = results.hits
+    state.searchResults.results = results.nbHits
   },
 
   setSearchQuery(state, payload) {
@@ -92,6 +95,10 @@ export const mutations = {
 
   setPrismicTags(state, payload) {
     state.searchResults.prismicTags = payload.sort()
+  },
+
+  setSearchLoading(state, payload) {
+    state.searchResults.loading = payload
   },
 }
 
@@ -108,8 +115,16 @@ export const getters = {
     return state.sponsorStats
   },
 
-  searchResults(state) {
+  searchHits(state) {
     return state.searchResults.hits
+  },
+
+  searchResults(state) {
+    return state.searchResults.results
+  },
+
+  searchQuery(state) {
+    return state.searchResults.query
   },
 
   facets(state) {
@@ -137,6 +152,10 @@ export const getters = {
     })
 
     return facets
+  },
+
+  searchLoading(state) {
+    return state.searchResults.loading
   },
 }
 
@@ -170,11 +189,14 @@ export const actions = {
   },
 
   searchAlgolia({ commit }, payload = '') {
+    commit('setSearchLoading', true)
+
     fetch(`${this.$config.base_url}api/algolia-search?facets=${payload}`)
       .then((response) => response.json())
       .then((results) => {
         commit('setSearchQuery', payload)
         commit('setSearchResults', results)
+        commit('setSearchLoading', false)
       })
   },
 

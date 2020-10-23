@@ -16,15 +16,27 @@
           :key="facet.label"
           class="filter"
           :class="{ selected: facet.active, disabled: facet.amount === 0 }"
-          @click.prevent="
-            refine(facet, facet.active)
-            $ga.event('video-facet', 'click', facet.label)
-          "
+          @click.prevent="refine(facet, facet.active)"
         >
           {{ facet.label }}
           <span>{{ facet.amount }}</span>
         </button>
       </div>
+
+      <p class="status">
+        <template v-if="loading">
+          Working...
+        </template>
+        <template v-else>
+          <span v-if="results !== 0">
+            {{ results }} Results
+            <button v-if="query" class="filter" @click="clearFilters">
+              clear filters
+              <span>x</span>
+            </button>
+          </span>
+        </template>
+      </p>
 
       <div class="videos-list">
         <div class="videos">
@@ -68,8 +80,11 @@ export default {
 
   computed: {
     ...mapGetters({
-      hits: 'store/searchResults',
+      hits: 'store/searchHits',
       facets: 'store/facets',
+      loading: 'store/searchLoading',
+      results: 'store/searchResults',
+      query: 'store/searchQuery',
     }),
   },
 
@@ -120,6 +135,13 @@ export default {
         `?facets=${this.cleanUrlParams(query)}`
       )
       this.$store.dispatch('store/searchAlgolia', query)
+      this.$ga.event('video-facet', 'click', clickedFacet.label)
+    },
+
+    clearFilters() {
+      window.history.pushState({}, 'Videos - Tim Benniks', '/videos/')
+      this.$store.dispatch('store/searchAlgolia')
+      this.$ga.event('video-facet', 'clear-filters')
     },
   },
 
@@ -130,12 +152,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.videos {
-  display: grid;
-  grid-gap: 1rem;
-  min-width: 0;
-
-  // prettier-ignore
-  @include responsive('grid-template-columns', (xs: 100%, sm: repeat(2, 47.5%), m: repeat(3, 32%)));
+.status .filter {
+  margin: 0;
 }
 </style>
