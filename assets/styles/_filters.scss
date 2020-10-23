@@ -1,7 +1,3 @@
-.ais-Stats.posts {
-  margin: 1rem auto 0.5rem !important;
-}
-
 .load-more {
   background: none;
   padding: 0;
@@ -60,79 +56,79 @@
   &.no-count {
     max-width: rem(800px);
   }
+}
 
-  .filter {
-    background: none;
-    padding: 0;
-    border: none;
-    appearance: none;
-    color: $white;
-    text-transform: uppercase;
-    font-weight: 600;
-    padding: rem(4px 28px 4px 6px);
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 0.8rem;
-    position: relative;
-    margin: 0 0.5rem 0.5rem 0;
+.filter {
+  background: none;
+  padding: 0;
+  border: none;
+  appearance: none;
+  color: $white;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: rem(4px 28px 4px 6px);
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.8rem;
+  position: relative;
+  margin: 0 0.5rem 0.5rem 0;
 
-    span {
-      font-weight: 400;
-      position: absolute;
-      height: 100%;
-      right: rem(-1px);
-      top: 0;
-      width: rem(23px);
-      text-align: center;
-      padding: rem(3px 0 0 0);
-
-      &:before {
-        content: '';
-        position: absolute;
-        background: darken($blue-dark, 7);
-        bottom: 0;
-        right: 0;
-        top: 0;
-        z-index: -1;
-        transform: skew(-5deg);
-        width: rem(23px);
-      }
-    }
+  span {
+    font-weight: 400;
+    position: absolute;
+    height: 100%;
+    right: rem(-1px);
+    top: 0;
+    width: rem(23px);
+    text-align: center;
+    padding: rem(3px 0 0 0);
 
     &:before {
       content: '';
       position: absolute;
-      background: $red;
+      background: darken($blue-dark, 7);
       bottom: 0;
-      left: 0;
       right: 0;
       top: 0;
       z-index: -1;
-      transform: skew(-4deg);
+      transform: skew(-5deg);
+      width: rem(23px);
     }
+  }
 
-    &.disabled {
-      pointer-events: none;
-      opacity: 0.3;
-    }
+  &:before {
+    content: '';
+    position: absolute;
+    background: $red;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: -1;
+    transform: skew(-4deg);
+  }
 
-    &:hover,
-    &.selected {
-      &:before {
-        background: $blue-main;
-      }
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.3;
+  }
 
-      &:focus {
-        outline: 1px solid $blue-light;
-
-        &:before {
-          background: $blue-main;
-        }
-      }
+  &:hover,
+  &.selected {
+    &:before {
+      background: $blue-main;
     }
 
     &:focus {
-      outline: 1px solid $white;
+      outline: 1px solid $blue-light;
+
+      &:before {
+        background: $blue-main;
+      }
     }
+  }
+
+  &:focus {
+    outline: 1px solid $white;
   }
 }
