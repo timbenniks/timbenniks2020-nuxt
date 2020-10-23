@@ -1,12 +1,5 @@
 import Prismic from 'prismic-javascript'
-import BundleAnalyzerPlugin from '@bundle-analyzer/webpack-plugin'
-
-const plugins = []
-if (process.env.NODE_ENV !== 'development') {
-  plugins.push(
-    new BundleAnalyzerPlugin({ token: process.env.BUNDLE_ANALYZER_TOKEN })
-  )
-}
+// import BundleAnalyzerPlugin from '@bundle-analyzer/webpack-plugin'
 
 export default {
   target: 'static',
@@ -64,7 +57,9 @@ export default {
   },
   build: {
     transpile: ['vue-instantsearch', 'instantsearch.js/es'],
-    plugins,
+    plugins: [
+      // new BundleAnalyzerPlugin({ token: process.env.BUNDLE_ANALYZER_TOKEN }),
+    ],
   },
   styleResources: {
     scss: [

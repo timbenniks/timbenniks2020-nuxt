@@ -152,7 +152,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.status .filter {
-  margin: 0;
+.status {
+  max-width: 1100px;
+  margin: 0 auto 1.25rem;
+
+  .filter {
+    margin: 0;
+  }
 }
 </style>
