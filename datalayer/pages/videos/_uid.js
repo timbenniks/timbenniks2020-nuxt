@@ -3,7 +3,7 @@ import Prismic from 'prismic-javascript'
 import getPrismicApi from '@/datalayer/helpers/getPrismicApi'
 import linkResolver from '@/datalayer/helpers/linkresolver'
 import htmlSerializer from '@/datalayer/helpers/htmlserializer'
-import { asDay, asMonth, asYear } from '@/assets/prismic/helpers'
+import { asDay, asMonth, asYear } from '@/datalayer/helpers/modifiers'
 
 export const handler = async (context) => {
   const api = await getPrismicApi()

@@ -5,7 +5,7 @@ import htmlSerializer from '@/datalayer/helpers/htmlserializer'
 
 export const handler = async (context) => {
   const api = await getPrismicApi()
-  const result = await api.getSingle('about')
+  const result = await api.getSingle('sponsor')
 
   const document = {
     title: dom.RichText.asText(result.data.title),
@@ -24,7 +24,7 @@ export const handler = async (context) => {
       last_publication_date: document.last_publication_date,
       ...document.data,
     },
-    pageType: 'about',
+    pageType: 'writing',
   }
 
   return {

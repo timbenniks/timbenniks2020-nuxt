@@ -6,7 +6,7 @@
       <heading
         :breadcrumb="true"
         titletag="h1"
-        :title="$prismic.asText(document.data.title)"
+        :title="document.title"
         :uppercase="true"
       />
 

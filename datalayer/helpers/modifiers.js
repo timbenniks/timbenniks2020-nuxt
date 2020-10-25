@@ -1,5 +1,5 @@
 import { Link } from 'prismic-dom'
-import linkResolver from '@/plugins/linkresolver'
+import linkResolver from './linkresolver'
 
 export function asLink(field) {
   return Link.url(field, linkResolver)

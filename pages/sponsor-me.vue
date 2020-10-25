@@ -4,7 +4,7 @@
 
     <main id="main-content">
       <heading
-        :title="$prismic.asText(document.data.title)"
+        :title="document.title"
         :breadcrumb="true"
         titletag="h1"
         :use-fancy-titles="true"
@@ -25,38 +25,21 @@
       <div class="sponsor-wrapper">
         <sponsor alignment="left">
           <p>
-            Click the button above to sponsor me or go
+            Click the button above to sponsor me or visit my
             <a
               href="https://www.buymeacoffee.com/timbenniks"
               target="_blank"
               rel="noopener"
-              >here</a
-            >.
+              >buymeacoffee</a
+            >
+            page.
           </p>
         </sponsor>
       </div>
 
       <!-- eslint-disable vue/no-v-html -->
-      <div
-        ref="body"
-        class="post-content"
-        v-html="$prismic.asHtml(document.data.content)"
-      ></div>
+      <div ref="body" class="post-content" v-html="document.content"></div>
       <!--eslint-enable-->
-
-      <div class="sponsor-wrapper">
-        <sponsor alignment="left">
-          <p>
-            Click the button above to sponsor me or go
-            <a
-              href="https://www.buymeacoffee.com/timbenniks"
-              target="_blank"
-              rel="noopener"
-              >here</a
-            >.
-          </p>
-        </sponsor>
-      </div>
     </main>
   </div>
 </template>
@@ -66,29 +49,23 @@ import LinkMixin from '@/assets/mixins/linkMixin'
 import IframeMixin from '@/assets/mixins/iframeMixin'
 import ImageMixin from '@/assets/mixins/imageMixin'
 import SyntaxHighlighterMixin from '@/assets/mixins/syntaxHighlighterMixin'
-import mapMetaInfo from '@/assets/prismic/mapMetaInfo'
+import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
 
 export default {
   mixins: [LinkMixin, IframeMixin, ImageMixin, SyntaxHighlighterMixin],
-  async asyncData({ $prismic, error }) {
-    try {
-      const document = await $prismic.api.getSingle('sponsor')
-      return {
-        document,
-      }
-    } catch (e) {
-      error({ statusCode: 404, message: 'Page not found' })
+  async asyncData(context) {
+    const { handler } = await import('@/datalayer/pages/sponsor-me')
+    const { document, metaInfo } = await handler(context)
+    return {
+      document,
+      metaInfo,
     }
   },
   head() {
     return mapMetaInfo(
-      {
-        id: this.document.uid,
-        last_publication_date: this.document.last_publication_date,
-        ...this.document.data,
-      },
-      'writing',
-      this.$router.currentRoute
+      this.metaInfo.fields,
+      this.metaInfo.pageType,
+      this.$router.currentRoute.path
     )
   },
 }

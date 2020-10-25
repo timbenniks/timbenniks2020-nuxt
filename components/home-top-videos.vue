@@ -2,22 +2,19 @@
   <div class="videos-list top-videos">
     <fancy-title
       tag="h3"
-      :field="$prismic.asText(data.primary.top_videos_list)"
+      :field="data.title"
       color="red"
       type="small"
       :offset="[0, 0]"
       uppercase="uppercase"
     />
     <!-- eslint-disable vue/no-v-html -->
-    <div
-      class="top-videos-intro"
-      v-html="$prismic.asHtml(data.primary.intro_text)"
-    />
+    <div class="top-videos-intro" v-html="data.intro" />
     <!--eslint-enable-->
 
     <div class="videos">
       <video-card
-        v-for="video in videos"
+        v-for="video in data.videos"
         :key="video.slug"
         :video="video"
         @click="$ga.event('home-top-vidoes', 'click', video.slug)"
@@ -37,20 +34,6 @@ export default {
     data: {
       type: Object,
       required: true,
-    },
-  },
-
-  computed: {
-    videos() {
-      return this.data.items.map((item) => {
-        return {
-          slug: item.video.uid,
-          title: this.$prismic.asText(item.video.data.title),
-          image: item.video.data.image.url,
-          publication_date: item.video.data.publication_date,
-          tags: item.video.tags,
-        }
-      })
     },
   },
 }

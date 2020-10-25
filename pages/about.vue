@@ -4,19 +4,15 @@
 
     <main id="main-content">
       <heading
-        :title="$prismic.asText(document.data.title)"
-        :subtitle="$prismic.asText(document.data.sub_title)"
+        :title="document.title"
+        :subtitle="document.sub_title"
         :breadcrumb="true"
         titletag="h1"
         subtitletag="h2"
         :use-fancy-titles="true"
       />
       <!-- eslint-disable vue/no-v-html -->
-      <div
-        ref="body"
-        class="post-content"
-        v-html="$prismic.asHtml(document.data.content)"
-      ></div>
+      <div ref="body" class="post-content" v-html="document.content"></div>
       <!--eslint-enable-->
     </main>
   </div>
@@ -27,29 +23,23 @@ import LinkMixin from '@/assets/mixins/linkMixin'
 import IframeMixin from '@/assets/mixins/iframeMixin'
 import ImageMixin from '@/assets/mixins/imageMixin'
 import SyntaxHighlighterMixin from '@/assets/mixins/syntaxHighlighterMixin'
-import mapMetaInfo from '@/assets/prismic/mapMetaInfo'
+import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
 
 export default {
   mixins: [LinkMixin, IframeMixin, ImageMixin, SyntaxHighlighterMixin],
-  async asyncData({ $prismic, error }) {
-    try {
-      const document = await $prismic.api.getSingle('about')
-      return {
-        document,
-      }
-    } catch (e) {
-      error({ statusCode: 404, message: 'Page not found' })
+  async asyncData(context) {
+    const { handler } = await import('@/datalayer/pages/about')
+    const { document, metaInfo } = await handler(context)
+    return {
+      document,
+      metaInfo,
     }
   },
   head() {
     return mapMetaInfo(
-      {
-        id: this.document.uid,
-        last_publication_date: this.document.last_publication_date,
-        ...this.document.data,
-      },
-      'writing',
-      this.$router.currentRoute
+      this.metaInfo.fields,
+      this.metaInfo.pageType,
+      this.$router.currentRoute.path
     )
   },
 }

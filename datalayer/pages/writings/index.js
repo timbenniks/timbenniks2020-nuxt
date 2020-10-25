@@ -1,7 +1,7 @@
 import Prismic from 'prismic-javascript'
 import dom from 'prismic-dom'
 import getPrismicApi from '@/datalayer/helpers/getPrismicApi'
-import { asDay, asMonth, asYear } from '@/assets/prismic/helpers'
+import { asDay, asMonth, asYear } from '@/datalayer/helpers/modifiers'
 
 export const handler = async (context) => {
   const api = await getPrismicApi()
