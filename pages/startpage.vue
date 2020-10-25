@@ -5,7 +5,6 @@
         ratio="1/1"
         alt="Tim Benniks"
         url="https://images.prismic.io/timbenniks/375f865f-188c-4f83-9462-c8600aff4061_favicon.png"
-        extra-class="opacity-only"
         :caption="false"
         :widths="[200]"
         sizes="200px"

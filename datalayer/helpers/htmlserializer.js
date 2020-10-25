@@ -20,8 +20,6 @@ function getSrcSet(baseUrl, widths) {
   return srcset.slice(0, -2)
 }
 
-const nativeLazySupported = true
-
 const Elements = prismicDOM.RichText.Elements
 
 module.exports = function (type, element, content, children) {
@@ -45,25 +43,18 @@ module.exports = function (type, element, content, children) {
       <figure style="--aspect-ratio:${element.dimensions.width}/${
       element.dimensions.height
     };">
-        <img
-          ${
-            nativeLazySupported ? 'srcset' : 'data-srcset'
-          }="${getSrcSet(element.url, [300, 400, 500, 600, 700, 800])}"
-          ${
-            nativeLazySupported ? 'sizes' : 'data-sizes'
-          }="(max-width: 700px) 90vw, (min-width: 880px) 800px"
-          alt="${element.alt}"
-          title="${element.alt}"
-          ${nativeLazySupported ? 'loading="lazy"' : ''}
-          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-          class="${!nativeLazySupported ? 'lazy' : ''}"
-          width="${element.dimensions.width}"
-          height="${element.dimensions.height}"
+        <img srcset="${getSrcSet(element.url, [300, 400, 500, 600, 700, 800])}"
+             sizes="(max-width: 700px) 90vw, (min-width: 880px) 800px"
+             alt="${element.alt}"
+             title="${element.alt}"
+             loading="lazy"
+             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+             width="${element.dimensions.width}"
+             height="${element.dimensions.height}"
         />
         <figcaption>${element.alt}</figcaption>
       </figure>
       `
-
     return result
   }
 

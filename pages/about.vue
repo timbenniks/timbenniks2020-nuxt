@@ -21,12 +21,11 @@
 <script>
 import LinkMixin from '@/assets/mixins/linkMixin'
 import IframeMixin from '@/assets/mixins/iframeMixin'
-import ImageMixin from '@/assets/mixins/imageMixin'
 import SyntaxHighlighterMixin from '@/assets/mixins/syntaxHighlighterMixin'
 import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
 
 export default {
-  mixins: [LinkMixin, IframeMixin, ImageMixin, SyntaxHighlighterMixin],
+  mixins: [LinkMixin, IframeMixin, SyntaxHighlighterMixin],
   async asyncData(context) {
     const { handler } = await import('@/datalayer/pages/about')
     const { document, metaInfo } = await handler(context)

@@ -1,7 +1,6 @@
 <template>
   <figure :style="`--aspect-ratio:${ratio};`">
     <img
-      v-if="nativeLazySupported"
       :srcset="generateSrcSet()"
       :alt="alt"
       :title="alt"
@@ -10,16 +9,7 @@
       :width="parseRatioForWH(ratio, 'width')"
       :height="parseRatioForWH(ratio, 'height')"
     />
-    <img
-      v-else
-      :data-srcset="generateSrcSet()"
-      :alt="alt"
-      :src="preload"
-      :title="alt"
-      :data-sizes="sizes"
-      :class="extraClass"
-      class="lazy"
-    />
+
     <figcaption v-if="caption">
       {{ alt }}
     </figcaption>
@@ -27,12 +17,6 @@
 </template>
 
 <script>
-import {
-  loadImages,
-  getSrcSet,
-  nativeLazySupported,
-} from '../assets/prismic/imageTools'
-
 export default {
   name: 'LazyImage',
   props: {
@@ -42,29 +26,37 @@ export default {
     sizes: { type: String, required: false, default: '' },
     widths: { type: Array, required: true },
     caption: { type: Boolean, required: false, default: false },
-    extraClass: { type: String, required: false, default: '' },
     loadingType: { type: String, required: false, default: 'lazy' },
-    preload: {
-      type: String,
-      required: false,
-      default:
-        'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
-    },
-  },
-  data() {
-    return {
-      nativeLazySupported,
-    }
-  },
-  mounted() {
-    loadImages()
   },
   methods: {
     parseRatioForWH(ratio, which) {
       return Number(ratio.split('/')[which === 'width' ? 0 : 1]) * 10
     },
+
+    concatCloudinaryUrl(url, opts) {
+      return `https://res.cloudinary.com/dwfcofnrd/image/fetch/ar_${opts.ratio},c_${opts.crop},f_auto,q_auto,w_${opts.width}/${url}`
+    },
+
     generateSrcSet() {
-      return getSrcSet(this.url, this.widths, this.ratio)
+      const cleanUrl = this.url.replace('?auto=compress,format', '')
+      let srcset = ''
+
+      this.widths.forEach((width) => {
+        const opts = {
+          crop: 'scale',
+          width,
+        }
+
+        if (this.ratio) {
+          opts.ratio = this.ratio.replace('/', ':')
+          opts.crop = 'fill'
+        }
+
+        const url = this.concatCloudinaryUrl(cleanUrl, opts)
+        srcset += `${url} ${width}w, `
+      })
+
+      return srcset.slice(0, -2)
     },
   },
 }

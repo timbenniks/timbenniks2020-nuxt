@@ -12,7 +12,6 @@
           ratio="1/1"
           :alt="data.logo.alt"
           :url="data.logo.url"
-          extra-class="opacity-only"
           :caption="false"
           :widths="[271]"
           sizes="271px"

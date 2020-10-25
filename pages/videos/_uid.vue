@@ -60,11 +60,10 @@
 <script>
 import LinkMixin from '@/assets/mixins/linkMixin'
 import IframeMixin from '@/assets/mixins/iframeMixin'
-import ImageMixin from '@/assets/mixins/imageMixin'
 import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
 
 export default {
-  mixins: [LinkMixin, IframeMixin, ImageMixin],
+  mixins: [LinkMixin, IframeMixin],
   async asyncData(context) {
     const { handler } = await import('@/datalayer/pages/videos/_uid')
     const { document, relatedVideos, metaInfo } = await handler(context)
