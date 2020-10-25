@@ -1,5 +1,5 @@
 import Prismic from 'prismic-javascript'
-// import BundleAnalyzerPlugin from '@bundle-analyzer/webpack-plugin'
+import BundleAnalyzerPlugin from '@bundle-analyzer/webpack-plugin'
 
 export default {
   target: 'static',
@@ -47,7 +47,7 @@ export default {
   modules: ['@nuxtjs/sitemap'],
   build: {
     plugins: [
-      // new BundleAnalyzerPlugin({ token: process.env.BUNDLE_ANALYZER_TOKEN }),
+      new BundleAnalyzerPlugin({ token: process.env.BUNDLE_ANALYZER_TOKEN }),
     ],
   },
   styleResources: {
