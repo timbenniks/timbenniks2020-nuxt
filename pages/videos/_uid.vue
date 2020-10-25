@@ -26,7 +26,8 @@
             height="9"
             allowfullscreen
             frameborder="0"
-            :data-src="document.embed"
+            loading="lazy"
+            :src="document.embed"
           ></iframe>
         </figure>
       </div>
@@ -59,11 +60,10 @@
 
 <script>
 import LinkMixin from '@/assets/mixins/linkMixin'
-import IframeMixin from '@/assets/mixins/iframeMixin'
 import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
 
 export default {
-  mixins: [LinkMixin, IframeMixin],
+  mixins: [LinkMixin],
   async asyncData(context) {
     const { handler } = await import('@/datalayer/pages/videos/_uid')
     const { document, relatedVideos, metaInfo } = await handler(context)

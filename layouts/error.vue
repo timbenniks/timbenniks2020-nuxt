@@ -24,6 +24,7 @@
             allow="autoplay"
             allowfullscreen
             frameborder="0"
+            loading="lazy"
             src="https://www.youtube.com/embed/8DZrK-2Z17A"
           ></iframe>
         </figure>

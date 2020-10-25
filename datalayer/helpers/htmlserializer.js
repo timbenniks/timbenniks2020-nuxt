@@ -82,7 +82,8 @@ module.exports = function (type, element, content, children) {
             allow="autoplay"
             allowfullscreen
             frameborder="0"
-            data-src="${element.oembed.embed_url.replace(
+            loading="lazy"
+            src="${element.oembed.embed_url.replace(
               'watch?v=',
               'embed/'
             )}"></iframe>
@@ -98,7 +99,8 @@ module.exports = function (type, element, content, children) {
             height="9"
             allowfullscreen
             frameborder="0"
-            data-src="${element.oembed.embed_url}"></iframe>
+            loading="lazy"
+            src="${element.oembed.embed_url}"></iframe>
         </figure>
       `
     }
@@ -112,7 +114,8 @@ module.exports = function (type, element, content, children) {
             height="293"
             allowfullscreen
             frameborder="0"
-            data-src="${element.oembed.embed_url}"></iframe>
+            loading="lazy"
+            src="${element.oembed.embed_url}"></iframe>
         </figure>
       `
     }
