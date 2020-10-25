@@ -56,7 +56,6 @@ export default {
     preview: false,
   },
   build: {
-    transpile: ['vue-instantsearch', 'instantsearch.js/es'],
     plugins: [
       new BundleAnalyzerPlugin({ token: process.env.BUNDLE_ANALYZER_TOKEN }),
     ],
