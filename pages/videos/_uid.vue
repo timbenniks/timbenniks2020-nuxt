@@ -37,9 +37,13 @@
         :use-fancy-titles="true"
       />
       <div class="filters no-count">
-        <span v-for="tag in document.tags" :key="tag" class="filter">{{
-          tag
-        }}</span>
+        <nuxt-link
+          v-for="tag in document.tags"
+          :key="tag"
+          :to="`/videos/?facets=${tag.replace(/ /g, '-')}`"
+          class="filter"
+          >{{ tag }}</nuxt-link
+        >
       </div>
 
       <!-- eslint-disable vue/no-v-html -->
