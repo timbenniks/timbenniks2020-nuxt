@@ -32,7 +32,9 @@ import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
 export default {
   mixins: [LinkMixin],
   async asyncData(context) {
-    const { handler } = await import('@/datalayer/pages/home')
+    const { handler } = await import(
+      /* webpackChunkName: "datalayer-page-home" */ '@/datalayer/pages/home'
+    )
     const {
       document,
       heroBanner,

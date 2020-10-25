@@ -49,7 +49,9 @@ import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
 
 export default {
   async asyncData(context) {
-    const { handler } = await import('@/datalayer/pages/writings')
+    const { handler } = await import(
+      /* webpackChunkName: "datalayer-page-writings" */ '@/datalayer/pages/writings'
+    )
     const { document, writings, metaInfo } = await handler(context)
     return {
       document,

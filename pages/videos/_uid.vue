@@ -65,7 +65,9 @@ import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
 export default {
   mixins: [LinkMixin],
   async asyncData(context) {
-    const { handler } = await import('@/datalayer/pages/videos/_uid')
+    const { handler } = await import(
+      /* webpackChunkName: "datalayer-page-videos-uid" */ '@/datalayer/pages/videos/_uid'
+    )
     const { document, relatedVideos, metaInfo } = await handler(context)
     return {
       document,

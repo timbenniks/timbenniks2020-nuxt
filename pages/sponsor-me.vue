@@ -52,7 +52,9 @@ import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
 export default {
   mixins: [LinkMixin, SyntaxHighlighterMixin],
   async asyncData(context) {
-    const { handler } = await import('@/datalayer/pages/sponsor-me')
+    const { handler } = await import(
+      /* webpackChunkName: "datalayer-page-sponsor-me" */ '@/datalayer/pages/sponsor-me'
+    )
     const { document, metaInfo } = await handler(context)
     return {
       document,

@@ -38,7 +38,9 @@ import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
 
 export default {
   async asyncData(context) {
-    const { handler } = await import('@/datalayer/pages/speaking')
+    const { handler } = await import(
+      /* webpackChunkName: "datalayer-page-speaking" */ '@/datalayer/pages/speaking'
+    )
     const { document, oldTalks, upcomingTalks, metaInfo } = await handler(
       context
     )

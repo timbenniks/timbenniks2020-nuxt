@@ -53,7 +53,9 @@ import { mapGetters } from 'vuex'
 
 export default {
   async asyncData(context) {
-    const { handler } = await import('@/datalayer/pages/videos')
+    const { handler } = await import(
+      /* webpackChunkName: "datalayer-page-videos" */ '@/datalayer/pages/videos'
+    )
     const { document, tags, metaInfo } = await handler(context)
     return {
       document,

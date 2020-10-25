@@ -26,7 +26,9 @@ import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
 export default {
   mixins: [LinkMixin, SyntaxHighlighterMixin],
   async asyncData(context) {
-    const { handler } = await import('@/datalayer/pages/about')
+    const { handler } = await import(
+      /* webpackChunkName: "datalayer-page-about" */ '@/datalayer/pages/about'
+    )
     const { document, metaInfo } = await handler(context)
     return {
       document,
