@@ -14,8 +14,8 @@
         <nuxt-link :to="`/videos/${video.uid}/`">
           <lazy-image
             ratio="16/9"
-            :alt="$prismic.asText(video.data.title)"
-            :url="video.data.image.url"
+            :alt="video.title"
+            :url="video.image"
             :widths="[300, 400, 500, 600, 680]"
             sizes="(max-width: 400px) 100vw, (min-width: 700px) 210px"
           />
@@ -24,7 +24,7 @@
         <div class="post-content-wrap">
           <p class="post-title">
             <nuxt-link :to="`/videos/${video.uid}/`">
-              {{ $prismic.asText(video.data.title) }}
+              {{ video.title }}
             </nuxt-link>
           </p>
           <p class="post-tags">
@@ -34,9 +34,9 @@
             </span>
           </p>
           <p class="post-date">
-            {{ asDay(video.data.publication_date) }}
-            {{ asMonth(video.data.publication_date) }}
-            {{ asYear(video.data.publication_date) }}
+            {{ video.day }}
+            {{ video.month }}
+            {{ video.year }}
           </p>
         </div>
       </article>
@@ -45,25 +45,18 @@
 </template>
 
 <script>
-import { asDay, asMonth, asYear } from '../assets/prismic/helpers'
-
 export default {
   name: 'RelatedVideos',
   props: {
-    relatedVideos: { type: Object, required: true },
+    relatedVideos: { type: Array, required: true },
     currentVideo: { type: String, required: true },
   },
   computed: {
     videos() {
-      return this.relatedVideos.results
+      return this.relatedVideos
         .filter((video) => video.uid !== this.currentVideo)
         .slice(0, 3)
     },
-  },
-  methods: {
-    asDay,
-    asMonth,
-    asYear,
   },
 }
 </script>

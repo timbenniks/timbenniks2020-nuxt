@@ -1,3 +1,5 @@
+import { asDay, asMonth, asYear } from '@/datalayer/helpers/modifiers'
+
 export const state = () => ({
   youTubeStats: {
     subscriberCount: 0,
@@ -85,8 +87,20 @@ export const mutations = {
 
   setSearchResults(state, results) {
     state.searchResults.facets = results.facets.tags
-    state.searchResults.hits = results.hits
     state.searchResults.results = results.nbHits
+
+    state.searchResults.hits = results.hits.map((hit) => {
+      return {
+        image: hit.image,
+        slug: hit.slug,
+        tags: hit.tags,
+        title: hit.title,
+        publication_date: hit.publication_date,
+        day: asDay(hit.publication_date),
+        month: asMonth(hit.publication_date),
+        year: asYear(hit.publication_date),
+      }
+    })
   },
 
   setSearchQuery(state, payload) {

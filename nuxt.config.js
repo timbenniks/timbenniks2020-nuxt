@@ -21,10 +21,7 @@ export default {
       { name: 'author', content: 'Tim Benniks' },
       { name: 'robots', content: 'index, follow' },
     ],
-    link: [
-      { rel: 'preconnect', href: 'https://www.google-analytics.com' },
-      { rel: 'preconnect', href: 'https://images.prismic.io' },
-    ],
+    link: [{ rel: 'preconnect', href: 'https://www.google-analytics.com' }],
   },
   css: ['assets/styles/index.scss'],
   components: true,
@@ -47,14 +44,7 @@ export default {
       },
     ],
   ],
-  modules: ['@nuxtjs/prismic', '@nuxtjs/sitemap'],
-  prismic: {
-    endpoint: 'https://timbenniks.prismic.io/api/v2',
-    linkResolver: '@/plugins/linkresolver',
-    htmlSerializer: '@/plugins/htmlserializer',
-    components: true,
-    preview: false,
-  },
+  modules: ['@nuxtjs/sitemap'],
   build: {
     plugins: [
       // new BundleAnalyzerPlugin({ token: process.env.BUNDLE_ANALYZER_TOKEN }),

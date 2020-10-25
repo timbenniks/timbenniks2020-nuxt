@@ -1,15 +1,15 @@
 <template>
   <article class="post speaking">
     <div class="post-date">
-      <span class="post-date-day">{{ asDay(talk.date) }}</span>
-      <span class="post-date-month">{{ asMonth(talk.date) }}</span>
-      <span class="post-date-year">{{ asYear(talk.date) }}</span>
+      <span class="post-date-day">{{ talk.day }}</span>
+      <span class="post-date-month">{{ talk.month }}</span>
+      <span class="post-date-year">{{ talk.year }}</span>
     </div>
     <div class="post-content-wrapper">
       <div class="post-titles">
         <p class="post-title fancy-title red">
-          <a :href="asLink(talk.link_to_event)" target="_blank" rel="noopener">
-            {{ $prismic.asText(talk.title) }}
+          <a :href="talk.link_to_event" target="_blank" rel="noopener">
+            {{ talk.title }}
           </a>
         </p>
         <p class="post-subject">
@@ -22,8 +22,6 @@
 </template>
 
 <script>
-import { asLink, asDay, asMonth, asYear } from '../assets/prismic/helpers'
-
 export default {
   name: 'Talk',
   props: {
@@ -33,12 +31,6 @@ export default {
         return {}
       },
     },
-  },
-  methods: {
-    asDay,
-    asMonth,
-    asYear,
-    asLink,
   },
 }
 </script>

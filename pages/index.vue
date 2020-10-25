@@ -3,14 +3,11 @@
     <navigation />
 
     <main id="main-content">
-      <home-hero-banner :data="heroBannerData" />
+      <home-hero-banner :data="heroBanner" />
 
       <div class="homepage-content">
         <!-- eslint-disable vue/no-v-html -->
-        <div
-          class="homepage-introduction"
-          v-html="$prismic.asHtml(document.data.description)"
-        />
+        <div class="homepage-introduction" v-html="document.description" />
         <!--eslint-enable-->
 
         <sponsor>
@@ -21,7 +18,7 @@
           </p>
         </sponsor>
 
-        <home-top-videos :data="topVideosData" />
+        <home-top-videos :data="topVideos" />
         <home-latest-writing :data="latestWritings" />
       </div>
     </main>
@@ -30,79 +27,34 @@
 
 <script>
 import LinkMixin from '@/assets/mixins/linkMixin'
-import mapMetaInfo from '@/assets/prismic/mapMetaInfo'
+import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
 
 export default {
   mixins: [LinkMixin],
-  async asyncData({ $prismic, error }) {
-    try {
-      const graphQuery = `
-      {
-        home {
-          ...homeFields
-          body {
-            ...on general_card {
-              non-repeat {
-                ...non-repeatFields
-              }
-            }
-            ...on twitter_card {
-              non-repeat {
-                ...non-repeatFields
-              }
-            }
-          }
-          body1 {
-            ...on hero_banner {
-              non-repeat {
-                ...non-repeatFields
-              }
-            }
-            ...on top_videos {
-              non-repeat {
-                ...non-repeatFields
-              }
-              repeat {
-                ...repeatFields
-                video {
-                  ...on video {
-                    ...videoFields
-                  }
-                }
-              }
-            }
-          }
-        }
-      }`
+  async asyncData(context) {
+    const { handler } = await import('@/datalayer/pages/home')
+    const {
+      document,
+      heroBanner,
+      topVideos,
+      latestWritings,
+      metaInfo,
+    } = await handler(context)
 
-      const document = await $prismic.api.getSingle('home', { graphQuery })
-
-      const heroBannerData = document.data.body1.find(
-        (slice) => slice.slice_type === 'hero_banner'
-      ).primary
-
-      const topVideosData = document.data.body1.find(
-        (slice) => slice.slice_type === 'top_videos'
-      )
-
-      const writings = await $prismic.api.query(
-        $prismic.predicates.at('document.type', 'writing'),
-        { orderings: '[my.writing.publication_date desc]', pageSize: 2 }
-      )
-
-      return {
-        document,
-        heroBannerData,
-        topVideosData,
-        latestWritings: writings.results,
-      }
-    } catch (e) {
-      error({ statusCode: 500, message: 'Something went wrong...' })
+    return {
+      document,
+      heroBanner,
+      topVideos,
+      latestWritings,
+      metaInfo,
     }
   },
-
   head() {
-    return mapMetaInfo(this.document.data, 'home', this.$router.currentRoute)
+    return mapMetaInfo(
+      this.metaInfo.fields,
+      this.metaInfo.pageType,
+      this.$router.currentRoute.path
+    )
   },
 }
 </script>

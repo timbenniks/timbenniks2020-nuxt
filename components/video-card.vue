@@ -23,16 +23,15 @@
         </span>
       </p>
       <p class="post-date">
-        {{ asDay(video.publication_date) }}
-        {{ asMonth(video.publication_date) }}
-        {{ asYear(video.publication_date) }}
+        {{ video.day }}
+        {{ video.month }}
+        {{ video.year }}
       </p>
     </div>
   </article>
 </template>
 
 <script>
-import { asDay, asMonth, asYear } from '../assets/prismic/helpers'
 import LazyImage from './lazy-image.vue'
 
 export default {
@@ -42,11 +41,6 @@ export default {
   },
   props: {
     video: { type: Object, required: true },
-  },
-  methods: {
-    asDay,
-    asMonth,
-    asYear,
   },
 }
 </script>

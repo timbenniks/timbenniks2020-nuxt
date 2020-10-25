@@ -2,8 +2,7 @@
   <div class="hero-banner">
     <div class="hero-banner-inner">
       <lazy-hero-picture
-        v-if="data.banner_image.url && ratio"
-        :ratio="ratio"
+        v-if="data.banner_image.url"
         :alt="data.banner_image.alt"
         :url="data.banner_image.url"
       />
@@ -13,14 +12,13 @@
           ratio="1/1"
           :alt="data.logo.alt"
           :url="data.logo.url"
-          extra-class="opacity-only"
           :caption="false"
           :widths="[271]"
           sizes="271px"
         />
 
         <fancy-title
-          :field="$prismic.asText(data.title)"
+          :field="data.title"
           tag="h1"
           color="red"
           type="large"
@@ -29,7 +27,7 @@
         />
 
         <fancy-title
-          :field="$prismic.asText(data.subtitle)"
+          :field="data.subtitle"
           tag="h2"
           color="blue-main"
           type="small"
@@ -48,42 +46,6 @@ export default {
     data: {
       type: Object,
       required: true,
-    },
-  },
-  data() {
-    return {
-      ratio: '16/9',
-    }
-  },
-  computed: {
-    backgrounStats() {
-      return [
-        { width: 375, ratio: '16/9' },
-        { width: 1024, ratio: '22/9' },
-      ]
-    },
-
-    widths() {
-      return this.backgrounStats.map((stat) => {
-        return stat.width
-      })
-    },
-  },
-  mounted() {
-    this.ratio = this.getBackgroundData().ratio
-
-    window.addEventListener('resize', () => {
-      this.ratio = this.getBackgroundData().ratio
-    })
-  },
-  methods: {
-    getBackgroundData() {
-      const windowWidth = document.documentElement.clientWidth
-
-      return this.backgrounStats
-        .filter((bg) => windowWidth >= bg.width)
-        .slice(-1)
-        .pop()
     },
   },
 }
