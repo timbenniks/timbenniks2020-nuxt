@@ -12,7 +12,13 @@
       sizes="100vw"
     />
 
-    <img :alt="alt" :src="preload" loading="eager" />
+    <img
+      :alt="alt"
+      :src="preload"
+      loading="eager"
+      :width="parseRatioForWH('16/9', 'width')"
+      :height="parseRatioForWH('16/9', 'height')"
+    />
   </picture>
 </template>
 
@@ -32,6 +38,9 @@ export default {
   },
 
   methods: {
+    parseRatioForWH(ratio, which) {
+      return Number(ratio.split('/')[which === 'width' ? 0 : 1]) * 10
+    },
     concatCloudinaryUrl(url, opts) {
       return `https://res.cloudinary.com/dwfcofnrd/image/fetch/ar_${opts.ratio},c_${opts.crop},f_auto,q_auto,w_${opts.width}/${url}`
     },
