@@ -47,14 +47,7 @@ export default {
       },
     ],
   ],
-  modules: ['@nuxtjs/prismic', '@nuxtjs/sitemap'],
-  prismic: {
-    endpoint: 'https://timbenniks.prismic.io/api/v2',
-    linkResolver: '@/plugins/linkresolver',
-    htmlSerializer: '@/plugins/htmlserializer',
-    components: true,
-    preview: false,
-  },
+  modules: ['@nuxtjs/sitemap'],
   build: {
     plugins: [
       // new BundleAnalyzerPlugin({ token: process.env.BUNDLE_ANALYZER_TOKEN }),
