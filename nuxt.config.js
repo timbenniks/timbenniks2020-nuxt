@@ -21,10 +21,7 @@ export default {
       { name: 'author', content: 'Tim Benniks' },
       { name: 'robots', content: 'index, follow' },
     ],
-    link: [
-      { rel: 'preconnect', href: 'https://www.google-analytics.com' },
-      { rel: 'preconnect', href: 'https://images.prismic.io' },
-    ],
+    link: [{ rel: 'preconnect', href: 'https://www.google-analytics.com' }],
   },
   css: ['assets/styles/index.scss'],
   components: true,

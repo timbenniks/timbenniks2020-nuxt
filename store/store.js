@@ -92,7 +92,7 @@ export const mutations = {
     state.searchResults.hits = results.hits.map((hit) => {
       return {
         image: hit.image,
-        slug: history.slug,
+        slug: hit.slug,
         tags: hit.tags,
         title: hit.title,
         publication_date: hit.publication_date,
