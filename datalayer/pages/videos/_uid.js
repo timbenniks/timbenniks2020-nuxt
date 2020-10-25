@@ -1,4 +1,4 @@
-import dom from 'prismic-dom'
+import { RichText } from 'prismic-dom'
 import Prismic from 'prismic-javascript'
 import getPrismicApi from '@/datalayer/helpers/getPrismicApi'
 import linkResolver from '@/datalayer/helpers/linkresolver'
@@ -12,16 +12,12 @@ export const handler = async (context) => {
   const document = {
     ...result,
 
-    title: dom.RichText.asText(result.data.title),
+    title: RichText.asText(result.data.title),
     tags: result.tags,
     embed:
       result.data.video_embed.embed_url.replace('watch?v=', 'embed/') +
       '?autoplay=1&rel=0',
-    content: dom.RichText.asHtml(
-      result.data.content,
-      linkResolver,
-      htmlSerializer
-    ),
+    content: RichText.asHtml(result.data.content, linkResolver, htmlSerializer),
   }
 
   const relatedVideosData = await api.query(
@@ -32,7 +28,7 @@ export const handler = async (context) => {
   const relatedVideos = relatedVideosData.results.map((video) => {
     return {
       uid: video.uid,
-      title: dom.RichText.asText(video.data.title),
+      title: RichText.asText(video.data.title),
       image: video.data.image.url,
       tags: video.tags,
       day: asDay(video.data.publication_date),

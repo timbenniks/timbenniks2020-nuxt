@@ -1,5 +1,5 @@
 import Prismic from 'prismic-javascript'
-import dom from 'prismic-dom'
+import { RichText } from 'prismic-dom'
 import getPrismicApi from '@/datalayer/helpers/getPrismicApi'
 import { asDay, asMonth, asYear } from '@/datalayer/helpers/modifiers'
 
@@ -10,7 +10,7 @@ export const handler = async (context) => {
 
   const document = {
     ...result,
-    title: dom.RichText.asText(result.data.title),
+    title: RichText.asText(result.data.title),
   }
 
   const writingsData = await api.query(
@@ -21,8 +21,8 @@ export const handler = async (context) => {
   const writings = writingsData.results.map((writing) => {
     return {
       uid: writing.uid,
-      title: dom.RichText.asText(writing.data.title),
-      sub_title: dom.RichText.asText(writing.data.sub_title),
+      title: RichText.asText(writing.data.title),
+      sub_title: RichText.asText(writing.data.sub_title),
       image: writing.data.image.url,
       day: asDay(writing.data.publication_date),
       month: asMonth(writing.data.publication_date),

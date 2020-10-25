@@ -1,5 +1,5 @@
 import Prismic from 'prismic-javascript'
-import dom from 'prismic-dom'
+import { RichText } from 'prismic-dom'
 import getPrismicApi from '@/datalayer/helpers/getPrismicApi'
 
 export const handler = async (context) => {
@@ -9,7 +9,7 @@ export const handler = async (context) => {
 
   const document = {
     ...result,
-    title: dom.RichText.asText(result.data.title),
+    title: RichText.asText(result.data.title),
   }
 
   const videos = await api.query(

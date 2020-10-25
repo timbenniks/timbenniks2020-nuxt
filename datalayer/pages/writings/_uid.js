@@ -1,4 +1,4 @@
-import dom from 'prismic-dom'
+import { RichText } from 'prismic-dom'
 import getPrismicApi from '@/datalayer/helpers/getPrismicApi'
 import linkResolver from '@/datalayer/helpers/linkresolver'
 import htmlSerializer from '@/datalayer/helpers/htmlserializer'
@@ -8,13 +8,9 @@ export const handler = async (context) => {
   const result = await api.getByUID('writing', context.params.uid)
 
   const document = {
-    title: dom.RichText.asText(result.data.title),
-    sub_title: dom.RichText.asText(result.data.sub_title),
-    content: dom.RichText.asHtml(
-      result.data.content,
-      linkResolver,
-      htmlSerializer
-    ),
+    title: RichText.asText(result.data.title),
+    sub_title: RichText.asText(result.data.sub_title),
+    content: RichText.asHtml(result.data.content, linkResolver, htmlSerializer),
     ...result,
   }
 

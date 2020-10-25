@@ -1,10 +1,3 @@
-import { Link } from 'prismic-dom'
-import linkResolver from './linkresolver'
-
-export function asLink(field) {
-  return Link.url(field, linkResolver)
-}
-
 export function asDay(date) {
   const day = new Date(date).getDate().toString()
   return day.padStart(2, '0')
