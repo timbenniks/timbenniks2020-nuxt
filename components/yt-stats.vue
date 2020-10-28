@@ -18,7 +18,7 @@
         <p>{{ youTubeStats.viewCount }}</p>
       </div>
       <div class="stat">
-        <h6>VIDOES</h6>
+        <h6>VIDEOS</h6>
         <p>{{ youTubeStats.videoCount }}</p>
       </div>
     </div>
