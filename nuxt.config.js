@@ -82,21 +82,16 @@ export default {
     },
   },
   generate: {
-    routes() {
-      return Prismic.getApi('https://timbenniks.prismic.io/api/v2').then(
-        (api) => {
-          return api
-            .query(Prismic.Predicates.at('document.type', 'video'), {
-              orderings: '[my.video.publication_date desc]',
-              pageSize: 100,
-            })
-            .then((videos) => {
-              return videos.results.map((video) => {
-                return `/videos/${video.uid}`
-              })
-            })
+    async routes() {
+      const api = await Prismic.getApi('https://timbenniks.prismic.io/api/v2')
+      const videos = await api.query(
+        Prismic.Predicates.at('document.type', 'video'),
+        {
+          orderings: '[my.video.publication_date desc]',
+          pageSize: 100,
         }
       )
+      return videos.results.map((video) => `/videos/${video.uid}`)
     },
   },
 }
