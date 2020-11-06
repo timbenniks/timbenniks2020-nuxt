@@ -70,6 +70,16 @@ module.exports = function (type, element, content, children) {
     return `<h5 class="fancy-title yellow">${element.text}</h5>`
   }
 
+  if (type === Elements.paragraph) {
+    let parsedChildren = children.join('')
+    parsedChildren = parsedChildren.replace(
+      /`(.*?)`/g,
+      '<code class="inline">$1</code>'
+    )
+
+    return `<p>${parsedChildren}</p>`
+  }
+
   if (type === Elements.embed) {
     let result = ''
 
