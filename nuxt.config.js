@@ -43,6 +43,7 @@ export default {
         },
       },
     ],
+    '@/modules/sitemapRouteGenerator',
   ],
   modules: ['@nuxtjs/sitemap'],
   build: {
@@ -64,7 +65,6 @@ export default {
     path: '/sitemap.xml',
     hostname: 'https://timbenniks.dev',
     cacheTime: 1000 * 60 * 15,
-    gzip: true,
     exclude: ['/startpage'],
   },
   publicRuntimeConfig: {
