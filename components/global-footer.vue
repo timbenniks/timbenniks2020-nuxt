@@ -18,6 +18,9 @@
           <li @click="$ga.event('footer_navigation', 'click', 'about')">
             <nuxt-link to="/about">About</nuxt-link>
           </li>
+          <li @click="$ga.event('footer_navigation', 'click', 'feed')">
+            <a href="/feed.xml">RSS Feed</a>
+          </li>
         </ul>
       </div>
 

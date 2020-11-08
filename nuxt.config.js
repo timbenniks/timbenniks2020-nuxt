@@ -1,5 +1,4 @@
-// import Prismic from 'prismic-javascript'
-import BundleAnalyzerPlugin from '@bundle-analyzer/webpack-plugin'
+// import BundleAnalyzerPlugin from '@bundle-analyzer/webpack-plugin'
 import videoRoutes from './datalayer/helpers/generateVideoRoutes'
 import generateFeed from './datalayer/helpers/generateFeed'
 
@@ -48,11 +47,6 @@ export default {
     '@/modules/sitemapRouteGenerator',
   ],
   modules: ['@nuxtjs/sitemap', '@nuxtjs/feed'],
-  build: {
-    plugins: [
-      new BundleAnalyzerPlugin({ token: process.env.BUNDLE_ANALYZER_TOKEN }),
-    ],
-  },
   styleResources: {
     scss: [
       'assets/styles/_packages.scss',
