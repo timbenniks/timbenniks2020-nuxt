@@ -22,7 +22,15 @@ export default {
       { name: 'author', content: 'Tim Benniks' },
       { name: 'robots', content: 'index, follow' },
     ],
-    link: [{ rel: 'preconnect', href: 'https://www.google-analytics.com' }],
+    link: [
+      { rel: 'preconnect', href: 'https://www.google-analytics.com' },
+      {
+        rel: 'alternate',
+        type: 'application/rss+xml',
+        title: 'RSS Feed for timbenniks.dev',
+        href: '/feed.xml',
+      },
+    ],
   },
   css: ['assets/styles/index.scss'],
   components: true,
