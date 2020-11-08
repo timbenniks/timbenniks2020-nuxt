@@ -1,5 +1,7 @@
-import Prismic from 'prismic-javascript'
+// import Prismic from 'prismic-javascript'
 import BundleAnalyzerPlugin from '@bundle-analyzer/webpack-plugin'
+import videoRoutes from './datalayer/helpers/generateVideoRoutes'
+import generateFeed from './datalayer/helpers/generateFeed'
 
 export default {
   target: 'static',
@@ -45,7 +47,7 @@ export default {
     ],
     '@/modules/sitemapRouteGenerator',
   ],
-  modules: ['@nuxtjs/sitemap'],
+  modules: ['@nuxtjs/sitemap', '@nuxtjs/feed'],
   build: {
     plugins: [
       new BundleAnalyzerPlugin({ token: process.env.BUNDLE_ANALYZER_TOKEN }),
@@ -83,15 +85,17 @@ export default {
   },
   generate: {
     async routes() {
-      const api = await Prismic.getApi('https://timbenniks.prismic.io/api/v2')
-      const videos = await api.query(
-        Prismic.Predicates.at('document.type', 'video'),
-        {
-          orderings: '[my.video.publication_date desc]',
-          pageSize: 100,
-        }
-      )
-      return videos.results.map((video) => `/videos/${video.uid}`)
+      return await videoRoutes()
     },
   },
+  feed: [
+    {
+      path: '/feed.xml',
+      async create(feed) {
+        return await generateFeed(feed)
+      },
+      cacheTime: 1000 * 60 * 15,
+      type: 'rss2',
+    },
+  ],
 }

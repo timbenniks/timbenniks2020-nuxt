@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@bundle-analyzer/webpack-plugin": "^0.5.1",
+    "@nuxtjs/feed": "^2.0.0",
     "@nuxtjs/pwa": "^3.0.2",
     "@nuxtjs/sitemap": "^2.4.0",
     "algoliasearch": "^4.5.1",
