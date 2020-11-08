@@ -103,7 +103,7 @@ export const handler = async () => {
 
   const writings = await api.query(
     Prismic.Predicates.at('document.type', 'writing'),
-    { orderings: '[my.writing.publication_date desc]', pageSize: 2 }
+    { orderings: '[my.writing.publication_date desc]', pageSize: 3 }
   )
 
   const latestWritings = writings.results.map((writing) => {
