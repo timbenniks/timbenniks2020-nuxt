@@ -103,7 +103,7 @@ export default function (fields, pageType, path) {
 
     metaData.meta.push({
       property: 'og:publish_date',
-      content: `${fields.last_publication_date}T00:00:00`,
+      content: `${fields.last_publication_date}`,
       name: 'publish_date',
     })
 
@@ -117,7 +117,7 @@ export default function (fields, pageType, path) {
           thumbnailUrl: [getPropType(fields, 'general_card', 'image')],
           embedUrl: fields.video_embed.embed_url.replace('watch?v=', 'embed/'),
           contentUrl: `https://timbenniks.dev/videos/${fields.id}`,
-          uploadDate: `${fields.last_publication_date}T00:00:00`,
+          uploadDate: `${fields.last_publication_date}`,
         },
         type: 'application/ld+json',
       },
@@ -133,7 +133,7 @@ export default function (fields, pageType, path) {
 
     metaData.meta.push({
       property: 'og:publish_date',
-      content: `${fields.last_publication_date}T00:00:00`,
+      content: `${fields.last_publication_date}`,
       name: 'publish_date',
     })
 
@@ -145,8 +145,8 @@ export default function (fields, pageType, path) {
           headline: getPropType(fields, 'general_card', 'title'),
           image: getPropType(fields, 'general_card', 'image'),
           url: `https://timbenniks.dev/writings/${fields.id}`,
-          datePublished: `${fields.publication_date}T00:00:00`,
-          dateCreated: `${fields.publication_date}T00:00:00`,
+          datePublished: `${fields.publication_date}`,
+          dateCreated: `${fields.publication_date}`,
           dateModified: fields.last_publication_date,
           description: getPropType(fields, 'general_card', 'description'),
           publisher: {
