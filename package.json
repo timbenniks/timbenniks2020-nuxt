@@ -17,11 +17,7 @@
   "lint-staged": {
     "*.{js,vue}": "eslint"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
+
   "dependencies": {
     "@bundle-analyzer/webpack-plugin": "^0.5.1",
     "@nuxtjs/feed": "^2.0.0",

@@ -5,8 +5,9 @@
     >
     <!-- <div class="bg-triangle" /> -->
     <Nuxt />
-
-    <global-footer v-if="$route.name !== 'startpage'" />
+    <global-footer
+      v-if="$route.name !== 'startpage' || $route.name !== 'invoices-invoice'"
+    />
   </div>
 </template>
 
