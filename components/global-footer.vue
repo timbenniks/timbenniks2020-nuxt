@@ -27,7 +27,7 @@
       <div class="sponsors">
         <p>Proudly sponsored by</p>
         <ul>
-          <li>
+          <!-- <li>
             <a
               rel="noopener"
               target="_blank"
@@ -45,7 +45,7 @@
                 />
               </figure>
             </a>
-          </li>
+          </li> -->
           <li>
             <a
               rel="noopener"
