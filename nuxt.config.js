@@ -41,7 +41,7 @@ export default {
       '@nuxtjs/google-analytics',
       {
         id: 'UA-6797812-3',
-        ignoreRoutes: ['/startpage', '/invoices'],
+        ignoreRoutes: ['startpage', '/invoices'],
       },
     ],
     [
@@ -69,7 +69,7 @@ export default {
     path: '/sitemap.xml',
     hostname: 'https://timbenniks.dev',
     cacheTime: 1000 * 60 * 15,
-    exclude: ['/startpage'],
+    exclude: ['startpage'],
   },
   publicRuntimeConfig: {
     algolia_app_id: process.env.ALGOLIA_APP_ID,
