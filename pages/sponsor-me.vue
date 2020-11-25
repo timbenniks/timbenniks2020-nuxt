@@ -46,11 +46,10 @@
 
 <script>
 import LinkMixin from '@/assets/mixins/linkMixin'
-import SyntaxHighlighterMixin from '@/assets/mixins/syntaxHighlighterMixin'
 import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
 
 export default {
-  mixins: [LinkMixin, SyntaxHighlighterMixin],
+  mixins: [LinkMixin],
   async asyncData(context) {
     const { handler } = await import(
       /* webpackChunkName: "datalayer-page-sponsor-me" */ '@/datalayer/pages/sponsor-me'

@@ -1,3 +1,4 @@
+const hljs = require('highlight.js')
 const prismicDOM = require('prismic-dom')
 const linkResolver = require('./linkresolver')
 
@@ -78,6 +79,10 @@ module.exports = function (type, element, content, children) {
     )
 
     return `<p>${parsedChildren}</p>`
+  }
+
+  if (type === Elements.preformatted) {
+    return `<pre class="hjls">${hljs.highlightAuto(element.text).value}</pre>`
   }
 
   if (type === Elements.embed) {
