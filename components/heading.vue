@@ -144,44 +144,44 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.heading {
-  margin: rem(0 0 20px);
-}
+// .heading {
+//   margin: rem(0 0 20px);
+// }
 
-h1 {
-  margin: rem(0 0 5px 0);
-}
+// h1 {
+//   margin: rem(0 0 5px 0);
+// }
 
-ol {
-  display: flex;
-  font-size: 12px;
-  list-style: none;
-  margin: rem(0 0 5px 0);
-  padding: 0;
+// ol {
+//   display: flex;
+//   font-size: 12px;
+//   list-style: none;
+//   margin: rem(0 0 5px 0);
+//   padding: 0;
 
-  .no-link {
-    color: $blue-main;
-  }
+//   .no-link {
+//     color: $blue-main;
+//   }
 
-  li {
-    margin: rem(0 20px 0 0);
-    position: relative;
+//   li {
+//     margin: rem(0 20px 0 0);
+//     position: relative;
 
-    &::before {
-      content: '›';
-      font-weight: bold;
-      left: -12px;
-      position: absolute;
-      top: 0;
-    }
+//     &::before {
+//       content: '›';
+//       font-weight: bold;
+//       left: -12px;
+//       position: absolute;
+//       top: 0;
+//     }
 
-    &:last-child {
-      margin: 0;
-    }
+//     &:last-child {
+//       margin: 0;
+//     }
 
-    &:first-child::before {
-      display: none;
-    }
-  }
-}
+//     &:first-child::before {
+//       display: none;
+//     }
+//   }
+// }
 </style>

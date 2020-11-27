@@ -63,19 +63,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.heading,
-.posts,
-.post-title-sep,
-.no-upcoming-talks {
-  margin: 0 auto 2rem;
-  max-width: rem(800px);
-}
+// .heading,
+// .posts,
+// .post-title-sep,
+// .no-upcoming-talks {
+//   margin: 0 auto 2rem;
+//   max-width: rem(800px);
+// }
 
-.no-upcoming-talks {
-  margin: rem(0 auto 40px);
-}
+// .no-upcoming-talks {
+//   margin: rem(0 auto 40px);
+// }
 
-.post-title {
-  margin: rem(0 0 6px 0);
-}
+// .post-title {
+//   margin: rem(0 0 6px 0);
+// }
 </style>

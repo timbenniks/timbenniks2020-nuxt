@@ -31,17 +31,17 @@ export default {
 }
 </script>
 <style lang="scss">
-.built-on {
-  max-width: 280px;
-  width: 100%;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
+// .built-on {
+//   max-width: 280px;
+//   width: 100%;
+//   margin: 0 auto;
+//   display: flex;
+//   justify-content: space-between;
 
-  svg {
-    border: 2px solid rgba(255, 255, 255, 0.7);
-    border-radius: rem(5px);
-    height: rem(35px);
-  }
-}
+//   svg {
+//     border: 2px solid rgba(255, 255, 255, 0.7);
+//     border-radius: rem(5px);
+//     height: rem(35px);
+//   }
+// }
 </style>

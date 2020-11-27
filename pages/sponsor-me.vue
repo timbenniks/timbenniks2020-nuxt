@@ -71,58 +71,58 @@ export default {
 </script>
 
 <style lang="scss">
-.blogpost .heading {
-  margin: rem(0 auto 20px) !important;
-  max-width: rem(800px);
+// .blogpost .heading {
+//   margin: rem(0 auto 20px) !important;
+//   max-width: rem(800px);
 
-  h1,
-  h2 {
-    line-height: 1.2;
-  }
-}
+//   h1,
+//   h2 {
+//     line-height: 1.2;
+//   }
+// }
 
-.sponsor-wrapper {
-  margin: 3rem auto;
-  max-width: rem(800px);
-}
+// .sponsor-wrapper {
+//   margin: 3rem auto;
+//   max-width: rem(800px);
+// }
 
-.post-content {
-  margin: 3rem auto 2rem;
-  max-width: rem(800px);
+// .post-content {
+//   margin: 3rem auto 2rem;
+//   max-width: rem(800px);
 
-  p,
-  li {
-    font-size: rem(18px);
-    letter-spacing: 0.04em;
-    line-height: 1.8;
-  }
+//   p,
+//   li {
+//     font-size: rem(18px);
+//     letter-spacing: 0.04em;
+//     line-height: 1.8;
+//   }
 
-  blockquote {
-    background: $blue-main;
-    border-left: 3px solid $blue-light;
-    padding: rem(0 0 0 10px);
+//   blockquote {
+//     background: $blue-main;
+//     border-left: 3px solid $blue-light;
+//     padding: rem(0 0 0 10px);
 
-    p {
-      font-size: rem(16px);
-      font-style: italic;
-    }
-  }
+//     p {
+//       font-size: rem(16px);
+//       font-style: italic;
+//     }
+//   }
 
-  figure {
-    background: $blue-main;
-    border-bottom: 3px solid $blue-light;
-    display: block;
-    margin: rem(0 0 32px);
-    position: relative;
+//   figure {
+//     background: $blue-main;
+//     border-bottom: 3px solid $blue-light;
+//     display: block;
+//     margin: rem(0 0 32px);
+//     position: relative;
 
-    figcaption {
-      background: rgba($blue-main, 0.8);
-      bottom: 0;
-      font-size: inherit;
-      font-size: rem(16px);
-      padding: rem(3px 7px);
-      position: absolute;
-    }
-  }
-}
+//     figcaption {
+//       background: rgba($blue-main, 0.8);
+//       bottom: 0;
+//       font-size: inherit;
+//       font-size: rem(16px);
+//       padding: rem(3px 7px);
+//       position: absolute;
+//     }
+//   }
+// }
 </style>

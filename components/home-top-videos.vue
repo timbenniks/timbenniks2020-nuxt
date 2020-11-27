@@ -40,20 +40,20 @@ export default {
 </script>
 
 <style lang="scss">
-.top-videos {
-  margin: rem(0 0 50px 0);
+// .top-videos {
+//   margin: rem(0 0 50px 0);
 
-  .videos {
-    margin: rem(0 0 16px 0);
-  }
+//   .videos {
+//     margin: rem(0 0 16px 0);
+//   }
 
-  .top-videos-load-more {
-    text-align: right;
+//   .top-videos-load-more {
+//     text-align: right;
 
-    .load-more {
-      display: inline-block;
-      margin: 0;
-    }
-  }
-}
+//     .load-more {
+//       display: inline-block;
+//       margin: 0;
+//     }
+//   }
+// }
 </style>

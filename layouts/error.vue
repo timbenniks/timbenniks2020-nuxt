@@ -48,9 +48,9 @@ export default {
 </script>
 
 <style lang="scss">
-.vid {
-  margin: 0 auto;
-  max-width: rem(800px);
-  width: 90%;
-}
+// .vid {
+//   margin: 0 auto;
+//   max-width: rem(800px);
+//   width: 90%;
+// }
 </style>

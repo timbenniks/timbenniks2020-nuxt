@@ -42,28 +42,28 @@ export default {
 </script>
 
 <style lang="scss">
-.sponsor {
-  margin: rem(0 0 40px);
+// .sponsor {
+//   margin: rem(0 0 40px);
 
-  &.left-aligned {
-    text-align: left;
-  }
+//   &.left-aligned {
+//     text-align: left;
+//   }
 
-  &.centered {
-    text-align: center;
-  }
+//   &.centered {
+//     text-align: center;
+//   }
 
-  a {
-    display: inline-block;
-  }
+//   a {
+//     display: inline-block;
+//   }
 
-  figure {
-    width: 180px;
-    margin: 0 0 0.6em 0;
-  }
+//   figure {
+//     width: 180px;
+//     margin: 0 0 0.6em 0;
+//   }
 
-  p {
-    font-size: 0.9em;
-  }
-}
+//   p {
+//     font-size: 0.9em;
+//   }
+// }
 </style>

@@ -57,18 +57,18 @@ export default {
 </script>
 
 <style lang="scss">
-.home-latest-writing {
-  .fancy-title {
-    margin: rem(0 0 30px 0);
-  }
-  .post {
-    .post-title {
-      margin: 0 0 0.375rem !important;
-    }
+// .home-latest-writing {
+//   .fancy-title {
+//     margin: rem(0 0 30px 0);
+//   }
+//   .post {
+//     .post-title {
+//       margin: 0 0 0.375rem !important;
+//     }
 
-    .post-date {
-      margin: 0;
-    }
-  }
-}
+//     .post-date {
+//       margin: 0;
+//     }
+//   }
+//}
 </style>

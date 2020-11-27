@@ -145,60 +145,60 @@ export default {
 </script>
 
 <style lang="scss">
-.startpage {
-  max-width: rem(1440px);
-  margin: 0;
+// .startpage {
+//   max-width: rem(1440px);
+//   margin: 0;
 
-  main {
-    padding: 0.5rem 1.25rem 2.5rem;
-  }
+//   main {
+//     padding: 0.5rem 1.25rem 2.5rem;
+//   }
 
-  figure {
-    position: relative;
-    top: rem(20px);
-    left: rem(20px);
+//   figure {
+//     position: relative;
+//     top: rem(20px);
+//     left: rem(20px);
 
-    // prettier-ignore
-    @include responsive('width', (xs: rem(100px), m: rem(140px)));
+//     // prettier-ignore
+//     @include responsive('width', (xs: rem(100px), m: rem(140px)));
 
-    img {
-      border-radius: 100%;
-      border: 5px solid $white;
-    }
-  }
+//     img {
+//       border-radius: 100%;
+//       border: 5px solid $white;
+//     }
+//   }
 
-  .stats-wrapper {
-    display: flex;
-    margin: 2rem 0 0 0;
-  }
+//   .stats-wrapper {
+//     display: flex;
+//     margin: 2rem 0 0 0;
+//   }
 
-  .quicklinks {
-    list-style: none;
-    max-width: 40rem;
-    margin: rem(30px 0 0 15px);
-    columns: 3;
-  }
+//   .quicklinks {
+//     list-style: none;
+//     max-width: 40rem;
+//     margin: rem(30px 0 0 15px);
+//     columns: 3;
+//   }
 
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
+//   .sr-only {
+//     position: absolute;
+//     width: 1px;
+//     height: 1px;
+//     padding: 0;
+//     margin: -1px;
+//     overflow: hidden;
+//     clip: rect(0, 0, 0, 0);
+//     white-space: nowrap;
+//     border: 0;
+//   }
 
-  .search {
-    padding: 1rem;
+//   .search {
+//     padding: 1rem;
 
-    input {
-      width: rem(393px);
-      height: rem(30px);
-      line-height: rem(30px);
-    }
-  }
-}
+//     input {
+//       width: rem(393px);
+//       height: rem(30px);
+//       line-height: rem(30px);
+//     }
+//   }
+// }
 </style>

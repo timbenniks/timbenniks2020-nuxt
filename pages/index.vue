@@ -62,31 +62,31 @@ export default {
 </script>
 
 <style lang="scss">
-.home {
-  main {
-    padding: 0;
-    max-width: rem(1440px);
-    width: 100%;
-    margin: 0 auto;
-    overflow: hidden;
-  }
+// .home {
+//   main {
+//     padding: 0;
+//     max-width: rem(1440px);
+//     width: 100%;
+//     margin: 0 auto;
+//     overflow: hidden;
+//   }
 
-  .homepage-content {
-    max-width: rem(1100px);
-    padding: rem(0 16px);
-    margin: rem(30px auto);
+//   .homepage-content {
+//     max-width: rem(1100px);
+//     padding: rem(0 16px);
+//     margin: rem(30px auto);
 
-    .homepage-introduction {
-      margin: 3rem auto;
-      max-width: rem(800px);
-      text-align: center;
+//     .homepage-introduction {
+//       margin: 3rem auto;
+//       max-width: rem(800px);
+//       text-align: center;
 
-      p {
-        margin: 0;
-        // prettier-ignore
-        @include responsive('font-size', ( xs: rem(18px), m: rem(24px) ));
-      }
-    }
-  }
-}
+//       p {
+//         margin: 0;
+//         // prettier-ignore
+//         @include responsive('font-size', ( xs: rem(18px), m: rem(24px) ));
+//       }
+//     }
+//   }
+// }
 </style>

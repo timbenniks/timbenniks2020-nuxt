@@ -31,10 +31,15 @@ export default {
         href: '/feed.xml',
       },
     ],
+
+    bodyAttrs: {
+      class: ['bg-blue-bg', 'text-white'],
+    },
   },
-  css: ['assets/styles/index.scss'],
+  // css: ['assets/styles/index.scss'],
   components: true,
   buildModules: [
+    '@nuxtjs/tailwindcss',
     '@nuxtjs/eslint-module',
     '@nuxtjs/style-resources',
     [
@@ -55,13 +60,13 @@ export default {
     '@/modules/sitemapRouteGenerator',
   ],
   modules: ['@nuxtjs/sitemap', '@nuxtjs/feed'],
-  styleResources: {
-    scss: [
-      'assets/styles/_packages.scss',
-      'assets/styles/_variables.scss',
-      'assets/styles/_mixins.scss',
-    ],
-  },
+  // styleResources: {
+  //   scss: [
+  //     'assets/styles/_packages.scss',
+  //     'assets/styles/_variables.scss',
+  //     'assets/styles/_mixins.scss',
+  //   ],
+  // },
   loading: {
     color: '#d62b31',
   },
@@ -100,4 +105,18 @@ export default {
       type: 'rss2',
     },
   ],
+  tailwindcss: {
+    theme: {},
+    variants: {},
+    plugins: [],
+    purge: {
+      enabled: process.env.NODE_ENV === 'production',
+      content: [
+        'components/**/*.vue',
+        'layouts/**/*.vue',
+        'pages/**/*.vue',
+        'nuxt.config.js',
+      ],
+    },
+  },
 }

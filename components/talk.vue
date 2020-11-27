@@ -36,15 +36,15 @@ export default {
 </script>
 
 <style lang="scss">
-.post.speaking {
-  flex-direction: row;
+// .post.speaking {
+//   flex-direction: row;
 
-  .post-date {
-    flex: 1;
-  }
+//   .post-date {
+//     flex: 1;
+//   }
 
-  .post-content-wrapper {
-    flex: 11;
-  }
-}
+//   .post-content-wrapper {
+//     flex: 11;
+//   }
+// }
 </style>

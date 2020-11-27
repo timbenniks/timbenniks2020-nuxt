@@ -70,9 +70,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.post-date {
-  float: none;
-  font-weight: 400;
-  margin: 0;
-}
+// .post-date {
+//   float: none;
+//   font-weight: 400;
+//   margin: 0;
+// }
 </style>

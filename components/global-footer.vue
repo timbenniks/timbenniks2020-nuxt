@@ -180,114 +180,114 @@ export default {
 }
 </script>
 <style lang="scss">
-footer {
-  background: darken($blue-dark, 3);
-  border-top: 1px solid darken($blue-main, 20);
+// footer {
+//   background: darken($blue-dark, 3);
+//   border-top: 1px solid darken($blue-main, 20);
 
-  .footer-inner {
-    // prettier-ignore
-    @include responsive('padding', ( xs: 3rem, l: 3rem 0 ));
+//   .footer-inner {
+//     // prettier-ignore
+//     @include responsive('padding', ( xs: 3rem, l: 3rem 0 ));
 
-    // prettier-ignore
-    @include responsive('flex-direction', ( xs: column, m: row ));
+//     // prettier-ignore
+//     @include responsive('flex-direction', ( xs: column, m: row ));
 
-    display: flex;
-    justify-content: space-around;
-    max-width: rem(1068px);
-    margin: 0 auto;
+//     display: flex;
+//     justify-content: space-around;
+//     max-width: rem(1068px);
+//     margin: 0 auto;
 
-    .footer-links {
-      flex: 1;
+//     .footer-links {
+//       flex: 1;
 
-      ul {
-        list-style: none;
-        padding: 0;
-        margin: 0 0 3rem;
+//       ul {
+//         list-style: none;
+//         padding: 0;
+//         margin: 0 0 3rem;
 
-        a {
-          display: block;
-          margin: 0 0 1rem;
+//         a {
+//           display: block;
+//           margin: 0 0 1rem;
 
-          &.active {
-            color: $white;
-          }
-        }
-      }
-    }
-  }
+//           &.active {
+//             color: $white;
+//           }
+//         }
+//       }
+//     }
+//   }
 
-  .sponsors {
-    flex: 2;
+//   .sponsors {
+//     flex: 2;
 
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 2rem;
+//     ul {
+//       list-style: none;
+//       padding: 0;
+//       margin: 0 0 2rem;
 
-      li {
-        display: inline-block;
-        margin: rem(5px 10px 5px 0);
-      }
-    }
+//       li {
+//         display: inline-block;
+//         margin: rem(5px 10px 5px 0);
+//       }
+//     }
 
-    p {
-      font-weight: 400;
-      margin: 0 0 1rem 0;
-      font-size: 0.8rem;
-    }
+//     p {
+//       font-weight: 400;
+//       margin: 0 0 1rem 0;
+//       font-size: 0.8rem;
+//     }
 
-    figure {
-      width: 40px;
-      height: 40px;
+//     figure {
+//       width: 40px;
+//       height: 40px;
 
-      img {
-        border-radius: 100%;
-        border: 2px solid $white;
-      }
-    }
-  }
+//       img {
+//         border-radius: 100%;
+//         border: 2px solid $white;
+//       }
+//     }
+//   }
 
-  .copyright {
-    margin: 0 0 1rem 0;
-    font-size: 0.8rem;
-    color: $grey-light-alt;
+//   .copyright {
+//     margin: 0 0 1rem 0;
+//     font-size: 0.8rem;
+//     color: $grey-light-alt;
 
-    svg {
-      width: 1em;
-      margin: 0 0.2rem;
-    }
-  }
+//     svg {
+//       width: 1em;
+//       margin: 0 0.2rem;
+//     }
+//   }
 
-  .built-on {
-    flex: 1;
+//   .built-on {
+//     flex: 1;
 
-    .built-on-wrapper {
-      max-width: rem(280px);
-      display: flex;
-      justify-content: space-between;
+//     .built-on-wrapper {
+//       max-width: rem(280px);
+//       display: flex;
+//       justify-content: space-between;
 
-      svg {
-        border: 2px solid rgba(255, 255, 255, 0.7);
-        border-radius: rem(5px);
-        height: rem(35px);
+//       svg {
+//         border: 2px solid rgba(255, 255, 255, 0.7);
+//         border-radius: rem(5px);
+//         height: rem(35px);
 
-        &:first-child {
-          margin: rem(0 0.5rem 0 0);
-        }
-      }
-    }
-  }
-}
+//         &:first-child {
+//           margin: rem(0 0.5rem 0 0);
+//         }
+//       }
+//     }
+//   }
+// }
 
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
+// .sr-only {
+//   position: absolute;
+//   width: 1px;
+//   height: 1px;
+//   padding: 0;
+//   margin: -1px;
+//   overflow: hidden;
+//   clip: rect(0, 0, 0, 0);
+//   white-space: nowrap;
+//   border: 0;
+// }
 </style>

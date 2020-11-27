@@ -82,183 +82,183 @@ export default {
 </script>
 
 <style lang="scss">
-.navigation {
-  background: darken($blue-dark, 3);
-  border-bottom: 1px solid darken($blue-main, 20);
-  left: 0;
-  min-height: rem(64px);
-  position: sticky;
-  top: 0;
-  width: 100%;
-  z-index: 3;
+// .navigation {
+//   background: darken($blue-dark, 3);
+//   border-bottom: 1px solid darken($blue-main, 20);
+//   left: 0;
+//   min-height: rem(64px);
+//   position: sticky;
+//   top: 0;
+//   width: 100%;
+//   z-index: 3;
 
-  ul {
-    margin: 0;
-  }
+//   ul {
+//     margin: 0;
+//   }
 
-  li {
-    display: inline;
-  }
+//   li {
+//     display: inline;
+//   }
 
-  .head-link {
-    display: flex;
-    left: rem(8px);
-    padding: rem(4px 5px 3px 5px);
-    position: absolute;
-    text-decoration: none;
-    top: rem(8px);
+//   .head-link {
+//     display: flex;
+//     left: rem(8px);
+//     padding: rem(4px 5px 3px 5px);
+//     position: absolute;
+//     text-decoration: none;
+//     top: rem(8px);
 
-    span {
-      align-self: center;
-      color: $white;
-      font-size: rem(16px);
-      font-weight: 900;
-    }
+//     span {
+//       align-self: center;
+//       color: $white;
+//       font-size: rem(16px);
+//       font-weight: 900;
+//     }
 
-    &:focus {
-      outline: 1px solid;
-    }
+//     &:focus {
+//       outline: 1px solid;
+//     }
 
-    figure {
-      align-self: center;
-      display: block;
-      margin: rem(0 10px 0 0);
-      width: rem(39px);
+//     figure {
+//       align-self: center;
+//       display: block;
+//       margin: rem(0 10px 0 0);
+//       width: rem(39px);
 
-      img {
-        border: 2px solid $white;
-        border-radius: 100%;
-      }
-    }
-  }
+//       img {
+//         border: 2px solid $white;
+//         border-radius: 100%;
+//       }
+//     }
+//   }
 
-  .hamburger {
-    // prettier-ignore
-    @include responsive('display', (xs: block, m: none));
+//   .hamburger {
+//     // prettier-ignore
+//     @include responsive('display', (xs: block, m: none));
 
-    padding: rem(7px 3px 0);
-    position: absolute;
-    right: rem(13px);
-    top: rem(17px);
+//     padding: rem(7px 3px 0);
+//     position: absolute;
+//     right: rem(13px);
+//     top: rem(17px);
 
-    &:focus {
-      outline: 1px solid;
-    }
-  }
+//     &:focus {
+//       outline: 1px solid;
+//     }
+//   }
 
-  .hamburger[aria-expanded='true'] + .dropdown-menu {
-    display: block;
-  }
-}
+//   .hamburger[aria-expanded='true'] + .dropdown-menu {
+//     display: block;
+//   }
+// }
 
-.dropdown-menu {
-  // prettier-ignore
-  @include responsive('width', (xs: 100%, m: auto));
+// .dropdown-menu {
+//   // prettier-ignore
+//   @include responsive('width', (xs: 100%, m: auto));
 
-  // prettier-ignore
-  @include responsive('position', (xs: fixed));
+//   // prettier-ignore
+//   @include responsive('position', (xs: fixed));
 
-  // prettier-ignore
-  @include responsive('top', (xs: rem(64px), m: 0));
+//   // prettier-ignore
+//   @include responsive('top', (xs: rem(64px), m: 0));
 
-  // prettier-ignore
-  @include responsive('left', (xs: 0, m: auto));
+//   // prettier-ignore
+//   @include responsive('left', (xs: 0, m: auto));
 
-  // prettier-ignore
-  @include responsive('right', (xs: auto, m: 0));
+//   // prettier-ignore
+//   @include responsive('right', (xs: auto, m: 0));
 
-  // prettier-ignore
-  @include responsive('background', (xs: rgba($blue-bg, 0.97), m: none));
+//   // prettier-ignore
+//   @include responsive('background', (xs: rgba($blue-bg, 0.97), m: none));
 
-  // prettier-ignore
-  @include responsive('box-shadow', (xs: 0 10px 22px -6px rgba(#000, 0.8), m: none));
+//   // prettier-ignore
+//   @include responsive('box-shadow', (xs: 0 10px 22px -6px rgba(#000, 0.8), m: none));
 
-  // prettier-ignore
-  @include responsive('display', (xs: none, m: block));
+//   // prettier-ignore
+//   @include responsive('display', (xs: none, m: block));
 
-  // prettier-ignore
-  @include responsive('text-align', (xs: left, m: right));
+//   // prettier-ignore
+//   @include responsive('text-align', (xs: left, m: right));
 
-  // prettier-ignore
-  @include responsive('padding', (xs: rem(10px 10px 0), m: rem(15px 0 0 0)));
+//   // prettier-ignore
+//   @include responsive('padding', (xs: rem(10px 10px 0), m: rem(15px 0 0 0)));
 
-  height: auto;
-  left: 0;
-  line-height: 2;
-  list-style: none;
+//   height: auto;
+//   left: 0;
+//   line-height: 2;
+//   list-style: none;
 
-  a {
-    color: $white;
-    display: inline-block;
-    font-size: rem(16px);
-    font-weight: 900;
-    letter-spacing: 0.01em;
-    margin: rem(0 11px 11px 0);
-    padding: rem(0 8px);
-    position: relative;
-    text-decoration: none;
-    text-transform: uppercase;
-    z-index: 1;
+//   a {
+//     color: $white;
+//     display: inline-block;
+//     font-size: rem(16px);
+//     font-weight: 900;
+//     letter-spacing: 0.01em;
+//     margin: rem(0 11px 11px 0);
+//     padding: rem(0 8px);
+//     position: relative;
+//     text-decoration: none;
+//     text-transform: uppercase;
+//     z-index: 1;
 
-    &.highlighted {
-      color: #000;
-      background: $yellow;
-    }
+//     &.highlighted {
+//       color: #000;
+//       background: $yellow;
+//     }
 
-    @include hover-supported() {
-      &::after {
-        top: 0;
-      }
-    }
+//     @include hover-supported() {
+//       &::after {
+//         top: 0;
+//       }
+//     }
 
-    &.active,
-    &:focus {
-      &::after {
-        top: 0;
-      }
+//     &.active,
+//     &:focus {
+//       &::after {
+//         top: 0;
+//       }
 
-      &::before {
-        display: none;
-      }
-    }
+//       &::before {
+//         display: none;
+//       }
+//     }
 
-    &::before {
-      background: $blue-main;
-      bottom: 0;
-      content: '';
-      left: 0;
-      position: absolute;
-      right: 0;
-      top: 0;
-      transform: skew(-4deg);
-      z-index: -1;
-    }
+//     &::before {
+//       background: $blue-main;
+//       bottom: 0;
+//       content: '';
+//       left: 0;
+//       position: absolute;
+//       right: 0;
+//       top: 0;
+//       transform: skew(-4deg);
+//       z-index: -1;
+//     }
 
-    &::after {
-      background: $red;
-      bottom: 0;
-      content: '';
-      left: 0;
-      position: absolute;
-      right: 0;
-      top: 100%;
-      transform: skew(-4deg);
-      transition: top 200ms ease;
-      z-index: -1;
-    }
+//     &::after {
+//       background: $red;
+//       bottom: 0;
+//       content: '';
+//       left: 0;
+//       position: absolute;
+//       right: 0;
+//       top: 100%;
+//       transform: skew(-4deg);
+//       transition: top 200ms ease;
+//       z-index: -1;
+//     }
 
-    &.highlighted {
-      &::before {
-        background: $yellow;
-      }
-      &::after {
-        background: $grey-light;
-      }
-    }
+//     &.highlighted {
+//       &::before {
+//         background: $yellow;
+//       }
+//       &::after {
+//         background: $grey-light;
+//       }
+//     }
 
-    &:focus {
-      outline: none;
-    }
-  }
-}
+//     &:focus {
+//       outline: none;
+//     }
+//   }
+// }
 </style>
