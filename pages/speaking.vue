@@ -62,8 +62,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-// .heading,
+<style lang="postcss" scoped>
+/* // .heading,
 // .posts,
 // .post-title-sep,
 // .no-upcoming-talks {
@@ -77,5 +77,5 @@ export default {
 
 // .post-title {
 //   margin: rem(0 0 6px 0);
-// }
+// } */
 </style>

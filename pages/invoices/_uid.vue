@@ -108,7 +108,7 @@
             </tr>
           </table>
 
-          <p style="margin: 50px 0 0 0; text-align: center;">
+          <p style="margin: 50px 0 0 0; text-align: center">
             *TVA non-applicable, article 293B du CGI
           </p>
         </div>
@@ -190,8 +190,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.invoice-box {
+<style lang="postcss" scoped>
+/* .invoice-box {
   background: #fff;
   color: #000;
   width: rem(800px);
@@ -260,5 +260,5 @@ export default {
     text-align: left !important;
     padding: 0 !important;
   }
-}
+} */
 </style>

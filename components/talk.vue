@@ -35,8 +35,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
-// .post.speaking {
+<style lang="postcss">
+/* // .post.speaking {
 //   flex-direction: row;
 
 //   .post-date {
@@ -46,5 +46,5 @@ export default {
 //   .post-content-wrapper {
 //     flex: 11;
 //   }
-// }
+// } */
 </style>

@@ -30,8 +30,8 @@ export default {
   },
 }
 </script>
-<style lang="scss">
-// .built-on {
+<style lang="postcss">
+/* // .built-on {
 //   max-width: 280px;
 //   width: 100%;
 //   margin: 0 auto;
@@ -43,5 +43,5 @@ export default {
 //     border-radius: rem(5px);
 //     height: rem(35px);
 //   }
-// }
+// } */
 </style>

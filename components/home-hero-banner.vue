@@ -51,8 +51,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
-// .hero-banner {
+<style lang="postcss">
+/* // .hero-banner {
 //   position: relative;
 //   border-bottom: rem(2px solid $blue-main);
 //   width: 100%;
@@ -110,5 +110,5 @@ export default {
 //       }
 //     }
 //   }
-// }
+// } */
 </style>

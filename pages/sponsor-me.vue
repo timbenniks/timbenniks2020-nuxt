@@ -70,8 +70,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
-// .blogpost .heading {
+<style lang="postcss">
+/* // .blogpost .heading {
 //   margin: rem(0 auto 20px) !important;
 //   max-width: rem(800px);
 
@@ -124,5 +124,5 @@ export default {
 //       position: absolute;
 //     }
 //   }
-// }
+// } */
 </style>

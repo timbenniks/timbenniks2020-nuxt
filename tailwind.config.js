@@ -23,6 +23,7 @@ module.exports = {
       yellow: '#fbd088',
       red: '#d62b31',
       white: '#ffffff',
+      black: '#000000',
     },
     extend: {
       zIndex: {
@@ -35,6 +36,9 @@ module.exports = {
       },
       outline: {
         a11y: '1px solid',
+      },
+      boxShadow: {
+        nav: '0 10px 22px -6px rgba(0,0,0,.8)',
       },
     },
   },

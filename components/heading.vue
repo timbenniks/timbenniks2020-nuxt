@@ -143,8 +143,8 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-// .heading {
+<style scoped lang="postcss">
+/* // .heading {
 //   margin: rem(0 0 20px);
 // }
 
@@ -183,5 +183,5 @@ export default {
 //       display: none;
 //     }
 //   }
-// }
+// } */
 </style>

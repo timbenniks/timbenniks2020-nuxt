@@ -39,8 +39,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
-// .top-videos {
+<style lang="postcss">
+/* // .top-videos {
 //   margin: rem(0 0 50px 0);
 
 //   .videos {
@@ -55,5 +55,5 @@ export default {
 //       margin: 0;
 //     }
 //   }
-// }
+// } */
 </style>

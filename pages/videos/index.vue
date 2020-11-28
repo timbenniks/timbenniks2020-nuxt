@@ -24,9 +24,7 @@
       </div>
 
       <p class="status">
-        <template v-if="loading">
-          Working...
-        </template>
+        <template v-if="loading">Working...</template>
         <template v-else>
           <span v-if="results !== 0">
             {{ results }} Result<template v-if="results !== 1">s</template>
@@ -141,13 +139,13 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-// .status {
+<style lang="postcss" scoped>
+/* // .status {
 //   max-width: 1100px;
 //   margin: 0 auto 1.25rem;
 
 //   .filter {
 //     margin: 0;
 //   }
-// }
+// } */
 </style>

@@ -1,4 +1,3 @@
-// import BundleAnalyzerPlugin from '@bundle-analyzer/webpack-plugin'
 import videoRoutes from './datalayer/helpers/generateVideoRoutes'
 import generateFeed from './datalayer/helpers/generateFeed'
 
@@ -36,11 +35,10 @@ export default {
       class: ['bg-blue-bg', 'text-white'],
     },
   },
-  // css: ['assets/styles/index.scss'],
   components: true,
   buildModules: [
     '@nuxtjs/tailwindcss',
-    '@nuxtjs/eslint-module',
+    // '@nuxtjs/eslint-module',
     '@nuxtjs/style-resources',
     [
       '@nuxtjs/google-analytics',
@@ -60,13 +58,6 @@ export default {
     '@/modules/sitemapRouteGenerator',
   ],
   modules: ['@nuxtjs/sitemap', '@nuxtjs/feed'],
-  // styleResources: {
-  //   scss: [
-  //     'assets/styles/_packages.scss',
-  //     'assets/styles/_variables.scss',
-  //     'assets/styles/_mixins.scss',
-  //   ],
-  // },
   loading: {
     color: '#d62b31',
   },

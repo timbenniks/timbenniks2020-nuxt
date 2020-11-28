@@ -61,8 +61,9 @@ export default {
 }
 </script>
 
-<style lang="scss">
-// .home {
+//
+<style lang="postcss">
+/* // .home {
 //   main {
 //     padding: 0;
 //     max-width: rem(1440px);
@@ -89,4 +90,5 @@ export default {
 //     }
 //   }
 // }
+// */
 </style>

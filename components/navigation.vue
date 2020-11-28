@@ -40,48 +40,50 @@
       </span>
     </button>
     <ul
-      id="menu"
-      class="dropdown-menu m-0 w-full fixed top-16 left-0 right-auto bg-blue-bg bg-opacity-95 shadow-xl hidden text-left pt-2 pr-2 h-auto leading-loose list-none m:w-auto m:top-auto m:left-auto m:right-0 m:bg-none m:shadow-none m:block m:text-right m:pt-4 m:pr-0"
+      class="dropdown-menu w-full fixed top-16 left-0 right-auto bg-blue-bg bg-opacity-95 shadow-nav hidden text-left pt-2 px-2 h-auto list-none m:w-auto m:top-auto m:left-auto m:right-0 m:bg-blue-darker m:shadow-none m:block m:text-right m:pt-4 m:pr-0"
     >
-      <li @click="$ga.event('navigation', 'click', 'sponosor me')">
+      <li
+        class="inline"
+        @click="$ga.event('navigation', 'click', 'sponosor me')"
+      >
         <nuxt-link
           to="/sponsor-me/"
-          class="highlighted text-white inline-block text-base font-black tracking-wide mr-3 mb-3 px-2 relative no-underline uppercase z-1"
+          class="bg-blue-main text-black bg-yellow leading-loose inline-block text-base font-black tracking-wide mr-3 mb-3 px-2 relative no-underline uppercase z-1 hover:bg-white"
         >
           Sponsor Me
         </nuxt-link>
       </li>
-      <li @click="$ga.event('navigation', 'click', 'videos')">
+      <li class="inline" @click="$ga.event('navigation', 'click', 'videos')">
         <nuxt-link
           :class="$route.name === 'videos-uid' ? 'active' : ''"
           to="/videos/"
-          class="text-white inline-block text-base font-black tracking-wide mr-3 mb-3 px-2 relative no-underline uppercase z-1"
+          class="text-white bg-blue-main leading-loose inline-block text-base font-black tracking-wide mr-3 mb-3 px-2 relative no-underline uppercase z-1 hover:bg-red"
         >
           Videos
         </nuxt-link>
       </li>
-      <li @click="$ga.event('navigation', 'click', 'writings')">
+      <li class="inline" @click="$ga.event('navigation', 'click', 'writings')">
         <nuxt-link
           :class="$route.name === 'writings-uid' ? 'active' : ''"
           to="/writings/"
-          class="text-white inline-block text-base font-black tracking-wide mr-3 mb-3 px-2 relative no-underline uppercase z-1"
+          class="text-white bg-blue-main leading-loose inline-block text-base font-black tracking-wide mr-3 mb-3 px-2 relative no-underline uppercase z-1 hover:bg-red"
         >
           Writings
         </nuxt-link>
       </li>
 
-      <li @click="$ga.event('navigation', 'click', 'speaking')">
+      <li class="inline" @click="$ga.event('navigation', 'click', 'speaking')">
         <nuxt-link
           to="/speaking/"
-          class="text-white inline-block text-base font-black tracking-wide mr-3 mb-3 px-2 relative no-underline uppercase z-1"
+          class="text-white bg-blue-main leading-loose inline-block text-base font-black tracking-wide mr-3 mb-3 px-2 relative no-underline uppercase z-1 hover:bg-red"
         >
           Speaking
         </nuxt-link>
       </li>
-      <li @click="$ga.event('navigation', 'click', 'about')">
+      <li class="inline" @click="$ga.event('navigation', 'click', 'about')">
         <nuxt-link
           to="/about/"
-          class="text-white inline-block text-base font-black tracking-wide mr-3 mb-3 px-2 relative no-underline uppercase z-1"
+          class="text-white bg-blue-main leading-loose inline-block text-base font-black tracking-wide mr-3 mb-3 px-2 relative no-underline uppercase z-1 hover:bg-red"
         >
           About
         </nuxt-link>
@@ -107,10 +109,6 @@ export default {
 </script>
 
 <style lang="postcss">
-.navigation ul li {
-  @apply inline;
-}
-
 .head-link img {
   @apply border-2 border-solid border-white rounded-full;
 }
@@ -118,100 +116,4 @@ export default {
 .hamburger[aria-expanded='true'] + .dropdown-menu {
   @apply block;
 }
-
-.dropdown-menu a.active,
-.dropdown-menu a::focus {
-  @apply after:top-0
-    before:hidden
-    before:left-0;
-}
-
-.dropdown-menu a {
-  @apply before:bg-blue-main
-    before:bottom-0
-    before:left-0
-    before:absolute
-    before:right-0
-    before:top-0
-    before:z-n1
-    before:-skew-x-3
-
-    after:bg-red
-    after:bottom-0
-    after:left-0
-    after:absolute
-    after:top-full
-    after:-skew-x-3
-    after:z-n1
-    after:transition
-    after:duration-200
-    after:ease;
-}
-</style>
-
-<style lang="scss">
-// .dropdown-menu {
-//   a {
-//     &::before {
-//       background: $blue-main;
-//       bottom: 0;
-//       content: '';
-//       left: 0;
-//       position: absolute;
-//       right: 0;
-//       top: 0;
-//       transform: skew(-4deg);
-//       z-index: -1;
-//     }
-
-//     &::after {
-//       background: $red;
-//       bottom: 0;
-//       content: '';
-//       left: 0;
-//       position: absolute;
-//       right: 0;
-//       top: 100%;
-//       transform: skew(-4deg);
-//       transition: top 200ms ease;
-//       z-index: -1;
-//     }
-
-//     &.highlighted {
-//       color: #000;
-//       background: $yellow;
-//     }
-
-//     @include hover-supported() {
-//       &::after {
-//         top: 0;
-//       }
-//     }
-
-//     &.active,
-//     &:focus {
-//       &::after {
-//         top: 0;
-//       }
-
-//       &::before {
-//         display: none;
-//       }
-//     }
-
-//     &.highlighted {
-//       &::before {
-//         background: $yellow;
-//       }
-//       &::after {
-//         background: $grey-light;
-//       }
-//     }
-
-//     &:focus {
-//       outline: none;
-//     }
-//   }
-// }
-//
 </style>

@@ -23,8 +23,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-// .quicklink {
+<style lang="postcss" scoped>
+/* // .quicklink {
 //   a {
 //     color: $white;
 //     display: inline-block;
@@ -49,5 +49,5 @@ export default {
 //     vertical-align: middle;
 //     width: rem(18px);
 //   }
-// }
+// } */
 </style>

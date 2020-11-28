@@ -20,7 +20,7 @@
           >!
         </p>
 
-        <figure class="youtube" style="--aspect-ratio: 16/9;">
+        <figure class="youtube" style="--aspect-ratio: 16/9">
           <iframe
             width="16"
             height="9"
@@ -86,8 +86,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
-// .blogpost .heading {
+<style lang="postcss">
+/* // .blogpost .heading {
 //   margin: rem(0 auto 20px) !important;
 //   max-width: rem(800px);
 // }
@@ -137,5 +137,5 @@ export default {
 //       font-size: rem(16px);
 //     }
 //   }
-// }
+// } */
 </style>

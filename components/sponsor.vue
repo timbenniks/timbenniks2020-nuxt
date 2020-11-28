@@ -6,7 +6,7 @@
       rel="noopener"
       @click="$ga.event('sponsor', 'click', 'component', 'bmac image')"
     >
-      <figure style="--aspect-ratio: 217/60;">
+      <figure style="--aspect-ratio: 217/60">
         <img
           srcset="https://cdn.buymeacoffee.com/buttons/v2/default-white.png"
           alt="Buy Me A Coffee"
@@ -41,8 +41,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
-// .sponsor {
+<style lang="postcss">
+/* // .sponsor {
 //   margin: rem(0 0 40px);
 
 //   &.left-aligned {
@@ -65,5 +65,5 @@ export default {
 //   p {
 //     font-size: 0.9em;
 //   }
-// }
+// } */
 </style>

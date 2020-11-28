@@ -17,7 +17,7 @@
           :use-fancy-titles="true"
         />
 
-        <figure style="--aspect-ratio: 16/9;" class="vid">
+        <figure style="--aspect-ratio: 16/9" class="vid">
           <iframe
             width="16"
             height="9"
@@ -47,10 +47,10 @@ export default {
 }
 </script>
 
-<style lang="scss">
-// .vid {
+<style lang="postcss">
+/* // .vid {
 //   margin: 0 auto;
 //   max-width: rem(800px);
 //   width: 90%;
-// }
+// } */
 </style>

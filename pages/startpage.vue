@@ -144,8 +144,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
-// .startpage {
+<style lang="postcss">
+/* // .startpage {
 //   max-width: rem(1440px);
 //   margin: 0;
 
@@ -200,5 +200,5 @@ export default {
 //       line-height: rem(30px);
 //     }
 //   }
-// }
+// } */
 </style>

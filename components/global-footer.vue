@@ -1,5 +1,5 @@
 <template>
-  <footer>
+  <footer class="bg-blue-darker border-solid border-t-2 border-blue-alt">
     <div class="footer-inner">
       <div class="footer-links">
         <ul>
@@ -27,25 +27,6 @@
       <div class="sponsors">
         <p>Proudly sponsored by</p>
         <ul>
-          <!-- <li>
-            <a
-              rel="noopener"
-              target="_blank"
-              href="https://twitter.com/carwack"
-              title="@carwack on Twitter"
-              @click="$ga.event('sponsors', 'click', 'carwack')"
-            >
-              <figure style="--aspect-ratio: 1/1;">
-                <img
-                  loading="lazy"
-                  :src="require('../assets/images/sponsors/carwack.jpg')"
-                  alt="@carwack on Twitter"
-                  width="100"
-                  height="100"
-                />
-              </figure>
-            </a>
-          </li> -->
           <li>
             <a
               rel="noopener"
@@ -54,7 +35,7 @@
               title="@MayaShavin on Twitter"
               @click="$ga.event('sponsors', 'click', 'maya-shavin')"
             >
-              <figure style="--aspect-ratio: 1/1;">
+              <figure style="--aspect-ratio: 1/1">
                 <img
                   loading="lazy"
                   :src="require('../assets/images/sponsors/maya-shavin.jpg')"
@@ -73,7 +54,7 @@
               href="https://twitter.com/passionpeopleNL"
               @click="$ga.event('sponsors', 'click', 'passionpeopleNL')"
             >
-              <figure style="--aspect-ratio: 1/1;">
+              <figure style="--aspect-ratio: 1/1">
                 <img
                   :src="require('../assets/images/sponsors/pp.jpg')"
                   alt="@passionpeopleNL on Twitter"
@@ -92,7 +73,7 @@
               href="https://twitter.com/VueStorefront"
               @click="$ga.event('sponsors', 'click', 'VueStorefront')"
             >
-              <figure style="--aspect-ratio: 1/1;">
+              <figure style="--aspect-ratio: 1/1">
                 <img
                   loading="lazy"
                   :src="require('../assets/images/sponsors/vsf.jpg')"
@@ -111,7 +92,7 @@
               href="https://twitter.com/cloudinary"
               @click="$ga.event('sponsors', 'click', 'Cloudinary')"
             >
-              <figure style="--aspect-ratio: 1/1;">
+              <figure style="--aspect-ratio: 1/1">
                 <img
                   loading="lazy"
                   :src="require('../assets/images/sponsors/cloudinary.jpg')"
@@ -179,11 +160,8 @@ export default {
   },
 }
 </script>
-<style lang="scss">
-// footer {
-//   background: darken($blue-dark, 3);
-//   border-top: 1px solid darken($blue-main, 20);
-
+<style lang="postcss">
+/*
 //   .footer-inner {
 //     // prettier-ignore
 //     @include responsive('padding', ( xs: 3rem, l: 3rem 0 ));
@@ -289,5 +267,5 @@ export default {
 //   clip: rect(0, 0, 0, 0);
 //   white-space: nowrap;
 //   border: 0;
-// }
+// } */
 </style>

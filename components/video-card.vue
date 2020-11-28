@@ -45,8 +45,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-// .video {
+<style lang="postcss" scoped>
+/* // .video {
 //   flex-direction: column;
 //   margin: 0;
 //   width: auto;
@@ -81,5 +81,5 @@ export default {
 //     font-size: 1rem;
 //     line-height: 1.3;
 //   }
-// }
+// } */
 </style>

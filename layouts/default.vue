@@ -11,11 +11,7 @@
     <Nuxt />
 
     <global-footer
-      v-if="
-        $route.name !== 'startpage' &&
-        $route.name !== 'invoices-invoice' &&
-        $route.name !== 'index'
-      "
+      v-if="$route.name !== 'startpage' && $route.name !== 'invoices-invoice'"
     />
   </div>
 </template>
