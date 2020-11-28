@@ -1,6 +1,12 @@
 <template>
-  <nav class="navigation" aria-label="Main Navigation">
-    <nuxt-link to="/" class="head-link">
+  <nav
+    class="navigation bg-blue-darker border-solid border-b-2 border-blue-alt left-0 min-h-header sticky top-0 w-full z-3"
+    aria-label="Main Navigation"
+  >
+    <nuxt-link
+      to="/"
+      class="head-link flex left-2 absolute no-underline top-2 px-1 pt-1"
+    >
       <lazy-image
         ratio="1/1"
         alt="Tim Benniks Logo"
@@ -8,16 +14,21 @@
         :caption="false"
         :widths="[103]"
         sizes="103px"
+        class="self-center block mr-2 w-10"
       />
 
-      <span>TIM BENNIKS</span>
+      <span
+        class="text-white text-base font-black self-center focus:outline-a11y"
+      >
+        TIM BENNIKS
+      </span>
     </nuxt-link>
 
     <button
       id="button"
       :class="{ 'is-active': burgerActive }"
       :aria-expanded="burgerActive"
-      class="hamburger hamburger--3dx"
+      class="hamburger hamburger--3dx absolute pt-2 px-1 pb-0 top-4 right-4 focus:outline-a11y m:hidden"
       type="button"
       aria-haspopup="true"
       aria-controls="menu"
@@ -28,9 +39,15 @@
         <span class="hamburger-inner"></span>
       </span>
     </button>
-    <ul id="menu" class="dropdown-menu">
+    <ul
+      id="menu"
+      class="dropdown-menu m-0 w-full fixed top-16 left-0 right-auto bg-blue-bg bg-opacity-95 shadow-xl hidden text-left pt-2 pr-2 h-auto leading-loose list-none m:w-auto m:top-auto m:left-auto m:right-0 m:bg-none m:shadow-none m:block m:text-right m:pt-4 m:pr-0"
+    >
       <li @click="$ga.event('navigation', 'click', 'sponosor me')">
-        <nuxt-link to="/sponsor-me/" class="highlighted">
+        <nuxt-link
+          to="/sponsor-me/"
+          class="highlighted text-white inline-block text-base font-black tracking-wide mr-3 mb-3 px-2 relative no-underline uppercase z-1"
+        >
           Sponsor Me
         </nuxt-link>
       </li>
@@ -38,6 +55,7 @@
         <nuxt-link
           :class="$route.name === 'videos-uid' ? 'active' : ''"
           to="/videos/"
+          class="text-white inline-block text-base font-black tracking-wide mr-3 mb-3 px-2 relative no-underline uppercase z-1"
         >
           Videos
         </nuxt-link>
@@ -46,18 +64,25 @@
         <nuxt-link
           :class="$route.name === 'writings-uid' ? 'active' : ''"
           to="/writings/"
+          class="text-white inline-block text-base font-black tracking-wide mr-3 mb-3 px-2 relative no-underline uppercase z-1"
         >
           Writings
         </nuxt-link>
       </li>
 
       <li @click="$ga.event('navigation', 'click', 'speaking')">
-        <nuxt-link to="/speaking/">
+        <nuxt-link
+          to="/speaking/"
+          class="text-white inline-block text-base font-black tracking-wide mr-3 mb-3 px-2 relative no-underline uppercase z-1"
+        >
           Speaking
         </nuxt-link>
       </li>
       <li @click="$ga.event('navigation', 'click', 'about')">
-        <nuxt-link to="/about/">
+        <nuxt-link
+          to="/about/"
+          class="text-white inline-block text-base font-black tracking-wide mr-3 mb-3 px-2 relative no-underline uppercase z-1"
+        >
           About
         </nuxt-link>
       </li>
@@ -81,147 +106,52 @@ export default {
 }
 </script>
 
+<style lang="postcss">
+.navigation ul li {
+  @apply inline;
+}
+
+.head-link img {
+  @apply border-2 border-solid border-white rounded-full;
+}
+
+.hamburger[aria-expanded='true'] + .dropdown-menu {
+  @apply block;
+}
+
+.dropdown-menu a.active,
+.dropdown-menu a::focus {
+  @apply after:top-0
+    before:hidden
+    before:left-0;
+}
+
+.dropdown-menu a {
+  @apply before:bg-blue-main
+    before:bottom-0
+    before:left-0
+    before:absolute
+    before:right-0
+    before:top-0
+    before:z-n1
+    before:-skew-x-3
+
+    after:bg-red
+    after:bottom-0
+    after:left-0
+    after:absolute
+    after:top-full
+    after:-skew-x-3
+    after:z-n1
+    after:transition
+    after:duration-200
+    after:ease;
+}
+</style>
+
 <style lang="scss">
-// .navigation {
-//   background: darken($blue-dark, 3);
-//   border-bottom: 1px solid darken($blue-main, 20);
-//   left: 0;
-//   min-height: rem(64px);
-//   position: sticky;
-//   top: 0;
-//   width: 100%;
-//   z-index: 3;
-
-//   ul {
-//     margin: 0;
-//   }
-
-//   li {
-//     display: inline;
-//   }
-
-//   .head-link {
-//     display: flex;
-//     left: rem(8px);
-//     padding: rem(4px 5px 3px 5px);
-//     position: absolute;
-//     text-decoration: none;
-//     top: rem(8px);
-
-//     span {
-//       align-self: center;
-//       color: $white;
-//       font-size: rem(16px);
-//       font-weight: 900;
-//     }
-
-//     &:focus {
-//       outline: 1px solid;
-//     }
-
-//     figure {
-//       align-self: center;
-//       display: block;
-//       margin: rem(0 10px 0 0);
-//       width: rem(39px);
-
-//       img {
-//         border: 2px solid $white;
-//         border-radius: 100%;
-//       }
-//     }
-//   }
-
-//   .hamburger {
-//     // prettier-ignore
-//     @include responsive('display', (xs: block, m: none));
-
-//     padding: rem(7px 3px 0);
-//     position: absolute;
-//     right: rem(13px);
-//     top: rem(17px);
-
-//     &:focus {
-//       outline: 1px solid;
-//     }
-//   }
-
-//   .hamburger[aria-expanded='true'] + .dropdown-menu {
-//     display: block;
-//   }
-// }
-
 // .dropdown-menu {
-//   // prettier-ignore
-//   @include responsive('width', (xs: 100%, m: auto));
-
-//   // prettier-ignore
-//   @include responsive('position', (xs: fixed));
-
-//   // prettier-ignore
-//   @include responsive('top', (xs: rem(64px), m: 0));
-
-//   // prettier-ignore
-//   @include responsive('left', (xs: 0, m: auto));
-
-//   // prettier-ignore
-//   @include responsive('right', (xs: auto, m: 0));
-
-//   // prettier-ignore
-//   @include responsive('background', (xs: rgba($blue-bg, 0.97), m: none));
-
-//   // prettier-ignore
-//   @include responsive('box-shadow', (xs: 0 10px 22px -6px rgba(#000, 0.8), m: none));
-
-//   // prettier-ignore
-//   @include responsive('display', (xs: none, m: block));
-
-//   // prettier-ignore
-//   @include responsive('text-align', (xs: left, m: right));
-
-//   // prettier-ignore
-//   @include responsive('padding', (xs: rem(10px 10px 0), m: rem(15px 0 0 0)));
-
-//   height: auto;
-//   left: 0;
-//   line-height: 2;
-//   list-style: none;
-
 //   a {
-//     color: $white;
-//     display: inline-block;
-//     font-size: rem(16px);
-//     font-weight: 900;
-//     letter-spacing: 0.01em;
-//     margin: rem(0 11px 11px 0);
-//     padding: rem(0 8px);
-//     position: relative;
-//     text-decoration: none;
-//     text-transform: uppercase;
-//     z-index: 1;
-
-//     &.highlighted {
-//       color: #000;
-//       background: $yellow;
-//     }
-
-//     @include hover-supported() {
-//       &::after {
-//         top: 0;
-//       }
-//     }
-
-//     &.active,
-//     &:focus {
-//       &::after {
-//         top: 0;
-//       }
-
-//       &::before {
-//         display: none;
-//       }
-//     }
-
 //     &::before {
 //       background: $blue-main;
 //       bottom: 0;
@@ -248,6 +178,28 @@ export default {
 //     }
 
 //     &.highlighted {
+//       color: #000;
+//       background: $yellow;
+//     }
+
+//     @include hover-supported() {
+//       &::after {
+//         top: 0;
+//       }
+//     }
+
+//     &.active,
+//     &:focus {
+//       &::after {
+//         top: 0;
+//       }
+
+//       &::before {
+//         display: none;
+//       }
+//     }
+
+//     &.highlighted {
 //       &::before {
 //         background: $yellow;
 //       }
@@ -261,4 +213,5 @@ export default {
 //     }
 //   }
 // }
+//
 </style>

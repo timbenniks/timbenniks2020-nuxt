@@ -33,39 +33,4 @@ img {
     height: 100%;
   }
 }
-
-img.lazy {
-  opacity: 0;
-  transform: translateY(7px);
-  will-change: opacity, transform;
-  transition: all 0.7s ease;
-}
-
-img.lazy-done {
-  opacity: 1;
-  transform: translateY(0px);
-}
-
-img.opacity-only.lazy {
-  opacity: 0;
-  transform: translateY(0px);
-  will-change: opacity;
-  transition: all 0.7s ease;
-}
-
-img.opacity-only.lazy-done {
-  opacity: 1;
-  transform: translateY(0px);
-}
-
-img.no-animation.lazy {
-  opacity: 1;
-  transform: translateY(0px);
-  transition: none;
-}
-
-img.no-animation.lazy-done {
-  opacity: 1;
-  transform: translateY(0px);
-}
 /* purgecss end ignore */

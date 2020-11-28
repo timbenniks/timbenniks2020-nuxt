@@ -2,13 +2,13 @@
   <div class="content-wrapper home">
     <navigation />
 
-    <main id="main-content">
+    <!-- <main id="main-content">
       <home-hero-banner :data="heroBanner" />
 
       <div class="homepage-content">
-        <!-- eslint-disable vue/no-v-html -->
+        eslint-disable vue/no-v-html
         <div class="homepage-introduction" v-html="document.description" />
-        <!--eslint-enable-->
+        eslint-enable
 
         <sponsor>
           <p @click="$ga.event('sponsor', 'click', 'homepage', 'label')">
@@ -21,7 +21,7 @@
         <home-top-videos :data="topVideos" />
         <home-latest-writing :data="latestWritings" />
       </div>
-    </main>
+    </main> -->
   </div>
 </template>
 
