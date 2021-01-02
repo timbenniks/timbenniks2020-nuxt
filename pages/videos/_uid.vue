@@ -1,6 +1,5 @@
 <template>
   <div class="content-wrapper blogpost">
-    <navigation />
     <main id="main-content">
       <div class="video-header">
         <p>

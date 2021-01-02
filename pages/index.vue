@@ -1,7 +1,5 @@
 <template>
   <div class="content-wrapper home">
-    <navigation />
-
     <!-- <main id="main-content">
       <home-hero-banner :data="heroBanner" />
 

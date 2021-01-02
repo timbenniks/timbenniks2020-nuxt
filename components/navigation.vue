@@ -48,7 +48,7 @@
       >
         <nuxt-link
           to="/sponsor-me/"
-          class="bg-blue-main text-black bg-yellow leading-loose inline-block text-base font-black tracking-wide mr-3 mb-3 px-2 relative no-underline uppercase z-1 hover:bg-white"
+          class="highlighted text-black bg-yellow leading-loose inline-block text-base font-black tracking-wide mr-3 mb-3 px-2 relative no-underline uppercase z-1 hover:bg-white"
         >
           Sponsor Me
         </nuxt-link>
@@ -115,5 +115,13 @@ export default {
 
 .hamburger[aria-expanded='true'] + .dropdown-menu {
   @apply block;
+}
+
+.dropdown-menu li .active {
+  @apply bg-red;
+}
+
+.dropdown-menu li .highlighted.active {
+  @apply bg-white;
 }
 </style>

@@ -1,33 +1,59 @@
 <template>
   <footer class="bg-blue-darker border-solid border-t-2 border-blue-alt">
-    <div class="footer-inner">
-      <div class="footer-links">
-        <ul>
+    <div
+      class="p-12 max-w-5xl flex flex-col justify-around my-0 mx-auto l:py-12 l:px-0 m:flex-row"
+    >
+      <div class="footer-links flex flex-1">
+        <ul class="list-none p-0 mb-12">
           <li @click="$ga.event('footer_navigation', 'click', 'sponosor me')">
-            <nuxt-link to="/sponsor-me">Sponsor Me</nuxt-link>
+            <nuxt-link
+              to="/sponsor-me"
+              class="block mb-3 text-blue-light underline hover:text-white"
+              >Sponsor Me</nuxt-link
+            >
           </li>
           <li @click="$ga.event('footer_navigation', 'click', 'videos')">
-            <nuxt-link to="/videos">Videos</nuxt-link>
+            <nuxt-link
+              to="/videos"
+              class="block mb-3 text-blue-light underline hover:text-white"
+              >Videos</nuxt-link
+            >
           </li>
           <li @click="$ga.event('footer_navigation', 'click', 'writings')">
-            <nuxt-link to="/writings">Writings</nuxt-link>
+            <nuxt-link
+              to="/writings"
+              class="block mb-3 text-blue-light underline hover:text-white"
+              >Writings</nuxt-link
+            >
           </li>
           <li @click="$ga.event('footer_navigation', 'click', 'speaking')">
-            <nuxt-link to="/speaking">Speaking</nuxt-link>
+            <nuxt-link
+              to="/speaking"
+              class="block mb-3 text-blue-light underline hover:text-white"
+              >Speaking</nuxt-link
+            >
           </li>
           <li @click="$ga.event('footer_navigation', 'click', 'about')">
-            <nuxt-link to="/about">About</nuxt-link>
+            <nuxt-link
+              to="/about"
+              class="block mb-3 text-blue-light underline hover:text-white"
+              >About</nuxt-link
+            >
           </li>
           <li @click="$ga.event('footer_navigation', 'click', 'feed')">
-            <a href="/feed.xml">RSS Feed</a>
+            <a
+              href="/feed.xml"
+              class="block mb-3 text-blue-light underline hover:text-white"
+              >RSS Feed</a
+            >
           </li>
         </ul>
       </div>
 
-      <div class="sponsors">
-        <p>Proudly sponsored by</p>
-        <ul>
-          <li>
+      <div class="sponsors flex-1">
+        <p class="mb-4 text-sm">Proudly sponsored by</p>
+        <ul class="list-none p-0 mb-6">
+          <li class="inline-block my-2 mr-4 ml-0">
             <a
               rel="noopener"
               target="_blank"
@@ -35,18 +61,19 @@
               title="@MayaShavin on Twitter"
               @click="$ga.event('sponsors', 'click', 'maya-shavin')"
             >
-              <figure style="--aspect-ratio: 1/1">
+              <figure class="w-10 h-10" style="--aspect-ratio: 1/1">
                 <img
                   loading="lazy"
                   :src="require('../assets/images/sponsors/maya-shavin.jpg')"
                   alt="@MayaShavin on Twitter"
                   width="100"
                   height="100"
+                  class="rounded-full border-2 border-white"
                 />
               </figure>
             </a>
           </li>
-          <li>
+          <li class="inline-block my-2 mr-4 ml-0">
             <a
               rel="noopener"
               target="_blank"
@@ -54,18 +81,19 @@
               href="https://twitter.com/passionpeopleNL"
               @click="$ga.event('sponsors', 'click', 'passionpeopleNL')"
             >
-              <figure style="--aspect-ratio: 1/1">
+              <figure class="w-10 h-10" style="--aspect-ratio: 1/1">
                 <img
                   :src="require('../assets/images/sponsors/pp.jpg')"
                   alt="@passionpeopleNL on Twitter"
                   loading="lazy"
                   width="100"
                   height="100"
+                  class="rounded-full border-2 border-white"
                 />
               </figure>
             </a>
           </li>
-          <li>
+          <li class="inline-block my-2 mr-4 ml-0">
             <a
               rel="noopener"
               target="_blank"
@@ -73,18 +101,19 @@
               href="https://twitter.com/VueStorefront"
               @click="$ga.event('sponsors', 'click', 'VueStorefront')"
             >
-              <figure style="--aspect-ratio: 1/1">
+              <figure class="w-10 h-10" style="--aspect-ratio: 1/1">
                 <img
                   loading="lazy"
                   :src="require('../assets/images/sponsors/vsf.jpg')"
                   alt="@VueStorefront on Twitter"
                   width="100"
                   height="100"
+                  class="rounded-full border-2 border-white"
                 />
               </figure>
             </a>
           </li>
-          <li>
+          <li class="inline-block my-2 mr-4 ml-0">
             <a
               rel="noopener"
               target="_blank"
@@ -92,13 +121,14 @@
               href="https://twitter.com/cloudinary"
               @click="$ga.event('sponsors', 'click', 'Cloudinary')"
             >
-              <figure style="--aspect-ratio: 1/1">
+              <figure class="w-10 h-10" style="--aspect-ratio: 1/1">
                 <img
                   loading="lazy"
                   :src="require('../assets/images/sponsors/cloudinary.jpg')"
                   alt="@VueStorefront on Twitter"
                   width="100"
                   height="100"
+                  class="rounded-full border-2 border-white"
                 />
               </figure>
             </a>
@@ -106,8 +136,8 @@
         </ul>
       </div>
 
-      <div class="built-on">
-        <div class="copyright">
+      <div class="built-on flex-1">
+        <div class="mb-7 text-sm">
           Made with
           <span class="sr-only">love</span>
           <svg
@@ -116,6 +146,7 @@
             role="img"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512 512"
+            class="w-4 mx-1 inline"
           >
             <path
               fill="currentColor"
@@ -123,17 +154,20 @@
             ></path>
           </svg>
 
-          by Tim Benniks © 2020
+          by Tim Benniks © 2021
         </div>
 
-        <div class="built-on-wrapper">
+        <div class="built-on-wrapper flex justify-between">
           <a
             href="https://vercel.com"
             rel="noopener"
             target="_blank"
             aria-label="go to vercel"
           >
-            <iconVercel alt="Vercel" />
+            <iconVercel
+              alt="Vercel"
+              class="border-2 border-white rounded-md h-8"
+            />
           </a>
           <a
             href="https://nuxtjs.org"
@@ -141,7 +175,10 @@
             target="_blank"
             aria-label="go to nuxt"
           >
-            <iconWithNuxt alt="Nuxt" />
+            <iconWithNuxt
+              alt="Nuxt"
+              class="border-2 border-white rounded-md h-8"
+            />
           </a>
         </div>
       </div>
@@ -161,111 +198,11 @@ export default {
 }
 </script>
 <style lang="postcss">
-/*
-//   .footer-inner {
-//     // prettier-ignore
-//     @include responsive('padding', ( xs: 3rem, l: 3rem 0 ));
+.sponsors {
+  flex-grow: 1.1;
+}
 
-//     // prettier-ignore
-//     @include responsive('flex-direction', ( xs: column, m: row ));
-
-//     display: flex;
-//     justify-content: space-around;
-//     max-width: rem(1068px);
-//     margin: 0 auto;
-
-//     .footer-links {
-//       flex: 1;
-
-//       ul {
-//         list-style: none;
-//         padding: 0;
-//         margin: 0 0 3rem;
-
-//         a {
-//           display: block;
-//           margin: 0 0 1rem;
-
-//           &.active {
-//             color: $white;
-//           }
-//         }
-//       }
-//     }
-//   }
-
-//   .sponsors {
-//     flex: 2;
-
-//     ul {
-//       list-style: none;
-//       padding: 0;
-//       margin: 0 0 2rem;
-
-//       li {
-//         display: inline-block;
-//         margin: rem(5px 10px 5px 0);
-//       }
-//     }
-
-//     p {
-//       font-weight: 400;
-//       margin: 0 0 1rem 0;
-//       font-size: 0.8rem;
-//     }
-
-//     figure {
-//       width: 40px;
-//       height: 40px;
-
-//       img {
-//         border-radius: 100%;
-//         border: 2px solid $white;
-//       }
-//     }
-//   }
-
-//   .copyright {
-//     margin: 0 0 1rem 0;
-//     font-size: 0.8rem;
-//     color: $grey-light-alt;
-
-//     svg {
-//       width: 1em;
-//       margin: 0 0.2rem;
-//     }
-//   }
-
-//   .built-on {
-//     flex: 1;
-
-//     .built-on-wrapper {
-//       max-width: rem(280px);
-//       display: flex;
-//       justify-content: space-between;
-
-//       svg {
-//         border: 2px solid rgba(255, 255, 255, 0.7);
-//         border-radius: rem(5px);
-//         height: rem(35px);
-
-//         &:first-child {
-//           margin: rem(0 0.5rem 0 0);
-//         }
-//       }
-//     }
-//   }
-// }
-
-// .sr-only {
-//   position: absolute;
-//   width: 1px;
-//   height: 1px;
-//   padding: 0;
-//   margin: -1px;
-//   overflow: hidden;
-//   clip: rect(0, 0, 0, 0);
-//   white-space: nowrap;
-//   border: 0;
-// } */
+.built-on-wrapper {
+  max-width: 15rem;
+}
 </style>

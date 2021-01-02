@@ -1,7 +1,5 @@
 <template>
   <div class="content-wrapper blogpost">
-    <navigation />
-
     <main id="main-content">
       <heading
         :title="document.title"

@@ -8,6 +8,8 @@
       Skip to content
     </a>
     <div class="bg-triangle bottom-0 h-full fixed right-0 w-full z-n1" />
+    <navigation />
+
     <Nuxt />
 
     <global-footer

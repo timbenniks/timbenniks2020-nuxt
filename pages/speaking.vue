@@ -1,7 +1,5 @@
 <template>
   <div class="content-wrapper speaking">
-    <navigation />
-
     <main id="main-content">
       <heading
         :breadcrumb="true"

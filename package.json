@@ -39,7 +39,6 @@
     "@nuxtjs/eslint-module": "^2.0.0",
     "@nuxtjs/google-analytics": "^2.4.0",
     "@nuxtjs/prismic": "^1.2.3",
-    "@nuxtjs/stylelint-module": "^4.0.0",
     "@nuxtjs/tailwindcss": "^3.2.0",
     "autoprefixer": "9",
     "babel-eslint": "^10.1.0",
