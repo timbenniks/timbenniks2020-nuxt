@@ -40,6 +40,10 @@ module.exports = {
       boxShadow: {
         nav: '0 10px 22px -6px rgba(0,0,0,.8)',
       },
+      spacing: {
+        '16/9': '56.25%',
+        '22/9': '40.90%',
+      },
     },
   },
 }

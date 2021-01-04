@@ -1,14 +1,17 @@
 <template>
   <div class="content-wrapper home">
-    <!-- <main id="main-content">
+    <main id="main-content" class="p-0 w-full mx-auto my-0 overflow-hidden">
       <home-hero-banner :data="heroBanner" />
 
-      <div class="homepage-content">
-        eslint-disable vue/no-v-html
-        <div class="homepage-introduction" v-html="document.description" />
-        eslint-enable
+      <div class="max-w-5xl px-8 my-12 mx-auto">
+        <!--  eslint-disable vue/no-v-html-->
+        <div
+          class="homepage-introduction my-12 mx-auto max-w-3xl text-center"
+          v-html="document.description"
+        />
+        <!--  eslint-enable-->
 
-        <sponsor>
+        <!-- <sponsor>
           <p @click="$ga.event('sponsor', 'click', 'homepage', 'label')">
             Why sponsor me? Visit the
             <nuxt-link to="/sponsor-me/"> sponsor me page</nuxt-link>
@@ -17,9 +20,9 @@
         </sponsor>
 
         <home-top-videos :data="topVideos" />
-        <home-latest-writing :data="latestWritings" />
+        <home-latest-writing :data="latestWritings" /> -->
       </div>
-    </main> -->
+    </main>
   </div>
 </template>
 
@@ -59,34 +62,16 @@ export default {
 }
 </script>
 
-//
 <style lang="postcss">
-/* // .home {
-//   main {
-//     padding: 0;
-//     max-width: rem(1440px);
-//     width: 100%;
-//     margin: 0 auto;
-//     overflow: hidden;
-//   }
+.home main {
+  max-width: 90rem;
+}
 
-//   .homepage-content {
-//     max-width: rem(1100px);
-//     padding: rem(0 16px);
-//     margin: rem(30px auto);
+.homepage-introduction p {
+  @apply m-0 text-xl m:text-2xl;
+}
 
-//     .homepage-introduction {
-//       margin: 3rem auto;
-//       max-width: rem(800px);
-//       text-align: center;
-
-//       p {
-//         margin: 0;
-//         // prettier-ignore
-//         @include responsive('font-size', ( xs: rem(18px), m: rem(24px) ));
-//       }
-//     }
-//   }
-// }
-// */
+.homepage-introduction p a {
+  @apply text-blue-light underline;
+}
 </style>

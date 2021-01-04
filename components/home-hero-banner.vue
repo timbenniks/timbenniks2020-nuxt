@@ -52,29 +52,37 @@ export default {
 </script>
 
 <style lang="postcss">
+.hero-banner {
+  @apply relative border-b-2 border-blue-light w-full overflow-hidden;
+}
+
+.hero-banner:before {
+  @apply block w-full pt-16/9 l:pt-22/9;
+  content: '';
+}
+
+.hero-banner-inner {
+  @apply absolute top-0 left-0 right-0 bottom-0;
+}
+
+.hero-banner-inner {
+  @apply absolute top-0 left-0 right-0 bottom-0;
+}
+
+.hero-banner-content {
+  @apply w-11/12
+    mt-11
+    mx-auto
+    -bottom-4
+    absolute
+    max-w-4xl
+    sm:w-4/5
+    m:m-0;
+
+  left: 2%;
+}
+
 /* // .hero-banner {
-//   position: relative;
-//   border-bottom: rem(2px solid $blue-main);
-//   width: 100%;
-//   overflow: hidden;
-
-//   &:before {
-//     display: block;
-//     content: '';
-//     width: 100%;
-
-//     // prettier-ignore
-//     @include responsive('padding-top', (xs: (9 / 16) * 100%, l: (9 / 22) * 100%));
-//   }
-
-//   > .hero-banner-inner {
-//     position: absolute;
-//     top: 0;
-//     right: 0;
-//     bottom: 0;
-//     left: 0;
-//   }
-
 //   .hero-banner-content {
 //     // prettier-ignore
 //     @include responsive('width', (xs: 90%, sm: 80%));
