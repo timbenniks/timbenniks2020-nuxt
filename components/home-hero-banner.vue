@@ -1,13 +1,17 @@
 <template>
-  <div class="hero-banner">
-    <div class="hero-banner-inner">
+  <div
+    class="hero-banner relative border-b-2 border-blue-light w-full overflow-hidden"
+  >
+    <div class="hero-banner-inner absolute top-0 left-0 right-0 bottom-0">
       <lazy-hero-picture
         v-if="data.banner_image.url"
         :alt="data.banner_image.alt"
         :url="data.banner_image.url"
       />
 
-      <div class="hero-banner-content">
+      <div
+        class="hero-banner-content w-11/12 mt-11 mx-auto bottom-2 absolute max-w-lg sm:w-4/5 m:m-0"
+      >
         <lazy-image
           ratio="1/1"
           :alt="data.logo.alt"
@@ -52,71 +56,32 @@ export default {
 </script>
 
 <style lang="postcss">
-.hero-banner {
-  @apply relative border-b-2 border-blue-light w-full overflow-hidden;
-}
-
 .hero-banner:before {
   @apply block w-full pt-16/9 l:pt-22/9;
   content: '';
 }
 
-.hero-banner-inner {
-  @apply absolute top-0 left-0 right-0 bottom-0;
-}
-
-.hero-banner-inner {
-  @apply absolute top-0 left-0 right-0 bottom-0;
+.hero-banner-inner img {
+  @apply w-full;
 }
 
 .hero-banner-content {
-  @apply w-11/12
-    mt-11
-    mx-auto
-    -bottom-4
-    absolute
-    max-w-4xl
-    sm:w-4/5
-    m:m-0;
-
   left: 2%;
 }
 
-/* // .hero-banner {
-//   .hero-banner-content {
-//     // prettier-ignore
-//     @include responsive('width', (xs: 90%, sm: 80%));
-//     // prettier-ignore
-//     @include responsive('margin', (xs: rem(45px auto 0), m: rem(0)));
-//     // prettier-ignore
-//     @include responsive('bottom', (xs: -16px, m: -16px));
-//     // prettier-ignore
-//     @include responsive('left', (xs: 2%));
+.hero-banner-content h1 {
+  @apply z-20;
+}
 
-//     position: absolute;
-//     max-width: rem(800px);
+.hero-banner-content h2 {
+  @apply z-10;
+}
 
-//     h1 {
-//       z-index: 2;
-//     }
+.hero-banner-content figure {
+  @apply w-24 m:w-36 left-5 relative top-5;
+}
 
-//     h2 {
-//       z-index: 1;
-//     }
-
-//     figure {
-//       // prettier-ignore
-//       @include responsive('width', (xs: rem(100px), m: rem(140px)));
-
-//       left: rem(20px);
-//       position: relative;
-//       top: rem(20px);
-
-//       img {
-//         border: 5px solid $white;
-//         border-radius: 100%;
-//       }
-//     }
-//   }
-// } */
+.hero-banner-content img {
+  @apply border-4 border-white rounded-full;
+}
 </style>
