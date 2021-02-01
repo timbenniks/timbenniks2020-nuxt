@@ -1,5 +1,5 @@
 <template>
-  <figure :style="`--aspect-ratio:${ratio};`">
+  <figure :style="`--aspect-ratio:${ratio}`">
     <img
       :srcset="generateSrcSet()"
       :alt="alt"

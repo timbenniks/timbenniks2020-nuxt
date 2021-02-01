@@ -80,6 +80,11 @@
     }
   }
 
+  a {
+    color: #b3c9ec;
+    text-decoration: underline;
+  }
+
   .hamburger {
     padding: 0;
     display: inline-block;

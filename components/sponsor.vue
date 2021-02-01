@@ -1,12 +1,13 @@
 <template>
-  <div class="sponsor" :class="align">
+  <div class="sponsor mb-10" :class="align">
     <a
       href="https://www.buymeacoffee.com/timbenniks"
       target="_blank"
       rel="noopener"
+      class="inline-block"
       @click="$ga.event('sponsor', 'click', 'component', 'bmac image')"
     >
-      <figure style="--aspect-ratio: 217/60">
+      <figure style="--aspect-ratio: 217/60" class="w-44 mb-2">
         <img
           srcset="https://cdn.buymeacoffee.com/buttons/v2/default-white.png"
           alt="Buy Me A Coffee"
@@ -29,10 +30,10 @@ export default {
   },
   computed: {
     align() {
-      let cssclass = 'centered'
+      let cssclass = 'text-center	'
 
       if (this.alignment === 'left') {
-        cssclass = 'left-aligned'
+        cssclass = 'text-left'
       }
 
       return cssclass
@@ -40,30 +41,3 @@ export default {
   },
 }
 </script>
-
-<style lang="postcss">
-/* // .sponsor {
-//   margin: rem(0 0 40px);
-
-//   &.left-aligned {
-//     text-align: left;
-//   }
-
-//   &.centered {
-//     text-align: center;
-//   }
-
-//   a {
-//     display: inline-block;
-//   }
-
-//   figure {
-//     width: 180px;
-//     margin: 0 0 0.6em 0;
-//   }
-
-//   p {
-//     font-size: 0.9em;
-//   }
-// } */
-</style>

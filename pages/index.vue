@@ -11,16 +11,19 @@
         />
         <!--  eslint-enable-->
 
-        <!-- <sponsor>
-          <p @click="$ga.event('sponsor', 'click', 'homepage', 'label')">
+        <sponsor>
+          <p
+            class="text-sm"
+            @click="$ga.event('sponsor', 'click', 'homepage', 'label')"
+          >
             Why sponsor me? Visit the
             <nuxt-link to="/sponsor-me/"> sponsor me page</nuxt-link>
             to read more.
           </p>
         </sponsor>
-
         <home-top-videos :data="topVideos" />
-        <home-latest-writing :data="latestWritings" /> -->
+        <!--
+<home-latest-writing :data="latestWritings" /> -->
       </div>
     </main>
   </div>

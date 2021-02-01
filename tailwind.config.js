@@ -19,6 +19,7 @@ module.exports = {
         dark: '#102d5c',
         darker: '#0e274f',
         bg: '#14356b',
+        item: '#244f92',
       },
       yellow: '#fbd088',
       red: '#d62b31',
