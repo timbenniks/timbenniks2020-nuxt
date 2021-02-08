@@ -38,13 +38,6 @@ export default {
     '@nuxtjs/eslint-module',
     '@nuxtjs/style-resources',
     [
-      '@nuxtjs/google-analytics',
-      {
-        id: 'UA-6797812-3',
-        ignoreRoutes: ['startpage', '/invoices'],
-      },
-    ],
-    [
       '@nuxtjs/pwa',
       {
         workbox: {
@@ -90,6 +83,7 @@ export default {
       return await videoRoutes()
     },
   },
+  plugins: [{ src: '~/plugins/analytics.js', mode: 'client' }],
   feed: [
     {
       path: '/feed.xml',

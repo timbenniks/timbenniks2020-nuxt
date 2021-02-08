@@ -17,7 +17,6 @@
         v-for="video in data.videos"
         :key="video.slug"
         :video="video"
-        @click="$ga.event('home-top-vidoes', 'click', video.slug)"
       />
     </div>
 
