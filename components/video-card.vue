@@ -11,11 +11,11 @@
     </nuxt-link>
 
     <div class="post-content-wrap">
-      <p class="post-title">
+      <h4 class="post-title">
         <nuxt-link :to="`/videos/${video.slug}/`">
           {{ video.title }}
         </nuxt-link>
-      </p>
+      </h4>
       <p class="post-tags">
         <span v-for="(tag, index) in video.tags" :key="tag">
           {{ tag }}
