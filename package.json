@@ -35,7 +35,8 @@
     "nuxt": "^2.14.0",
     "prismic-javascript": "^3.0.2",
     "sass-rem": "^2.0.1",
-    "vue-instantsearch": "^3.1.0"
+    "vue-instantsearch": "^3.1.0",
+    "web-vitals": "^1.1.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.0.0",
