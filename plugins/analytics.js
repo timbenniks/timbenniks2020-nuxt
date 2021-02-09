@@ -34,7 +34,11 @@ function measureWebVitalsMetric({ name, delta, id }) {
 }
 
 export default ({ app }) => {
-  app.router.afterEach(() => {
+  app.router.afterEach((to) => {
+    if (to.path === '/startpage/') {
+      return
+    }
+
     send({ t: 'pageview' })
 
     getCLS(measureWebVitalsMetric)
