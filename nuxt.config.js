@@ -32,10 +32,7 @@ export default {
       },
     ],
   },
-  css: [
-    'assets/styles/index.scss',
-    'node_modules/lite-youtube-embed/src/lite-yt-embed.css',
-  ],
+  css: ['assets/styles/index.scss'],
   components: true,
   buildModules: [
     '@nuxtjs/eslint-module',
