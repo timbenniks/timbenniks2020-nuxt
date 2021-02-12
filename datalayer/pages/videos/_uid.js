@@ -5,6 +5,10 @@ import linkResolver from '@/datalayer/helpers/linkresolver'
 import htmlSerializer from '@/datalayer/helpers/htmlserializer'
 import { asDay, asMonth, asYear } from '@/datalayer/helpers/modifiers'
 
+const getYTid = (url) => {
+  return url.split('watch?v=')[1]
+}
+
 export const handler = async (context) => {
   const api = await getPrismicApi()
   const result = await api.getByUID('video', context.params.uid)
@@ -18,6 +22,7 @@ export const handler = async (context) => {
       result.data.video_embed.embed_url.replace('watch?v=', 'embed/') +
       '?autoplay=1&rel=0',
     content: RichText.asHtml(result.data.content, linkResolver, htmlSerializer),
+    ytid: getYTid(result.data.video_embed.embed_url),
   }
 
   const relatedVideosData = await api.query(

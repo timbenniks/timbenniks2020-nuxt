@@ -32,7 +32,10 @@ export default {
       },
     ],
   },
-  css: ['assets/styles/index.scss'],
+  css: [
+    'assets/styles/index.scss',
+    'node_modules/lite-youtube-embed/src/lite-yt-embed.css',
+  ],
   components: true,
   buildModules: [
     '@nuxtjs/eslint-module',
@@ -83,7 +86,10 @@ export default {
       return await videoRoutes()
     },
   },
-  plugins: [{ src: '~/plugins/analytics.js', mode: 'client' }],
+  plugins: [
+    { src: '~/plugins/analytics.js', mode: 'client' },
+    '~/plugins/youtube.client.js',
+  ],
   feed: [
     {
       path: '/feed.xml',
