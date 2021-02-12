@@ -20,16 +20,16 @@
           >!
         </p>
 
-        <figure class="youtube" style="--aspect-ratio: 16/9;">
-          <iframe
-            width="16"
-            height="9"
-            allowfullscreen
-            frameborder="0"
-            loading="lazy"
-            :src="document.embed"
-          ></iframe>
-        </figure>
+        <lite-youtube
+          params="modestbranding=2&rel=0"
+          :videoid="document.ytid"
+          :play-label="document.title"
+          :style="`background-image: url('https://i.ytimg.com/vi/${document.ytid}/maxresdefault.jpg');`"
+        >
+          <button type="button" class="lty-playbtn">
+            <span class="lyt-visually-hidden">{{ document.title }}</span>
+          </button>
+        </lite-youtube>
       </div>
       <heading
         :title="document.title"
@@ -136,6 +136,19 @@ export default {
       font-size: inherit;
       font-size: rem(16px);
     }
+  }
+}
+
+lite-youtube {
+  max-width: 1440px;
+  position: relative;
+  display: block;
+  contain: content;
+  background-position: center center;
+  background-size: cover;
+
+  &:before {
+    display: none;
   }
 }
 </style>
