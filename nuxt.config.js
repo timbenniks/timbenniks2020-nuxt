@@ -47,13 +47,16 @@ export default {
     ],
     '@/modules/sitemapRouteGenerator',
   ],
-  modules: ['@nuxtjs/sitemap', '@nuxtjs/feed'],
+  modules: ['@nuxtjs/sitemap', '@nuxtjs/feed', 'vue-plausible'],
   styleResources: {
     scss: [
       'assets/styles/_packages.scss',
       'assets/styles/_variables.scss',
       'assets/styles/_mixins.scss',
     ],
+  },
+  plausible: {
+    domain: 'timbenniks.dev',
   },
   loading: {
     color: '#d62b31',
@@ -83,7 +86,7 @@ export default {
       return await videoRoutes()
     },
   },
-  plugins: [{ src: '~/plugins/analytics.js', mode: 'client' }],
+  plugins: [],
   feed: [
     {
       path: '/feed.xml',
