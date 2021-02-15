@@ -86,7 +86,7 @@ export default {
       return await videoRoutes()
     },
   },
-  plugins: [],
+  plugins: ['~/plugins/youtube.client.js'],
   feed: [
     {
       path: '/feed.xml',

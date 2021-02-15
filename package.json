@@ -27,6 +27,7 @@
     "@nuxtjs/feed": "^2.0.0",
     "@nuxtjs/pwa": "^3.0.2",
     "@nuxtjs/sitemap": "^2.4.0",
+    "add": "^2.0.6",
     "algoliasearch": "^4.5.1",
     "axios": "^0.21.1",
     "googleapis": "^61.0.0",
@@ -37,7 +38,7 @@
     "sass-rem": "^2.0.1",
     "vue-instantsearch": "^3.1.0",
     "vue-plausible": "^1.1.2",
-    "web-vitals": "^1.1.0"
+    "yarn": "^1.22.10"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.0.0",
