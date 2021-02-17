@@ -4,6 +4,7 @@ import generateFeed from './datalayer/helpers/generateFeed'
 
 export default {
   target: 'static',
+  injectScripts: false,
   modern: process.env.NODE_ENV === 'development' ? false : 'client',
   head: {
     titleTemplate: '%s - Tim Benniks',
