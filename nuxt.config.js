@@ -87,7 +87,7 @@ export default {
     },
   },
   render: {
-    injectScripts: false,
+    injectScripts: true,
   },
   plugins: ['~/plugins/youtube.client.js'],
   feed: [
