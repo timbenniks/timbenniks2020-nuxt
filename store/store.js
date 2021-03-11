@@ -41,6 +41,20 @@ export const state = () => ({
     supporterCount: 0,
     supporterEarnings: 0,
   },
+  plausibleStats: {
+    bounce_rate: {
+      value: 0,
+      change: 0,
+    },
+    pageviews: {
+      value: 0,
+      change: 0,
+    },
+    visitors: {
+      value: 0,
+      change: 0,
+    },
+  },
   searchResults: {
     query: '',
     prismicTags: [],
@@ -60,6 +74,10 @@ export const mutations = {
     state.twitterStats = {
       ...stats.summary,
     }
+  },
+
+  setPlausibleStats(state, stats) {
+    state.plausibleStats = stats.plausibleStats
   },
 
   setSponsorStats(state, stats) {
@@ -123,6 +141,10 @@ export const getters = {
 
   twitterStats(state) {
     return state.twitterStats
+  },
+
+  plausibleStats(state) {
+    return state.plausibleStats
   },
 
   sponsorStats(state) {
@@ -199,6 +221,16 @@ export const actions = {
       .then((response) => response.json())
       .then((stats) => {
         commit('setSponsorStats', stats)
+      })
+  },
+
+  getPlausibleStats({ commit }) {
+    fetch(`${this.$config.base_url}api/plausible-stats`, {
+      cache: 'no-cache',
+    })
+      .then((response) => response.json())
+      .then((stats) => {
+        commit('setPlausibleStats', stats)
       })
   },
 
