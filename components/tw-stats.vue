@@ -1,7 +1,7 @@
 <template>
   <div class="stats twitter">
     <fancy-title
-      field="Twitter Stats"
+      field="Twitter"
       tag="h1"
       color="blue-dark"
       type="small"

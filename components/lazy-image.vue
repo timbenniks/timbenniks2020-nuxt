@@ -1,6 +1,7 @@
 <template>
   <figure :style="`--aspect-ratio:${ratio}`">
     <img
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=="
       :srcset="generateSrcSet()"
       :alt="alt"
       :title="alt"

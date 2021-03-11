@@ -5,42 +5,42 @@
     >
       <div class="footer-links flex flex-1">
         <ul class="list-none p-0 mb-12">
-          <li @click="$ga.event('footer_navigation', 'click', 'sponosor me')">
+          <li>
             <nuxt-link
               to="/sponsor-me"
               class="block mb-3 text-blue-light underline hover:text-white"
               >Sponsor Me</nuxt-link
             >
           </li>
-          <li @click="$ga.event('footer_navigation', 'click', 'videos')">
+          <li>
             <nuxt-link
               to="/videos"
               class="block mb-3 text-blue-light underline hover:text-white"
               >Videos</nuxt-link
             >
           </li>
-          <li @click="$ga.event('footer_navigation', 'click', 'writings')">
+          <li>
             <nuxt-link
               to="/writings"
               class="block mb-3 text-blue-light underline hover:text-white"
               >Writings</nuxt-link
             >
           </li>
-          <li @click="$ga.event('footer_navigation', 'click', 'speaking')">
+          <li>
             <nuxt-link
               to="/speaking"
               class="block mb-3 text-blue-light underline hover:text-white"
               >Speaking</nuxt-link
             >
           </li>
-          <li @click="$ga.event('footer_navigation', 'click', 'about')">
+          <li>
             <nuxt-link
               to="/about"
               class="block mb-3 text-blue-light underline hover:text-white"
               >About</nuxt-link
             >
           </li>
-          <li @click="$ga.event('footer_navigation', 'click', 'feed')">
+          <li>
             <a
               href="/feed.xml"
               class="block mb-3 text-blue-light underline hover:text-white"
@@ -59,7 +59,6 @@
               target="_blank"
               href="https://twitter.com/MayaShavin"
               title="@MayaShavin on Twitter"
-              @click="$ga.event('sponsors', 'click', 'maya-shavin')"
             >
               <figure class="w-10 h-10" style="--aspect-ratio: 1/1">
                 <img
@@ -79,7 +78,6 @@
               target="_blank"
               title="@passionpeopleNL on Twitter"
               href="https://twitter.com/passionpeopleNL"
-              @click="$ga.event('sponsors', 'click', 'passionpeopleNL')"
             >
               <figure class="w-10 h-10" style="--aspect-ratio: 1/1">
                 <img
@@ -99,7 +97,6 @@
               target="_blank"
               title="@VueStorefront on Twitter"
               href="https://twitter.com/VueStorefront"
-              @click="$ga.event('sponsors', 'click', 'VueStorefront')"
             >
               <figure class="w-10 h-10" style="--aspect-ratio: 1/1">
                 <img
@@ -119,7 +116,6 @@
               target="_blank"
               title="@Cloudinary on Twitter"
               href="https://twitter.com/cloudinary"
-              @click="$ga.event('sponsors', 'click', 'Cloudinary')"
             >
               <figure class="w-10 h-10" style="--aspect-ratio: 1/1">
                 <img

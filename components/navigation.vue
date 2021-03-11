@@ -42,10 +42,7 @@
     <ul
       class="dropdown-menu w-full fixed top-16 left-0 right-auto bg-blue-bg bg-opacity-95 shadow-nav hidden text-left pt-2 px-2 h-auto list-none m:w-auto m:top-auto m:left-auto m:right-0 m:bg-blue-darker m:shadow-none m:block m:text-right m:pt-4 m:pr-0"
     >
-      <li
-        class="inline"
-        @click="$ga.event('navigation', 'click', 'sponosor me')"
-      >
+      <li class="inline">
         <nuxt-link
           to="/sponsor-me/"
           class="highlighted text-black bg-yellow leading-loose inline-block text-base font-black tracking-wide mr-3 mb-3 px-2 relative no-underline uppercase z-1 hover:bg-white"
@@ -53,7 +50,7 @@
           Sponsor Me
         </nuxt-link>
       </li>
-      <li class="inline" @click="$ga.event('navigation', 'click', 'videos')">
+      <li class="inline">
         <nuxt-link
           :class="$route.name === 'videos-uid' ? 'active' : ''"
           to="/videos/"
@@ -62,7 +59,7 @@
           Videos
         </nuxt-link>
       </li>
-      <li class="inline" @click="$ga.event('navigation', 'click', 'writings')">
+      <li class="inline">
         <nuxt-link
           :class="$route.name === 'writings-uid' ? 'active' : ''"
           to="/writings/"
@@ -72,7 +69,7 @@
         </nuxt-link>
       </li>
 
-      <li class="inline" @click="$ga.event('navigation', 'click', 'speaking')">
+      <li class="inline">
         <nuxt-link
           to="/speaking/"
           class="text-white bg-blue-main leading-loose inline-block text-base font-black tracking-wide mr-3 mb-3 px-2 relative no-underline uppercase z-1 hover:bg-red"
@@ -80,7 +77,7 @@
           Speaking
         </nuxt-link>
       </li>
-      <li class="inline" @click="$ga.event('navigation', 'click', 'about')">
+      <li class="inline">
         <nuxt-link
           to="/about/"
           class="text-white bg-blue-main leading-loose inline-block text-base font-black tracking-wide mr-3 mb-3 px-2 relative no-underline uppercase z-1 hover:bg-red"
@@ -102,7 +99,6 @@ export default {
   methods: {
     showMenu() {
       this.burgerActive = !this.burgerActive
-      this.$ga.event('navigation', 'click', 'burger')
     },
   },
 }

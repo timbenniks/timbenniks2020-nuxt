@@ -22,7 +22,6 @@ export default {
       { name: 'robots', content: 'index, follow' },
     ],
     link: [
-      { rel: 'preconnect', href: 'https://www.google-analytics.com' },
       {
         rel: 'alternate',
         type: 'application/rss+xml',
@@ -41,13 +40,6 @@ export default {
     // '@nuxtjs/eslint-module',
     // '@nuxtjs/style-resources',
     [
-      '@nuxtjs/google-analytics',
-      {
-        id: 'UA-6797812-3',
-        ignoreRoutes: ['startpage', '/invoices'],
-      },
-    ],
-    [
       '@nuxtjs/pwa',
       {
         workbox: {
@@ -57,7 +49,18 @@ export default {
     ],
     '@/modules/sitemapRouteGenerator',
   ],
-  modules: ['@nuxtjs/sitemap', '@nuxtjs/feed'],
+  modules: ['@nuxtjs/sitemap', '@nuxtjs/feed', 'vue-plausible'],
+  styleResources: {
+    scss: [
+      'assets/styles/_packages.scss',
+      'assets/styles/_variables.scss',
+      'assets/styles/_mixins.scss',
+    ],
+  },
+  plausible: {
+    domain: 'timbenniks.dev',
+    trackLocalhost: false,
+  },
   loading: {
     color: '#d62b31',
   },
@@ -86,6 +89,10 @@ export default {
       return await videoRoutes()
     },
   },
+  render: {
+    injectScripts: true,
+  },
+  plugins: ['~/plugins/youtube.client.js'],
   feed: [
     {
       path: '/feed.xml',

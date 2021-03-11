@@ -23,6 +23,7 @@
         <yt-stats />
         <sponsor-stats />
         <tw-stats />
+        <plausible-stats />
       </div>
 
       <ul class="quicklinks">
@@ -102,8 +103,8 @@
         />
 
         <quick-link
-          url="https://auth.openair.com/login_sso"
-          label="OpenAir"
+          url="https://app.rydoo.com/dashboard"
+          label="Rydoo"
           image="openair.png"
         />
 
@@ -123,12 +124,6 @@
           url="https://www.paypal.com/myaccount/summary"
           label="PayPal"
           image="paypal.png"
-        />
-
-        <quick-link
-          url="https://primevideo.com"
-          label="Prime Video"
-          image="primevideo.jpg"
         />
       </ul>
     </main>

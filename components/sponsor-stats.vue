@@ -1,7 +1,7 @@
 <template>
   <div class="stats">
     <fancy-title
-      field="Sponsor Stats"
+      field="Sponsor"
       tag="h1"
       color="blue-dark"
       type="small"

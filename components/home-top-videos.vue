@@ -18,7 +18,6 @@
         :key="video.slug"
         :video="video"
         class="bg-blue-item p-4 border-b-2 border-blue-main flex flex-col"
-        @click="$ga.event('home-top-vidoes', 'click', video.slug)"
       />
     </div>
 

@@ -5,7 +5,6 @@
       target="_blank"
       rel="noopener"
       class="inline-block"
-      @click="$ga.event('sponsor', 'click', 'component', 'bmac image')"
     >
       <figure style="--aspect-ratio: 217/60" class="w-44 mb-2">
         <img

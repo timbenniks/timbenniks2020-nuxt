@@ -12,10 +12,7 @@
         <!--  eslint-enable-->
 
         <sponsor>
-          <p
-            class="text-sm"
-            @click="$ga.event('sponsor', 'click', 'homepage', 'label')"
-          >
+          <p class="text-sm">
             Why sponsor me? Visit the
             <nuxt-link to="/sponsor-me/"> sponsor me page</nuxt-link>
             to read more.
@@ -36,9 +33,7 @@ import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
 export default {
   mixins: [LinkMixin],
   async asyncData(context) {
-    const { handler } = await import(
-      /* webpackChunkName: "datalayer-page-home" */ '@/datalayer/pages/home'
-    )
+    const { handler } = await import('@/datalayer/pages/home')
     const {
       document,
       heroBanner,

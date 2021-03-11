@@ -49,9 +49,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   async asyncData(context) {
-    const { handler } = await import(
-      /* webpackChunkName: "datalayer-page-videos" */ '@/datalayer/pages/videos'
-    )
+    const { handler } = await import('@/datalayer/pages/videos')
     const { document, tags, metaInfo } = await handler(context)
     return {
       document,
@@ -109,7 +107,6 @@ export default {
 
       this.pushUrl(`?facets=${this.cleanUrlParams(query)}`)
       this.$store.dispatch('store/searchAlgolia', query)
-      this.$ga.event('video-facet', 'click', clickedFacet.label)
     },
 
     cleanUrlParams(query, reverse = false) {
@@ -119,7 +116,6 @@ export default {
     clearFilters() {
       this.pushUrl('/videos/')
       this.$store.dispatch('store/searchAlgolia')
-      this.$ga.event('video-facet', 'clear-filters')
     },
 
     pushUrl(params) {
