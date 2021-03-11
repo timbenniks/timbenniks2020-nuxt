@@ -1,7 +1,7 @@
 <template>
   <div class="stats">
     <fancy-title
-      field="YouTube Stats"
+      field="YouTube"
       tag="h1"
       color="blue-dark"
       type="small"

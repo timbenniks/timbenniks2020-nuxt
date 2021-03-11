@@ -23,7 +23,6 @@ export default {
       { name: 'robots', content: 'index, follow' },
     ],
     link: [
-      { rel: 'preconnect', href: 'https://www.google-analytics.com' },
       {
         rel: 'alternate',
         type: 'application/rss+xml',
@@ -57,6 +56,7 @@ export default {
   },
   plausible: {
     domain: 'timbenniks.dev',
+    trackLocalhost: false,
   },
   loading: {
     color: '#d62b31',
