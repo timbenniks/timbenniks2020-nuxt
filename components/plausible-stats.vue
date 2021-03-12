@@ -1,5 +1,5 @@
 <template>
-  <div class="stats twitter">
+  <div class="stats">
     <fancy-title
       field="Plausible"
       tag="h1"
