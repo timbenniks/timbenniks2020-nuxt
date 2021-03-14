@@ -22,6 +22,31 @@ export default {
       { name: 'author', content: 'Tim Benniks' },
       { name: 'robots', content: 'index, follow' },
     ],
+    script: [
+      {
+        innerHTML: `function initXdnRum() {
+          new XDN.Metrics({
+            token: "99a41f3a-cb38-4abd-bfdf-12e3f9b4c090",
+            router: new XDN.Router()
+            .match('/', ({ setPageLabel }) => setPageLabel('home'))
+            .match('/videos', ({ setPageLabel }) => setPageLabel('videos'))
+            .match('/videos/:id', ({ setPageLabel }) => setPageLabel('video'))
+            .match('/writings', ({ setPageLabel }) => setPageLabel('writings'))
+            .match('/writings/:id', ({ setPageLabel }) => setPageLabel('writing'))
+            .match('/about', ({ setPageLabel }) => setPageLabel('about'))
+            .match('/sponsor-me', ({ setPageLabel }) => setPageLabel('sponsor'))
+            .match('/speaking', ({ setPageLabel }) => setPageLabel('speaking'))
+            .match('/startpage', ({ setPageLabel }) => setPageLabel('startpage'))
+          }).collect()
+        }`,
+        defer: true,
+      },
+      {
+        defer: true,
+        src: 'https://rum.moovweb.app/latest.js',
+        onload: 'initXdnRum()',
+      },
+    ],
     link: [
       {
         rel: 'alternate',
@@ -30,6 +55,7 @@ export default {
         href: '/feed.xml',
       },
     ],
+    __dangerouslyDisableSanitizers: ['script', 'innerHTML'],
   },
   css: ['assets/styles/index.scss'],
   components: true,
