@@ -90,19 +90,15 @@ module.exports = function (type, element, content, children) {
 
     if (element.oembed.provider_name === 'YouTube') {
       result = `
-        <figure style="--aspect-ratio:16/9;">
-          <iframe
-            width="16"
-            height="9"
-            allow="autoplay"
-            allowfullscreen
-            frameborder="0"
-            loading="lazy"
-            src="${element.oembed.embed_url.replace(
-              'watch?v=',
-              'embed/'
-            )}"></iframe>
-        </figure>
+      <figure style="--aspect-ratio:16/9;">
+        <lite-youtube
+          params="modestbranding=2&rel=0"
+          videoid="${element.oembed.embed_url.split('?v=')[1]}"
+          play-label="${element.oembed.title}"
+        >
+        </lite-youtube>
+      </figure>
+
       `
     }
 
