@@ -54,6 +54,39 @@ export default {
         title: 'RSS Feed for timbenniks.dev',
         href: '/feed.xml',
       },
+
+      {
+        rel: 'preload',
+        as: 'font',
+        type: 'font/woff2',
+        href:
+          'https://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjxAwXiWtFCfQ7A.woff2',
+        crossorigin: true,
+      },
+      {
+        rel: 'preload',
+        as: 'font',
+        type: 'font/woff2',
+        href:
+          'https://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjx4wXiWtFCc.woff2',
+        crossorigin: true,
+      },
+      {
+        rel: 'preload',
+        as: 'font',
+        type: 'font/woff2',
+        href:
+          'https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh50XSwaPGQ3q5d0N7w.woff2',
+        crossorigin: true,
+      },
+      {
+        rel: 'preload',
+        as: 'font',
+        type: 'font/woff2',
+        href:
+          'https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh50XSwiPGQ3q5d0.woff2',
+        crossorigin: true,
+      },
     ],
     __dangerouslyDisableSanitizers: ['script', 'innerHTML'],
   },
