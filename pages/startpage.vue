@@ -105,7 +105,7 @@
         <quick-link
           url="https://app.rydoo.com/dashboard"
           label="Rydoo"
-          image="openair.png"
+          image="rydoo.png"
         />
 
         <quick-link
@@ -124,6 +124,12 @@
           url="https://www.paypal.com/myaccount/summary"
           label="PayPal"
           image="paypal.png"
+        />
+
+        <quick-link
+          url="https://dashboard.heropost.io/"
+          label="Heropost"
+          image="heropost.png"
         />
       </ul>
     </main>
