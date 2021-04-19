@@ -2,3 +2,4 @@ User-agent: *
 Disallow: /startpage
 Disallow: /invoices
 Disallow: /invoices/*
+Sitemap: https://nostalgic-joliot-2055e1.netlify.app/sitemap.xml
