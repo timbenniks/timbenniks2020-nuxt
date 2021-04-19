@@ -46,6 +46,19 @@ export default {
         src: 'https://rum.moovweb.app/latest.js',
         onload: 'initXdnRum()',
       },
+      {
+        src:
+          'https://cdn.jsdelivr.net/npm/@algolia/algoliasearch-netlify-frontend@1/dist/algoliasearchNetlify.js',
+      },
+      {
+        innerHTML: `algoliasearchNetlify({
+          appId: 'KXZ7GVBZGF',
+          apiKey: '769c86fffcf536bcbfd2f1abf2cf35eb',
+          siteId: 'f0591dc4-8c8e-4634-90a1-3b8bbb277572',
+          branch: 'netlify-algolia-plugin',
+          selector: 'div#search',
+        });`,
+      },
     ],
     link: [
       {
