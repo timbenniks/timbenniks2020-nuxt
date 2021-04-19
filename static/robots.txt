@@ -2,4 +2,3 @@ User-agent: *
 Disallow: /startpage
 Disallow: /invoices
 Disallow: /invoices/*
-Sitemap: https://timbenniks.dev/sitemap.xml
