@@ -15,7 +15,7 @@ export default function (fields, pageType, path) {
     link: [
       {
         rel: 'canonical',
-        href: url,
+        href: `${url}/`,
       },
     ],
     meta: [
