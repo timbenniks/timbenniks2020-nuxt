@@ -62,6 +62,11 @@ export default {
     ],
     link: [
       {
+        rel: 'stylesheet',
+        href:
+          'https://cdn.jsdelivr.net/npm/@algolia/algoliasearch-netlify-frontend@1/dist/algoliasearchNetlify.css',
+      },
+      {
         rel: 'alternate',
         type: 'application/rss+xml',
         title: 'RSS Feed for timbenniks.dev',
