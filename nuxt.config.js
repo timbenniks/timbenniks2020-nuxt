@@ -90,7 +90,7 @@ export default {
     ],
     '@/modules/sitemapRouteGenerator',
   ],
-  modules: ['@nuxtjs/feed', 'vue-plausible'],
+  modules: ['@nuxtjs/sitemap', '@nuxtjs/feed', 'vue-plausible'],
   styleResources: {
     scss: [
       'assets/styles/_packages.scss',
@@ -107,7 +107,7 @@ export default {
   },
   sitemap: {
     path: '/sitemap.xml',
-    hostname: 'https://timbenniks.dev',
+    hostname: 'https://nostalgic-joliot-2055e1.netlify.app',
     cacheTime: 1000 * 60 * 15,
     exclude: ['startpage'],
   },

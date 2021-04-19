@@ -16,7 +16,7 @@ async function getMappedDateForType(type) {
       id: thing.uid,
       date: new Date(thing.data.publication_date),
       image: thing.data.image.url,
-      link: `https://timbenniks.dev/${
+      link: `https://nostalgic-joliot-2055e1.netlify.app/${
         type === 'video' ? 'videos' : 'writings'
       }/${thing.uid}`,
       description: thing.data.body.find(
@@ -26,7 +26,7 @@ async function getMappedDateForType(type) {
         {
           name: 'Tim Benniks',
           email: 'timbenniks.dev@gmail.com',
-          link: 'https://timbenniks.dev/',
+          link: 'https://nostalgic-joliot-2055e1.netlify.app/',
         },
       ],
     }
@@ -39,11 +39,11 @@ export default async (feed) => {
 
   feed.options = {
     title: 'Tim Benniks',
-    link: 'https://timbenniks.dev/feed.xml',
-    id: 'https://timbenniks.dev',
+    link: 'https://nostalgic-joliot-2055e1.netlify.app/feed.xml',
+    id: 'https://nostalgic-joliot-2055e1.netlify.app',
     description: 'Tim Beniks blog and video feed',
     language: 'en',
-    image: 'https://timbenniks.dev/icon.png',
+    image: 'https://nostalgic-joliot-2055e1.netlify.app/icon.png',
     generator: 'Tim Benniks',
   }
 
@@ -60,6 +60,6 @@ export default async (feed) => {
   feed.addContributor({
     name: 'Tim Benniks',
     email: 'timbenniks.dev@gmail.com',
-    link: 'https://timbenniks.dev/',
+    link: 'https://nostalgic-joliot-2055e1.netlify.app/',
   })
 }
