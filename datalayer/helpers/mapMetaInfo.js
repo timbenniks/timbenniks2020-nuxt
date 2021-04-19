@@ -9,7 +9,7 @@ function getPropType(fields, type, prop) {
 }
 
 export default function (fields, pageType, path) {
-  const url = `https://timbenniks.dev${path}`
+  const url = `https://nostalgic-joliot-2055e1.netlify.app${path}`
   const metaData = {
     title: getPropType(fields, 'general_card', 'title'),
     link: [
