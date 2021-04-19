@@ -18,6 +18,8 @@
           </p>
         </sponsor>
 
+        <div id="search"></div>
+
         <home-top-videos :data="topVideos" />
         <home-latest-writing :data="latestWritings" />
       </div>
