@@ -1,5 +1,5 @@
 // import BundleAnalyzerPlugin from '@bundle-analyzer/webpack-plugin'
-import videoRoutes from './datalayer/helpers/generateVideoRoutes'
+// import videoRoutes from './datalayer/helpers/generateVideoRoutes'
 import generateFeed from './datalayer/helpers/generateFeed'
 
 export default {
@@ -85,7 +85,7 @@ export default {
     ],
     '@/modules/sitemapRouteGenerator',
   ],
-  modules: ['@nuxtjs/sitemap', '@nuxtjs/feed', 'vue-plausible'],
+  modules: ['@nuxtjs/feed', 'vue-plausible'],
   styleResources: {
     scss: [
       'assets/styles/_packages.scss',
@@ -120,11 +120,11 @@ export default {
       short_name: 'timbenniks',
     },
   },
-  generate: {
-    async routes() {
-      return await videoRoutes()
-    },
-  },
+  // generate: {
+  //   async routes() {
+  //     return await videoRoutes()
+  //   },
+  // },
   render: {
     injectScripts: true,
   },
