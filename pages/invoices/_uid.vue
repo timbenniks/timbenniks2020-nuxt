@@ -8,8 +8,8 @@
           <nuxt-link class="filter" to="/invoices"
             >&lt; Back to invoices</nuxt-link
           >
-          <button class="filter">Edit Invoice</button>
           <button class="filter" @click="generatePdf()">Print PDF</button>
+          <span v-if="!document.paid">PAYMENT PENDING</span>
         </div>
         <div ref="invoice" class="invoice-box">
           <table cellpadding="0" cellspacing="0">
