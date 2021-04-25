@@ -124,7 +124,7 @@ export default {
     path: '/sitemap.xml',
     hostname: 'https://timbenniks.dev',
     cacheTime: 1000 * 60 * 15,
-    exclude: ['startpage', 'invoices'],
+    exclude: ['startpage', 'invoices', 'invoices/*'],
   },
   publicRuntimeConfig: {
     algolia_app_id: process.env.ALGOLIA_APP_ID,
