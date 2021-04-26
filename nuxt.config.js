@@ -24,8 +24,28 @@ export default {
     ],
 
     __dangerouslyDisableSanitizers: ['script', 'innerHTML'],
-    script: [],
+    script: [
+      {
+        src:
+          'https://cdn.jsdelivr.net/npm/@algolia/algoliasearch-netlify-frontend@1/dist/algoliasearchNetlify.js',
+      },
+      {
+        innerHTML: `
+        algoliasearchNetlify({
+          appId: 'RY2GXNHC2F',
+          apiKey: '93ce558ed5c523626497f8e65ce37688',
+          siteId: 'f0591dc4-8c8e-4634-90a1-3b8bbb277572',
+          branch: 'netlify-algolia-plugin',
+          selector: 'div#search',
+        });`,
+      },
+    ],
     link: [
+      {
+        rel: 'stylesheet',
+        href:
+          'https://cdn.jsdelivr.net/npm/@algolia/algoliasearch-netlify-frontend@1/dist/algoliasearchNetlify.css',
+      },
       {
         rel: 'alternate',
         type: 'application/rss+xml',

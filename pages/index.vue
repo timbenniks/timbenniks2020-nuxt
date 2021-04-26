@@ -6,6 +6,8 @@
       <home-hero-banner :data="heroBanner" />
 
       <div class="homepage-content">
+        <div id="search"></div>
+
         <!-- eslint-disable vue/no-v-html -->
         <div class="homepage-introduction" v-html="document.description" />
         <!--eslint-enable-->
