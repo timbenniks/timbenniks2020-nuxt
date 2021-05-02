@@ -1,3 +1,2 @@
 User-agent: *
-Disallow: /startpage
 Sitemap: https://timbenniks.dev/sitemap.xml
