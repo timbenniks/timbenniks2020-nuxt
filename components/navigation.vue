@@ -1,13 +1,12 @@
 <template>
   <nav class="navigation" aria-label="Main Navigation">
     <nuxt-link to="/" class="head-link">
-      <lazy-image
+      <lazy-img
         ratio="1/1"
         alt="Tim Benniks Logo"
         url="https://images.prismic.io/timbenniks/375f865f-188c-4f83-9462-c8600aff4061_favicon.png"
         :caption="false"
-        :widths="[103]"
-        sizes="103px"
+        sizes="xs:103px"
       />
 
       <span>TIM BENNIKS</span>

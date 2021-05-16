@@ -59,32 +59,28 @@ export default {
         rel: 'preload',
         as: 'font',
         type: 'font/woff2',
-        href:
-          'https://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjxAwXiWtFCfQ7A.woff2',
+        href: 'https://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjxAwXiWtFCfQ7A.woff2',
         crossorigin: true,
       },
       {
         rel: 'preload',
         as: 'font',
         type: 'font/woff2',
-        href:
-          'https://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjx4wXiWtFCc.woff2',
+        href: 'https://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjx4wXiWtFCc.woff2',
         crossorigin: true,
       },
       {
         rel: 'preload',
         as: 'font',
         type: 'font/woff2',
-        href:
-          'https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh50XSwaPGQ3q5d0N7w.woff2',
+        href: 'https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh50XSwaPGQ3q5d0N7w.woff2',
         crossorigin: true,
       },
       {
         rel: 'preload',
         as: 'font',
         type: 'font/woff2',
-        href:
-          'https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh50XSwiPGQ3q5d0.woff2',
+        href: 'https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh50XSwiPGQ3q5d0.woff2',
         crossorigin: true,
       },
     ],
@@ -97,7 +93,20 @@ export default {
     '@nuxtjs/style-resources',
     ['@nuxtjs/pwa'],
     '@/modules/sitemapRouteGenerator',
+    '@nuxt/image',
   ],
+  image: {
+    screens: {
+      xs: 375,
+      sm: 500,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+    },
+    cloudinary: {
+      baseURL: 'https://res.cloudinary.com/dwfcofnrd/image/fetch/',
+    },
+  },
   modules: ['@nuxtjs/sitemap', '@nuxtjs/feed', 'vue-plausible'],
   styleResources: {
     scss: [
