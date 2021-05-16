@@ -25,17 +25,18 @@
     "vue-plausible": "^1.1.2"
   },
   "devDependencies": {
+    "@nuxt/image": "^0.4.9",
     "@nuxtjs/eslint-config": "^3.0.0",
     "@nuxtjs/eslint-module": "^2.0.0",
     "@nuxtjs/prismic": "^1.2.3",
     "@nuxtjs/style-resources": "^1.0.0",
+    "@prismicio/client": "^4.0.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-nuxt": "^1.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "prettier": "^2.0.5",
-    "prismic-dom": "^2.2.3",
-    "@prismicio/client": "^4.0.0"
+    "prismic-dom": "^2.2.3"
   }
 }

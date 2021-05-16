@@ -12,12 +12,11 @@
     <div class="videos">
       <article v-for="video in videos" :key="video.uid" class="post video">
         <nuxt-link :to="`/videos/${video.uid}/`">
-          <lazy-image
+          <lazy-img
             ratio="16/9"
             :alt="video.title"
             :url="video.image"
-            :widths="[300, 400, 500, 600, 680]"
-            sizes="(max-width: 400px) 100vw, (min-width: 700px) 210px"
+            sizes="sm:100vw md:210px"
           />
         </nuxt-link>
 

@@ -13,13 +13,12 @@
       <div class="posts">
         <article v-for="post in writings" :key="post.uid" class="post">
           <nuxt-link :to="`/writings/${post.uid}/`">
-            <lazy-image
+            <lazy-img
               ratio="16/9"
               :alt="post.title"
               :url="post.image"
               :caption="false"
-              :widths="[300, 400, 500, 600, 680, 800]"
-              sizes="(max-width: 400px) 100vw, (min-width: 700px) 210px"
+              sizes="sm:100vw md:320px"
             />
           </nuxt-link>
 

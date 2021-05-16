@@ -8,13 +8,12 @@
       />
 
       <div class="hero-banner-content">
-        <lazy-image
+        <lazy-img
           ratio="1/1"
           :alt="data.logo.alt"
           :url="data.logo.url"
           :caption="false"
-          :widths="[271]"
-          sizes="271px"
+          sizes="xs:271px"
         />
 
         <fancy-title

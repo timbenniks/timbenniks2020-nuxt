@@ -24,7 +24,6 @@
 
 <script>
 export default {
-  name: 'LazyImage',
   props: {
     alt: { type: String, required: true },
     url: { type: String, required: true },
