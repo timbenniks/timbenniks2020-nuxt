@@ -1,4 +1,4 @@
-import Prismic from 'prismic-javascript'
+import Prismic from '@prismicio/client'
 import { RichText } from 'prismic-dom'
 import getPrismicApi from '@/datalayer/helpers/getPrismicApi'
 import { asDay, asMonth, asYear } from '@/datalayer/helpers/modifiers'

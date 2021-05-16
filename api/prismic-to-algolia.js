@@ -1,4 +1,4 @@
-const Prismic = require('prismic-javascript')
+const Prismic = require('@prismicio/client')
 const Algoliasearch = require('algoliasearch')
 
 function getPrismicApi() {

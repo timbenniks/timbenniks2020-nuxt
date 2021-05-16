@@ -1,5 +1,5 @@
 import { RichText } from 'prismic-dom'
-import Prismic from 'prismic-javascript'
+import Prismic from '@prismicio/client'
 import getPrismicApi from '@/datalayer/helpers/getPrismicApi'
 import linkResolver from '@/datalayer/helpers/linkresolver'
 import htmlSerializer from '@/datalayer/helpers/htmlserializer'

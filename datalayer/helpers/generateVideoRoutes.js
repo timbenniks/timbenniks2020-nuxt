@@ -1,4 +1,4 @@
-import Prismic from 'prismic-javascript'
+import Prismic from '@prismicio/client'
 import getPrismicApi from './getPrismicApi'
 
 export default async () => {

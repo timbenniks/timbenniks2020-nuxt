@@ -5,7 +5,7 @@
       target="_blank"
       rel="noopener"
     >
-      <figure style="--aspect-ratio: 217/60;">
+      <figure style="--aspect-ratio: 217/60">
         <img
           srcset="https://cdn.buymeacoffee.com/buttons/v2/default-white.png"
           alt="Buy Me A Coffee"

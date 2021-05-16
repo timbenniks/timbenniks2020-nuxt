@@ -17,7 +17,7 @@
           :use-fancy-titles="true"
         />
 
-        <figure style="--aspect-ratio: 16/9;" class="vid">
+        <figure style="--aspect-ratio: 16/9" class="vid">
           <iframe
             width="16"
             height="9"

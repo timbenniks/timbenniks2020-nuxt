@@ -52,7 +52,7 @@
               href="https://twitter.com/MayaShavin"
               title="@MayaShavin on Twitter"
             >
-              <figure style="--aspect-ratio: 1/1;">
+              <figure style="--aspect-ratio: 1/1">
                 <img
                   loading="lazy"
                   :src="require('../assets/images/sponsors/maya-shavin.jpg')"
@@ -70,7 +70,7 @@
               title="@passionpeopleNL on Twitter"
               href="https://twitter.com/passionpeopleNL"
             >
-              <figure style="--aspect-ratio: 1/1;">
+              <figure style="--aspect-ratio: 1/1">
                 <img
                   :src="require('../assets/images/sponsors/pp.jpg')"
                   alt="@passionpeopleNL on Twitter"
@@ -88,7 +88,7 @@
               title="@VueStorefront on Twitter"
               href="https://twitter.com/VueStorefront"
             >
-              <figure style="--aspect-ratio: 1/1;">
+              <figure style="--aspect-ratio: 1/1">
                 <img
                   loading="lazy"
                   :src="require('../assets/images/sponsors/vsf.jpg')"
@@ -106,7 +106,7 @@
               title="@Cloudinary on Twitter"
               href="https://twitter.com/cloudinary"
             >
-              <figure style="--aspect-ratio: 1/1;">
+              <figure style="--aspect-ratio: 1/1">
                 <img
                   loading="lazy"
                   :src="require('../assets/images/sponsors/cloudinary.jpg')"

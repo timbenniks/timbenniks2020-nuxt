@@ -95,14 +95,7 @@ export default {
   buildModules: [
     '@nuxtjs/eslint-module',
     '@nuxtjs/style-resources',
-    [
-      '@nuxtjs/pwa',
-      {
-        workbox: {
-          clientsClaim: false,
-        },
-      },
-    ],
+    ['@nuxtjs/pwa'],
     '@/modules/sitemapRouteGenerator',
   ],
   modules: ['@nuxtjs/sitemap', '@nuxtjs/feed', 'vue-plausible'],
@@ -124,7 +117,6 @@ export default {
     path: '/sitemap.xml',
     hostname: 'https://timbenniks.dev',
     cacheTime: 1000 * 60 * 15,
-    exclude: ['/invoices', '/startpage'],
   },
   publicRuntimeConfig: {
     algolia_app_id: process.env.ALGOLIA_APP_ID,

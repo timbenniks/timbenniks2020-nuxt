@@ -33,13 +33,8 @@ export default {
   mixins: [LinkMixin],
   async asyncData(context) {
     const { handler } = await import('@/datalayer/pages/home')
-    const {
-      document,
-      heroBanner,
-      topVideos,
-      latestWritings,
-      metaInfo,
-    } = await handler(context)
+    const { document, heroBanner, topVideos, latestWritings, metaInfo } =
+      await handler(context)
 
     return {
       document,
