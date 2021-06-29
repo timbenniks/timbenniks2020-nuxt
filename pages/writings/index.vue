@@ -1,17 +1,20 @@
 <template>
-  <div class="content-wrapper writings">
+  <div
+    v-if="!$fetchState.pending && !$fetchState.error"
+    class="content-wrapper writings"
+  >
     <navigation />
 
     <main id="main-content">
       <heading
         :breadcrumb="true"
         titletag="h1"
-        :title="document.title"
+        :title="cmsData.title"
         :uppercase="true"
       />
 
       <div class="posts">
-        <article v-for="post in writings" :key="post.uid" class="post">
+        <article v-for="post in writingsData" :key="post.uid" class="post">
           <nuxt-link :to="`/writings/${post.uid}/`">
             <lazy-img
               ratio="16/9"
@@ -44,28 +47,43 @@
 </template>
 
 <script>
+import {
+  ref,
+  useFetch,
+  defineComponent,
+  useMeta,
+  useRoute,
+} from '@nuxtjs/composition-api'
+
+import { useContent } from '@/datalayer/pages/writings'
 import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
 
-export default {
-  async asyncData(context) {
-    const { handler } = await import(
-      /* webpackChunkName: "datalayer-page-writings" */ '@/datalayer/pages/writings'
-    )
-    const { document, writings, metaInfo } = await handler(context)
-    return {
-      document,
-      writings,
-      metaInfo,
-    }
+export default defineComponent({
+  head: {},
+  setup() {
+    const cmsData = ref(null)
+    const writingsData = ref(null)
+    const metaData = ref(null)
+    const route = useRoute()
+
+    useFetch(async () => {
+      const { document, writings, metaInfo } = await useContent()
+
+      cmsData.value = document
+      writingsData.value = writings
+
+      metaData.value = mapMetaInfo(
+        metaInfo.fields,
+        metaInfo.pageType,
+        route.value.path
+      )
+    })
+
+    useMeta(() => ({ ...metaData.value }))
+
+    return { cmsData, writingsData, metaData }
   },
-  head() {
-    return mapMetaInfo(
-      this.metaInfo.fields,
-      this.metaInfo.pageType,
-      this.$router.currentRoute.path
-    )
-  },
-}
+})
 </script>
 
 <style lang="scss" scoped>

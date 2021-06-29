@@ -3,7 +3,7 @@ import getPrismicApi from '@/datalayer/helpers/getPrismicApi'
 import linkResolver from '@/datalayer/helpers/linkresolver'
 import htmlSerializer from '@/datalayer/helpers/htmlserializer'
 
-export const handler = async (context) => {
+export const useContent = async (context) => {
   const api = await getPrismicApi()
   const result = await api.getSingle('sponsor')
 

@@ -1,11 +1,14 @@
 <template>
-  <div class="content-wrapper blogpost">
+  <div
+    v-if="!$fetchState.pending && !$fetchState.error"
+    class="content-wrapper blogpost"
+  >
     <navigation />
 
     <main id="main-content">
       <heading
-        :title="document.title"
-        :subtitle="document.sub_title"
+        :title="cmsData.title"
+        :subtitle="cmsData.sub_title"
         :breadcrumb="true"
         titletag="h1"
         subtitletag="h2"
@@ -13,36 +16,48 @@
       />
 
       <!-- eslint-disable vue/no-v-html -->
-      <div ref="body" class="post-content" v-html="document.content"></div>
+      <div v-interpolation class="post-content" v-html="cmsData.content"></div>
       <!--eslint-enable-->
     </main>
   </div>
 </template>
 
 <script>
-import LinkMixin from '@/assets/mixins/linkMixin'
+import {
+  ref,
+  useFetch,
+  defineComponent,
+  useMeta,
+  useRoute,
+} from '@nuxtjs/composition-api'
+
+import { useContent } from '@/datalayer/pages/writings/_uid'
 import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
 
-export default {
-  mixins: [LinkMixin],
-  async asyncData(context) {
-    const { handler } = await import(
-      /* webpackChunkName: "datalayer-page-writings-uid" */ '@/datalayer/pages/writings/_uid'
-    )
-    const { document, metaInfo } = await handler(context)
-    return {
-      document,
-      metaInfo,
-    }
+export default defineComponent({
+  head: {},
+  setup() {
+    const cmsData = ref(null)
+    const metaData = ref(null)
+    const route = useRoute()
+
+    useFetch(async () => {
+      const { document, metaInfo } = await useContent(route.value.params.uid)
+
+      cmsData.value = document
+
+      metaData.value = mapMetaInfo(
+        metaInfo.fields,
+        metaInfo.pageType,
+        route.value.path
+      )
+    })
+
+    useMeta(() => ({ ...metaData.value }))
+
+    return { cmsData, metaData }
   },
-  head() {
-    return mapMetaInfo(
-      this.metaInfo.fields,
-      this.metaInfo.pageType,
-      this.$router.currentRoute.path
-    )
-  },
-}
+})
 </script>
 
 <style lang="scss">

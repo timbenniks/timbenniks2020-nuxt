@@ -1,5 +1,8 @@
 <template>
-  <div class="content-wrapper blogpost">
+  <div
+    v-if="!$fetchState.pending && !$fetchState.error"
+    class="content-wrapper blogpost"
+  >
     <navigation />
     <main id="main-content">
       <div class="video-header">
@@ -22,20 +25,20 @@
 
         <lite-youtube
           params="modestbranding=2&rel=0"
-          :videoid="document.ytid"
-          :play-label="document.title"
+          :videoid="cmsData.ytid"
+          :play-label="cmsData.title"
         >
         </lite-youtube>
       </div>
       <heading
-        :title="document.title"
+        :title="cmsData.title"
         :breadcrumb="true"
         titletag="h1"
         :use-fancy-titles="true"
       />
       <div class="filters no-count">
         <nuxt-link
-          v-for="tag in document.tags"
+          v-for="tag in cmsData.tags"
           :key="tag"
           :to="`/videos/?facets=${tag.replace(/ /g, '-')}`"
           class="filter"
@@ -44,42 +47,56 @@
       </div>
 
       <!-- eslint-disable vue/no-v-html -->
-      <div ref="body" class="post-content" v-html="document.content"></div>
+      <div v-interpolation class="post-content" v-html="cmsData.content"></div>
       <!--eslint-enable-->
       <related-videos
-        :related-videos="relatedVideos"
-        :current-video="document.uid"
+        :related-videos="relatedVideosData"
+        :current-video="cmsData.uid"
       />
     </main>
   </div>
 </template>
 
 <script>
-import LinkMixin from '@/assets/mixins/linkMixin'
+import {
+  ref,
+  useFetch,
+  defineComponent,
+  useMeta,
+  useRoute,
+} from '@nuxtjs/composition-api'
+
+import { useContent } from '@/datalayer/pages/videos/_uid'
 import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
 
-export default {
-  mixins: [LinkMixin],
-  async asyncData(context) {
-    const { handler } = await import(
-      /* webpackChunkName: "datalayer-page-videos-uid" */ '@/datalayer/pages/videos/_uid'
-    )
-    const { document, relatedVideos, metaInfo } = await handler(context)
-    return {
-      document,
-      relatedVideos,
-      metaInfo,
-    }
-  },
+export default defineComponent({
+  head: {},
+  setup() {
+    const cmsData = ref(null)
+    const metaData = ref(null)
+    const relatedVideosData = ref(null)
 
-  head() {
-    return mapMetaInfo(
-      this.metaInfo.fields,
-      this.metaInfo.pageType,
-      this.$router.currentRoute.path
-    )
+    const route = useRoute()
+
+    useFetch(async () => {
+      const { document, relatedVideos, metaInfo } = await useContent(
+        route.value.params.uid
+      )
+
+      cmsData.value = document
+      relatedVideosData.value = relatedVideos
+      metaData.value = mapMetaInfo(
+        metaInfo.fields,
+        metaInfo.pageType,
+        route.value.path
+      )
+    })
+
+    useMeta(() => ({ ...metaData.value }))
+
+    return { cmsData, relatedVideosData, metaData }
   },
-}
+})
 </script>
 
 <style lang="scss">

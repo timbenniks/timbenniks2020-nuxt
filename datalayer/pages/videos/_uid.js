@@ -9,9 +9,9 @@ const getYTid = (url) => {
   return url.split('watch?v=')[1]
 }
 
-export const handler = async (context) => {
+export const useContent = async (uid) => {
   const api = await getPrismicApi()
-  const result = await api.getByUID('video', context.params.uid)
+  const result = await api.getByUID('video', uid)
 
   const document = {
     ...result,

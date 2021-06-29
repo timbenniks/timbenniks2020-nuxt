@@ -3,9 +3,9 @@ import getPrismicApi from '@/datalayer/helpers/getPrismicApi'
 import linkResolver from '@/datalayer/helpers/linkresolver'
 import htmlSerializer from '@/datalayer/helpers/htmlserializer'
 
-export const handler = async (context) => {
+export const useContent = async (uid) => {
   const api = await getPrismicApi()
-  const result = await api.getByUID('writing', context.params.uid)
+  const result = await api.getByUID('writing', uid)
 
   const document = {
     title: RichText.asText(result.data.title),
