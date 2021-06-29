@@ -51,6 +51,8 @@ export default {
 </script>
 
 <style lang="scss">
+@use "sass:math";
+
 .hero-banner {
   position: relative;
   border-bottom: rem(2px solid $blue-main);
@@ -63,7 +65,7 @@ export default {
     width: 100%;
 
     // prettier-ignore
-    @include responsive('padding-top', (xs: (9 / 16) * 100%, l: (9 / 22) * 100%));
+    @include responsive('padding-top', (xs: (math.div(9, 16)) * 100%, l: (math.div(9, 22)) * 100%));
   }
 
   > .hero-banner-inner {

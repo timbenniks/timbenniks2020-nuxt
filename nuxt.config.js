@@ -1,4 +1,3 @@
-// import BundleAnalyzerPlugin from '@bundle-analyzer/webpack-plugin'
 import videoRoutes from './datalayer/helpers/generateVideoRoutes'
 import generateFeed from './datalayer/helpers/generateFeed'
 
@@ -22,74 +21,24 @@ export default {
       { name: 'author', content: 'Tim Benniks' },
       { name: 'robots', content: 'index, follow' },
     ],
-    script: [
-      {
-        innerHTML: `function initXdnRum() {
-          new XDN.Metrics({
-            token: "99a41f3a-cb38-4abd-bfdf-12e3f9b4c090",
-            router: new XDN.Router()
-            .match('/', ({ setPageLabel }) => setPageLabel('home'))
-            .match('/videos', ({ setPageLabel }) => setPageLabel('videos'))
-            .match('/videos/:id', ({ setPageLabel }) => setPageLabel('video'))
-            .match('/writings', ({ setPageLabel }) => setPageLabel('writings'))
-            .match('/writings/:id', ({ setPageLabel }) => setPageLabel('writing'))
-            .match('/about', ({ setPageLabel }) => setPageLabel('about'))
-            .match('/sponsor-me', ({ setPageLabel }) => setPageLabel('sponsor'))
-            .match('/speaking', ({ setPageLabel }) => setPageLabel('speaking'))
-            .match('/startpage', ({ setPageLabel }) => setPageLabel('startpage'))
-          }).collect()
-        }`,
-        defer: true,
-      },
-      {
-        defer: true,
-        src: 'https://rum.moovweb.app/latest.js',
-        onload: 'initXdnRum()',
-      },
-    ],
     link: [
+      {
+        rel: 'preconnect',
+        href: 'https://res.cloudinary.com',
+      },
       {
         rel: 'alternate',
         type: 'application/rss+xml',
         title: 'RSS Feed for timbenniks.dev',
         href: '/feed.xml',
       },
-
-      {
-        rel: 'preload',
-        as: 'font',
-        type: 'font/woff2',
-        href: 'https://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjxAwXiWtFCfQ7A.woff2',
-        crossorigin: true,
-      },
-      {
-        rel: 'preload',
-        as: 'font',
-        type: 'font/woff2',
-        href: 'https://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjx4wXiWtFCc.woff2',
-        crossorigin: true,
-      },
-      {
-        rel: 'preload',
-        as: 'font',
-        type: 'font/woff2',
-        href: 'https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh50XSwaPGQ3q5d0N7w.woff2',
-        crossorigin: true,
-      },
-      {
-        rel: 'preload',
-        as: 'font',
-        type: 'font/woff2',
-        href: 'https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh50XSwiPGQ3q5d0.woff2',
-        crossorigin: true,
-      },
     ],
-    __dangerouslyDisableSanitizers: ['script', 'innerHTML'],
   },
   css: ['assets/styles/index.scss'],
   components: true,
   buildModules: [
     '@nuxtjs/eslint-module',
+    '@nuxtjs/google-fonts',
     '@nuxtjs/style-resources',
     ['@nuxtjs/pwa'],
     '@/modules/sitemapRouteGenerator',
@@ -114,6 +63,7 @@ export default {
       'assets/styles/_variables.scss',
       'assets/styles/_mixins.scss',
     ],
+    hoistUseStatements: true,
   },
   plausible: {
     domain: 'timbenniks.dev',
@@ -128,8 +78,6 @@ export default {
     cacheTime: 1000 * 60 * 15,
   },
   publicRuntimeConfig: {
-    algolia_app_id: process.env.ALGOLIA_APP_ID,
-    algolia_api_key: process.env.ALGOLIA_ADMIN_KEY,
     base_url: process.env.BASE_URL,
   },
   router: {
@@ -160,4 +108,13 @@ export default {
       type: 'rss2',
     },
   ],
+  googleFonts: {
+    families: {
+      Lato: [400, 900],
+    },
+    display: 'swap',
+    download: true,
+    inject: true,
+    stylePath: 'styles/fonts.css',
+  },
 }

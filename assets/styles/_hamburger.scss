@@ -1,4 +1,6 @@
 /* purgecss start ignore */
+@use "sass:math";
+
 $hamburger-padding-x: 15px !default;
 $hamburger-padding-y: 15px !default;
 $hamburger-layer-width: 40px !default;
@@ -63,7 +65,7 @@ $hamburger-active-hover-filter: $hamburger-hover-filter !default;
 .hamburger-inner {
   display: block;
   top: 50%;
-  margin-top: $hamburger-layer-height / -2;
+  margin-top: math.div($hamburger-layer-height, -2);
 
   &,
   &::before,
@@ -100,7 +102,7 @@ $hamburger-active-hover-filter: $hamburger-hover-filter !default;
 
   .hamburger-inner {
     transition: transform 0.15s cubic-bezier(0.645, 0.045, 0.355, 1),
-    background-color 0s 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
+      background-color 0s 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
 
     &::before,
     &::after {
