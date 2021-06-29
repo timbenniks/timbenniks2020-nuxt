@@ -8,7 +8,6 @@
       :loading="loadingType"
       :width="parseRatioForWH(ratio, 'width')"
       :height="parseRatioForWH(ratio, 'height')"
-      :modifiers="{ f: 'auto', q: 'auto' }"
     />
 
     <figcaption v-if="caption">

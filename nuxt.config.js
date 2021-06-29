@@ -40,7 +40,7 @@ export default {
     '@nuxtjs/eslint-module',
     '@nuxtjs/google-fonts',
     '@nuxtjs/style-resources',
-    ['@nuxtjs/pwa'],
+    '@nuxtjs/pwa',
     '@/modules/sitemapRouteGenerator',
     '@nuxt/image',
   ],
