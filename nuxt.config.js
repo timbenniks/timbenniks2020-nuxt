@@ -43,6 +43,7 @@ export default {
     '@nuxtjs/pwa',
     '@/modules/sitemapRouteGenerator',
     '@nuxt/image',
+    '@nuxtjs/composition-api/module',
   ],
   image: {
     screens: {
@@ -56,7 +57,12 @@ export default {
       baseURL: 'https://res.cloudinary.com/dwfcofnrd/image/fetch/',
     },
   },
-  modules: ['@nuxtjs/sitemap', '@nuxtjs/feed', 'vue-plausible'],
+  modules: [
+    '@nuxtjs/sitemap',
+    '@nuxtjs/feed',
+    'vue-plausible',
+    'nuxt-interpolation',
+  ],
   styleResources: {
     scss: [
       'assets/styles/_packages.scss',
