@@ -40,7 +40,7 @@
         <nuxt-link
           v-for="tag in cmsData.tags"
           :key="tag"
-          :to="`/videos/?facets=${tag.replace(/ /g, '-')}`"
+          :to="`/videos/tag/${cleanTag(tag)}`"
           class="filter"
           >{{ tag }}</nuxt-link
         >
@@ -94,7 +94,12 @@ export default defineComponent({
 
     useMeta(() => ({ ...metaData.value }))
 
-    return { cmsData, relatedVideosData, metaData }
+    const cleanTag = (tag) => {
+      const cleanedTag = tag.trim().replace(/ /g, '-')
+      return encodeURIComponent(cleanedTag)
+    }
+
+    return { cmsData, relatedVideosData, metaData, cleanTag }
   },
 })
 </script>

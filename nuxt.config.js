@@ -1,4 +1,3 @@
-import videoRoutes from './datalayer/helpers/generateVideoRoutes'
 import generateFeed from './datalayer/helpers/generateFeed'
 
 export default {
@@ -96,9 +95,7 @@ export default {
     },
   },
   generate: {
-    async routes() {
-      return await videoRoutes()
-    },
+    // interval: 2000,
   },
   render: {
     injectScripts: true,

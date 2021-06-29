@@ -9,7 +9,7 @@
       <heading
         :breadcrumb="true"
         titletag="h1"
-        :title="cmsData.title"
+        :title="titleData"
         :uppercase="true"
       />
 
@@ -19,11 +19,15 @@
           :key="tag"
           :to="`/videos/tag/${cleanTag(tag)}`"
           class="filter"
-          >{{ tag }}</nuxt-link
+          :class="{ selected: tag === urlTag }"
         >
+          {{ tag }}
+        </nuxt-link>
       </div>
 
-      <div class="videos-list">
+      <div v-if="noTagSelected" class="videos-list">Please select a tag</div>
+
+      <div v-else class="videos-list">
         <div class="videos">
           <video-card
             v-for="video in videosData"
@@ -45,44 +49,49 @@ import {
   useRoute,
 } from '@nuxtjs/composition-api'
 
-import { useContent } from '@/datalayer/pages/videos'
-import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
+import { useContent } from '@/datalayer/pages/videos/_tag'
 
 export default defineComponent({
   head: {},
   setup() {
-    const cmsData = ref(null)
-    const videosData = ref(null)
-    const tagsData = ref(null)
-    const metaData = ref(null)
     const route = useRoute()
 
-    useFetch(async () => {
-      const { document, videos, tags, metaInfo } = await useContent()
+    const videosData = ref(null)
+    const tagsData = ref(null)
+    const titleData = ref(null)
+    const urlTag = ref('')
+    const noTagSelected = ref(false)
 
-      cmsData.value = document
+    useFetch(async () => {
+      const { videos, tags, tag, title } = await useContent(
+        route.value.params.tag
+      )
+
       videosData.value = videos
       tagsData.value = tags
+      titleData.value = title
+      urlTag.value = tag
 
-      metaData.value = mapMetaInfo(
-        metaInfo.fields,
-        metaInfo.pageType,
-        route.value.path
-      )
+      if (videos.length === 0) {
+        noTagSelected.value = true
+      }
     })
 
-    useMeta(() => ({ ...metaData.value }))
+    useMeta({ title: titleData })
 
     const cleanTag = (tag) => {
-      const cleanedTag = tag.trim().replace(/ /g, '-')
-      return encodeURIComponent(cleanedTag)
+      if (tag) {
+        const cleanedTag = tag.trim().replace(/ /g, '-')
+        return encodeURIComponent(cleanedTag)
+      } else {
+        return ''
+      }
     }
 
-    return { cmsData, videosData, tagsData, metaData, cleanTag }
+    return { videosData, tagsData, titleData, urlTag, cleanTag, noTagSelected }
   },
 })
 </script>
-
 <style lang="scss" scoped>
 .filters.no-count {
   max-width: 68.75rem;
