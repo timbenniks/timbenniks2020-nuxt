@@ -21,6 +21,7 @@
       aria-haspopup="true"
       aria-controls="menu"
       aria-label="Toggles main navigation"
+      onclick="this.classList.toggle('is-active');"
       @click="showMenu"
     >
       <span class="hamburger-box">
@@ -138,7 +139,7 @@ export default {
     }
   }
 
-  .hamburger[aria-expanded='true'] + .dropdown-menu {
+  .hamburger.is-active + .dropdown-menu {
     display: block;
   }
 }
