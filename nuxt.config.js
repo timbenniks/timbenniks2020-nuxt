@@ -1,4 +1,3 @@
-import videoRoutes from './datalayer/helpers/generateVideoRoutes'
 import generateFeed from './datalayer/helpers/generateFeed'
 
 export default {
@@ -43,6 +42,7 @@ export default {
     '@nuxtjs/pwa',
     '@/modules/sitemapRouteGenerator',
     '@nuxt/image',
+    '@nuxtjs/composition-api/module',
   ],
   image: {
     screens: {
@@ -56,7 +56,12 @@ export default {
       baseURL: 'https://res.cloudinary.com/dwfcofnrd/image/fetch/',
     },
   },
-  modules: ['@nuxtjs/sitemap', '@nuxtjs/feed', 'vue-plausible'],
+  modules: [
+    '@nuxtjs/sitemap',
+    '@nuxtjs/feed',
+    'vue-plausible',
+    'nuxt-interpolation',
+  ],
   styleResources: {
     scss: [
       'assets/styles/_packages.scss',
@@ -87,11 +92,6 @@ export default {
     manifest: {
       name: 'timbenniks.dev',
       short_name: 'timbenniks',
-    },
-  },
-  generate: {
-    async routes() {
-      return await videoRoutes()
     },
   },
   render: {

@@ -3,7 +3,7 @@ import { RichText } from 'prismic-dom'
 import getPrismicApi from '@/datalayer/helpers/getPrismicApi'
 import { asDay, asMonth, asYear } from '@/datalayer/helpers/modifiers'
 
-export const handler = async (context) => {
+export const useContent = async (context) => {
   const api = await getPrismicApi()
 
   const result = await api.getSingle('writings')

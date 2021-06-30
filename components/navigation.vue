@@ -29,11 +29,6 @@
     </button>
     <ul id="menu" class="dropdown-menu">
       <li>
-        <nuxt-link to="/sponsor-me/" class="highlighted">
-          Sponsor Me
-        </nuxt-link>
-      </li>
-      <li>
         <nuxt-link
           :class="$route.name === 'videos-uid' ? 'active' : ''"
           to="/videos/"
@@ -55,6 +50,9 @@
       </li>
       <li>
         <nuxt-link to="/about/"> About </nuxt-link>
+      </li>
+      <li>
+        <nuxt-link to="/sponsor-me/"> Sponsor Me </nuxt-link>
       </li>
     </ul>
   </nav>

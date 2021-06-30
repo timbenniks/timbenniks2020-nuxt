@@ -23,7 +23,7 @@
         itemtype="https://schema.org/ListItem"
       >
         <nuxt-link
-          :to="crumb.to"
+          :to="crumb.to.includes('/tag/') ? `/videos${crumb.to}` : crumb.to"
           itemtype="https://schema.org/Thing"
           itemprop="item"
         >

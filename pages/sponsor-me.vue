@@ -1,26 +1,17 @@
 <template>
-  <div class="content-wrapper blogpost">
+  <div
+    v-if="!$fetchState.pending && !$fetchState.error"
+    class="content-wrapper blogpost"
+  >
     <navigation />
 
     <main id="main-content">
       <heading
-        :title="document.title"
+        :title="cmsData.title"
         :breadcrumb="true"
         titletag="h1"
         :use-fancy-titles="true"
       />
-
-      <!-- <script
-        data-name="BMC-Widget"
-        src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
-        data-id="timbenniks"
-        data-description="Support me on Buy me a coffee!"
-        data-message="Thank you for visiting. You can now buy me a coffee!"
-        data-color="#FF813F"
-        data-position="right"
-        data-x_margin="24"
-        data-y_margin="24"
-      ></script> -->
 
       <div class="sponsor-wrapper">
         <sponsor alignment="left">
@@ -38,36 +29,48 @@
       </div>
 
       <!-- eslint-disable vue/no-v-html -->
-      <div ref="body" class="post-content" v-html="document.content"></div>
+      <div v-interpolation class="post-content" v-html="cmsData.content"></div>
       <!--eslint-enable-->
     </main>
   </div>
 </template>
 
 <script>
-import LinkMixin from '@/assets/mixins/linkMixin'
+import {
+  ref,
+  useFetch,
+  defineComponent,
+  useMeta,
+  useRoute,
+} from '@nuxtjs/composition-api'
+
+import { useContent } from '@/datalayer/pages/sponsor-me'
 import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
 
-export default {
-  mixins: [LinkMixin],
-  async asyncData(context) {
-    const { handler } = await import(
-      /* webpackChunkName: "datalayer-page-sponsor-me" */ '@/datalayer/pages/sponsor-me'
-    )
-    const { document, metaInfo } = await handler(context)
-    return {
-      document,
-      metaInfo,
-    }
+export default defineComponent({
+  head: {},
+  setup() {
+    const cmsData = ref(null)
+    const metaData = ref(null)
+    const route = useRoute()
+
+    useFetch(async () => {
+      const { document, metaInfo } = await useContent()
+
+      cmsData.value = document
+
+      metaData.value = mapMetaInfo(
+        metaInfo.fields,
+        metaInfo.pageType,
+        route.value.path
+      )
+    })
+
+    useMeta(() => ({ ...metaData.value }))
+
+    return { cmsData, metaData }
   },
-  head() {
-    return mapMetaInfo(
-      this.metaInfo.fields,
-      this.metaInfo.pageType,
-      this.$router.currentRoute.path
-    )
-  },
-}
+})
 </script>
 
 <style lang="scss">
