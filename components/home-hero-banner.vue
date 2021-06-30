@@ -55,7 +55,10 @@ export default {
 
 .hero-banner {
   position: relative;
-  border-bottom: rem(2px solid $blue-main);
+
+  // prettier-ignore
+  @include responsive('border-bottom', (xs: none, m: rem(2px solid $blue-main)));
+
   width: 100%;
   overflow: hidden;
 
@@ -65,7 +68,7 @@ export default {
     width: 100%;
 
     // prettier-ignore
-    @include responsive('padding-top', (xs: (math.div(9, 16)) * 100%, l: (math.div(9, 22)) * 100%));
+    @include responsive('padding-top', (xs: (math.div(9, 19)) * 100%, sm: (math.div(9, 21)) * 100%, l: (math.div(9, 22)) * 100%));
   }
 
   > .hero-banner-inner {
@@ -80,11 +83,15 @@ export default {
     // prettier-ignore
     @include responsive('width', (xs: 90%, sm: 80%));
     // prettier-ignore
-    @include responsive('margin', (xs: rem(45px auto 0), m: rem(0)));
+    @include responsive('margin', (xs: 0));
     // prettier-ignore
-    @include responsive('bottom', (xs: -16px, m: -16px));
+    @include responsive('bottom', (xs: auto, m: -16px));
     // prettier-ignore
-    @include responsive('left', (xs: 2%));
+    @include responsive('top', (xs: 50%, m: auto));
+    // prettier-ignore
+    @include responsive('left', (xs: 50%, m: 2%));
+    // prettier-ignore
+    @include responsive('transform', (xs: translate(-50%, -50%), m: initial));
 
     position: absolute;
     max-width: rem(800px);
@@ -110,6 +117,11 @@ export default {
         border-radius: 100%;
       }
     }
+  }
+
+  picture {
+    // prettier-ignore
+    @include responsive('display', (xs: none, m: block));
   }
 }
 </style>

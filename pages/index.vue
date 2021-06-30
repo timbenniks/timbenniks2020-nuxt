@@ -90,15 +90,23 @@ export default defineComponent({
     padding: rem(0 16px);
     margin: rem(30px auto);
 
+    // prettier-ignore
+    @include responsive('margin', ( xs: 1rem auto, m: 30px auto ));
+
     .homepage-introduction {
-      margin: 3rem auto;
+      // prettier-ignore
+      @include responsive('margin', ( xs: 0 auto 3rem, m: 3rem auto 5rem ));
+
+      // prettier-ignore
+      @include responsive('width', ( xs: 90%, m: 100% ));
+
       max-width: rem(800px);
       text-align: center;
 
       p {
         margin: 0;
         // prettier-ignore
-        @include responsive('font-size', ( xs: rem(18px), m: rem(24px) ));
+        @include responsive('font-size', ( xs: rem(16px), m: rem(24px) ));
       }
     }
   }
