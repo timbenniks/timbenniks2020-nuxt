@@ -94,9 +94,6 @@ export default {
       short_name: 'timbenniks',
     },
   },
-  generate: {
-    // interval: 2000,
-  },
   render: {
     injectScripts: true,
   },

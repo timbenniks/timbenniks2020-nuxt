@@ -25,7 +25,9 @@
         </nuxt-link>
       </div>
 
-      <div v-if="noTagSelected" class="videos-list">Please select a tag</div>
+      <div v-if="noTagSelected" class="videos-list">
+        No tag selected. Please select one to see related videos.
+      </div>
 
       <div v-else class="videos-list">
         <div class="videos">

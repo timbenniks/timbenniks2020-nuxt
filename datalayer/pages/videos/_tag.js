@@ -21,24 +21,19 @@ export const useContent = async (tag) => {
 
   const tagForQuery = qsToTag(tag)
 
-  const videoDataForTag = await api.query(
-    [
-      Prismic.Predicates.at('document.type', 'video'),
-      Prismic.Predicates.at('document.tags', [tagForQuery]),
-    ],
-    { orderings: '[my.video.publication_date desc]', pageSize: 100 }
-  )
-
   const tagsHolder = []
   videoData.results.forEach((result) => {
     result.tags.forEach((tag) => {
       tagsHolder.push(tag)
     })
   })
-
   const tags = [...new Set(tagsHolder)]
 
-  const videos = videoDataForTag.results.map((video) => {
+  const videosForTag = videoData.results.filter((video) => {
+    return video.tags.includes(tagForQuery)
+  })
+
+  const videos = videosForTag.map((video) => {
     return {
       uid: video.uid,
       slug: video.uid,
@@ -55,6 +50,6 @@ export const useContent = async (tag) => {
     videos,
     tags,
     tag: tagForQuery,
-    title: tagForQuery ? `Videos for: ${tagForQuery}` : 'No Tag Selected',
+    title: tagForQuery ? `Videos for: ${tagForQuery}` : 'No Tag Selected.',
   }
 }

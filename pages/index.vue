@@ -17,14 +17,6 @@
         />
         <!--eslint-enable-->
 
-        <sponsor>
-          <p>
-            Why sponsor me? Visit the
-            <nuxt-link to="/sponsor-me/"> sponsor me page</nuxt-link>
-            to read more.
-          </p>
-        </sponsor>
-
         <home-top-videos :data="topVideosData" />
         <home-latest-writing :data="latestWritingsData" />
       </div>
