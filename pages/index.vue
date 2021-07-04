@@ -21,7 +21,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { ref, useFetch, defineComponent, useMeta, useRoute } from '@nuxtjs/composition-api';
 
 import { useContent } from '@/datalayer/pages/home';
@@ -29,11 +29,11 @@ import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo';
 
 export default defineComponent({
   setup() {
-    const cmsData = ref(null);
-    const heroBannerData = ref(null);
-    const topVideosData = ref(null);
-    const latestWritingsData = ref(null);
-    const metaData = ref(null);
+    const cmsData = ref({});
+    const heroBannerData = ref({});
+    const topVideosData = ref({});
+    const latestWritingsData = ref({});
+    const metaData = ref({});
     const route = useRoute();
 
     useFetch(async () => {

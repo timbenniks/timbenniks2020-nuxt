@@ -28,7 +28,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { ref, useFetch, defineComponent, useMeta, useRoute } from '@nuxtjs/composition-api';
 
 import { useContent } from '@/datalayer/pages/speaking';
@@ -36,10 +36,10 @@ import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo';
 
 export default defineComponent({
   setup() {
-    const cmsData = ref(null);
-    const oldTalksData = ref(null);
-    const upcomingTalksData = ref(null);
-    const metaData = ref(null);
+    const cmsData = ref({});
+    const oldTalksData = ref({});
+    const upcomingTalksData = ref({});
+    const metaData = ref({});
     const route = useRoute();
 
     useFetch(async () => {

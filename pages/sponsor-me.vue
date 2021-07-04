@@ -22,7 +22,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { ref, useFetch, defineComponent, useMeta, useRoute } from '@nuxtjs/composition-api';
 
 import { useContent } from '@/datalayer/pages/sponsor-me';
@@ -30,15 +30,14 @@ import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo';
 
 export default defineComponent({
   setup() {
-    const cmsData = ref(null);
-    const metaData = ref(null);
+    const cmsData = ref({});
+    const metaData = ref({});
     const route = useRoute();
 
     useFetch(async () => {
       const { document, metaInfo } = await useContent();
 
       cmsData.value = document;
-
       metaData.value = mapMetaInfo(metaInfo.fields, metaInfo.pageType, route.value.path);
     });
 

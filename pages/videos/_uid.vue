@@ -31,7 +31,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { ref, useFetch, defineComponent, useMeta, useRoute } from '@nuxtjs/composition-api';
 
 import { useContent } from '@/datalayer/pages/videos/_uid';
@@ -39,9 +39,9 @@ import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo';
 
 export default defineComponent({
   setup() {
-    const cmsData = ref(null);
-    const metaData = ref(null);
-    const relatedVideosData = ref(null);
+    const cmsData = ref({});
+    const metaData = ref({});
+    const relatedVideosData = ref({});
 
     const route = useRoute();
 
@@ -55,7 +55,7 @@ export default defineComponent({
 
     useMeta(() => ({ ...metaData.value }));
 
-    const cleanTag = (tag) => {
+    const cleanTag = (tag: string) => {
       const cleanedTag = tag.trim().replace(/ /g, '-');
       return encodeURIComponent(cleanedTag);
     };

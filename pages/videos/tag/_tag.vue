@@ -30,7 +30,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { ref, useFetch, defineComponent, useMeta, useRoute } from '@nuxtjs/composition-api';
 
 import { useContent } from '@/datalayer/pages/videos/_tag';
@@ -39,9 +39,9 @@ export default defineComponent({
   setup() {
     const route = useRoute();
 
-    const videosData = ref(null);
-    const tagsData = ref(null);
-    const titleData = ref(null);
+    const videosData = ref({});
+    const tagsData = ref({});
+    const titleData = ref('');
     const urlTag = ref('');
     const noTagSelected = ref(false);
 
@@ -60,7 +60,7 @@ export default defineComponent({
 
     useMeta({ title: titleData });
 
-    const cleanTag = (tag) => {
+    const cleanTag = (tag: string) => {
       if (tag) {
         const cleanedTag = tag.trim().replace(/ /g, '-');
         return encodeURIComponent(cleanedTag);
