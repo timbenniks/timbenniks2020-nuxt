@@ -59,7 +59,6 @@ import { useContent } from '@/datalayer/pages/writings'
 import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
 
 export default defineComponent({
-  head: {},
   setup() {
     const cmsData = ref(null)
     const writingsData = ref(null)
@@ -83,6 +82,7 @@ export default defineComponent({
 
     return { cmsData, writingsData, metaData }
   },
+  head: {},
 })
 </script>
 

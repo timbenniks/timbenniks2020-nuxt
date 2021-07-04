@@ -54,7 +54,6 @@ import {
 import { useContent } from '@/datalayer/pages/videos/_tag'
 
 export default defineComponent({
-  head: {},
   setup() {
     const route = useRoute()
 
@@ -92,6 +91,7 @@ export default defineComponent({
 
     return { videosData, tagsData, titleData, urlTag, cleanTag, noTagSelected }
   },
+  head: {},
 })
 </script>
 <style lang="scss" scoped>

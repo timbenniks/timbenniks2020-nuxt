@@ -37,7 +37,6 @@ import { useContent } from '@/datalayer/pages/home'
 import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
 
 export default defineComponent({
-  head: {},
   setup() {
     const cmsData = ref(null)
     const heroBannerData = ref(null)
@@ -72,6 +71,7 @@ export default defineComponent({
       metaData,
     }
   },
+  head: {},
 })
 </script>
 

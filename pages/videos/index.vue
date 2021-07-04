@@ -19,8 +19,9 @@
           :key="tag"
           :to="`/videos/tag/${cleanTag(tag)}`"
           class="filter"
-          >{{ tag }}</nuxt-link
         >
+          {{ tag }}
+        </nuxt-link>
       </div>
 
       <div class="videos-list">
@@ -49,7 +50,6 @@ import { useContent } from '@/datalayer/pages/videos'
 import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
 
 export default defineComponent({
-  head: {},
   setup() {
     const cmsData = ref(null)
     const videosData = ref(null)
@@ -80,6 +80,7 @@ export default defineComponent({
 
     return { cmsData, videosData, tagsData, metaData, cleanTag }
   },
+  head: {},
 })
 </script>
 

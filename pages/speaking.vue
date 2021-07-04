@@ -49,7 +49,6 @@ import { useContent } from '@/datalayer/pages/speaking'
 import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
 
 export default defineComponent({
-  head: {},
   setup() {
     const cmsData = ref(null)
     const oldTalksData = ref(null)
@@ -80,6 +79,7 @@ export default defineComponent({
       metaData,
     }
   },
+  head: {},
 })
 </script>
 

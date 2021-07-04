@@ -163,7 +163,7 @@ export default function (fields, pageType, path) {
           },
           mainEntityOfPage: {
             '@type': 'WebPage',
-            '@id': `https://google.com/article`,
+            '@id': 'https://google.com/article',
           },
         },
         type: 'application/ld+json',

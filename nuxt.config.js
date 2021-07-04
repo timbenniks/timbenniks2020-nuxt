@@ -43,6 +43,7 @@ export default {
     '@/modules/sitemapRouteGenerator',
     '@nuxt/image',
     '@nuxtjs/composition-api/module',
+    '@nuxt/typescript-build',
   ],
   image: {
     screens: {
@@ -116,5 +117,12 @@ export default {
     download: true,
     inject: true,
     stylePath: 'styles/fonts.css',
+  },
+  typescript: {
+    typeCheck: {
+      eslint: {
+        files: './**/*.{ts,js,vue}',
+      },
+    },
   },
 }

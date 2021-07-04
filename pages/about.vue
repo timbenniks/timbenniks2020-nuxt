@@ -15,7 +15,7 @@
         :use-fancy-titles="true"
       />
       <!-- eslint-disable vue/no-v-html -->
-      <div v-interpolation class="post-content" v-html="cmsData.content"></div>
+      <div v-interpolation class="post-content" v-html="cmsData.content" />
       <!--eslint-enable-->
     </main>
   </div>
@@ -34,7 +34,6 @@ import { useContent } from '@/datalayer/pages/about'
 import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
 
 export default defineComponent({
-  head: {},
   setup() {
     const cmsData = ref(null)
     const metaData = ref(null)
@@ -56,6 +55,7 @@ export default defineComponent({
 
     return { cmsData, metaData }
   },
+  head: {},
 })
 </script>
 

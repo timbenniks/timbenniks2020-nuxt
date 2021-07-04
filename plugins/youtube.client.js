@@ -41,7 +41,9 @@ class LiteYTEmbed extends HTMLElement {
   }
 
   static warmConnections() {
-    if (LiteYTEmbed.preconnected) return
+    if (LiteYTEmbed.preconnected) {
+      return
+    }
     LiteYTEmbed.addPrefetch('preconnect', 'https://www.youtube-nocookie.com')
     LiteYTEmbed.addPrefetch('preconnect', 'https://www.google.com')
     LiteYTEmbed.addPrefetch('preconnect', 'https://googleads.g.doubleclick.net')

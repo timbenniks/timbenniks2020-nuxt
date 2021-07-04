@@ -12,12 +12,7 @@
     <div class="videos">
       <article v-for="video in videos" :key="video.uid" class="post video">
         <nuxt-link :to="`/videos/${video.uid}/`">
-          <lazy-img
-            ratio="16/9"
-            :alt="video.title"
-            :url="video.image"
-            sizes="sm:100vw md:210px"
-          />
+          <lazy-img ratio="16/9" :alt="video.title" :url="video.image" sizes="sm:100vw md:210px" />
         </nuxt-link>
 
         <div class="post-content-wrap">
@@ -43,22 +38,34 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'RelatedVideos',
+<script lang="ts">
+import { defineComponent, computed, PropType } from '@vue/composition-api';
+import { Video } from '~/types';
+
+export default defineComponent({
   props: {
-    relatedVideos: { type: Array, required: true },
-    currentVideo: { type: String, required: true },
-  },
-  computed: {
-    videos() {
-      return this.relatedVideos
-        .filter((video) => video.uid !== this.currentVideo)
-        .slice(0, 3)
+    relatedVideos: {
+      type: Array as PropType<Array<Video>>,
+      required: true,
+    },
+    currentVideo: {
+      type: String,
+      required: true,
     },
   },
-}
+
+  setup(props) {
+    const videos = computed(() => {
+      return props.relatedVideos.filter((video: Video) => video.uid !== props.currentVideo).slice(0, 3);
+    });
+
+    return {
+      videos,
+    };
+  },
+});
 </script>
+
 <style lang="scss" scoped>
 .video {
   flex-direction: column;

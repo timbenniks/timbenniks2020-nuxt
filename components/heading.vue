@@ -55,14 +55,14 @@
     />
 
     <!-- eslint-disable-next-line vue/no-v-html -->
-    <div :is="titletag" v-if="title && !useFancyTitles" v-html="title"></div>
+    <div :is="titletag" v-if="title && !useFancyTitles" v-html="title" />
 
     <!-- eslint-disable vue/no-v-html -->
     <div
       :is="subtitletag"
       v-if="subtitle && !useFancyTitles"
       v-html="subtitle"
-    ></div>
+    />
     <!--eslint-enable-->
   </div>
 </template>

@@ -1,12 +1,7 @@
 <template>
   <article :key="video.slug" class="post video">
     <nuxt-link :to="`/videos/${video.slug}/`">
-      <lazy-img
-        ratio="16/9"
-        :alt="video.title"
-        :url="video.image"
-        sizes="sm:100vw md:320px"
-      />
+      <lazy-img ratio="16/9" :alt="video.title" :url="video.image" sizes="sm:100vw md:320px" />
     </nuxt-link>
 
     <div class="post-content-wrap">
@@ -30,18 +25,22 @@
   </article>
 </template>
 
-<script>
-import LazyImg from './lazy-img.vue'
+<script lang="ts">
+import LazyImg from './lazy-img.vue';
+import { defineComponent, PropType } from '@vue/composition-api';
+import { Video } from '~/types';
 
-export default {
-  name: 'VideoCard',
+export default defineComponent({
   components: {
     LazyImg,
   },
   props: {
-    video: { type: Object, required: true },
+    video: {
+      type: Object as PropType<Video>,
+      required: true,
+    },
   },
-}
+});
 </script>
 
 <style lang="scss" scoped>

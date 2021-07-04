@@ -24,23 +24,15 @@
       @click="showMenu"
     >
       <span class="hamburger-box">
-        <span class="hamburger-inner"></span>
+        <span class="hamburger-inner" />
       </span>
     </button>
     <ul id="menu" class="dropdown-menu">
       <li>
-        <nuxt-link
-          :class="$route.name === 'videos-uid' ? 'active' : ''"
-          to="/videos/"
-        >
-          Videos
-        </nuxt-link>
+        <nuxt-link :class="$route.name === 'videos-uid' ? 'active' : ''" to="/videos/"> Videos </nuxt-link>
       </li>
       <li>
-        <nuxt-link
-          :class="$route.name === 'writings-uid' ? 'active' : ''"
-          to="/writings/"
-        >
+        <nuxt-link :class="$route.name === 'writings-uid' ? 'active' : ''" to="/writings/">
           Writings
         </nuxt-link>
       </li>
@@ -58,19 +50,23 @@
   </nav>
 </template>
 
-<script>
-export default {
-  data() {
+<script lang="ts">
+import { defineComponent, ref } from '@vue/composition-api';
+
+export default defineComponent({
+  setup() {
+    const burgerActive = ref(false);
+
+    const showMenu = () => {
+      burgerActive.value = !burgerActive.value;
+    };
+
     return {
-      burgerActive: false,
-    }
+      burgerActive,
+      showMenu,
+    };
   },
-  methods: {
-    showMenu() {
-      this.burgerActive = !this.burgerActive
-    },
-  },
-}
+});
 </script>
 
 <style lang="scss">

@@ -21,18 +21,27 @@
   </article>
 </template>
 
-<script>
-export default {
-  name: 'Talk',
+<script lang="ts">
+import { defineComponent, PropType } from '@vue/composition-api';
+
+interface Talk {
+  day: number;
+  month: string;
+  year: number;
+  link_to_event: string;
+  title: string;
+  location: string;
+  subject: string;
+}
+
+export default defineComponent({
   props: {
     talk: {
-      type: Object,
-      default: () => {
-        return {}
-      },
+      type: Object as PropType<Talk>,
+      required: true,
     },
   },
-}
+});
 </script>
 
 <style lang="scss">

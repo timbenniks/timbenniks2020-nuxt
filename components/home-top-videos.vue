@@ -21,7 +21,7 @@
     </div>
 
     <p class="top-videos-load-more">
-      <nuxt-link class="load-more" to="/videos">See all Videos</nuxt-link>
+      <nuxt-link class="load-more" to="/videos"> See all Videos </nuxt-link>
     </p>
   </div>
 </template>
