@@ -32,6 +32,18 @@ export default {
         href: '/feed.xml',
       },
     ],
+    script: [
+      {
+        src: '/youtube.js',
+        async: true,
+      },
+      {
+        src: 'https://plausible.io/js/plausible.js',
+        defer: true,
+        async: true,
+        'data-domain': 'timbenniks.dev',
+      },
+    ],
   },
   css: ['assets/styles/index.scss'],
   components: true,
@@ -96,7 +108,7 @@ export default {
     },
   },
   render: {
-    injectScripts: true,
+    injectScripts: false,
   },
   plugins: ['~/plugins/youtube.client.js'],
   feed: [
