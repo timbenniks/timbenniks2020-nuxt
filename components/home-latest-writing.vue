@@ -8,7 +8,7 @@
       :offset="[0, 0]"
       uppercase="uppercase"
     />
-    <article v-for="post in data" :key="post.uid" class="post">
+    <article v-for="post in writings" :key="post.uid" class="post">
       <nuxt-link :to="`/writings/${post.uid}/`">
         <lazy-img
           ratio="16/9"
@@ -38,16 +38,19 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'HomeLatestWriting',
+<script lang="ts">
+import { defineComponent, PropType } from '@vue/composition-api';
+import { Writing } from '~/types';
+
+export default defineComponent({
   props: {
-    data: {
-      type: Array,
+    writings: {
+      //type: Array as PropType<Array<Writing>>,
+      type: Array as PropType<Writing[]>,
       required: true,
     },
   },
-}
+});
 </script>
 
 <style lang="scss">

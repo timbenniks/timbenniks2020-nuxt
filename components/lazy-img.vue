@@ -16,9 +16,10 @@
   </figure>
 </template>
 
-<script>
-export default {
-  name: 'LazyImg',
+<script lang="ts">
+import { defineComponent, computed } from '@vue/composition-api';
+
+export default defineComponent({
   props: {
     ratio: { type: String, required: true },
     alt: { type: String, required: true },
@@ -27,16 +28,19 @@ export default {
     caption: { type: Boolean, required: false, default: false },
     loadingType: { type: String, required: false, default: 'lazy' },
   },
-  computed: {
-    cleanUrl() {
-      return this.url.replace('?auto=compress,format', '')
-    },
-  },
+  setup(props) {
+    const cleanUrl = computed(() => {
+      return props.url.replace('?auto=compress,format', '');
+    });
 
-  methods: {
-    parseRatioForWH(ratio, which) {
-      return Number(ratio.split('/')[which === 'width' ? 0 : 1]) * 10
-    },
+    const parseRatioForWH = (ratio: string, which: string) => {
+      return Number(ratio.split('/')[which === 'width' ? 0 : 1]) * 10;
+    };
+
+    return {
+      cleanUrl,
+      parseRatioForWH,
+    };
   },
-}
+});
 </script>

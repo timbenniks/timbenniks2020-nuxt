@@ -23,16 +23,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from '@vue/composition-api';
-
-interface Talk {
-  day: number;
-  month: string;
-  year: number;
-  link_to_event: string;
-  title: string;
-  location: string;
-  subject: string;
-}
+import { Talk } from '~/types';
 
 export default defineComponent({
   props: {

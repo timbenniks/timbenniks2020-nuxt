@@ -22,8 +22,11 @@
   </picture>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from '@vue/composition-api';
+import { ImageOptions } from '~/types';
+
+export default defineComponent({
   props: {
     alt: { type: String, required: true },
     url: { type: String, required: true },
@@ -31,34 +34,40 @@ export default {
     preload: {
       type: String,
       required: false,
-      default:
-        'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
+      default: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
     },
   },
+  setup() {
+    const parseRatioForWH = (ratio: string, which: string) => {
+      return Number(ratio.split('/')[which === 'width' ? 0 : 1]) * 10;
+    };
 
-  methods: {
-    parseRatioForWH(ratio, which) {
-      return Number(ratio.split('/')[which === 'width' ? 0 : 1]) * 10
-    },
-    concatCloudinaryUrl(url, opts) {
-      return `https://res.cloudinary.com/dwfcofnrd/image/fetch/ar_${opts.ratio},c_${opts.crop},f_auto,q_auto,w_${opts.width}/${url}`
-    },
-    generateSrcSet(widths, url, ratio) {
-      const cleanUrl = url.replace('?auto=compress,format', '')
+    const concatCloudinaryUrl = (url: string, opts: ImageOptions) => {
+      return `https://res.cloudinary.com/dwfcofnrd/image/fetch/ar_${opts.ratio},c_${opts.crop},f_auto,q_auto,w_${opts.width}/${url}`;
+    };
 
-      let srcset = ''
+    const generateSrcSet = (widths: any[], url: string, ratio: string) => {
+      const cleanUrl = url.replace('?auto=compress,format', '');
 
-      widths.forEach((width) => {
-        const url = this.concatCloudinaryUrl(cleanUrl, {
+      let srcset = '';
+
+      widths.forEach((width: number) => {
+        const url = concatCloudinaryUrl(cleanUrl, {
           crop: 'fill',
           width,
           ratio: ratio.replace('/', ':'),
-        })
-        srcset += `${url} ${width}w, `
-      })
+        });
+        srcset += `${url} ${width}w, `;
+      });
 
-      return srcset.slice(0, -2)
-    },
+      return srcset.slice(0, -2);
+    };
+
+    return {
+      parseRatioForWH,
+      concatCloudinaryUrl,
+      generateSrcSet,
+    };
   },
-}
+});
 </script>

@@ -1,8 +1,5 @@
 <template>
-  <div
-    v-if="!$fetchState.pending && !$fetchState.error"
-    class="content-wrapper home"
-  >
+  <div v-if="!$fetchState.pending && !$fetchState.error" class="content-wrapper home">
     <navigation />
 
     <main id="main-content">
@@ -10,58 +7,47 @@
 
       <div class="homepage-content">
         <!-- eslint-disable vue/no-v-html -->
-        <div
-          v-interpolation
-          class="homepage-introduction"
-          v-html="cmsData.description"
-        />
+        <div v-interpolation class="homepage-introduction" v-html="cmsData.description" />
         <!--eslint-enable-->
 
-        <home-top-videos :data="topVideosData" />
-        <home-latest-writing :data="latestWritingsData" />
+        <home-top-videos
+          :title="topVideosData.title"
+          :intro="topVideosData.intro"
+          :videos="topVideosData.videos"
+        />
+        <home-latest-writing :writings="latestWritingsData" />
       </div>
     </main>
   </div>
 </template>
 
 <script>
-import {
-  ref,
-  useFetch,
-  defineComponent,
-  useMeta,
-  useRoute,
-} from '@nuxtjs/composition-api'
+import { ref, useFetch, defineComponent, useMeta, useRoute } from '@nuxtjs/composition-api';
 
-import { useContent } from '@/datalayer/pages/home'
-import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
+import { useContent } from '@/datalayer/pages/home';
+import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo';
 
 export default defineComponent({
   setup() {
-    const cmsData = ref(null)
-    const heroBannerData = ref(null)
-    const topVideosData = ref(null)
-    const latestWritingsData = ref(null)
-    const metaData = ref(null)
-    const route = useRoute()
+    const cmsData = ref(null);
+    const heroBannerData = ref(null);
+    const topVideosData = ref(null);
+    const latestWritingsData = ref(null);
+    const metaData = ref(null);
+    const route = useRoute();
 
     useFetch(async () => {
-      const { document, heroBanner, topVideos, latestWritings, metaInfo } =
-        await useContent()
+      const { document, heroBanner, topVideos, latestWritings, metaInfo } = await useContent();
 
-      cmsData.value = document
-      heroBannerData.value = heroBanner
-      topVideosData.value = topVideos
-      latestWritingsData.value = latestWritings
+      cmsData.value = document;
+      heroBannerData.value = heroBanner;
+      topVideosData.value = topVideos;
+      latestWritingsData.value = latestWritings;
 
-      metaData.value = mapMetaInfo(
-        metaInfo.fields,
-        metaInfo.pageType,
-        route.value.path
-      )
-    })
+      metaData.value = mapMetaInfo(metaInfo.fields, metaInfo.pageType, route.value.path);
+    });
 
-    useMeta(() => ({ ...metaData.value }))
+    useMeta(() => ({ ...metaData.value }));
 
     return {
       cmsData,
@@ -69,10 +55,10 @@ export default defineComponent({
       topVideosData,
       latestWritingsData,
       metaData,
-    }
+    };
   },
   head: {},
-})
+});
 </script>
 
 <style lang="scss">

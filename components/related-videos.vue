@@ -45,7 +45,8 @@ import { Video } from '~/types';
 export default defineComponent({
   props: {
     relatedVideos: {
-      type: Array as PropType<Array<Video>>,
+      //type: Array as PropType<Array<Video>>,
+      type: Array as PropType<Video[]>,
       required: true,
     },
     currentVideo: {

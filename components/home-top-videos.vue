@@ -1,23 +1,12 @@
 <template>
   <div class="videos-list top-videos">
-    <fancy-title
-      tag="h3"
-      :field="data.title"
-      color="red"
-      type="small"
-      :offset="[0, 0]"
-      uppercase="uppercase"
-    />
+    <fancy-title tag="h3" :field="title" color="red" type="small" :offset="[0, 0]" uppercase="uppercase" />
     <!-- eslint-disable vue/no-v-html -->
-    <div class="top-videos-intro" v-html="data.intro" />
+    <div v-if="intro" class="top-videos-intro" v-html="intro" />
     <!--eslint-enable-->
 
     <div class="videos">
-      <video-card
-        v-for="video in data.videos"
-        :key="video.slug"
-        :video="video"
-      />
+      <video-card v-for="video in videos" :key="video.slug" :video="video" />
     </div>
 
     <p class="top-videos-load-more">
@@ -26,16 +15,27 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'HomeTopVideos',
+<script lang="ts">
+import { defineComponent, PropType } from '@vue/composition-api';
+import { Video } from '~/types';
+
+export default defineComponent({
   props: {
-    data: {
-      type: Object,
+    videos: {
+      //type: Array as PropType<Array<Video>>,
+      type: Array as PropType<Video[]>,
       required: true,
     },
+    title: {
+      type: String,
+      required: true,
+    },
+    intro: {
+      type: String,
+      required: false,
+    },
   },
-}
+});
 </script>
 
 <style lang="scss">
