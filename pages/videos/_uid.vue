@@ -1,47 +1,24 @@
 <template>
-  <div
-    v-if="!$fetchState.pending && !$fetchState.error"
-    class="content-wrapper blogpost"
-  >
+  <div v-if="!$fetchState.pending && !$fetchState.error" class="content-wrapper blogpost">
     <navigation />
     <main id="main-content">
       <div class="video-header">
         <p>
           If you like what you see, please
-          <a
-            href="https://www.youtube.com/timbenniks?sub_confirmation=1"
-            target="_blank"
-            rel="noopener"
+          <a href="https://www.youtube.com/timbenniks?sub_confirmation=1" target="_blank" rel="noopener"
             >subscribe</a
           >
           to my YouTube channel at
-          <a
-            href="https://www.youtube.com/timbenniks"
-            target="_blank"
-            rel="noopener"
+          <a href="https://www.youtube.com/timbenniks" target="_blank" rel="noopener"
             >youtube.com/timbenniks</a
           >!
         </p>
 
-        <lite-youtube
-          params="modestbranding=2&rel=0"
-          :videoid="cmsData.ytid"
-          :play-label="cmsData.title"
-        />
+        <lite-youtube params="modestbranding=2&rel=0" :videoid="cmsData.ytid" :play-label="cmsData.title" />
       </div>
-      <heading
-        :title="cmsData.title"
-        :breadcrumb="true"
-        titletag="h1"
-        :use-fancy-titles="true"
-      />
+      <heading :title="cmsData.title" :breadcrumb="true" titletag="h1" :use-fancy-titles="true" />
       <div class="filters no-count">
-        <nuxt-link
-          v-for="tag in cmsData.tags"
-          :key="tag"
-          :to="`/videos/tag/${cleanTag(tag)}`"
-          class="filter"
-        >
+        <nuxt-link v-for="tag in cmsData.tags" :key="tag" :to="`/videos/tag/${cleanTag(tag)}`" class="filter">
           {{ tag }}
         </nuxt-link>
       </div>
@@ -49,59 +26,44 @@
       <!-- eslint-disable vue/no-v-html -->
       <div v-interpolation class="post-content" v-html="cmsData.content" />
       <!--eslint-enable-->
-      <related-videos
-        :related-videos="relatedVideosData"
-        :current-video="cmsData.uid"
-      />
+      <related-videos :related-videos="relatedVideosData" :current-video="cmsData.uid" />
     </main>
   </div>
 </template>
 
 <script>
-import {
-  ref,
-  useFetch,
-  defineComponent,
-  useMeta,
-  useRoute,
-} from '@nuxtjs/composition-api'
+import { ref, useFetch, defineComponent, useMeta, useRoute } from '@nuxtjs/composition-api';
 
-import { useContent } from '@/datalayer/pages/videos/_uid'
-import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
+import { useContent } from '@/datalayer/pages/videos/_uid';
+import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo';
 
 export default defineComponent({
   setup() {
-    const cmsData = ref(null)
-    const metaData = ref(null)
-    const relatedVideosData = ref(null)
+    const cmsData = ref(null);
+    const metaData = ref(null);
+    const relatedVideosData = ref(null);
 
-    const route = useRoute()
+    const route = useRoute();
 
     useFetch(async () => {
-      const { document, relatedVideos, metaInfo } = await useContent(
-        route.value.params.uid
-      )
+      const { document, relatedVideos, metaInfo } = await useContent(route.value.params.uid);
 
-      cmsData.value = document
-      relatedVideosData.value = relatedVideos
-      metaData.value = mapMetaInfo(
-        metaInfo.fields,
-        metaInfo.pageType,
-        route.value.path
-      )
-    })
+      cmsData.value = document;
+      relatedVideosData.value = relatedVideos;
+      metaData.value = mapMetaInfo(metaInfo.fields, metaInfo.pageType, route.value.path);
+    });
 
-    useMeta(() => ({ ...metaData.value }))
+    useMeta(() => ({ ...metaData.value }));
 
     const cleanTag = (tag) => {
-      const cleanedTag = tag.trim().replace(/ /g, '-')
-      return encodeURIComponent(cleanedTag)
-    }
+      const cleanedTag = tag.trim().replace(/ /g, '-');
+      return encodeURIComponent(cleanedTag);
+    };
 
-    return { cmsData, relatedVideosData, metaData, cleanTag }
+    return { cmsData, relatedVideosData, metaData, cleanTag };
   },
   head: {},
-})
+});
 </script>
 
 <style lang="scss">

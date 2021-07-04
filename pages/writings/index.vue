@@ -1,17 +1,9 @@
 <template>
-  <div
-    v-if="!$fetchState.pending && !$fetchState.error"
-    class="content-wrapper writings"
-  >
+  <div v-if="!$fetchState.pending && !$fetchState.error" class="content-wrapper writings">
     <navigation />
 
     <main id="main-content">
-      <heading
-        :breadcrumb="true"
-        titletag="h1"
-        :title="cmsData.title"
-        :uppercase="true"
-      />
+      <heading :breadcrumb="true" titletag="h1" :title="cmsData.title" :uppercase="true" />
 
       <div class="posts">
         <article v-for="post in writingsData" :key="post.uid" class="post">
@@ -47,43 +39,33 @@
 </template>
 
 <script>
-import {
-  ref,
-  useFetch,
-  defineComponent,
-  useMeta,
-  useRoute,
-} from '@nuxtjs/composition-api'
+import { ref, useFetch, defineComponent, useMeta, useRoute } from '@nuxtjs/composition-api';
 
-import { useContent } from '@/datalayer/pages/writings'
-import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
+import { useContent } from '@/datalayer/pages/writings';
+import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo';
 
 export default defineComponent({
   setup() {
-    const cmsData = ref(null)
-    const writingsData = ref(null)
-    const metaData = ref(null)
-    const route = useRoute()
+    const cmsData = ref(null);
+    const writingsData = ref(null);
+    const metaData = ref(null);
+    const route = useRoute();
 
     useFetch(async () => {
-      const { document, writings, metaInfo } = await useContent()
+      const { document, writings, metaInfo } = await useContent();
 
-      cmsData.value = document
-      writingsData.value = writings
+      cmsData.value = document;
+      writingsData.value = writings;
 
-      metaData.value = mapMetaInfo(
-        metaInfo.fields,
-        metaInfo.pageType,
-        route.value.path
-      )
-    })
+      metaData.value = mapMetaInfo(metaInfo.fields, metaInfo.pageType, route.value.path);
+    });
 
-    useMeta(() => ({ ...metaData.value }))
+    useMeta(() => ({ ...metaData.value }));
 
-    return { cmsData, writingsData, metaData }
+    return { cmsData, writingsData, metaData };
   },
   head: {},
-})
+});
 </script>
 
 <style lang="scss" scoped>

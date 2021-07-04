@@ -1,4 +1,4 @@
-import { asDay, asMonth, asYear } from '@/datalayer/helpers/modifiers'
+import { asDay, asMonth, asYear } from '@/datalayer/helpers/modifiers';
 
 export const state = () => ({
   searchResults: {
@@ -9,12 +9,12 @@ export const state = () => ({
     loading: false,
     results: 0,
   },
-})
+});
 
 export const mutations = {
   setSearchResults(state, results) {
-    state.searchResults.facets = results.facets.tags
-    state.searchResults.results = results.nbHits
+    state.searchResults.facets = results.facets.tags;
+    state.searchResults.results = results.nbHits;
 
     state.searchResults.hits = results.hits.map((hit) => {
       return {
@@ -26,50 +26,50 @@ export const mutations = {
         day: asDay(hit.publication_date),
         month: asMonth(hit.publication_date),
         year: asYear(hit.publication_date),
-      }
-    })
+      };
+    });
   },
 
   setSearchQuery(state, payload) {
-    state.searchResults.query = payload
+    state.searchResults.query = payload;
   },
 
   setPrismicTags(state, payload) {
-    state.searchResults.prismicTags = payload.sort()
+    state.searchResults.prismicTags = payload.sort();
   },
 
   setSearchLoading(state, payload) {
-    state.searchResults.loading = payload
+    state.searchResults.loading = payload;
   },
-}
+};
 
 export const getters = {
   searchHits(state) {
-    return state.searchResults.hits
+    return state.searchResults.hits;
   },
 
   searchResults(state) {
-    return state.searchResults.results
+    return state.searchResults.results;
   },
 
   searchQuery(state) {
-    return state.searchResults.query
+    return state.searchResults.query;
   },
 
   facets(state) {
-    const facets = []
+    const facets = [];
 
     const findTagAmount = (tag) => {
       if (tag in state.searchResults.facets) {
-        return state.searchResults.facets[tag]
+        return state.searchResults.facets[tag];
       } else {
-        return 0
+        return 0;
       }
-    }
+    };
 
     const facetInQuery = (facet) => {
-      return state.searchResults.query.includes(facet)
-    }
+      return state.searchResults.query.includes(facet);
+    };
 
     state.searchResults.prismicTags.forEach((tag) => {
       facets.push({
@@ -77,31 +77,31 @@ export const getters = {
         active: facetInQuery(tag),
         amount: findTagAmount(tag),
         disabled: findTagAmount(tag) === 0,
-      })
-    })
+      });
+    });
 
-    return facets
+    return facets;
   },
 
   searchLoading(state) {
-    return state.searchResults.loading
+    return state.searchResults.loading;
   },
-}
+};
 
 export const actions = {
   searchAlgolia({ commit }, payload = '') {
-    commit('setSearchLoading', true)
+    commit('setSearchLoading', true);
 
     fetch(`${this.$config.base_url}api/algolia-search?facets=${payload}`)
       .then((response) => response.json())
       .then((results) => {
-        commit('setSearchQuery', payload)
-        commit('setSearchResults', results)
-        commit('setSearchLoading', false)
-      })
+        commit('setSearchQuery', payload);
+        commit('setSearchResults', results);
+        commit('setSearchLoading', false);
+      });
   },
 
   getPrismicTags({ commit }, payload) {
-    commit('setPrismicTags', payload)
+    commit('setPrismicTags', payload);
   },
-}
+};

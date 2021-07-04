@@ -1,28 +1,15 @@
 <template>
-  <div
-    v-if="!$fetchState.pending && !$fetchState.error"
-    class="content-wrapper blogpost"
-  >
+  <div v-if="!$fetchState.pending && !$fetchState.error" class="content-wrapper blogpost">
     <navigation />
 
     <main id="main-content">
-      <heading
-        :title="cmsData.title"
-        :breadcrumb="true"
-        titletag="h1"
-        :use-fancy-titles="true"
-      />
+      <heading :title="cmsData.title" :breadcrumb="true" titletag="h1" :use-fancy-titles="true" />
 
       <div class="sponsor-wrapper">
         <sponsor alignment="left">
           <p>
             Click the button above to sponsor me or visit my
-            <a
-              href="https://www.buymeacoffee.com/timbenniks"
-              target="_blank"
-              rel="noopener"
-              >buymeacoffee</a
-            >
+            <a href="https://www.buymeacoffee.com/timbenniks" target="_blank" rel="noopener">buymeacoffee</a>
             page.
           </p>
         </sponsor>
@@ -36,41 +23,31 @@
 </template>
 
 <script>
-import {
-  ref,
-  useFetch,
-  defineComponent,
-  useMeta,
-  useRoute,
-} from '@nuxtjs/composition-api'
+import { ref, useFetch, defineComponent, useMeta, useRoute } from '@nuxtjs/composition-api';
 
-import { useContent } from '@/datalayer/pages/sponsor-me'
-import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
+import { useContent } from '@/datalayer/pages/sponsor-me';
+import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo';
 
 export default defineComponent({
   setup() {
-    const cmsData = ref(null)
-    const metaData = ref(null)
-    const route = useRoute()
+    const cmsData = ref(null);
+    const metaData = ref(null);
+    const route = useRoute();
 
     useFetch(async () => {
-      const { document, metaInfo } = await useContent()
+      const { document, metaInfo } = await useContent();
 
-      cmsData.value = document
+      cmsData.value = document;
 
-      metaData.value = mapMetaInfo(
-        metaInfo.fields,
-        metaInfo.pageType,
-        route.value.path
-      )
-    })
+      metaData.value = mapMetaInfo(metaInfo.fields, metaInfo.pageType, route.value.path);
+    });
 
-    useMeta(() => ({ ...metaData.value }))
+    useMeta(() => ({ ...metaData.value }));
 
-    return { cmsData, metaData }
+    return { cmsData, metaData };
   },
   head: {},
-})
+});
 </script>
 
 <style lang="scss">

@@ -1,8 +1,5 @@
 <template>
-  <div
-    v-if="!$fetchState.pending && !$fetchState.error"
-    class="content-wrapper blogpost"
-  >
+  <div v-if="!$fetchState.pending && !$fetchState.error" class="content-wrapper blogpost">
     <navigation />
 
     <main id="main-content">
@@ -23,41 +20,31 @@
 </template>
 
 <script>
-import {
-  ref,
-  useFetch,
-  defineComponent,
-  useMeta,
-  useRoute,
-} from '@nuxtjs/composition-api'
+import { ref, useFetch, defineComponent, useMeta, useRoute } from '@nuxtjs/composition-api';
 
-import { useContent } from '@/datalayer/pages/writings/_uid'
-import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
+import { useContent } from '@/datalayer/pages/writings/_uid';
+import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo';
 
 export default defineComponent({
   setup() {
-    const cmsData = ref(null)
-    const metaData = ref(null)
-    const route = useRoute()
+    const cmsData = ref(null);
+    const metaData = ref(null);
+    const route = useRoute();
 
     useFetch(async () => {
-      const { document, metaInfo } = await useContent(route.value.params.uid)
+      const { document, metaInfo } = await useContent(route.value.params.uid);
 
-      cmsData.value = document
+      cmsData.value = document;
 
-      metaData.value = mapMetaInfo(
-        metaInfo.fields,
-        metaInfo.pageType,
-        route.value.path
-      )
-    })
+      metaData.value = mapMetaInfo(metaInfo.fields, metaInfo.pageType, route.value.path);
+    });
 
-    useMeta(() => ({ ...metaData.value }))
+    useMeta(() => ({ ...metaData.value }));
 
-    return { cmsData, metaData }
+    return { cmsData, metaData };
   },
   head: {},
-})
+});
 </script>
 
 <style lang="scss">

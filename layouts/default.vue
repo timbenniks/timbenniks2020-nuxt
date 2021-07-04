@@ -1,13 +1,9 @@
 <template>
   <div class="wrapper">
-    <a href="#main-content" aria-hidden="false" class="goToContent"
-      >Skip to content</a
-    >
+    <a href="#main-content" aria-hidden="false" class="goToContent">Skip to content</a>
     <!-- <div class="bg-triangle" /> -->
     <Nuxt />
-    <global-footer
-      v-if="$route.name !== 'startpage' && $route.name !== 'invoices-invoice'"
-    />
+    <global-footer v-if="$route.name !== 'startpage' && $route.name !== 'invoices-invoice'" />
   </div>
 </template>
 

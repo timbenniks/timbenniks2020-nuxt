@@ -1,8 +1,6 @@
 <template>
   <div class="wrapper">
-    <a href="#main-content" aria-hidden="false" class="goToContent"
-      >Skip to content</a
-    >
+    <a href="#main-content" aria-hidden="false" class="goToContent">Skip to content</a>
 
     <div class="content-wrapper blogpost">
       <navigation />
@@ -34,7 +32,7 @@
 </template>
 
 <script>
-import Navigation from '../components/navigation.vue'
+import Navigation from '../components/navigation.vue';
 
 export default {
   components: {
@@ -44,7 +42,7 @@ export default {
     title: "Oh oh. We don't seem to have this page",
     description: '404 Error page not found',
   },
-}
+};
 </script>
 
 <style lang="scss">

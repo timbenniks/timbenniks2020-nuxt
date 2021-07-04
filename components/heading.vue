@@ -1,15 +1,7 @@
 <template>
   <div class="heading">
-    <ol
-      v-if="breadcrumb"
-      itemscope
-      itemtype="https://schema.org/BreadcrumbList"
-    >
-      <li
-        itemprop="itemListElement"
-        itemscope
-        itemtype="https://schema.org/ListItem"
-      >
+    <ol v-if="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
         <nuxt-link to="/" itemtype="https://schema.org/Thing" itemprop="item">
           <span itemprop="name">Home</span>
         </nuxt-link>
@@ -58,20 +50,16 @@
     <div :is="titletag" v-if="title && !useFancyTitles" v-html="title" />
 
     <!-- eslint-disable vue/no-v-html -->
-    <div
-      :is="subtitletag"
-      v-if="subtitle && !useFancyTitles"
-      v-html="subtitle"
-    />
+    <div :is="subtitletag" v-if="subtitle && !useFancyTitles" v-html="subtitle" />
     <!--eslint-enable-->
   </div>
 </template>
 
-<script>
-import FancyTitle from '../components/fancy-title.vue'
+<script lang="ts">
+import { defineComponent, computed, useRoute } from '@nuxtjs/composition-api';
+import FancyTitle from '../components/fancy-title.vue';
 
-export default {
-  name: 'Heading',
+export default defineComponent({
   components: {
     FancyTitle,
   },
@@ -112,33 +100,37 @@ export default {
       default: true,
     },
   },
-  computed: {
-    crumbs() {
-      const pathArray = this.$route.path.split('/')
-      pathArray.shift()
+  setup() {
+    const route = useRoute();
 
-      const breadcrumbs = pathArray.reduce((breadcrumbArray, path, idx) => {
+    const crumbs = computed(() => {
+      const pathArray = route.value.path.split('/');
+      pathArray.shift();
+
+      const breadcrumbs = pathArray.reduce((breadcrumbArray: any[], path: string, idx: number) => {
         if (path) {
           breadcrumbArray.push({
             path,
-            to: breadcrumbArray[idx - 1]
-              ? '/' + breadcrumbArray[idx - 1].path + '/' + path
-              : '/' + path,
+            to: breadcrumbArray[idx - 1] ? '/' + breadcrumbArray[idx - 1].path + '/' + path : '/' + path,
             text: path
               .replace(/-/g, ' ')
               .toLowerCase()
               .split(' ')
               .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
               .join(' '),
-          })
+          });
         }
-        return breadcrumbArray
-      }, [])
+        return breadcrumbArray;
+      }, []);
 
-      return breadcrumbs
-    },
+      return breadcrumbs;
+    });
+
+    return {
+      crumbs,
+    };
   },
-}
+});
 </script>
 
 <style scoped lang="scss">

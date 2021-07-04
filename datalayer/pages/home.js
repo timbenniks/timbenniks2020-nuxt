@@ -1,12 +1,12 @@
-import Prismic from '@prismicio/client'
-import { RichText } from 'prismic-dom'
-import getPrismicApi from '@/datalayer/helpers/getPrismicApi'
-import linkResolver from '@/datalayer/helpers/linkresolver'
-import htmlSerializer from '@/datalayer/helpers/htmlserializer'
-import { asDay, asMonth, asYear } from '@/datalayer/helpers/modifiers'
+import Prismic from '@prismicio/client';
+import { RichText } from 'prismic-dom';
+import getPrismicApi from '@/datalayer/helpers/getPrismicApi';
+import linkResolver from '@/datalayer/helpers/linkresolver';
+import htmlSerializer from '@/datalayer/helpers/htmlserializer';
+import { asDay, asMonth, asYear } from '@/datalayer/helpers/modifiers';
 
 export const useContent = async () => {
-  const api = await getPrismicApi()
+  const api = await getPrismicApi();
 
   const graphQuery = `
   {
@@ -45,22 +45,16 @@ export const useContent = async () => {
         }
       }
     }
-  }`
+  }`;
 
-  const result = await api.getSingle('home', { graphQuery })
+  const result = await api.getSingle('home', { graphQuery });
 
   const document = {
-    description: RichText.asHtml(
-      result.data.description,
-      linkResolver,
-      htmlSerializer
-    ),
+    description: RichText.asHtml(result.data.description, linkResolver, htmlSerializer),
     ...result,
-  }
+  };
 
-  const heroBannerData = document.data.body1.find(
-    (slice) => slice.slice_type === 'hero_banner'
-  ).primary
+  const heroBannerData = document.data.body1.find((slice) => slice.slice_type === 'hero_banner').primary;
 
   const heroBanner = {
     title: RichText.asText(heroBannerData.title),
@@ -73,20 +67,14 @@ export const useContent = async () => {
       url: heroBannerData.logo.url,
       alt: heroBannerData.logo.alt,
     },
-  }
+  };
 
-  const topVideosData = document.data.body1.find(
-    (slice) => slice.slice_type === 'top_videos'
-  )
+  const topVideosData = document.data.body1.find((slice) => slice.slice_type === 'top_videos');
 
   const topVideos = {
     title: RichText.asText(topVideosData.primary.top_videos_list),
-    intro: RichText.asHtml(
-      topVideosData.primary.intro_text,
-      linkResolver,
-      htmlSerializer
-    ),
-  }
+    intro: RichText.asHtml(topVideosData.primary.intro_text, linkResolver, htmlSerializer),
+  };
 
   topVideos.videos = topVideosData.items.map((item) => {
     return {
@@ -98,13 +86,13 @@ export const useContent = async () => {
       month: asMonth(item.video.data.publication_date),
       year: asYear(item.video.data.publication_date),
       tags: item.video.tags,
-    }
-  })
+    };
+  });
 
-  const writings = await api.query(
-    Prismic.Predicates.at('document.type', 'writing'),
-    { orderings: '[my.writing.publication_date desc]', pageSize: 3 }
-  )
+  const writings = await api.query(Prismic.Predicates.at('document.type', 'writing'), {
+    orderings: '[my.writing.publication_date desc]',
+    pageSize: 3,
+  });
 
   const latestWritings = writings.results.map((writing) => {
     return {
@@ -115,13 +103,13 @@ export const useContent = async () => {
       day: asDay(writing.data.publication_date),
       month: asMonth(writing.data.publication_date),
       year: asYear(writing.data.publication_date),
-    }
-  })
+    };
+  });
 
   const metaInfo = {
     fields: document.data,
     pageType: 'home',
-  }
+  };
 
   return {
     document,
@@ -129,5 +117,5 @@ export const useContent = async () => {
     topVideos,
     latestWritings,
     metaInfo,
-  }
-}
+  };
+};

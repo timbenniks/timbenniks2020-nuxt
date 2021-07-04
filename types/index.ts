@@ -7,12 +7,12 @@ export type Video = {
   slug: string;
   title: string;
   image: string;
-  //tags: Array<Tag>;
+  // tags: Array<Tag>;
   tags: Tag[];
   day: number;
   month: string;
   year: number;
-}
+};
 
 export type Talk = {
   day: number;
@@ -22,7 +22,7 @@ export type Talk = {
   title: string;
   location: string;
   subject: string;
-}
+};
 
 export type ImageOptions = {
   ratio: string;
@@ -38,4 +38,16 @@ export type Writing = {
   day: number;
   month: string;
   year: number;
-}
+};
+
+export type HomeHeroImage = {
+  alt: string;
+  url: string;
+};
+
+export type HomeHero = {
+  banner_image: HomeHeroImage;
+  logo: HomeHeroImage;
+  title: string;
+  subtitle: string;
+};

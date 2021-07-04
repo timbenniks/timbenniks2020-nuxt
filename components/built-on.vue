@@ -1,34 +1,24 @@
 <template>
   <div class="built-on">
-    <a
-      href="https://vercel.com"
-      rel="noopener"
-      target="_blank"
-      aria-label="go to vercel"
-    >
+    <a href="https://vercel.com" rel="noopener" target="_blank" aria-label="go to vercel">
       <iconVercel alt="Vercel" />
     </a>
-    <a
-      href="https://nuxtjs.org"
-      rel="noopener"
-      target="_blank"
-      aria-label="go to nuxt"
-    >
+    <a href="https://nuxtjs.org" rel="noopener" target="_blank" aria-label="go to nuxt">
       <iconWithNuxt alt="Nuxt" />
     </a>
   </div>
 </template>
 
 <script>
-import iconVercel from './iconVercel.vue'
-import iconWithNuxt from './iconWithNuxt.vue'
+import iconVercel from './iconVercel.vue';
+import iconWithNuxt from './iconWithNuxt.vue';
 
 export default {
   components: {
     iconWithNuxt,
     iconVercel,
   },
-}
+};
 </script>
 <style lang="scss">
 .built-on {

@@ -1,49 +1,45 @@
-const hljs = require('highlight.js')
-const prismicDOM = require('prismic-dom')
-const linkResolver = require('./linkresolver')
+const hljs = require('highlight.js');
+const prismicDOM = require('prismic-dom');
+const linkResolver = require('./linkresolver');
 
 function concatCloudinaryUrl(url, opts) {
-  return `https://res.cloudinary.com/dwfcofnrd/image/fetch/f_auto,q_auto,w_${opts.width}/${url}`
+  return `https://res.cloudinary.com/dwfcofnrd/image/fetch/f_auto,q_auto,w_${opts.width}/${url}`;
 }
 
 function getSrcSet(baseUrl, widths) {
-  const cleanUrl = baseUrl.replace('?auto=compress,format', '')
-  let srcset = ''
+  const cleanUrl = baseUrl.replace('?auto=compress,format', '');
+  let srcset = '';
 
   widths.forEach((width) => {
     const url = concatCloudinaryUrl(cleanUrl, {
       width,
-    })
+    });
 
-    srcset += `${url} ${width}w, `
-  })
+    srcset += `${url} ${width}w, `;
+  });
 
-  return srcset.slice(0, -2)
+  return srcset.slice(0, -2);
 }
 
-const Elements = prismicDOM.RichText.Elements
+const Elements = prismicDOM.RichText.Elements;
 
 module.exports = function (type, element, content, children) {
   if (type === Elements.hyperlink) {
-    let result = ''
-    const url = prismicDOM.Link.url(element.data, linkResolver)
+    let result = '';
+    const url = prismicDOM.Link.url(element.data, linkResolver);
 
     if (element.data.link_type === 'Document') {
-      result = `<a href="${url}" data-internal-link>${content}</a>`
+      result = `<a href="${url}" data-internal-link>${content}</a>`;
     } else {
-      const target = element.data.target
-        ? `target="'${element.data.target}'" rel="noopener"`
-        : ''
-      result = `<a href="${url}" ${target}>${content}</a>`
+      const target = element.data.target ? `target="'${element.data.target}'" rel="noopener"` : '';
+      result = `<a href="${url}" ${target}>${content}</a>`;
     }
-    return result
+    return result;
   }
 
   if (type === Elements.image) {
     const result = `
-      <figure style="--aspect-ratio:${element.dimensions.width}/${
-      element.dimensions.height
-    };">
+      <figure style="--aspect-ratio:${element.dimensions.width}/${element.dimensions.height};">
         <img srcset="${getSrcSet(element.url, [300, 400, 500, 600, 700, 800])}"
              sizes="(max-width: 700px) 90vw, (min-width: 880px) 800px"
              alt="${element.alt}"
@@ -55,38 +51,35 @@ module.exports = function (type, element, content, children) {
         />
         <figcaption>${element.alt}</figcaption>
       </figure>
-      `
-    return result
+      `;
+    return result;
   }
 
   if (type === Elements.heading3) {
-    return `<h3 class="fancy-title red">${element.text}</h3>`
+    return `<h3 class="fancy-title red">${element.text}</h3>`;
   }
 
   if (type === Elements.heading4) {
-    return `<h4 class="fancy-title blue-main">${element.text}</h4>`
+    return `<h4 class="fancy-title blue-main">${element.text}</h4>`;
   }
 
   if (type === Elements.heading5) {
-    return `<h5 class="fancy-title yellow">${element.text}</h5>`
+    return `<h5 class="fancy-title yellow">${element.text}</h5>`;
   }
 
   if (type === Elements.paragraph) {
-    let parsedChildren = children.join('')
-    parsedChildren = parsedChildren.replace(
-      /`(.*?)`/g,
-      '<code class="inline">$1</code>'
-    )
+    let parsedChildren = children.join('');
+    parsedChildren = parsedChildren.replace(/`(.*?)`/g, '<code class="inline">$1</code>');
 
-    return `<p>${parsedChildren}</p>`
+    return `<p>${parsedChildren}</p>`;
   }
 
   if (type === Elements.preformatted) {
-    return `<pre class="hjls">${hljs.highlightAuto(element.text).value}</pre>`
+    return `<pre class="hjls">${hljs.highlightAuto(element.text).value}</pre>`;
   }
 
   if (type === Elements.embed) {
-    let result = ''
+    let result = '';
 
     if (element.oembed.provider_name === 'YouTube') {
       result = `
@@ -99,7 +92,7 @@ module.exports = function (type, element, content, children) {
         </lite-youtube>
       </figure>
 
-      `
+      `;
     }
 
     if (element.oembed.provider_name === 'article') {
@@ -113,7 +106,7 @@ module.exports = function (type, element, content, children) {
             loading="lazy"
             src="${element.oembed.embed_url}"></iframe>
         </figure>
-      `
+      `;
     }
 
     if (element.oembed.provider_name === 'Tims_Strava') {
@@ -128,11 +121,11 @@ module.exports = function (type, element, content, children) {
             loading="lazy"
             src="${element.oembed.embed_url}"></iframe>
         </figure>
-      `
+      `;
     }
 
-    return result
+    return result;
   }
 
-  return null
-}
+  return null;
+};

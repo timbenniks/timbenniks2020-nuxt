@@ -1,17 +1,9 @@
 <template>
-  <div
-    v-if="!$fetchState.pending && !$fetchState.error"
-    class="content-wrapper speaking"
-  >
+  <div v-if="!$fetchState.pending && !$fetchState.error" class="content-wrapper speaking">
     <navigation />
 
     <main id="main-content">
-      <heading
-        :breadcrumb="true"
-        titletag="h1"
-        :title="cmsData.title"
-        :uppercase="true"
-      />
+      <heading :breadcrumb="true" titletag="h1" :title="cmsData.title" :uppercase="true" />
 
       <h3 class="post-title-sep">
         {{ cmsData.upcoming_talks }}
@@ -37,50 +29,40 @@
 </template>
 
 <script>
-import {
-  ref,
-  useFetch,
-  defineComponent,
-  useMeta,
-  useRoute,
-} from '@nuxtjs/composition-api'
+import { ref, useFetch, defineComponent, useMeta, useRoute } from '@nuxtjs/composition-api';
 
-import { useContent } from '@/datalayer/pages/speaking'
-import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo'
+import { useContent } from '@/datalayer/pages/speaking';
+import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo';
 
 export default defineComponent({
   setup() {
-    const cmsData = ref(null)
-    const oldTalksData = ref(null)
-    const upcomingTalksData = ref(null)
-    const metaData = ref(null)
-    const route = useRoute()
+    const cmsData = ref(null);
+    const oldTalksData = ref(null);
+    const upcomingTalksData = ref(null);
+    const metaData = ref(null);
+    const route = useRoute();
 
     useFetch(async () => {
-      const { document, oldTalks, upcomingTalks, metaInfo } = await useContent()
+      const { document, oldTalks, upcomingTalks, metaInfo } = await useContent();
 
-      cmsData.value = document
-      oldTalksData.value = oldTalks
-      upcomingTalksData.value = upcomingTalks
+      cmsData.value = document;
+      oldTalksData.value = oldTalks;
+      upcomingTalksData.value = upcomingTalks;
 
-      metaData.value = mapMetaInfo(
-        metaInfo.fields,
-        metaInfo.pageType,
-        route.value.path
-      )
-    })
+      metaData.value = mapMetaInfo(metaInfo.fields, metaInfo.pageType, route.value.path);
+    });
 
-    useMeta(() => ({ ...metaData.value }))
+    useMeta(() => ({ ...metaData.value }));
 
     return {
       cmsData,
       oldTalksData,
       upcomingTalksData,
       metaData,
-    }
+    };
   },
   head: {},
-})
+});
 </script>
 
 <style lang="scss" scoped>

@@ -1,15 +1,13 @@
 function getPropType(fields, type, prop) {
   if (prop === 'image') {
-    return fields.body.find((card) => card.slice_type === type).primary[prop]
-      .url
+    return fields.body.find((card) => card.slice_type === type).primary[prop].url;
   } else {
-    return fields.body.find((card) => card.slice_type === type).primary[prop][0]
-      .text
+    return fields.body.find((card) => card.slice_type === type).primary[prop][0].text;
   }
 }
 
 export default function (fields, pageType, path) {
-  const url = `https://timbenniks.dev${path}`
+  const url = `https://timbenniks.dev${path}`;
   const metaData = {
     title: getPropType(fields, 'general_card', 'title'),
     link: [
@@ -65,7 +63,7 @@ export default function (fields, pageType, path) {
         content: url,
       },
     ],
-  }
+  };
 
   if (
     pageType === 'speaking' ||
@@ -78,7 +76,7 @@ export default function (fields, pageType, path) {
       property: 'og:type',
       hid: 'og:type',
       content: 'website',
-    })
+    });
   }
 
   if (pageType === 'home') {
@@ -91,7 +89,7 @@ export default function (fields, pageType, path) {
         },
         type: 'application/ld+json',
       },
-    ]
+    ];
   }
 
   if (pageType === 'video') {
@@ -99,13 +97,13 @@ export default function (fields, pageType, path) {
       property: 'og:video',
       hid: 'og:video',
       content: fields.video_embed.embed_url,
-    })
+    });
 
     metaData.meta.push({
       property: 'og:publish_date',
       content: `${fields.last_publication_date}`,
       name: 'publish_date',
-    })
+    });
 
     metaData.script = [
       {
@@ -121,7 +119,7 @@ export default function (fields, pageType, path) {
         },
         type: 'application/ld+json',
       },
-    ]
+    ];
   }
 
   if (pageType === 'writing') {
@@ -129,13 +127,13 @@ export default function (fields, pageType, path) {
       property: 'og:type',
       hid: 'og:type',
       content: 'article',
-    })
+    });
 
     metaData.meta.push({
       property: 'og:publish_date',
       content: `${fields.last_publication_date}`,
       name: 'publish_date',
-    })
+    });
 
     metaData.script = [
       {
@@ -168,8 +166,8 @@ export default function (fields, pageType, path) {
         },
         type: 'application/ld+json',
       },
-    ]
+    ];
   }
 
-  return metaData
+  return metaData;
 }

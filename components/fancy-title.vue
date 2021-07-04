@@ -20,5 +20,5 @@ export default {
     uppercase: { type: Boolean, required: false, default: true },
     offset: { type: Array, required: false, default: () => [0, 0] },
   },
-}
+};
 </script>

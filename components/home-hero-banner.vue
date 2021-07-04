@@ -8,13 +8,7 @@
       />
 
       <div class="hero-banner-content">
-        <lazy-img
-          ratio="1/1"
-          :alt="data.logo.alt"
-          :url="data.logo.url"
-          :caption="false"
-          sizes="xs:271px"
-        />
+        <lazy-img ratio="1/1" :alt="data.logo.alt" :url="data.logo.url" :caption="false" sizes="xs:271px" />
 
         <fancy-title
           :field="data.title"
@@ -38,16 +32,18 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'HomeHeroBanner',
+<script lang="ts">
+import { defineComponent, PropType } from '@vue/composition-api';
+import { HomeHero } from '~/types';
+
+export default defineComponent({
   props: {
     data: {
-      type: Object,
+      type: Object as PropType<HomeHero>,
       required: true,
     },
   },
-}
+});
 </script>
 
 <style lang="scss">

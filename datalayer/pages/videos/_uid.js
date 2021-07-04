@@ -1,34 +1,32 @@
-import { RichText } from 'prismic-dom'
-import Prismic from '@prismicio/client'
-import getPrismicApi from '@/datalayer/helpers/getPrismicApi'
-import linkResolver from '@/datalayer/helpers/linkresolver'
-import htmlSerializer from '@/datalayer/helpers/htmlserializer'
-import { asDay, asMonth, asYear } from '@/datalayer/helpers/modifiers'
+import { RichText } from 'prismic-dom';
+import Prismic from '@prismicio/client';
+import getPrismicApi from '@/datalayer/helpers/getPrismicApi';
+import linkResolver from '@/datalayer/helpers/linkresolver';
+import htmlSerializer from '@/datalayer/helpers/htmlserializer';
+import { asDay, asMonth, asYear } from '@/datalayer/helpers/modifiers';
 
 const getYTid = (url) => {
-  return url.split('watch?v=')[1]
-}
+  return url.split('watch?v=')[1];
+};
 
 export const useContent = async (uid) => {
-  const api = await getPrismicApi()
-  const result = await api.getByUID('video', uid)
+  const api = await getPrismicApi();
+  const result = await api.getByUID('video', uid);
 
   const document = {
     ...result,
 
     title: RichText.asText(result.data.title),
     tags: result.tags,
-    embed:
-      result.data.video_embed.embed_url.replace('watch?v=', 'embed/') +
-      '?autoplay=1&rel=0',
+    embed: result.data.video_embed.embed_url.replace('watch?v=', 'embed/') + '?autoplay=1&rel=0',
     content: RichText.asHtml(result.data.content, linkResolver, htmlSerializer),
     ytid: getYTid(result.data.video_embed.embed_url),
-  }
+  };
 
-  const relatedVideosData = await api.query(
-    Prismic.Predicates.any('document.tags', document.tags),
-    { orderings: '[my.video.publication_date desc]', pageSize: 4 }
-  )
+  const relatedVideosData = await api.query(Prismic.Predicates.any('document.tags', document.tags), {
+    orderings: '[my.video.publication_date desc]',
+    pageSize: 4,
+  });
 
   const relatedVideos = relatedVideosData.results.map((video) => {
     return {
@@ -39,8 +37,8 @@ export const useContent = async (uid) => {
       day: asDay(video.data.publication_date),
       month: asMonth(video.data.publication_date),
       year: asYear(video.data.publication_date),
-    }
-  })
+    };
+  });
 
   const metaInfo = {
     fields: {
@@ -49,11 +47,11 @@ export const useContent = async (uid) => {
       ...document.data,
     },
     pageType: 'video',
-  }
+  };
 
   return {
     document,
     relatedVideos,
     metaInfo,
-  }
-}
+  };
+};
