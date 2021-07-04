@@ -1,4 +1,4 @@
-import generateFeed from './datalayer/helpers/generateFeed'
+import generateFeed from './datalayer/helpers/generateFeed';
 
 export default {
   target: 'static',
@@ -32,18 +32,19 @@ export default {
         href: '/feed.xml',
       },
     ],
-    script: [
-      {
-        src: '/youtube.js',
-        async: true,
-      },
-      {
-        src: 'https://plausible.io/js/plausible.js',
-        defer: true,
-        async: true,
-        'data-domain': 'timbenniks.dev',
-      },
-    ],
+    // If I want a JS-less website, uncomment this...
+    // script: [
+    //   {
+    //     src: '/youtube.js',
+    //     async: true,
+    //   },
+    //   {
+    //     src: 'https://plausible.io/js/plausible.js',
+    //     defer: true,
+    //     async: true,
+    //     'data-domain': 'timbenniks.dev',
+    //   },
+    // ],
   },
   css: ['assets/styles/index.scss'],
   components: true,
@@ -69,18 +70,9 @@ export default {
       baseURL: 'https://res.cloudinary.com/dwfcofnrd/image/fetch/',
     },
   },
-  modules: [
-    '@nuxtjs/sitemap',
-    '@nuxtjs/feed',
-    'vue-plausible',
-    'nuxt-interpolation',
-  ],
+  modules: ['@nuxtjs/sitemap', '@nuxtjs/feed', 'vue-plausible', 'nuxt-interpolation'],
   styleResources: {
-    scss: [
-      'assets/styles/_packages.scss',
-      'assets/styles/_variables.scss',
-      'assets/styles/_mixins.scss',
-    ],
+    scss: ['assets/styles/_packages.scss', 'assets/styles/_variables.scss', 'assets/styles/_mixins.scss'],
     hoistUseStatements: true,
   },
   plausible: {
@@ -108,14 +100,14 @@ export default {
     },
   },
   render: {
-    injectScripts: false,
+    injectScripts: true,
   },
   plugins: ['~/plugins/youtube.client.js'],
   feed: [
     {
       path: '/feed.xml',
       async create(feed) {
-        return await generateFeed(feed)
+        return await generateFeed(feed);
       },
       cacheTime: 1000 * 60 * 15,
       type: 'rss2',
@@ -137,4 +129,4 @@ export default {
       },
     },
   },
-}
+};
