@@ -16,13 +16,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from '@vue/composition-api';
+import { defineComponent, PropType } from '@nuxtjs/composition-api';
 import { Video } from '~/types';
 
 export default defineComponent({
   props: {
     videos: {
-      //type: Array as PropType<Array<Video>>,
+      // type: Array as PropType<Array<Video>>,
       type: Array as PropType<Video[]>,
       required: true,
     },
@@ -33,6 +33,7 @@ export default defineComponent({
     intro: {
       type: String,
       required: false,
+      default: '',
     },
   },
 });

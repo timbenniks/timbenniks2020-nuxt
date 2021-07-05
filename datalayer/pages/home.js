@@ -59,7 +59,7 @@ export const useContent = async () => {
   const heroBanner = {
     title: RichText.asText(heroBannerData.title),
     subtitle: RichText.asText(heroBannerData.subtitle),
-    banner_image: {
+    bannerImage: {
       url: heroBannerData.banner_image.url,
       alt: heroBannerData.banner_image.alt,
     },
@@ -98,7 +98,7 @@ export const useContent = async () => {
     return {
       uid: writing.uid,
       title: RichText.asText(writing.data.title),
-      sub_title: RichText.asText(writing.data.sub_title),
+      subTitle: RichText.asText(writing.data.sub_title),
       image: writing.data.image.url,
       day: asDay(writing.data.publication_date),
       month: asMonth(writing.data.publication_date),

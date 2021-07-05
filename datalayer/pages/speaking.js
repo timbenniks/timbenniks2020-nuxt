@@ -29,7 +29,7 @@ export const useContent = async (context) => {
       day: asDay(talk.data.date),
       month: asMonth(talk.data.date),
       year: asYear(talk.data.date),
-      link_to_event: Link.url(talk.data.link_to_event, linkResolver),
+      linkToEvent: Link.url(talk.data.link_to_event, linkResolver),
       title: RichText.asText(talk.data.title),
       location: talk.data.location,
       subject: talk.data.subject,

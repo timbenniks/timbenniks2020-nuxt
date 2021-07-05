@@ -5,7 +5,7 @@
     <main id="main-content">
       <heading
         :title="cmsData.title"
-        :subtitle="cmsData.sub_title"
+        :subtitle="cmsData.subTitle"
         :breadcrumb="true"
         titletag="h1"
         subtitletag="h2"
@@ -21,8 +21,8 @@
 <script lang="ts">
 import { ref, useFetch, defineComponent, useMeta, useRoute } from '@nuxtjs/composition-api';
 
-import { useContent } from '@/datalayer/pages/about';
 import mapMetaInfo from '@/datalayer/helpers/mapMetaInfo';
+import { useContent } from '~/datalayer/pages/about';
 
 export default defineComponent({
   setup() {

@@ -18,7 +18,7 @@ export type Talk = {
   day: number;
   month: string;
   year: number;
-  link_to_event: string;
+  linkToEvent: string;
   title: string;
   location: string;
   subject: string;
@@ -33,7 +33,7 @@ export type ImageOptions = {
 export type Writing = {
   uid: string;
   title: string;
-  sub_title: string;
+  subTitle: string;
   image: string;
   day: number;
   month: string;
@@ -46,7 +46,7 @@ export type HomeHeroImage = {
 };
 
 export type HomeHero = {
-  banner_image: HomeHeroImage;
+  bannerImage: HomeHeroImage;
   logo: HomeHeroImage;
   title: string;
   subtitle: string;

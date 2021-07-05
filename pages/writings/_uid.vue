@@ -5,7 +5,7 @@
     <main id="main-content">
       <heading
         :title="cmsData.title"
-        :subtitle="cmsData.sub_title"
+        :subtitle="cmsData.subTitle"
         :breadcrumb="true"
         titletag="h1"
         subtitletag="h2"

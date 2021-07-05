@@ -8,7 +8,7 @@
     <div class="post-content-wrapper">
       <div class="post-titles">
         <p class="post-title fancy-title red">
-          <a :href="talk.link_to_event" target="_blank" rel="noopener">
+          <a :href="talk.linkToEvent" target="_blank" rel="noopener">
             {{ talk.title }}
           </a>
         </p>
@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from '@vue/composition-api';
+import { defineComponent, PropType } from '@nuxtjs/composition-api';
 import { Talk } from '~/types';
 
 export default defineComponent({

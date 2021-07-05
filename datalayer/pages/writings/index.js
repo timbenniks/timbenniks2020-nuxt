@@ -22,7 +22,7 @@ export const useContent = async (context) => {
     return {
       uid: writing.uid,
       title: RichText.asText(writing.data.title),
-      sub_title: RichText.asText(writing.data.sub_title),
+      subTitle: RichText.asText(writing.data.sub_title),
       image: writing.data.image.url,
       day: asDay(writing.data.publication_date),
       month: asMonth(writing.data.publication_date),

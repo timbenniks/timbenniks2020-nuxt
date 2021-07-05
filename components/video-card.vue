@@ -26,8 +26,8 @@
 </template>
 
 <script lang="ts">
+import { defineComponent, PropType } from '@nuxtjs/composition-api';
 import LazyImg from './lazy-img.vue';
-import { defineComponent, PropType } from '@vue/composition-api';
 import { Video } from '~/types';
 
 export default defineComponent({

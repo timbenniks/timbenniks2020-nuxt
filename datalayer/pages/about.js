@@ -9,7 +9,7 @@ export const useContent = async () => {
 
   const document = {
     title: RichText.asText(result.data.title),
-    sub_title: RichText.asText(result.data.sub_title),
+    subTitle: RichText.asText(result.data.sub_title),
     content: RichText.asHtml(result.data.content, linkResolver, htmlSerializer),
     ...result,
   };

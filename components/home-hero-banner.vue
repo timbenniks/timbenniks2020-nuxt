@@ -2,9 +2,9 @@
   <div class="hero-banner">
     <div class="hero-banner-inner">
       <lazy-hero-picture
-        v-if="data.banner_image.url"
-        :alt="data.banner_image.alt"
-        :url="data.banner_image.url"
+        v-if="data.bannerImage.url"
+        :alt="data.bannerImage.alt"
+        :url="data.bannerImage.url"
       />
 
       <div class="hero-banner-content">
@@ -33,7 +33,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from '@vue/composition-api';
+import { defineComponent, PropType } from '@nuxtjs/composition-api';
 import { HomeHero } from '~/types';
 
 export default defineComponent({

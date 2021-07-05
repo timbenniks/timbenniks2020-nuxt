@@ -31,7 +31,7 @@
             {{ post.month }}
             {{ post.year }}
           </span>
-          &mdash; {{ post.sub_title }}
+          &mdash; {{ post.subTitle }}
         </p>
       </div>
     </article>
@@ -39,13 +39,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from '@vue/composition-api';
+import { defineComponent, PropType } from '@nuxtjs/composition-api';
 import { Writing } from '~/types';
 
 export default defineComponent({
   props: {
     writings: {
-      //type: Array as PropType<Array<Writing>>,
+      // type: Array as PropType<Array<Writing>>,
       type: Array as PropType<Writing[]>,
       required: true,
     },

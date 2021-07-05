@@ -29,7 +29,7 @@
                 {{ post.month }}
                 {{ post.year }}
               </span>
-              &mdash; {{ post.sub_title }}
+              &mdash; {{ post.subTitle }}
             </p>
           </div>
         </article>
